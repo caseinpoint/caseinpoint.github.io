@@ -121,13 +121,12 @@ function nextImg(photosArr) {
 	
 	nextImg.id = 'img_current';
 	nextImg.classList.remove('d-none');
+	const nextIdx = Number(nextImg.dataset.index)
 	
+	const newIdx = nextIdx < (photosArr.length - 1) ? nextIdx + 1 : 0;
 	const newNext = document.createElement('img');
 	newNext.classList.add('img-fluid', 'd-none');
 	newNext.id = 'img_next'
-	const nextIdx = Number(nextImg.dataset.index)
-	const newIdx = nextIdx < (photosArr.length - 1) ? nextIdx + 1 : 0;
-	console.log(newIdx);
 	newNext.dataset.index = newIdx;
 	const baseUrl = photosArr[newIdx].baseUrl;
 	const width = photosArr[newIdx].mediaMetadata.width;
@@ -151,13 +150,12 @@ function prevImg(photosArr) {
 	
 	prevImg.id = 'img_current';
 	prevImg.classList.remove('d-none');
+	const prevIdx = Number(prevImg.dataset.index);
 	
+	const newIdx = prevIdx > 0 ? prevIdx - 1 : photosArr.length - 1;
 	const newPrev = document.createElement('img');
 	newPrev.classList.add('img-fluid', 'd-none');
 	newPrev.id = 'img_prev'
-	const prevIdx = Number(prevImg.dataset.index);
-	const newIdx = prevIdx > 0 ? prevIdx - 1 : photosArr.length - 1;
-	console.log(newIdx);
 	newPrev.dataset.index = newIdx;
 	const baseUrl = photosArr[newIdx].baseUrl;
 	const width = photosArr[newIdx].mediaMetadata.width;
@@ -166,6 +164,16 @@ function prevImg(photosArr) {
 	
 	const carousel = document.getElementById('carousel');
 	carousel.appendChild(newPrev);
+}
+
+
+function play(delay, photosArr) {
+	const intervalID = setInterval(nextImg, delay * 1000, photosArr);
+	return intervalID;
+}
+
+function pause(intervalID) {
+	clearInterval(intervalID);
 }
 
 
@@ -192,6 +200,9 @@ function sortPhotos(photosArr, method) {
 	const allPhotos = await getAllAlbumPhotos(ACCESS_TOKEN, ALBUM_ID);
 	initImgs(allPhotos);
 
+	let delay = 2;
+	let intervalID = null;
+
 	for (let btn of document.getElementsByClassName('sort_btn')) {
 		btn.addEventListener('click', () => {
 			sortPhotos(allPhotos, btn.value);
@@ -199,16 +210,25 @@ function sortPhotos(photosArr, method) {
 
 			const check = document.getElementById('sort_check');
 			btn.appendChild(check);
+
+			if (intervalID) {
+				pause(intervalID);
+				intervalID = play(delay, allPhotos);
+			}
 		});
 	}
 
-	let delay = 2;
 	for (let btn of document.getElementsByClassName('delay_btn')) {
 		btn.addEventListener('click', () => {
 			delay = Number(btn.value);
-
+			
 			const check = document.getElementById('delay_check');
 			btn.appendChild(check);
+			
+			if (intervalID) {
+				pause(intervalID);
+				intervalID = play(delay, allPhotos);
+			}
 		});
 	}
 
@@ -217,6 +237,21 @@ function sortPhotos(photosArr, method) {
 			btn.addEventListener('click', () => nextImg(allPhotos));
 		} else if (btn.value === 'prev') {
 			btn.addEventListener('click', () => prevImg(allPhotos));
+		} else if (btn.value === 'play') {
+			btn.addEventListener('click', () => {
+				intervalID = play(delay, allPhotos);
+
+				btn.classList.add('d-none');
+				document.querySelector('[value="pause"]').classList.remove('d-none');
+			});
+		} else if (btn.value === 'pause') {
+			btn.addEventListener('click', () => {
+				pause(intervalID);
+				intervalID = null;
+
+				btn.classList.add('d-none');
+				document.querySelector('[value="play"]').classList.remove('d-none');
+			});
 		}
 	}
 })()
