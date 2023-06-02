@@ -6,7 +6,10 @@ const ACCESS_TOKEN = checkOAuth();
 // "Selfies" album id
 const ALBUM_ID = 'AFcmz6DlGl6r_sdivkYO7ahqZsmBSAeBHvTe1UuYEq7STWLsYor-Pun9ZMzmHMSY_526lQm6gsMH'
 
+
 function checkOAuth() {
+	// if access_token is missing or expired redirect to login page
+
 	const accessToken = localStorage.getItem('access_token');
 
 	if (accessToken === null) {
@@ -23,6 +26,7 @@ function checkOAuth() {
 	return accessToken;
 }
 
+
 // list albums once to find "Selfies" album id
 /*
 fetch('https://photoslibrary.googleapis.com/v1/albums', {
@@ -35,6 +39,7 @@ fetch('https://photoslibrary.googleapis.com/v1/albums', {
 	.then((res) => res.json())
 	.then((data) => console.log(data))
 */
+
 
 async function getAlbumPhotosPage(accessToken, albumId, pageToken=null) {
 	const url = 'https://photoslibrary.googleapis.com/v1/mediaItems:search';
@@ -57,17 +62,19 @@ async function getAlbumPhotosPage(accessToken, albumId, pageToken=null) {
 	return result
 }
 
+
 async function getAllAlbumPhotos(accessToken, albumId) {
 	let allPhotos = [];
 	
 	let albumResults = await getAlbumPhotosPage(ACCESS_TOKEN, ALBUM_ID);
-	console.log(albumResults);
+	
 	let mediaItems = albumResults.mediaItems;
 	allPhotos = allPhotos.concat(mediaItems);
 	
 	let nextPageToken = albumResults.nextPageToken;
 	while (nextPageToken) {
 		let nextResults = await getAlbumPhotosPage(ACCESS_TOKEN, ALBUM_ID, nextPageToken);
+
 		mediaItems = nextResults.mediaItems;
 		allPhotos = allPhotos.concat(mediaItems);
 	
@@ -77,5 +84,8 @@ async function getAllAlbumPhotos(accessToken, albumId) {
 	return allPhotos;
 }
 
-const allPhotos = getAllAlbumPhotos(ACCESS_TOKEN, ALBUM_ID);
-console.log(allPhotos);
+
+(async function main() {
+	const allPhotos = await getAllAlbumPhotos(ACCESS_TOKEN, ALBUM_ID);
+	console.log(allPhotos);
+})()

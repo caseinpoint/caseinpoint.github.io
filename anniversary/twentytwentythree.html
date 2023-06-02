@@ -13,7 +13,132 @@
 </head>
 <body>
 	<div class="container-fluid">
-		
+		<!-- option buttons -->
+		<div class="row mt-1">
+			<div class="col d-flex justify-content-evenly">
+				<div class="dropdown mx-auto">
+					<button
+						type="button"
+						class="btn btn-primary dropdown-toggle"
+						data-bs-toggle="dropdown"
+					>
+						<i class="bi bi-filter-circle-fill"></i>
+						Sort
+					</button>
+					<ul class="dropdown-menu">
+						<li><button
+							type="button"
+							class="dropdown-item sort_btn"
+							value="date"
+						>
+							<i class="bi bi-calendar-heart"></i>
+							Date
+						</button></li>
+						<li><button
+							type="button"
+							class="dropdown-item sort_btn"
+							value="random"
+						>
+							<i class="bi bi-shuffle"></i>
+							Shuffle
+						</button></li>
+					</ul>
+				</div>
+
+				<div class="dropdown mx-auto">
+					<button
+						type="button"
+						class="btn btn-primary dropdown-toggle"
+						data-bs-toggle="dropdown"
+					>
+						<i class="bi bi-hourglass-split"></i>
+						Delay
+					</button>
+					<ul class="dropdown-menu">
+						<li><button
+							type="button"
+							class="dropdown-item delay_btn"
+							value="1"
+						>
+							<i class="bi bi-1-circle"></i>
+							Second
+						</button></li>
+						<li><button
+							type="button"
+							class="dropdown-item delay_btn"
+							value="2"
+						>
+							<i class="bi bi-2-circle"></i>
+							Seconds
+						</button></li>
+						<li><button
+							type="button"
+							class="dropdown-item delay_btn"
+							value="3"
+						>
+							<i class="bi bi-3-circle"></i>
+							Seconds
+						</button></li>
+						<li><button
+							type="button"
+							class="dropdown-item delay_btn"
+							value="5"
+						>
+							<i class="bi bi-5-circle"></i>
+							Seconds
+						</button></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<!-- image carousel -->
+		<div class="row">
+			<div class="col" id="carousel">
+				<!-- starts off empty -->
+			</div>
+		</div>
+
+		<!-- control buttons -->
+		<div class="row fixed-bottom mb-1">
+			<div class="col d-flex justify-content-evenly">
+				<button
+					type="button"
+					class="btn btn-primary control_btn"
+					value="prev"
+				>
+					<i class="bi bi-rewind-btn-fill"></i>
+					Back
+				</button>
+
+				<button
+					type="button"
+					class="btn btn-primary control_btn"
+					value="play"
+				>
+					<i class="bi bi-collection-play-fill"></i>
+					Play
+				</button>
+
+				<button
+					type="button"
+					class="btn btn-primary d-none control_btn"
+					value="pause"
+				>
+					<i class="bi bi-pause-btn-fill"></i>
+					Pause
+				</button>
+
+				<button
+					type="button"
+					class="btn btn-primary control_btn"
+					value="next"
+				>
+					<i class="bi bi-fast-forward-btn-fill"></i>
+					Forward
+				</button>
+			</div>
+		</div>
 	</div>
 
 	<script src="/static/js/twentytwentythree.js"></script>
