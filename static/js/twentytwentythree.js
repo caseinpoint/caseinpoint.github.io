@@ -85,18 +85,87 @@ async function getAllAlbumPhotos(accessToken, albumId) {
 
 
 function initImgs(photosArr) {
-	const urlCurrent = photosArr[0].baseUrl;
-	const widthCurrent = photosArr[0].mediaMetadata.width;
-	const heightCurrent = photosArr[0].mediaMetadata.height;
-
-	const imgCurrent = document.createElement('img');
-	imgCurrent.classList.add('img-fluid');
-	imgCurrent.id = 'img_current';
-	imgCurrent.src = `${urlCurrent}=w${widthCurrent}-h${heightCurrent}`;
-	
-
 	const carousel = document.getElementById('carousel');
-	carousel.appendChild(imgCurrent);
+	carousel.innerHTML = '';
+
+	for (let id of ['prev', 'current', 'next']) {
+		let i = photosArr.length - 1;
+		if (id === 'current') i = 0;
+		else if (id === 'next') i = 1;
+
+		const baseUrl = photosArr[i].baseUrl;
+		const width = photosArr[i].mediaMetadata.width;
+		const height = photosArr[i].mediaMetadata.height;
+	
+		const img = document.createElement('img');
+		img.classList.add('img-fluid');
+		if (id !== 'current') img.classList.add('d-none')
+		img.id = `img_${id}`;
+		img.src = `${baseUrl}=w${width}-h${height}`;
+		img.dataset.index = i;
+		
+		carousel.appendChild(img);
+	}
+}
+
+
+function nextImg(photosArr) {
+	const prevImg = document.getElementById('img_prev');
+	const currentImg = document.getElementById('img_current');
+	const nextImg = document.getElementById('img_next');
+	
+	prevImg.remove();
+	
+	currentImg.id = 'img_prev';
+	currentImg.classList.add('d-none');
+	
+	nextImg.id = 'img_current';
+	nextImg.classList.remove('d-none');
+	
+	const newNext = document.createElement('img');
+	newNext.classList.add('img-fluid', 'd-none');
+	newNext.id = 'img_next'
+	const nextIdx = Number(nextImg.dataset.index)
+	const newIdx = nextIdx < (photosArr.length - 1) ? nextIdx + 1 : 0;
+	console.log(newIdx);
+	newNext.dataset.index = newIdx;
+	const baseUrl = photosArr[newIdx].baseUrl;
+	const width = photosArr[newIdx].mediaMetadata.width;
+	const height = photosArr[newIdx].mediaMetadata.height;
+	newNext.src = `${baseUrl}=w${width}-h${height}`;
+	
+	const carousel = document.getElementById('carousel');
+	carousel.appendChild(newNext);
+}
+
+
+function prevImg(photosArr) {
+	const prevImg = document.getElementById('img_prev');
+	const currentImg = document.getElementById('img_current');
+	const nextImg = document.getElementById('img_next');
+	
+	nextImg.remove();
+	
+	currentImg.id = 'img_next';
+	currentImg.classList.add('d-none');
+	
+	prevImg.id = 'img_current';
+	prevImg.classList.remove('d-none');
+	
+	const newPrev = document.createElement('img');
+	newPrev.classList.add('img-fluid', 'd-none');
+	newPrev.id = 'img_prev'
+	const prevIdx = Number(prevImg.dataset.index);
+	const newIdx = prevIdx > 0 ? prevIdx - 1 : photosArr.length - 1;
+	console.log(newIdx);
+	newPrev.dataset.index = newIdx;
+	const baseUrl = photosArr[newIdx].baseUrl;
+	const width = photosArr[newIdx].mediaMetadata.width;
+	const height = photosArr[newIdx].mediaMetadata.height;
+	newPrev.src = `${baseUrl}=w${width}-h${height}`;
+	
+	const carousel = document.getElementById('carousel');
+	carousel.appendChild(newPrev);
 }
 
 
@@ -121,7 +190,33 @@ function sortPhotos(photosArr, method) {
 
 (async function main() {
 	const allPhotos = await getAllAlbumPhotos(ACCESS_TOKEN, ALBUM_ID);
-	console.log(allPhotos);
-	
 	initImgs(allPhotos);
+
+	for (let btn of document.getElementsByClassName('sort_btn')) {
+		btn.addEventListener('click', () => {
+			sortPhotos(allPhotos, btn.value);
+			initImgs(allPhotos);
+
+			const check = document.getElementById('sort_check');
+			btn.appendChild(check);
+		});
+	}
+
+	let delay = 2;
+	for (let btn of document.getElementsByClassName('delay_btn')) {
+		btn.addEventListener('click', () => {
+			delay = Number(btn.value);
+
+			const check = document.getElementById('delay_check');
+			btn.appendChild(check);
+		});
+	}
+
+	for (let btn of document.getElementsByClassName('control_btn')) {
+		if (btn.value === 'next') {
+			btn.addEventListener('click', () => nextImg(allPhotos));
+		} else if (btn.value === 'prev') {
+			btn.addEventListener('click', () => prevImg(allPhotos));
+		}
+	}
 })()
