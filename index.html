@@ -14,6 +14,20 @@
 <body class="">
 	<div class="container-fluid">
 		<h1>Welcome to Drue's page</h1>
+
+		<!-- Google oauth -->
+		<div class="row">
+			<div class="col-4">
+				<button type="button" class="btn btn-primary" id="google_btn">
+					<i class="bi bi-google"></i>
+					Sign in with Google
+				</button>
+				<div class="alert alert-warning d-none" id="google_alert">
+					Please sign back in.
+				</div>
+			</div>
+		</div>
+
 		<p>Portfolio coming soon...</p>
 
 		<!-- secret modal button -->
@@ -53,6 +67,7 @@
 
 	</div>
 
-	<script src="static/js/secret.js"></script>
+	<script src="/static/js/secret.js"></script>
+	<script src="/static/js/oauth.js"></script>
 </body>
 </html>
