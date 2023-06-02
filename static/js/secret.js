@@ -16,7 +16,7 @@ document.getElementById('secret_form').addEventListener('submit', (evt) => {
 
 	const pw = document.getElementById('secret_pw').value;
 	if (pw.hashCode() === -1979635712) {
-		window.location.assign('/anniversary/anniversaries.html');
+		window.location.assign('/anniversary');
 	} else {
 		const nope = document.createElement('div');
 		nope.classList.add('alert', 'alert-danger');
