@@ -10,8 +10,8 @@ document.getElementById('google_btn').addEventListener('click', () => {
 
 	const params = {
 		'client_id': '939201652009-kego5b5caevfnugaftv7dj8l2dqee429.apps.googleusercontent.com',
-		'redirect_uri': 'http://127.0.0.1:5500', // dev
-		// 'redirect_uri': 'https://caseinpoint.github.io', // prod
+		// 'redirect_uri': 'http://127.0.0.1:5500', // dev
+		'redirect_uri': 'https://caseinpoint.github.io', // prod
 		'response_type': 'token',
 		'scope': 'https://www.googleapis.com/auth/photoslibrary.readonly',
 		'include_granted_scopes': 'true',
