@@ -16,10 +16,20 @@
 		<!-- option buttons -->
 		<div class="row my-1">
 			<div class="col d-flex justify-content-evenly">
-				<div class="dropdown mx-auto">
+				<button
+					class="btn btn-primary"
+					type="button"
+					data-bs-toggle="offcanvas"
+					data-bs-target="#albums_offcanvas"
+				>
+					<i class="bi bi-images"></i>
+					Albums
+				</button>
+
+				<div class="dropdown">
 					<button
-						type="button"
 						class="btn btn-primary dropdown-toggle"
+						type="button"
 						data-bs-toggle="dropdown"
 					>
 						<i class="bi bi-filter-circle-fill"></i>
@@ -27,8 +37,8 @@
 					</button>
 					<ul class="dropdown-menu">
 						<li><button
-							type="button"
 							class="dropdown-item sort_btn"
+							type="button"
 							value="date"
 						>
 							<i class="bi bi-calendar-heart"></i>
@@ -36,8 +46,8 @@
 							<i class="bi bi-check2" id="sort_check"></i>
 						</button></li>
 						<li><button
-							type="button"
 							class="dropdown-item sort_btn"
+							type="button"
 							value="random"
 						>
 							<i class="bi bi-shuffle"></i>
@@ -46,10 +56,10 @@
 					</ul>
 				</div>
 
-				<div class="dropdown mx-auto">
+				<div class="dropdown">
 					<button
-						type="button"
 						class="btn btn-primary dropdown-toggle"
+						type="button"
 						data-bs-toggle="dropdown"
 					>
 						<i class="bi bi-hourglass-split"></i>
@@ -57,37 +67,37 @@
 					</button>
 					<ul class="dropdown-menu">
 						<li><button
-							type="button"
-							class="dropdown-item delay_btn"
 							id="delay_btn_1"
+							class="dropdown-item delay_btn"
+							type="button"
 							value="1"
 						>
 							<i class="bi bi-1-circle"></i>
 							Second
 						</button></li>
 						<li><button
-							type="button"
-							class="dropdown-item delay_btn"
 							id="delay_btn_2"
+							class="dropdown-item delay_btn"
+							type="button"
 							value="2"
 						>
 							<i class="bi bi-2-circle"></i>
 							Seconds
-							<i class="bi bi-check2" id="delay_check"></i>
+							<i id="delay_check" class="bi bi-check2"></i>
 						</button></li>
 						<li><button
-							type="button"
-							class="dropdown-item delay_btn"
 							id="delay_btn_3"
+							class="dropdown-item delay_btn"
+							type="button"
 							value="3"
 						>
 							<i class="bi bi-3-circle"></i>
 							Seconds
 						</button></li>
 						<li><button
-							type="button"
-							class="dropdown-item delay_btn"
 							id="delay_btn_5"
+							class="dropdown-item delay_btn"
+							type="button"
 							value="5"
 						>
 							<i class="bi bi-5-circle"></i>
@@ -98,10 +108,84 @@
 			</div>
 		</div>
 
+		<!-- albums offcanvas -->
+		<div id="albums_offcanvas" class="offcanvas offcanvas-top" tabindex="-1">
+			<div class="offcanvas-header">
+				<h2 class="offcanvas-title">Albums</h2>
+				<button class="btn-close" type="button" data-bs-dismiss="offcanvas"></button>
+			</div>
+
+			<div class="offcanvas-body">
+				<div id="albums_loading" class="">
+					<div class="spinner-border text-primary"></div>
+					Loading...
+				</div>
+
+				<div id="albums_accordion" class="accordion d-none">
+					<div class="accordion-item">
+						<h3 class="accordion-header">
+							<button
+								class="accordion-button collapsed"
+								type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#albums_collapse_user"
+							>
+								Your Albums
+							</button>
+						</h3>
+						<div
+							id="albums_collapse_user"
+							class="accordion-collapse collapse"
+							data-bs-parent="#albums_accordion"
+						>
+							<div class="accordion-body">
+								<div
+									class="list-group list-group-flush albums_btns"
+									data-endpoint="albums"
+								>
+									<!-- user's albums will populate here -->
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="accordion-item">
+						<h3 class="accordion-header">
+							<button
+								class="accordion-button collapsed"
+								type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#albums_collapse_shared"
+							>
+								Shared Albums
+							</button>
+						</h3>
+						<div
+							id="albums_collapse_shared"
+							class="accordion-collapse collapse"
+							data-bs-parent="#albums_accordion"
+						>
+							<div class="accordion-body">
+								<div
+									class="list-group list-group-flush albums_btns"
+									data-endpoint="sharedAlbums"
+								>
+									<!-- shared albums will populate here -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<!-- image carousel -->
-		<div class="row">
-			<div class="col d-flex justify-content-center" id="carousel">
-				<!-- starts off empty -->
+		<div class="row justify-content-center">
+			<div id="carousel" class="col-12 col-sm-10 col-md-8 col-lg-6">
+				<h2 id="albums_hint">
+					<i class="bi bi-arrow-90deg-up"></i>
+					Select an album to start
+				</h2>
 			</div>
 		</div>
 
@@ -109,8 +193,8 @@
 		<div class="row fixed-bottom mb-1">
 			<div class="col d-flex justify-content-evenly">
 				<button
-					type="button"
 					class="btn btn-primary control_btn"
+					type="button"
 					value="prev"
 				>
 					<i class="bi bi-rewind-btn-fill"></i>
@@ -118,8 +202,8 @@
 				</button>
 
 				<button
-					type="button"
 					class="btn btn-primary control_btn"
+					type="button"
 					value="play"
 				>
 					<i class="bi bi-collection-play-fill"></i>
@@ -127,8 +211,8 @@
 				</button>
 
 				<button
-					type="button"
 					class="btn btn-primary d-none control_btn"
+					type="button"
 					value="pause"
 				>
 					<i class="bi bi-pause-btn-fill"></i>
@@ -136,8 +220,8 @@
 				</button>
 
 				<button
-					type="button"
 					class="btn btn-primary control_btn"
+					type="button"
 					value="next"
 				>
 					<i class="bi bi-fast-forward-btn-fill"></i>
