@@ -126,7 +126,7 @@ function initImgs(photosArr) {
 		const height = photosArr[i].mediaMetadata.height;
 
 		const img = document.createElement('img');
-		img.classList.add('img-fluid');
+		img.classList.add('img_slideshow');
 		if (id !== 'current') img.classList.add('d-none')
 		img.id = `img_${id}`;
 		img.src = `${baseUrl}=w${width}-h${height}`;
@@ -153,7 +153,7 @@ function nextImg(photosArr) {
 
 	const newIdx = nextIdx < (photosArr.length - 1) ? nextIdx + 1 : 0;
 	const newNext = document.createElement('img');
-	newNext.classList.add('img-fluid', 'd-none');
+	newNext.classList.add('img_slideshow', 'd-none');
 	newNext.id = 'img_next'
 	newNext.dataset.index = newIdx;
 	const baseUrl = photosArr[newIdx].baseUrl;
@@ -182,7 +182,7 @@ function prevImg(photosArr) {
 
 	const newIdx = prevIdx > 0 ? prevIdx - 1 : photosArr.length - 1;
 	const newPrev = document.createElement('img');
-	newPrev.classList.add('img-fluid', 'd-none');
+	newPrev.classList.add('img_slideshow', 'd-none');
 	newPrev.id = 'img_prev'
 	newPrev.dataset.index = newIdx;
 	const baseUrl = photosArr[newIdx].baseUrl;
