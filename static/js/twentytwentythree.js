@@ -3,26 +3,6 @@
 let PHOTOS = [];
 
 
-function checkOAuth() {
-	// if access_token is missing or expired redirect to login page
-
-	const accessToken = localStorage.getItem('access_token');
-
-	if (accessToken === null) {
-		location.assign('/#access_expired=true');
-	} else {
-		const now = new Date();
-		let expiresAt = localStorage.getItem('expires_at');
-		expiresAt = new Date(expiresAt);
-		if (now > expiresAt) {
-			location.assign('/#access_expired=true');
-		}
-	}
-
-	return accessToken;
-}
-
-
 async function getAlbums(endpoint, accessToken) {
 	const url = `https://photoslibrary.googleapis.com/v1/${endpoint}`;
 	const response = await fetch(url, {
@@ -227,60 +207,68 @@ function sortPhotos(photosArr, method) {
 (async function main() {
 	const accessToken = checkOAuth();
 
-	initAlbumBtns(accessToken);
+	if (accessToken === null) {
+		const googleContainer = document.getElementById('google_container');
+		googleContainer.classList.remove('d-none');
+	} else {
+		const mainContainer = document.getElementById('main_content');
+		mainContainer.classList.remove('d-none');
 
-	let delay = 2;
-	let intervalID = null;
+		initAlbumBtns(accessToken);
 
-	for (let btn of document.getElementsByClassName('sort_btn')) {
-		btn.addEventListener('click', () => {
-			sortPhotos(PHOTOS, btn.value);
-			initImgs(PHOTOS);
+		let delay = 3;
+		let intervalID = null;
 
-			const check = document.getElementById('sort_check');
-			btn.appendChild(check);
-
-			if (intervalID) {
-				pause(intervalID);
-				intervalID = play(delay, PHOTOS);
-			}
-		});
-	}
-
-	for (let btn of document.getElementsByClassName('delay_btn')) {
-		btn.addEventListener('click', () => {
-			delay = Number(btn.value);
-
-			const check = document.getElementById('delay_check');
-			btn.appendChild(check);
-
-			if (intervalID) {
-				pause(intervalID);
-				intervalID = play(delay, PHOTOS);
-			}
-		});
-	}
-
-	for (let btn of document.getElementsByClassName('control_btn')) {
-		if (btn.value === 'next') {
-			btn.addEventListener('click', () => nextImg(PHOTOS));
-		} else if (btn.value === 'prev') {
-			btn.addEventListener('click', () => prevImg(PHOTOS));
-		} else if (btn.value === 'play') {
+		for (let btn of document.getElementsByClassName('sort_btn')) {
 			btn.addEventListener('click', () => {
-				intervalID = play(delay, PHOTOS);
+				sortPhotos(PHOTOS, btn.value);
+				initImgs(PHOTOS);
 
-				btn.classList.add('d-none');
-				document.querySelector('[value="pause"]').classList.remove('d-none');
+				const check = document.getElementById('sort_check');
+				btn.appendChild(check);
+
+				if (intervalID) {
+					pause(intervalID);
+					intervalID = play(delay, PHOTOS);
+				}
 			});
-		} else if (btn.value === 'pause') {
+		}
+
+		for (let btn of document.getElementsByClassName('delay_btn')) {
 			btn.addEventListener('click', () => {
-				pause(intervalID);
-				intervalID = null;
+				delay = Number(btn.value);
 
-				btn.classList.add('d-none');
-				document.querySelector('[value="play"]').classList.remove('d-none');
+				const check = document.getElementById('delay_check');
+				btn.appendChild(check);
+
+				if (intervalID) {
+					pause(intervalID);
+					intervalID = play(delay, PHOTOS);
+				}
 			});
+		}
+
+		for (let btn of document.getElementsByClassName('control_btn')) {
+			if (btn.value === 'next') {
+				btn.addEventListener('click', () => nextImg(PHOTOS));
+			} else if (btn.value === 'prev') {
+				btn.addEventListener('click', () => prevImg(PHOTOS));
+			} else if (btn.value === 'play') {
+				btn.addEventListener('click', () => {
+					intervalID = play(delay, PHOTOS);
+
+					btn.classList.add('d-none');
+					document.querySelector('[value="pause"]').classList.remove('d-none');
+				});
+			} else if (btn.value === 'pause') {
+				btn.addEventListener('click', () => {
+					pause(intervalID);
+					intervalID = null;
+
+					btn.classList.add('d-none');
+					document.querySelector('[value="play"]').classList.remove('d-none');
+				});
+			}
 		}
 	}
 })()

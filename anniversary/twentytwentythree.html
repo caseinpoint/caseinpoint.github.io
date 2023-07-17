@@ -14,7 +14,27 @@
 	<link rel="stylesheet" href="/static/css/twentytwentythree.css">
 </head>
 <body>
-	<div class="container-fluid">
+	<!-- Google oauth -->
+	<div class="container d-none" id="google_container">
+		<div class="row my-1">
+			<div class="col">
+				<h3>Google sign-in required</h3>
+				<button
+					class="btn btn-primary"
+					id="google_btn"
+					type="button"
+					data-client_id="939201652009-kego5b5caevfnugaftv7dj8l2dqee429.apps.googleusercontent.com"
+					data-scope="https://www.googleapis.com/auth/photoslibrary.readonly"
+				>
+					<i class="bi bi-google"></i>
+					Sign in with Google
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- Main content -->
+	<div class="container-fluid d-none" id="main_content">
 		<!-- option buttons -->
 		<div class="row my-1">
 			<div class="col d-flex justify-content-evenly">
@@ -69,15 +89,6 @@
 					</button>
 					<ul class="dropdown-menu">
 						<li><button
-							id="delay_btn_1"
-							class="dropdown-item delay_btn"
-							type="button"
-							value="1"
-						>
-							<i class="bi bi-1-circle"></i>
-							Second
-						</button></li>
-						<li><button
 							id="delay_btn_2"
 							class="dropdown-item delay_btn"
 							type="button"
@@ -85,7 +96,6 @@
 						>
 							<i class="bi bi-2-circle"></i>
 							Seconds
-							<i id="delay_check" class="bi bi-check2"></i>
 						</button></li>
 						<li><button
 							id="delay_btn_3"
@@ -95,6 +105,7 @@
 						>
 							<i class="bi bi-3-circle"></i>
 							Seconds
+							<i id="delay_check" class="bi bi-check2"></i>
 						</button></li>
 						<li><button
 							id="delay_btn_5"
@@ -234,6 +245,7 @@
 		</div>
 	</div>
 
+	<script src="/static/js/oauth.js"></script>
 	<script src="/static/js/twentytwentythree.js"></script>
 </body>
 </html>
