@@ -13,18 +13,32 @@ String.prototype.hashCode = function() {
 	return hash;
 }
 
-document.getElementById('secret_form').addEventListener('submit', (evt) => {
-	evt.preventDefault();
+const secretForm = document.getElementById('secret_form');
+if (secretForm !== null) {
+	secretForm.addEventListener('submit', (evt) => {
+		evt.preventDefault();
 
-	const pw = document.getElementById('secret_pw').value;
-	if (pw.hashCode() === SECRET_HASH) {
-		window.location.assign('/anniversary');
-	} else {
-		const nope = document.createElement('div');
-		nope.classList.add('alert', 'alert-danger');
-		nope.innerHTML = '<i class="bi bi-exclamation-triangle-fill"></i> Nope';
+		const pw = document.getElementById('secret_pw').value;
+		if (pw.hashCode() === SECRET_HASH) {
+			sessionStorage.setItem('secret_login', 'this_is_kiki')
+			window.location.assign('/anniversary');
+		} else {
+			const nope = document.createElement('div');
+			nope.classList.add('alert', 'alert-danger');
+			nope.innerHTML = '<i class="bi bi-exclamation-triangle-fill"></i> Nope';
 
-		const alertPlaceholder = document.getElementById('alert_placeholder');
-		alertPlaceholder.append(nope)
+			const alertPlaceholder = document.getElementById('alert_placeholder');
+			alertPlaceholder.appendChild(nope);
+		}
+	});
+}
+
+
+function checkSecret() {
+	// if kiki_token not in sessionStorage, redirect to homepage
+
+	const secretLogin = sessionStorage.getItem('secret_login');
+	if (secretLogin === null || secretLogin !== 'this_is_kiki') {
+		location.replace(location.origin);
 	}
-});
+}
