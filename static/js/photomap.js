@@ -135,6 +135,8 @@ async function handleSelect(select, accessToken) {
 	const query = `'${select.value}' in parents`;
 	const photosData = await listDriveFiles(query, accessToken);
 
+	if (photosData.length === 0) return;
+
 	const newPhotos = [];
 	for (let data of photosData) {
 		const blob = await downloadDriveFile(data.id, accessToken);
@@ -145,7 +147,7 @@ async function handleSelect(select, accessToken) {
 		coords.lat = dmsToDec(...exif.GPSLatitude, exif.GPSLatitudeRef);
 		coords.lng = dmsToDec(...exif.GPSLongitude, exif.GPSLongitudeRef);
 
-		newPhotos.push({blob, url, coords});
+		newPhotos.push({blob, url, coords, dateTime: exif.DateTime});
 	}
 	
 	if (PHOTOS.length > 0) {
