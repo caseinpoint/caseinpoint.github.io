@@ -35,8 +35,8 @@
 
 	<!-- main content -->
 	<div id="map"></div>
-	<div class="container-fluid d-none" id="main_content">
 
+	<div class="container-fluid d-none" id="main_content">
 		<div
 			id="settings_offcanvas"
 			class="offcanvas offcanvas-start"
@@ -60,6 +60,27 @@
 				<select id="folders_select" class="form-select d-none">
 					<option value="null" selected>Choose a folder</option>
 				</select>
+			</div>
+		</div>
+
+		<div id="photo_modal" class="modal fade" tabindex="-1">
+			<div class="modal-dialog modal-fullscreen">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button
+							class="btn-close"
+							type="button"
+							data-bs-dismiss="modal"
+						></button>
+					</div>
+
+					<div class="modal-body text-center">
+						<img id="photo_img" class="img-fluid" src="" alt="">
+					</div>
+
+					<!-- <div class="modal-footer text-center"></div> -->
+				</div>
+			</div>
 		</div>
 	</div>
 

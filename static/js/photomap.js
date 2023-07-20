@@ -63,13 +63,79 @@ function dmsToDec(d, m, s, ref) {
 }
 
 
+function clearPhotoURLs() {
+	for (let photo of PHOTOS) {
+		URL.revokeObjectURL(photo.url);
+	}
+}
+
+
+function clearMarkers() {
+	for (let marker of MARKERS) {
+		marker.map = null;
+	}
+	MARKERS = [];
+}
+
+
+function handleMarkerClick(photo) {
+	const img = document.getElementById('photo_img');
+	img.src = photo.url;
+
+	const modal = new bootstrap.Modal('#photo_modal');
+	modal.show();
+}
+
+
+async function createMarkers() {
+	const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary('marker');
+
+	let minLat, maxLat, minLng, maxLng;
+
+	for (let photo of PHOTOS) {
+		const icon = document.createElement('div');
+		icon.innerHTML = '<i class="bi bi-camera-fill h5"></i>';
+		const pin = new PinElement({
+			glyph: icon,
+			glyphColor: '#246EB9',
+			background: '#6EB4C1',
+			borderColor: '#30352F',
+			scale: 1.25,
+		});
+
+		const marker = new AdvancedMarkerElement({
+			map: GOOGLE_MAP,
+			position: photo.coords,
+			content: pin.element,
+		});
+
+		marker.addListener('click', () => handleMarkerClick(photo));
+
+		MARKERS.push(marker);
+
+		const { lat, lng } = photo.coords;
+		if (minLat === undefined || lat < minLat) minLat = lat;
+		if (maxLat === undefined || lat > maxLat) maxLat = lat;
+		if (minLng === undefined || lng < minLng) minLng = lng;
+		if (maxLng === undefined || lng > maxLng) maxLng = lng;
+	}
+
+	GOOGLE_MAP.fitBounds({
+		east: maxLng,
+		west: minLng,
+		north: maxLat,
+		south: minLat
+	});
+}
+
+
 async function handleSelect(select, accessToken) {
 	if (select.value === 'null') return;
 
 	const query = `'${select.value}' in parents`;
 	const photosData = await listDriveFiles(query, accessToken);
 
-	const photos = [];
+	const newPhotos = [];
 	for (let data of photosData) {
 		const blob = await downloadDriveFile(data.id, accessToken);
 		const url = URL.createObjectURL(blob);
@@ -79,13 +145,22 @@ async function handleSelect(select, accessToken) {
 		coords.lat = dmsToDec(...exif.GPSLatitude, exif.GPSLatitudeRef);
 		coords.lng = dmsToDec(...exif.GPSLongitude, exif.GPSLongitudeRef);
 
-		photos.push({blob, url, coords});
+		newPhotos.push({blob, url, coords});
 	}
-	console.log(photos);
+	
+	if (PHOTOS.length > 0) {
+		clearPhotoURLs();
+		clearMarkers();
+	}
+
+	PHOTOS = newPhotos;
+	createMarkers();
 }
 
 
 async function initFolders(accessToken) {
+	// populate offcanvas select with PHOTOMAP subfolders
+
 	const mainQuery = "mimeType = 'application/vnd.google-apps.folder' and name = 'PHOTOMAP'"
 	const mainFolders = await listDriveFiles(mainQuery, accessToken);
 	const mainId = mainFolders[0].id;
