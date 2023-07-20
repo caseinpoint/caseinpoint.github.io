@@ -3,6 +3,7 @@ const mapOptions = {
 	zoom: 3,
 	mapTypeId: 'satellite',
 	disableDefaultUI: true,
+	// fullscreenControl: true,
 	styles: [
 		{ featureType: 'poi', stylers: [{ visibility: 'off' }]},
 		{ featureType: 'transit', stylers: [{ visibility: 'off' }]},

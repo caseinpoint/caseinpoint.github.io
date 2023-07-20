@@ -18,12 +18,13 @@
 		<div class="row my-1">
 			<div class="col">
 				<h3>Google sign-in required</h3>
+				<!-- data-scope="https://www.googleapis.com/auth/photoslibrary.readonly https://www.googleapis.com/auth/drive" -->
 				<button
 					class="btn btn-primary"
 					id="google_btn"
 					type="button"
 					data-client_id="939201652009-kego5b5caevfnugaftv7dj8l2dqee429.apps.googleusercontent.com"
-					data-scope="https://www.googleapis.com/auth/photoslibrary.readonly"
+					data-scope="https://www.googleapis.com/auth/drive"
 				>
 					<i class="bi bi-google"></i>
 					Sign in with Google
@@ -37,24 +38,28 @@
 	<div class="container-fluid d-none" id="main_content">
 
 		<div
-			id="albums_offcanvas"
+			id="settings_offcanvas"
 			class="offcanvas offcanvas-start"
 			tabindex="-1"
 		>
 			<div class="offcanvas-header">
-				<h5 class="offcanvas-title">Select a Google Photos album</h5>
+				<h5 class="offcanvas-title">Select a folder</h5>
 				<button
 					class="btn-close"
 					type="button"
 					data-bs-dismiss="offcanvas"
 				></button>
 			</div>
+
 			<div class="offcanvas-body">
-				<div id="albums_loading">
+				<div id="folders_loading">
 					<div class="spinner-border text-primary"></div>
 					Loading...
 				</div>
-			</div>
+
+				<select id="folders_select" class="form-select d-none">
+					<option value="null" selected>Choose a folder</option>
+				</select>
 		</div>
 	</div>
 
@@ -65,6 +70,7 @@
 			v: "weekly",
   	});
 	</script>
+	<script src="https://cdn.jsdelivr.net/npm/exif-js"></script>
 
 	<script src="/static/js/oauth.js"></script>
 	<script src="/static/js/photomap-options.js"></script>
