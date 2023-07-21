@@ -70,7 +70,7 @@ async function initMap() {
 
 async function listDriveFiles(query, accessToken) {
 	const url = 'https://www.googleapis.com/drive/v3/files?'
-	const params = new URLSearchParams({ q: query	});
+	const params = new URLSearchParams({ q: query });
 
 	const response = await fetch(url + params.toString(), {
 		method: 'get',
@@ -241,7 +241,6 @@ async function initFolders(accessToken) {
 		const option = document.createElement('option');
 		option.value = folder.id;
 		option.textContent = folder.name;
-		// option.dataset.bsDismiss = 'offcanvas';
 		select.appendChild(option);
 	}
 	select.addEventListener('change', (evt) => handleSelect(evt.target, accessToken));
