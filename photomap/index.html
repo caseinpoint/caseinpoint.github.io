@@ -57,10 +57,26 @@
 					<option value="null" selected>Choose a folder</option>
 				</select>
 
-				<div id="folders_loading">
-					<div class="spinner-border text-primary"></div>
-					Loading...
+				<div id="folders_alert" class="alert alert-warning mt-1 d-none">
+					<i class="bi bi-exclamation-triangle-fill"></i>
+					Folder is empty
 				</div>
+
+				<div id="folders_loading" class="mt-2">
+					<div class="spinner-border text-primary"></div>
+					<span class="text-primary align-text-bottom">Loading...</span>
+				</div>
+
+				<div class="mt-3 small">
+					<u>Instructions:</u>
+					<ol>
+						<li>Create a folder in your Google Drive called "PHOTOMAP"</li>
+						<li>Make albums by creating subfolders inside PHOTOMAP</li>
+						<li>Upload JPEG images with geotagging metadata to your albums</li>
+						<li>Select an album above to display the photo locations on the map</li>
+					</ol>
+				</div>
+
 			</div>
 		</div>
 

@@ -150,7 +150,7 @@ async function createMarkers() {
 
 	for (let photo of PHOTOS) {
 		const icon = document.createElement('div');
-		icon.innerHTML = '<i class="bi bi-camera-fill h5"></i>';
+		icon.innerHTML = '<i class="bi bi-camera-fill h4"></i>';
 		const pin = new PinElement({
 			glyph: icon,
 			glyphColor: '#246EB9',
@@ -184,10 +184,19 @@ async function createMarkers() {
 async function handleSelect(select, accessToken) {
 	if (select.value === 'null') return;
 
+	const alert = document.getElementById('folders_alert');
+	alert.classList.add('d-none');
+	const loading = document.getElementById('folders_loading');
+	loading.classList.remove('d-none');
+
 	const query = `'${select.value}' in parents`;
 	const photosData = await listDriveFiles(query, accessToken);
 
-	if (photosData.length === 0) return;
+	if (photosData.length === 0) {
+		loading.classList.add('d-none');
+		alert.classList.remove('d-none');
+		return;
+	}
 
 	const newPhotos = [];
 	for (let data of photosData) {
@@ -207,9 +216,14 @@ async function handleSelect(select, accessToken) {
 		clearPhotoURLs();
 		clearMarkers();
 	}
-
 	PHOTOS = newPhotos;
+
 	createMarkers();
+
+	loading.classList.add('d-none');
+	const offcanvasEl = document.getElementById('settings_offcanvas');
+	const offcanvas = bootstrap.Offcanvas.getInstance(offcanvasEl);
+	offcanvas.hide();
 }
 
 
@@ -228,14 +242,14 @@ async function initFolders(accessToken) {
 		const option = document.createElement('option');
 		option.value = folder.id;
 		option.textContent = folder.name;
-		option.dataset.bsDismiss = 'offcanvas';
+		// option.dataset.bsDismiss = 'offcanvas';
 		select.appendChild(option);
 	}
 	select.addEventListener('change', (evt) => handleSelect(evt.target, accessToken));
 	select.classList.remove('d-none');
 
 	const loading = document.getElementById('folders_loading');
-	loading.classList.add('d-none')
+	loading.classList.add('d-none');
 }
 
 
