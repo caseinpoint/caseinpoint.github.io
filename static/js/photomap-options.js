@@ -3,10 +3,10 @@ const mapOptions = {
 	zoom: 3,
 	mapTypeId: 'satellite',
 	disableDefaultUI: true,
-	// mapId: '380827fa3149d723',
-	styles: [
-		{ featureType: 'poi', stylers: [{ visibility: 'off' }]},
-		{ featureType: 'poi.park', stylers: [{ visibility: 'on' }]},
-		{ featureType: 'transit', stylers: [{ visibility: 'off' }]},
-	],
+	mapId: '380827fa3149d723',
+	// styles: [
+	// 	{ featureType: 'poi', stylers: [{ visibility: 'off' }]},
+	// 	{ featureType: 'poi.park', stylers: [{ visibility: 'on' }]},
+	// 	{ featureType: 'transit', stylers: [{ visibility: 'off' }]},
+	// ],
 };
