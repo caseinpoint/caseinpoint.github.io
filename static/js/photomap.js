@@ -1,12 +1,7 @@
 let GOOGLE_MAP;
 let PHOTOS = [];
 let MARKERS = [];
-let BOUNDS = {
-	north: 68.87315,
-	east: -66.98511,
-	south: 24.55540,
-	west: -166.08958,
-};
+let BOUNDS = { north: 69, east: -66, south: 24, west: -165, };
 const BOUNDS_PADDING = 50;
 
 
@@ -66,6 +61,10 @@ async function initMap() {
 	body.addEventListener('fullscreenchange', () => {
 		GOOGLE_MAP.fitBounds(BOUNDS, BOUNDS_PADDING);
 	});
+
+	for (let btn of document.getElementsByName('map_style')) {
+		btn.addEventListener('click', () => GOOGLE_MAP.setMapTypeId(btn.id));
+	}
 }
 
 
