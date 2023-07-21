@@ -203,7 +203,7 @@ async function handleSelect(select, accessToken) {
 		const url = URL.createObjectURL(blob);
 
 		const exif = EXIF.readFromBinaryFile(await blob.arrayBuffer());
-		if (!exif) continue;
+		if (!exif || !exif.GPSLatitude) continue;
 
 		const coords = {};
 		coords.lat = dmsToDec(...exif.GPSLatitude, exif.GPSLatitudeRef);
