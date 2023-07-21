@@ -1,6 +1,13 @@
 let GOOGLE_MAP;
 let PHOTOS = [];
 let MARKERS = [];
+let BOUNDS = {
+	north: 68.87315,
+	east: -66.98511,
+	south: 24.55540,
+	west: -166.08958,
+};
+const BOUNDS_PADDING = 50;
 
 
 function createOffcanvasControl() {
@@ -14,7 +21,32 @@ function createOffcanvasControl() {
 
 	const div = document.createElement('div');
 	div.appendChild(button);
+	return div;
+}
 
+
+function toggleFullscreen(button) {
+	if (!document.fullscreenElement) {
+		const body = document.querySelector('body');
+		body.requestFullscreen();
+		button.innerHTML = '<i class="bi bi-fullscreen-exit"></i>';
+	} else if(document.exitFullscreen) {
+		document.exitFullscreen();
+		button.innerHTML = '<i class="bi bi-fullscreen"></i>';
+	}
+}
+
+
+function createFullscreenControl() {
+	const button = document.createElement('button');
+
+	button.classList.add('btn', 'btn-dark', 'm-2');
+	button.type = 'button';
+	button.innerHTML = '<i class="bi bi-fullscreen"></i>';
+	button.addEventListener('click', () => toggleFullscreen(button));
+
+	const div = document.createElement('div');
+	div.appendChild(button);
 	return div;
 }
 
@@ -27,6 +59,13 @@ async function initMap() {
 
 	const canvasControl = createOffcanvasControl();
 	GOOGLE_MAP.controls[ControlPosition.TOP_LEFT].push(canvasControl);
+
+	const fullscreenControl = createFullscreenControl();
+	GOOGLE_MAP.controls[ControlPosition.TOP_RIGHT].push(fullscreenControl);
+	const body = document.querySelector('body');
+	body.addEventListener('fullscreenchange', () => {
+		GOOGLE_MAP.fitBounds(BOUNDS, BOUNDS_PADDING);
+	});
 }
 
 
@@ -78,9 +117,26 @@ function clearMarkers() {
 }
 
 
+function parseDate(datetimeStr) {
+	let [ dateStr, timeStr] = datetimeStr.split(' '); 
+	dateStr = dateStr.replaceAll(':', '-');
+
+	datetimeStr = `${dateStr}T${timeStr}`;
+	return new Date(datetimeStr);
+}
+
+
 function handleMarkerClick(photo) {
-	const img = document.getElementById('photo_img');
-	img.src = photo.url;
+	const photoImg = document.getElementById('photo_img');
+	photoImg.src = photo.url;
+
+	const photoDatetime = document.getElementById('photo_datetime');
+	const datetime = parseDate(photo.datetime)
+	photoDatetime.textContent = datetime.toLocaleString();
+
+	const photoCoords = document.getElementById('photo_coords');
+	const coordsStr = `${photo.coords.lat.toFixed(6)}, ${photo.coords.lng.toFixed(6)}`;
+	photoCoords.textContent = coordsStr;
 
 	const modal = new bootstrap.Modal('#photo_modal');
 	modal.show();
@@ -120,12 +176,8 @@ async function createMarkers() {
 		if (maxLng === undefined || lng > maxLng) maxLng = lng;
 	}
 
-	GOOGLE_MAP.fitBounds({
-		east: maxLng,
-		west: minLng,
-		north: maxLat,
-		south: minLat
-	});
+	BOUNDS = { east: maxLng, west: minLng, north: maxLat, south: minLat };
+	GOOGLE_MAP.fitBounds(BOUNDS, BOUNDS_PADDING);
 }
 
 
@@ -143,11 +195,12 @@ async function handleSelect(select, accessToken) {
 		const url = URL.createObjectURL(blob);
 
 		const exif = EXIF.readFromBinaryFile(await blob.arrayBuffer());
+
 		const coords = {};
 		coords.lat = dmsToDec(...exif.GPSLatitude, exif.GPSLatitudeRef);
 		coords.lng = dmsToDec(...exif.GPSLongitude, exif.GPSLongitudeRef);
 
-		newPhotos.push({blob, url, coords, dateTime: exif.DateTime});
+		newPhotos.push({blob, url, coords, datetime: exif.DateTime});
 	}
 	
 	if (PHOTOS.length > 0) {
