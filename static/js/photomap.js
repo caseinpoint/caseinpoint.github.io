@@ -1,4 +1,11 @@
+// Google classes will be initialized async
+// AdvancedMarkerElement, PinElement
+let AME, PE;
+
+// global map instance
 let GOOGLE_MAP;
+
+let CURRENT_ID;
 let PHOTOS = [];
 let MARKERS = [];
 let BOUNDS = { north: 69, east: -66, south: 24, west: -165, };
@@ -49,6 +56,11 @@ function createFullscreenControl() {
 async function initMap() {
 	const { Map } = await google.maps.importLibrary('maps');
 	const { ControlPosition } = await google.maps.importLibrary('core');
+
+	// these will be assigned globally to be used later
+	const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary('marker');
+	AME = AdvancedMarkerElement;
+	PE = PinElement;
 
 	GOOGLE_MAP = new Map(document.getElementById('map'), mapOptions);
 
@@ -142,88 +154,116 @@ function handleMarkerClick(photo) {
 }
 
 
-async function createMarkers() {
-	const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary('marker');
+async function createPhotoObj(blob) {
+	const url = URL.createObjectURL(blob);
 
-	let minLat, maxLat, minLng, maxLng;
+	const exif = EXIF.readFromBinaryFile(await blob.arrayBuffer());
+	if (!exif || !exif.GPSLatitude) return;
 
-	for (let photo of PHOTOS) {
-		const icon = document.createElement('div');
-		icon.innerHTML = '<i class="bi bi-camera-fill h4"></i>';
-		const pin = new PinElement({
-			glyph: icon,
-			glyphColor: '#246EB9',
-			background: '#6EB4C1',
-			borderColor: '#30352F',
-			scale: 1.25,
-		});
+	const coords = {};
+	coords.lat = dmsToDec(...exif.GPSLatitude, exif.GPSLatitudeRef);
+	coords.lng = dmsToDec(...exif.GPSLongitude, exif.GPSLongitudeRef);
 
-		const marker = new AdvancedMarkerElement({
-			map: GOOGLE_MAP,
-			position: photo.coords,
-			content: pin.element,
-		});
+	return {blob, url, coords, datetime: exif.DateTime};
+}
 
-		marker.addListener('click', () => handleMarkerClick(photo));
 
-		MARKERS.push(marker);
+function updateBounds({lat, lng}) {
+	let boundsChanged = false;
 
-		const { lat, lng } = photo.coords;
-		if (minLat === undefined || lat < minLat) minLat = lat;
-		if (maxLat === undefined || lat > maxLat) maxLat = lat;
-		if (minLng === undefined || lng < minLng) minLng = lng;
-		if (maxLng === undefined || lng > maxLng) maxLng = lng;
+	if (BOUNDS.north === undefined || lat > BOUNDS.north) {
+		BOUNDS.north = lat;
+		boundsChanged = true;
+	}
+	if (BOUNDS.south === undefined || lat < BOUNDS.south) {
+		BOUNDS.south = lat;
+		boundsChanged = true
+	}
+	if (BOUNDS.east === undefined || lng > BOUNDS.east) {
+		BOUNDS.east = lng;
+		boundsChanged = true;
+	}
+	if (BOUNDS.west === undefined || lng < BOUNDS.west) {
+		BOUNDS.west = lng;
+		boundsChanged = true;
 	}
 
-	BOUNDS = { east: maxLng, west: minLng, north: maxLat, south: minLat };
-	GOOGLE_MAP.fitBounds(BOUNDS, BOUNDS_PADDING);
+	if (boundsChanged) GOOGLE_MAP.fitBounds(BOUNDS, BOUNDS_PADDING);
+}
+
+
+function createMarker(photo) {
+	const icon = document.createElement('div');
+	icon.innerHTML = '<i class="bi bi-camera-fill h4"></i>';
+	const pin = new PE({
+		glyph: icon,
+		glyphColor: '#246EB9',
+		background: '#6EB4C1',
+		borderColor: '#30352F',
+		scale: 1.25,
+	});
+
+	const marker = new AME({
+		map: GOOGLE_MAP,
+		position: photo.coords,
+		content: pin.element,
+	});
+
+	marker.addListener('click', () => handleMarkerClick(photo));
+
+	MARKERS.push(marker);
+
+	updateBounds(photo.coords);
 }
 
 
 async function handleSelect(select, accessToken) {
-	if (select.value === 'null') return;
-
 	const alert = document.getElementById('folders_alert');
 	alert.classList.add('d-none');
+
+	if (select.value === 'null' || select.value === CURRENT_ID) return;
+
 	const loading = document.getElementById('folders_loading');
 	loading.classList.remove('d-none');
 
 	const query = `'${select.value}' in parents`;
-	const photosData = await listDriveFiles(query, accessToken);
+	const fileArray = await listDriveFiles(query, accessToken);
 
-	if (photosData.length === 0) {
+	if (fileArray.length === 0) {
 		loading.classList.add('d-none');
 		alert.classList.remove('d-none');
 		return;
 	}
 
-	const newPhotos = [];
-	for (let data of photosData) {
-		const blob = await downloadDriveFile(data.id, accessToken);
-		const url = URL.createObjectURL(blob);
-
-		const exif = EXIF.readFromBinaryFile(await blob.arrayBuffer());
-		if (!exif || !exif.GPSLatitude) continue;
-
-		const coords = {};
-		coords.lat = dmsToDec(...exif.GPSLatitude, exif.GPSLatitudeRef);
-		coords.lng = dmsToDec(...exif.GPSLongitude, exif.GPSLongitudeRef);
-
-		newPhotos.push({blob, url, coords, datetime: exif.DateTime});
-	}
-	
 	if (PHOTOS.length > 0) {
 		clearPhotoURLs();
 		clearMarkers();
 	}
-	PHOTOS = newPhotos;
+	BOUNDS = {
+		north: undefined,
+		east: undefined,
+		south: undefined,
+		west: undefined,
+	};
 
-	createMarkers();
+	for (let file of fileArray) {
+		downloadDriveFile(file.id, accessToken)
+		.then(blob => {
+			createPhotoObj(blob)
+			.then(photo => {
+				if (photo) {
+					PHOTOS.push(photo);
+					createMarker(photo);
+				}
+			});
+		});
+	}
 
 	loading.classList.add('d-none');
 	const offcanvasEl = document.getElementById('settings_offcanvas');
 	const offcanvas = bootstrap.Offcanvas.getInstance(offcanvasEl);
 	offcanvas.hide();
+	CURRENT_ID = select.value;
 }
 
 
