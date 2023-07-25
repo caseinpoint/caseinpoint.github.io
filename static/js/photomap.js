@@ -6,8 +6,9 @@ let AME, PE;
 let GOOGLE_MAP;
 
 let CURRENT_ID;
-let PHOTOS = [];
-let MARKERS = [];
+const PHOTOS = [];
+const MARKERS = [];
+let MARKERCLUSTER;
 let BOUNDS = { north: 69, east: -66, south: 24, west: -165, };
 const BOUNDS_PADDING = 50;
 
@@ -64,6 +65,11 @@ async function initMap() {
 
 	GOOGLE_MAP = new Map(document.getElementById('map'), mapOptions);
 
+	MARKERCLUSTER = new markerClusterer.MarkerClusterer({
+		map: GOOGLE_MAP,
+		markers: MARKERS,
+	});
+
 	const canvasControl = createOffcanvasControl();
 	GOOGLE_MAP.controls[ControlPosition.TOP_LEFT].push(canvasControl);
 
@@ -114,17 +120,19 @@ function dmsToDec(d, m, s, ref) {
 
 
 function clearPhotoURLs() {
-	for (let photo of PHOTOS) {
+	while (PHOTOS.length > 0) {
+		const photo = PHOTOS.pop();
 		URL.revokeObjectURL(photo.url);
 	}
 }
 
 
 function clearMarkers() {
-	for (let marker of MARKERS) {
+	while (MARKERS.length > 0) {
+		const marker = MARKERS.pop();
+		MARKERCLUSTER.removeMarker(marker, true);
 		marker.map = null;
 	}
-	MARKERS = [];
 }
 
 
@@ -210,6 +218,8 @@ function createMarker(photo) {
 	});
 
 	marker.addListener('click', () => handleMarkerClick(photo));
+
+	MARKERCLUSTER.addMarker(marker);
 
 	MARKERS.push(marker);
 
