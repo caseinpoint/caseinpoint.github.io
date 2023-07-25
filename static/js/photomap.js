@@ -13,22 +13,8 @@ let BOUNDS = { north: 69, east: -66, south: 24, west: -165, };
 const BOUNDS_PADDING = 50;
 
 
-function createOffcanvasControl() {
-	const button = document.createElement('button');
-
-	button.classList.add('btn', 'btn-dark', 'm-2');
-	button.type = 'button';
-	button.dataset.bsToggle = 'offcanvas';
-	button.dataset.bsTarget = '#settings_offcanvas';
-	button.innerHTML = '<i class="bi bi-gear-fill"></i>';
-
-	const div = document.createElement('div');
-	div.appendChild(button);
-	return div;
-}
-
-
-function toggleFullscreen(button) {
+function toggleFullscreen() {
+	const button = document.getElementById('ctrl_fullscreen');
 	if (!document.fullscreenElement) {
 		const body = document.querySelector('body');
 		body.requestFullscreen();
@@ -40,13 +26,26 @@ function toggleFullscreen(button) {
 }
 
 
-function createFullscreenControl() {
+function resetBounds() {
+	GOOGLE_MAP.fitBounds(BOUNDS, BOUNDS_PADDING);
+}
+
+
+function createControl(id, bsClass, handler, dataset) {
 	const button = document.createElement('button');
 
+	button.id = id;
 	button.classList.add('btn', 'btn-dark', 'm-2');
 	button.type = 'button';
-	button.innerHTML = '<i class="bi bi-fullscreen"></i>';
-	button.addEventListener('click', () => toggleFullscreen(button));
+	button.innerHTML = `<i class="bi bi-${bsClass}"></i>`;
+
+	if (handler) button.addEventListener('click', handler);
+
+	if (dataset) {
+		for (let [key, val] of Object.entries(dataset)) {
+			button.dataset[key] = val;
+		}
+	}
 
 	const div = document.createElement('div');
 	div.appendChild(button);
@@ -58,7 +57,7 @@ async function initMap() {
 	const { Map } = await google.maps.importLibrary('maps');
 	const { ControlPosition } = await google.maps.importLibrary('core');
 
-	// these will be assigned globally to be used later
+	// assigned globally to be used later
 	const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary('marker');
 	AME = AdvancedMarkerElement;
 	PE = PinElement;
@@ -70,15 +69,20 @@ async function initMap() {
 		markers: MARKERS,
 	});
 
-	const canvasControl = createOffcanvasControl();
+	const canvasControl = createControl('ctrl_canvas', 'gear-fill', null,
+		{ bsToggle: 'offcanvas', bsTarget: '#settings_offcanvas' });
 	GOOGLE_MAP.controls[ControlPosition.TOP_LEFT].push(canvasControl);
 
-	const fullscreenControl = createFullscreenControl();
+	const fullscreenControl = createControl('ctrl_fullscreen', 'fullscreen',
+		toggleFullscreen, null);
 	GOOGLE_MAP.controls[ControlPosition.TOP_RIGHT].push(fullscreenControl);
 	const body = document.querySelector('body');
-	body.addEventListener('fullscreenchange', () => {
-		GOOGLE_MAP.fitBounds(BOUNDS, BOUNDS_PADDING);
-	});
+	body.addEventListener('fullscreenchange', resetBounds);
+
+
+	const boundsControl = createControl('ctrl_bounds', 'bounding-box-circles',
+		resetBounds, null);
+	GOOGLE_MAP.controls[ControlPosition.RIGHT_BOTTOM].push(boundsControl);
 
 	for (let btn of document.getElementsByName('map_style')) {
 		btn.addEventListener('click', () => GOOGLE_MAP.setMapTypeId(btn.id));
@@ -196,7 +200,7 @@ function updateBounds({lat, lng}) {
 		boundsChanged = true;
 	}
 
-	if (boundsChanged) GOOGLE_MAP.fitBounds(BOUNDS, BOUNDS_PADDING);
+	if (boundsChanged) resetBounds();
 }
 
 
