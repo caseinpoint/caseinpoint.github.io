@@ -75,8 +75,8 @@ async function initMap() {
 	const fullscreenControl = createControl('ctrl_fullscreen', 'fullscreen',
 		toggleFullscreen, null);
 	GOOGLE_MAP.controls[ControlPosition.TOP_RIGHT].push(fullscreenControl);
-	const body = document.querySelector('body');
-	body.addEventListener('fullscreenchange', resetBounds);
+	// const body = document.querySelector('body');
+	// body.addEventListener('fullscreenchange', resetBounds);
 
 
 	const boundsControl = createControl('ctrl_bounds', 'bounding-box-circles',
