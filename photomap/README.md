@@ -10,4 +10,6 @@ Techonologies used:
 
 ## V1
 
+Version 1 is deployed [here](https://caseinpoint.github.io/photomap/).
+
 ## V2
