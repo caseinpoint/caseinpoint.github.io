@@ -5,7 +5,6 @@ let AME, PE;
 // global map instance
 let GOOGLE_MAP;
 
-let CURRENT_ID;
 const PHOTOS = [];
 const MARKERS = [];
 let MARKERCLUSTER;
@@ -57,7 +56,7 @@ async function initMap() {
 	const { Map } = await google.maps.importLibrary('maps');
 	const { ControlPosition } = await google.maps.importLibrary('core');
 
-	// assigned globally to be used later
+	// these will be assigned globally to be used later
 	const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary('marker');
 	AME = AdvancedMarkerElement;
 	PE = PinElement;
@@ -87,32 +86,6 @@ async function initMap() {
 	for (let btn of document.getElementsByName('map_style')) {
 		btn.addEventListener('click', () => GOOGLE_MAP.setMapTypeId(btn.id));
 	}
-}
-
-
-async function listDriveFiles(query, accessToken) {
-	const url = 'https://www.googleapis.com/drive/v3/files?'
-	const params = new URLSearchParams({ q: query });
-
-	const response = await fetch(url + params.toString(), {
-		method: 'get',
-		headers: { Authorization: 'Bearer ' + accessToken, },
-	});
-	
-	const data = await response.json();
-	return data.files;
-}
-
-
-async function downloadDriveFile(fileId, accessToken) {
-	const url = `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`;
-	const response = await fetch(url, {
-		method: 'get',
-		headers: { Authorization: 'Bearer ' + accessToken, },
-	});
-
-	const blob = await response.blob();
-	return blob;
 }
 
 
@@ -231,23 +204,11 @@ function createMarker(photo) {
 }
 
 
-async function handleSelect(select, accessToken) {
-	const alert = document.getElementById('folders_alert');
-	alert.classList.add('d-none');
+function handleForm(evt) {
+	evt.preventDefault();
 
-	if (select.value === 'null' || select.value === CURRENT_ID) return;
-
-	const loading = document.getElementById('folders_loading');
-	loading.classList.remove('d-none');
-
-	const query = `'${select.value}' in parents`;
-	const fileArray = await listDriveFiles(query, accessToken);
-
-	if (fileArray.length === 0) {
-		loading.classList.add('d-none');
-		alert.classList.remove('d-none');
-		return;
-	}
+	const filesInput = document.getElementById('files_input');
+	if (filesInput.files.length === 0) return;
 
 	if (PHOTOS.length > 0) {
 		clearPhotoURLs();
@@ -260,66 +221,27 @@ async function handleSelect(select, accessToken) {
 		west: undefined,
 	};
 
-	for (let file of fileArray) {
-		downloadDriveFile(file.id, accessToken)
-		.then(blob => {
-			createPhotoObj(blob)
-			.then(photo => {
-				if (photo) {
-					PHOTOS.push(photo);
-					createMarker(photo);
-				}
-			});
+	for (let file of filesInput.files) {
+		createPhotoObj(file)
+		.then(photo => {
+			if (photo) {
+				PHOTOS.push(photo);
+				createMarker(photo);
+			}
 		});
 	}
 
-	loading.classList.add('d-none');
+	filesInput.value = '';
+
 	const offcanvasEl = document.getElementById('settings_offcanvas');
 	const offcanvas = bootstrap.Offcanvas.getInstance(offcanvasEl);
 	offcanvas.hide();
-	CURRENT_ID = select.value;
-}
-
-
-async function initFolders(accessToken) {
-	// populate offcanvas select with PHOTOMAP subfolders
-
-	const mainQuery = "mimeType = 'application/vnd.google-apps.folder' and name = 'PHOTOMAP'"
-	const mainFolders = await listDriveFiles(mainQuery, accessToken);
-	const mainId = mainFolders[0].id;
-
-	const subQuery = `mimeType = 'application/vnd.google-apps.folder' and '${mainId}' in parents`;
-	const subFolders = await listDriveFiles(subQuery, accessToken);
-
-	const select = document.getElementById('folders_select');
-	for (let folder of subFolders) {
-		const option = document.createElement('option');
-		option.value = folder.id;
-		option.textContent = folder.name;
-		select.appendChild(option);
-	}
-	select.addEventListener('change', (evt) => handleSelect(evt.target, accessToken));
-	select.classList.remove('d-none');
-
-	const loading = document.getElementById('folders_loading');
-	loading.classList.add('d-none');
 }
 
 
 (async function main() {
-	const accessToken = checkOAuth();
-
-	if (accessToken === null) {
-		const googleContainer = document.getElementById('google_container');
-		googleContainer.classList.remove('d-none');
-
-		return;
-	}
-
-	const mainContainer = document.getElementById('main_content');
-	mainContainer.classList.remove('d-none');
-
 	initMap();
 
-	initFolders(accessToken);
+	const form = document.getElementById('files_form');
+	form.addEventListener('submit', handleForm);
 })();
