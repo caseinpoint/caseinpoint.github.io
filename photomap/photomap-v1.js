@@ -1,0 +1,1 @@
+../static/js/photomap-v1.js
