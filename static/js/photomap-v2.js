@@ -53,6 +53,17 @@ function createControl(id, bsClass, handler, dataset) {
 }
 
 
+function handleZoom(button) {
+	const coords = {
+		lat: Number(button.dataset.lat),
+		lng: Number(button.dataset.lng),
+	}
+
+	GOOGLE_MAP.setCenter(coords);
+	GOOGLE_MAP.setZoom(19);
+}
+
+
 async function initMap() {
 	const { Map } = await google.maps.importLibrary('maps');
 	const { ControlPosition } = await google.maps.importLibrary('core');
@@ -87,6 +98,9 @@ async function initMap() {
 	for (let btn of document.getElementsByName('map_style')) {
 		btn.addEventListener('click', () => GOOGLE_MAP.setMapTypeId(btn.id));
 	}
+
+	const photoZoom = document.getElementById('photo_zoom');
+	photoZoom.addEventListener('click', () => handleZoom(photoZoom));
 }
 
 
@@ -157,9 +171,16 @@ function handleMarkerClick(photo) {
 	const datetime = parseDate(photo.datetime)
 	photoDatetime.textContent = datetime.toLocaleString();
 
+	const lat = photo.coords.lat.toFixed(6);
+	const lng = photo.coords.lng.toFixed(6);
+
 	const photoCoords = document.getElementById('photo_coords');
-	const coordsStr = `${photo.coords.lat.toFixed(6)}, ${photo.coords.lng.toFixed(6)}`;
+	const coordsStr = `${lat}, ${lng}`;
 	photoCoords.textContent = coordsStr;
+
+	const photoZoom = document.getElementById('photo_zoom');
+	photoZoom.dataset.lat = lat;
+	photoZoom.dataset.lng = lng;
 
 	const modal = new bootstrap.Modal('#photo_modal');
 	modal.show();

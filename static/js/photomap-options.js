@@ -1,6 +1,6 @@
 const mapOptions = {
 	center: { lat: 47.114854, lng: -101.297808 },
-	zoom: 3,
+	zoom: 4,
 	mapTypeId: 'satellite',
 	disableDefaultUI: true,
 	mapId: '380827fa3149d723',
