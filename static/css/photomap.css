@@ -12,3 +12,7 @@ body:-webkit-full-screen {
 #photo_img {
 	max-height: 100%;
 }
+
+.rotate {
+	transform: rotate(90deg) translate(0rem, -3rem);
+}

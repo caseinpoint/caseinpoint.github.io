@@ -13,8 +13,7 @@ let BOUNDS = { north: 69, east: -66, south: 24, west: -165, };
 const BOUNDS_PADDING = 50;
 
 
-function toggleFullscreen() {
-	const button = document.getElementById('ctrl_fullscreen');
+function toggleFullscreen(button) {
 	if (!document.fullscreenElement) {
 		const body = document.querySelector('body');
 		body.requestFullscreen();
@@ -26,20 +25,26 @@ function toggleFullscreen() {
 }
 
 
-function resetBounds() {
-	GOOGLE_MAP.fitBounds(BOUNDS, BOUNDS_PADDING);
+function resetSliders() {
+	document.getElementById('ctrl_tilt').value = 0;
+	document.getElementById('ctrl_rotate').value = 0;
 }
 
 
-function createControl(id, bsClass, handler, dataset) {
+function resetBounds() {
+	GOOGLE_MAP.fitBounds(BOUNDS, BOUNDS_PADDING);
+	resetSliders();
+}
+
+
+function createControl(bsClass, handler, dataset) {
 	const button = document.createElement('button');
 
-	button.id = id;
-	button.classList.add('btn', 'btn-dark', 'm-2');
+	button.classList.add('btn', 'btn-dark');
 	button.type = 'button';
 	button.innerHTML = `<i class="bi bi-${bsClass}"></i>`;
 
-	if (handler) button.addEventListener('click', handler);
+	if (handler) button.addEventListener('click', () => handler(button));
 
 	if (dataset) {
 		for (let [key, val] of Object.entries(dataset)) {
@@ -48,7 +53,38 @@ function createControl(id, bsClass, handler, dataset) {
 	}
 
 	const div = document.createElement('div');
+	div.classList.add('m-2')
 	div.appendChild(button);
+	return div;
+}
+
+
+function createRange(id, min, max, start, step, handler, rotate=false) {
+	const input = document.createElement('input');
+
+	input.id = id;
+	input.classList.add('form-range');
+	input.type = 'range';
+	input.min = min;
+	input.max = max;
+	input.value = start;
+	input.step = step;
+
+	input.addEventListener('change', () => handler(input));
+
+	const datalist = document.createElement('datalist');
+	datalist.id = id + '_list';
+	for (let i = min; i <= max; i += (max - min) / 4) {
+		const option = document.createElement('option');
+		option.value = i - (i % step);
+		datalist.appendChild(option);
+	}
+
+	const div = document.createElement('div');
+	div.classList.add('m-2');
+	if (rotate) div.classList.add('rotate');
+	div.appendChild(input);
+	div.appendChild(datalist);
 	return div;
 }
 
@@ -60,7 +96,24 @@ function handleZoom(button) {
 	}
 
 	GOOGLE_MAP.setCenter(coords);
+	GOOGLE_MAP.setHeading(0);
+	GOOGLE_MAP.setTilt(0);
+	resetSliders();
 	GOOGLE_MAP.setZoom(19);
+}
+
+
+function handleTilt(input) {
+	const value = Number(input.value);
+
+	GOOGLE_MAP.setTilt(value);
+}
+
+
+function handleRotate(input) {
+	const value = Number(input.value) * -1;
+
+	GOOGLE_MAP.setHeading(value);
 }
 
 
@@ -80,20 +133,28 @@ async function initMap() {
 		markers: MARKERS,
 	});
 
-	const canvasControl = createControl('ctrl_canvas', 'gear-fill', null,
+	const canvasControl = createControl('gear-fill', null,
 		{ bsToggle: 'offcanvas', bsTarget: '#settings_offcanvas' });
 	GOOGLE_MAP.controls[ControlPosition.TOP_LEFT].push(canvasControl);
 
-	const fullscreenControl = createControl('ctrl_fullscreen', 'fullscreen',
-		toggleFullscreen, null);
+	const fullscreenControl = createControl('fullscreen', toggleFullscreen,
+		null);
 	GOOGLE_MAP.controls[ControlPosition.TOP_RIGHT].push(fullscreenControl);
 	// const body = document.querySelector('body');
 	// body.addEventListener('fullscreenchange', resetBounds);
 
 
-	const boundsControl = createControl('ctrl_bounds', 'bounding-box-circles',
-		resetBounds, null);
+	const boundsControl = createControl('bounding-box-circles', resetBounds,
+		null);
 	GOOGLE_MAP.controls[ControlPosition.RIGHT_BOTTOM].push(boundsControl);
+
+	const tiltControl = createRange('ctrl_tilt', 0, 67.5, 0, 0.5, handleTilt,
+		true);
+	GOOGLE_MAP.controls[ControlPosition.RIGHT_CENTER].push(tiltControl);
+
+	const rotateControl = createRange('ctrl_rotate', -180, 180, 0, 1,
+		handleRotate, false);
+	GOOGLE_MAP.controls[ControlPosition.TOP_CENTER].push(rotateControl);
 
 	for (let btn of document.getElementsByName('map_style')) {
 		btn.addEventListener('click', () => GOOGLE_MAP.setMapTypeId(btn.id));
