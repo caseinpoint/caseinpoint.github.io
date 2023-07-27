@@ -14,9 +14,9 @@ Techonologies used:
 
 ## V1
 
-**Version 1 is deployed [here](https://caseinpoint.github.io/photomap/).**
+🚀 **Version 1 is deployed [here](https://caseinpoint.github.io/photomap/).**
 
-*Currently, version 1 is not working on mobile. More testing is needed.*
+🚧 *Currently, version 1 is not working on mobile. More testing is needed.*
 
 After initializing the Google Map and adding custom controls, I implemented an
 `<input type="file">` in the settings offcanvas which allows users to select
@@ -64,5 +64,5 @@ and a list of available "albums" in the settings offcanvas.
 ![v2 album select](./screenshots/v2screen2.png)
 
 Version 2 is deployed [here](https://caseinpoint.github.io/photomap/v2.html).
-However, the Google OAuth is still in "testing" mode, so only specific test
+🚧 However, the Google OAuth is still in "testing" mode, so only specific test
 users can access it at this time.
