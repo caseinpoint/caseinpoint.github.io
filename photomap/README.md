@@ -42,11 +42,12 @@ map to that location.
 
 Custom controls implemented:
 - Settings offcanvas toggle (upper left)
+- Map style selection (settings offcanvas)
 - Fullscreen toggle (upper right)
 - Recenter button (bottom right)
 - Tilt slider (center right)
 - Rotation slider (bottom center)
-- Map style selection (settings offcanvas)
+- Zoom to photo coordinates (image modal)
 
 ![Map style](./screenshots/screen4.png)
 
