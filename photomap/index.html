@@ -55,66 +55,59 @@
 					<span class="text-primary align-text-bottom">Loading...</span>
 				</div>
 
-				<!-- <div class="mt-3 small">
-					<u>Instructions:</u>
-					<ol>
-						<li>Create a folder in your Google Drive called <strong>PHOTOMAP</strong></li>
-						<li>Make albums by creating subfolders inside PHOTOMAP</li>
-						<li>Upload JPEG images with geotagging metadata to your albums</li>
-						<li>Select an album above to display the photo locations on the map</li>
-					</ol>
-				</div> -->
+				<div class="border-top mt-5 pt-3">
+					<h5>Map style</h5>
+					<input
+						id="satellite"
+						class="btn-check"
+						type="radio"
+						name="map_style"
+						autocomplete="off"
+						checked
+					>
+					<label for="satellite" class="btn btn-outline-success">
+						Satellite
+					</label>
 
-				<hr>
-				<h5>Map style</h5>
-				<input
-					id="satellite"
-					class="btn-check"
-					type="radio"
-					name="map_style"
-					autocomplete="off"
-					checked
-				>
-				<label
-					for="satellite"
-					class="btn btn-outline-success"
-				>Satellite</label>
+					<input
+						id="hybrid"
+						class="btn-check"
+						type="radio"
+						name="map_style"
+						autocomplete="off"
+					>
+					<label for="hybrid" class="btn btn-outline-success">Hybrid</label>
 
-				<input
-					id="hybrid"
-					class="btn-check"
-					type="radio"
-					name="map_style"
-					autocomplete="off"
-				>
-				<label
-					for="hybrid"
-					class="btn btn-outline-success"
-				>Hybrid</label>
+					<input
+						id="terrain"
+						class="btn-check"
+						type="radio"
+						name="map_style"
+						autocomplete="off"
+					>
+					<label for="terrain" class="btn btn-outline-success">Terrain</label>
 
-				<input
-					id="terrain"
-					class="btn-check"
-					type="radio"
-					name="map_style"
-					autocomplete="off"
-				>
-				<label
-					for="terrain"
-					class="btn btn-outline-success"
-				>Terrain</label>
+					<input
+						id="roadmap"
+						class="btn-check"
+						type="radio"
+						name="map_style"
+						autocomplete="off"
+					>
+					<label for="roadmap" class="btn btn-outline-success">Road</label>
+				</div>
 
-				<input
-					id="roadmap"
-					class="btn-check"
-					type="radio"
-					name="map_style"
-					autocomplete="off"
-				>
-				<label
-					for="roadmap"
-					class="btn btn-outline-success"
-				>Road</label>
+				<div class="position-absolute bottom-0 start-0 p-2">
+					&copy; Drue Gilbert 2023
+					<i class="bi bi-three-dots"></i>
+					<a
+						href="https://github.com/caseinpoint/caseinpoint.github.io/tree/main/photomap"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<i class="bi bi-github"></i> GitHub
+					</a>
+				</div>
 			</div>
 		</div>
 
