@@ -19,8 +19,8 @@ Version 1 is deployed [here](https://caseinpoint.github.io/photomap/).
 *Currently, version 1 is not working on mobile. More testing is needed.*
 
 After initializing the Google Map and adding custom controls, I implemented an
-`<input type="file">` which allows users to select image files from their local
-machine to display on the map.
+`<input type="file">` in the settings offcanvas which allows users to select
+image files from their local machine to display on the map.
 
 ![File select](./screenshots/screen2.png)
 
