@@ -7,6 +7,7 @@ locations in their EXIF metadata.
 
 Techonologies used:
 - HTML, CSS, JavaScript
+- [Bootstrap](https://getbootstrap.com/), [Bootstrap Icons](https://icons.getbootstrap.com/)
 - [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/overview)
 - [Exif.js](https://github.com/exif-js/exif-js)
 
@@ -14,4 +15,37 @@ Techonologies used:
 
 Version 1 is deployed [here](https://caseinpoint.github.io/photomap/).
 
+After initializing the Google Map and adding custom controls, I implemented an
+`<input type="file">` which allows users to select image files from their local
+machine to display on the map.
+
+![File select](./screenshots/screen2.png)
+
+My script [photomap-v1.js](../static/js/photomap-v1.js) then parses the
+locations and adds custom markers to the map.
+
+![Markers added](./screenshots/screen3.png)
+
+To keep the markers' uncluttered, I implemented [clustering](https://developers.google.com/maps/documentation/javascript/marker-clustering).
+
+![Marker clustering](./screenshots/screen7.png)
+
+A modal opens when the user clicks on a marker. The image associated with that
+location is displayed, along with some of its metadata and a button to zoom the
+map to that location.
+
+![Modal displayed](./screenshots/screen5.png)
+
+Custom controls implemented:
+- Settings offcanvas toggle (upper left)
+- Fullscreen toggle (upper right)
+- Recenter button (bottom right)
+- Tilt slider (center right)
+- Rotation slider (bottom center)
+- Map style selection (settings offcanvas)
+
+![Map style](./screenshots/screen4.png)
+
 ## V2
+
+Version 2 is deployed [here](https://caseinpoint.github.io/photomap/v2.html).
