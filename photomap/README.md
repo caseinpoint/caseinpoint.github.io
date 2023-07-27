@@ -47,7 +47,7 @@ Custom controls implemented:
 - Recenter button (bottom right)
 - Tilt slider (center right)
 - Rotation slider (bottom center)
-- Zoom to photo coordinates (image modal)
+- Zoom to photo coordinates button (image modal)
 
 ![Map style](./screenshots/screen4.png)
 
