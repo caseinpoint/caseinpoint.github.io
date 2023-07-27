@@ -69,6 +69,7 @@ function createRange(id, min, max, start, step, handler, rotate=false) {
 	input.max = max;
 	input.value = start;
 	input.step = step;
+	input.setAttribute('list', id + '_list')
 
 	input.addEventListener('change', () => handler(input));
 
@@ -154,7 +155,7 @@ async function initMap() {
 
 	const rotateControl = createRange('ctrl_rotate', -180, 180, 0, 1,
 		handleRotate, false);
-	GOOGLE_MAP.controls[ControlPosition.TOP_CENTER].push(rotateControl);
+	GOOGLE_MAP.controls[ControlPosition.BOTTOM_CENTER].push(rotateControl);
 
 	for (let btn of document.getElementsByName('map_style')) {
 		btn.addEventListener('click', () => GOOGLE_MAP.setMapTypeId(btn.id));
