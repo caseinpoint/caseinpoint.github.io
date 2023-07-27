@@ -9,6 +9,7 @@ Techonologies used:
 - HTML, CSS, JavaScript
 - [Bootstrap](https://getbootstrap.com/), [Bootstrap Icons](https://icons.getbootstrap.com/)
 - [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/overview)
+- [Google Drive API](https://developers.google.com/drive/api/guides/about-sdk)
 - [Exif.js](https://github.com/exif-js/exif-js)
 
 ## V1
@@ -49,6 +50,16 @@ Custom controls implemented:
 
 ## V2
 
-Version 2 
+Instead of opening local files, version two implements the
+[Google Drive API](https://developers.google.com/drive/api/guides/about-sdk) to
+retrieve files from the cloud. I initially started with the Google Photos API,
+but the images do not include the location data. Users can find instructions
+and a list of available "albums" in the settings offcanvas.
+
+![v2 instructions](./screenshots/v2screen1.png)
+
+![v2 album select](./screenshots/v2screen2.png)
 
 Version 2 is deployed [here](https://caseinpoint.github.io/photomap/v2.html).
+However, the Google OAuth is still in "testing" mode, so only specific test
+users can access it at this time.
