@@ -14,7 +14,7 @@ Techonologies used:
 
 ## V1
 
-Version 1 is deployed [here](https://caseinpoint.github.io/photomap/).
+**Version 1 is deployed [here](https://caseinpoint.github.io/photomap/).**
 
 *Currently, version 1 is not working on mobile. More testing is needed.*
 
