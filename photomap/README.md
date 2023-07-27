@@ -26,7 +26,8 @@ locations and adds custom markers to the map.
 
 ![Markers added](./screenshots/screen3.png)
 
-To keep the markers' uncluttered, I implemented [clustering](https://developers.google.com/maps/documentation/javascript/marker-clustering).
+To keep the markers from overlapping, I implemented
+[clustering](https://developers.google.com/maps/documentation/javascript/marker-clustering).
 
 ![Marker clustering](./screenshots/screen7.png)
 
@@ -47,5 +48,7 @@ Custom controls implemented:
 ![Map style](./screenshots/screen4.png)
 
 ## V2
+
+Version 2 
 
 Version 2 is deployed [here](https://caseinpoint.github.io/photomap/v2.html).
