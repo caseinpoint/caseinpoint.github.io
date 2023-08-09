@@ -131,6 +131,9 @@ async function initMap() {
 	MARKERCLUSTER = new markerClusterer.MarkerClusterer({
 		map: GOOGLE_MAP,
 		markers: MARKERS,
+		algorithmOptions: {
+			maxZoom: 19,
+		},
 	});
 
 	const canvasControl = createControl('gear-fill', null,
@@ -168,7 +171,7 @@ async function initMap() {
 function dmsToDec(d, m, s, ref) {
 	let decimal = d + m/60 + s/3600;
 	if (ref === 'S' || ref === 'W') decimal *= -1;
-	return decimal;
+	return Number(decimal.toFixed(6));
 }
 
 
@@ -206,8 +209,8 @@ function handleMarkerClick(photo) {
 	const datetime = parseDate(photo.datetime)
 	photoDatetime.textContent = datetime.toLocaleString();
 
-	const lat = photo.coords.lat.toFixed(6);
-	const lng = photo.coords.lng.toFixed(6);
+	const lat = photo.coords.lat;
+	const lng = photo.coords.lng;
 
 	const photoCoords = document.getElementById('photo_coords');
 	const coordsStr = `${lat}, ${lng}`;
@@ -260,6 +263,19 @@ function updateBounds({lat, lng}) {
 }
 
 
+function getUniquePostion({lat, lng}) {
+	for (let marker of MARKERS) {
+		if (Math.abs(marker.position.h - lat) <= 0.000015 &&
+			Math.abs(marker.position.j - lng) <= 0.000015) {
+			lat += 0.000015;
+			lng += 0.000015;
+		}
+	}
+
+	return {lat, lng};
+}
+
+
 function createMarker(photo) {
 	const icon = document.createElement('div');
 	icon.innerHTML = '<i class="bi bi-camera-fill h4"></i>';
@@ -271,9 +287,11 @@ function createMarker(photo) {
 		scale: 1.25,
 	});
 
+	const position = getUniquePostion(photo.coords);
+
 	const marker = new AME({
 		map: GOOGLE_MAP,
-		position: photo.coords,
+		position,
 		content: pin.element,
 	});
 
