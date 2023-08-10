@@ -220,6 +220,9 @@ function handleMarkerClick(photo) {
 	photoZoom.dataset.lat = lat;
 	photoZoom.dataset.lng = lng;
 
+	const photoFilename = document.getElementById('photo_filename');
+	photoFilename.textContent = photo.blob.name;
+
 	const modal = new bootstrap.Modal('#photo_modal');
 	modal.show();
 }
