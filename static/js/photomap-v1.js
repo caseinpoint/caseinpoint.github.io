@@ -99,7 +99,7 @@ function handleZoom(button) {
 	GOOGLE_MAP.setHeading(0);
 	GOOGLE_MAP.setTilt(0);
 	resetSliders();
-	GOOGLE_MAP.setZoom(19);
+	GOOGLE_MAP.setZoom(19.5);
 }
 
 
@@ -121,7 +121,7 @@ async function initMap() {
 	const { Map } = await google.maps.importLibrary('maps');
 	const { ControlPosition } = await google.maps.importLibrary('core');
 
-	// these will be assigned globally to be used later
+	// assigned globally to be used later
 	const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary('marker');
 	AME = AdvancedMarkerElement;
 	PE = PinElement;
@@ -132,7 +132,7 @@ async function initMap() {
 		map: GOOGLE_MAP,
 		markers: MARKERS,
 		algorithmOptions: {
-			maxZoom: 19,
+			maxZoom: 18,
 		},
 	});
 
@@ -201,9 +201,10 @@ function parseDate(datetimeStr) {
 }
 
 
-function handleMarkerClick(photo) {
+function updateModal(photo) {
 	const photoImg = document.getElementById('photo_img');
 	photoImg.src = photo.url;
+	photoImg.dataset.idx = photo.idx;
 
 	const photoDatetime = document.getElementById('photo_datetime');
 	const datetime = parseDate(photo.datetime)
@@ -222,8 +223,15 @@ function handleMarkerClick(photo) {
 
 	const photoFilename = document.getElementById('photo_filename');
 	photoFilename.textContent = photo.blob.name;
+}
 
-	const modal = new bootstrap.Modal('#photo_modal');
+
+function handleMarkerClick(photo) {
+	updateModal(photo);
+
+	const photoModal = document.getElementById('photo_modal');
+	const modal = bootstrap.Modal.getOrCreateInstance(photoModal,
+		{ backdrop: false });
 	modal.show();
 }
 
@@ -329,6 +337,7 @@ function handleForm(evt) {
 		createPhotoObj(file)
 		.then(photo => {
 			if (photo) {
+				photo.idx = PHOTOS.length;
 				PHOTOS.push(photo);
 				createMarker(photo);
 			}
@@ -343,9 +352,28 @@ function handleForm(evt) {
 }
 
 
+function handleSeek(button) {
+	const photoImg = document.getElementById('photo_img');
+
+	let idx = Number(photoImg.dataset.idx);
+
+	if (button.dataset.seek === 'next') idx += 1;
+	else if (button.dataset.seek === 'prev') idx -= 1;
+
+	if (idx >= PHOTOS.length) idx = 0;
+	else if (idx < 0) idx = PHOTOS.length - 1;
+
+	updateModal(PHOTOS[idx]);
+}
+
+
 (async function main() {
 	initMap();
 
 	const form = document.getElementById('files_form');
 	form.addEventListener('submit', handleForm);
+
+	for (let button of document.getElementsByClassName('photo_seek')) {
+		button.addEventListener('click', () => handleSeek(button));
+	}
 })();
