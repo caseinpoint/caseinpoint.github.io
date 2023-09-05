@@ -1,7 +1,5 @@
 'use strict';
 
-const SECRET_HASH = -1979635712;
-
 String.prototype.hashCode = function() {
 	let hash = 0;
 	if (this.length === 0) return hash;
@@ -17,6 +15,8 @@ const secretForm = document.getElementById('secret_form');
 if (secretForm !== null) {
 	secretForm.addEventListener('submit', (evt) => {
 		evt.preventDefault();
+
+		const SECRET_HASH = -1979635712;
 
 		const pw = document.getElementById('secret_pw').value;
 		if (pw.hashCode() === SECRET_HASH) {
