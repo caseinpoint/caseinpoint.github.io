@@ -1,13 +1,20 @@
-let centerX;
-let centerY;
-let minAxis;
+const axes = {};
 
-let bgrHue = 176; // background hue: 0-360
-let fgrHue = (bgrHue + 180) % 360; // foreground hue: 0-360
-let bgrSat = 83; // background saturation: 0-100
-let fgrSat = 100 - bgrSat; // foreground saturation: 0-100
-let bgrBright = 63; // background brightness: 0-100
-let fgrBright = 100 - bgrBright; // foreground brightness: 0-100
+const hsv = {};
+// initial hsv values
+hsv.bgr_hue = 176; // background hue: 0-360
+hsv.fgr_hue = (hsv.bgr_hue + 180) % 360; // foreground hue: 0-360
+hsv.bgr_sat = 83; // background saturation: 0-100
+hsv.fgr_sat = 100 - hsv.bgr_sat; // foreground saturation: 0-100
+hsv.bgr_val = 69; // background brightness: 0-100
+hsv.fgr_val = 100 - hsv.bgr_val; // foreground brightness: 0-100
+
+
+function setAxes() {
+	axes.centerX = Math.trunc(width / 2);
+	axes.centerY = Math.trunc(height / 2);
+	axes.minAxis = axes.centerX <= axes.centerY ? axes.centerX : axes.centerY;
+}
 
 
 function radToDeg(rad) {
@@ -49,13 +56,13 @@ function getHypotenuse(x, y) {
 }
 
 
-function brightToLight(satStart, brightness) {
-	const lightness = brightness * (1 - satStart / 2);
+function valueToLightness(satStart, value) {
+	const lightness = value * (1 - satStart / 2);
 
 	let saturation = 0;
 	if (lightness !== 0 && lightness !== 1) {
 		const m = lightness < 1 - lightness ? lightness : 1 - lightness;
-		saturation = (brightness - lightness) / m;
+		saturation = (value - lightness) / m;
 	}
 
 	return { saturation, lightness };
@@ -63,45 +70,47 @@ function brightToLight(satStart, brightness) {
 
 
 function setFontColor() {
-	const s = fgrSat / 100;
-	const b = fgrBright / 100;
-	const { saturation, lightness } = brightToLight(s, b);
+	const s = hsv.fgr_sat / 100;
+	const v = hsv.fgr_val / 100;
+	const { saturation, lightness } = valueToLightness(s, v);
 	const txtSat = Math.round(saturation * 100);
 	const txtLight = Math.round(lightness * 100);
 
-	for (let el of document.querySelectorAll('.container-fluid *')) {
-		el.style.color = `hsl(${fgrHue}, ${txtSat}%, ${txtLight}%)`;
+	for (let el of document.querySelectorAll('.txt_change')) {
+		el.style.color = `hsl(${hsv.fgr_hue}, ${txtSat}%, ${txtLight}%)`;
 	}
 }
 
 
-function setHSB() {
-	const x = mouseX - centerX;
-	const y = centerY - mouseY;
+function setColorText() {
+	for (let [id, num] of Object.entries(hsv)) {
+		document.getElementById(id).textContent = num;
+	}
+}
+
+
+function setHSV() {
+	const x = mouseX - axes.centerX;
+	const y = axes.centerY - mouseY;
 
 	const angle = getAngle(x, y);
-	bgrHue = Math.round(angle);
-	fgrHue = (bgrHue + 180) % 360;
+	hsv.bgr_hue = Math.round(angle);
+	hsv.fgr_hue = (hsv.bgr_hue + 180) % 360;
 
 	const hypotenuse = getHypotenuse(x, y);
-	const hypPercent = constrain(Math.trunc(hypotenuse / minAxis * 100), 0, 100);
-	bgrSat = Math.round(map(hypPercent, 0, 100, 40, 100));
-	fgrSat = 100 - hypPercent;
-	bgrBright = Math.round(map(hypPercent, 0, 100, 40, 80));
-	fgrBright = 100 - hypPercent;
+	const hypPercent = constrain(Math.trunc(hypotenuse / axes.minAxis * 100), 0, 100);
+	hsv.bgr_sat = Math.round(map(hypPercent, 0, 100, 40, 100));
+	hsv.fgr_sat = 100 - hypPercent;
+	hsv.bgr_val = Math.round(map(hypPercent, 0, 100, 40, 80));
+	hsv.fgr_val = 100 - hypPercent;
 }
 
 
 function setup() {
 	createCanvas(windowWidth, windowHeight);
-	centerX = Math.trunc(width / 2);
-	centerY = Math.trunc(height / 2);
-	minAxis = centerX <= centerY ? centerX : centerY;
+	setAxes();
 
 	colorMode(HSB);
-	background(bgrHue, bgrSat, bgrBright);
-
-	setFontColor();
 
 	noLoop();
 }
@@ -109,21 +118,20 @@ function setup() {
 
 function windowResized() {
 	resizeCanvas(windowWidth, windowHeight);
-	centerX = Math.trunc(width / 2);
-	centerY = Math.trunc(height / 2);
-	minAxis = centerX <= centerY ? centerX : centerY;
+	setAxes();
 }
 
 
 function draw() {
-	background(bgrHue, bgrSat, bgrBright);
+	background(hsv.bgr_hue, hsv.bgr_sat, hsv.bgr_val);
+	setFontColor();
+	setColorText();
 }
 
 
 function mouseMoved() {
-	setHSB();
+	setHSV();
 
-	setFontColor();
-
+	// if noLoop in setup, call redraw
 	redraw();
 }
