@@ -70,7 +70,6 @@ function valueToLightness(satStart, value) {
 	return { saturation, lightness };
 }
 
-// TODO: move text from HTML to JS
 function setFontColor() {
 	const s = hsv.fgr_sat / 100;
 	const v = hsv.fgr_val / 100;
@@ -84,7 +83,7 @@ function setFontColor() {
 }
 
 
-function setColorText() {
+function writeColorText() {
 	// for (let [id, num] of Object.entries(hsv)) {
 	// 	document.getElementById(id).textContent = num;
 	// }
@@ -131,6 +130,7 @@ function drawColorCircle() {
 	noFill();
 
 	for (let deg = 0; deg < 360; deg++) {
+		// negative = counter-clockwise to match colors
 		const radStart = degToRad(deg) * -1;
 		const radEnd = degToRad(deg + 1) * -1;
 
@@ -162,7 +162,7 @@ function setup() {
 function draw() {
 	background(hsv.bgr_hue, hsv.bgr_sat, hsv.bgr_val);
 	setFontColor();
-	setColorText();
+	writeColorText();
 
 	drawColorCircle();
 }
