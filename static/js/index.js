@@ -111,10 +111,14 @@ function setHSV() {
 
 	const hypotenuse = getHypotenuse(x, y);
 	const hypPercent = constrain(Math.trunc(hypotenuse / axes.minAxis * 100), 0, 100);
+
 	hsv.bgr_sat = Math.round(map(hypPercent, 0, 100, 40, 100));
-	hsv.fgr_sat = 100 - hypPercent;
+	// hsv.fgr_sat = 100 - hypPercent;
+	hsv.fgr_sat = Math.round(map(100 - hypPercent, 0, 100, 40, 100));
+
 	hsv.bgr_val = Math.round(map(hypPercent, 0, 100, 40, 80));
-	hsv.fgr_val = 100 - hypPercent;
+	// hsv.fgr_val = 100 - hypPercent;
+	hsv.fgr_val = Math.round(map(100 - hypPercent, 0, 100, 40, 80));
 }
 
 
