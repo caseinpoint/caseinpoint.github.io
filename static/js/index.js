@@ -106,6 +106,33 @@ function setHSV() {
 }
 
 
+function drawColorCircle() {
+	const vLen = Math.round(axes.minAxis * 0.98);
+
+	push();
+	translate(axes.centerX, axes.centerY);
+	strokeWeight(5);
+	noFill();
+
+	for (let deg = 0; deg < 360; deg++) {
+		const radStart = degToRad(deg) * -1;
+		const radEnd = degToRad(deg + 1) * -1;
+
+		const vectStart = p5.Vector.fromAngle(radStart, vLen);
+		const vectEnd = p5.Vector.fromAngle(radEnd, vLen);
+
+		stroke(deg, 100, 80);
+
+		beginShape();
+		vertex(vectStart.x, vectStart.y);
+		vertex(vectEnd.x, vectEnd.y);
+		endShape();
+	}
+
+	pop();
+}
+
+
 function setup() {
 	createCanvas(windowWidth, windowHeight);
 	setAxes();
@@ -119,6 +146,9 @@ function setup() {
 function windowResized() {
 	resizeCanvas(windowWidth, windowHeight);
 	setAxes();
+
+	// if noLoop in setup, call redraw
+	redraw();
 }
 
 
@@ -126,6 +156,8 @@ function draw() {
 	background(hsv.bgr_hue, hsv.bgr_sat, hsv.bgr_val);
 	setFontColor();
 	setColorText();
+
+	drawColorCircle();
 }
 
 
