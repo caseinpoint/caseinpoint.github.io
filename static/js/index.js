@@ -68,7 +68,7 @@ function valueToLightness(satStart, value) {
 	return { saturation, lightness };
 }
 
-
+// TODO: move text from HTML to JS
 function setFontColor() {
 	const s = hsv.fgr_sat / 100;
 	const v = hsv.fgr_val / 100;
@@ -143,21 +143,21 @@ function setup() {
 }
 
 
-function windowResized() {
-	resizeCanvas(windowWidth, windowHeight);
-	setAxes();
-
-	// if noLoop in setup, call redraw
-	redraw();
-}
-
-
 function draw() {
 	background(hsv.bgr_hue, hsv.bgr_sat, hsv.bgr_val);
 	setFontColor();
 	setColorText();
 
 	drawColorCircle();
+}
+
+
+function windowResized() {
+	resizeCanvas(windowWidth, windowHeight);
+	setAxes();
+
+	// if noLoop in setup, call redraw
+	redraw();
 }
 
 
