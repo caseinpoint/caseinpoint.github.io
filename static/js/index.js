@@ -9,6 +9,8 @@ hsv.fgr_sat = 100 - hsv.bgr_sat; // foreground saturation: 0-100
 hsv.bgr_val = 69; // background brightness: 0-100
 hsv.fgr_val = 100 - hsv.bgr_val; // foreground brightness: 0-100
 
+let txtFont;
+
 
 function setAxes() {
 	axes.centerX = Math.trunc(width / 2);
@@ -83,9 +85,19 @@ function setFontColor() {
 
 
 function setColorText() {
-	for (let [id, num] of Object.entries(hsv)) {
-		document.getElementById(id).textContent = num;
-	}
+	// for (let [id, num] of Object.entries(hsv)) {
+	// 	document.getElementById(id).textContent = num;
+	// }
+
+	const bgrTxt = `Background color: HSV(${hsv.bgr_hue}°, ${hsv.bgr_sat}%, ${hsv.bgr_val}%)`;
+	const fgrTxt = `Foreground color: HSV(${hsv.fgr_hue}°, ${hsv.fgr_sat}%, ${hsv.fgr_val}%)`;
+	const txt = bgrTxt + '\n' + fgrTxt;
+
+	textFont('Noto Sans Mono');
+	textAlign(RIGHT, TOP);
+	textSize(13);
+	fill(hsv.fgr_hue, hsv.fgr_sat, hsv.fgr_val);
+	text(txt, width - 10, 10)
 }
 
 
