@@ -107,11 +107,11 @@ function setHSV() {
 
 
 function drawColorCircle() {
-	const vLen = Math.round(axes.minAxis * 0.98);
+	const vLen = Math.round(axes.minAxis * 0.97);
 
 	push();
 	translate(axes.centerX, axes.centerY);
-	strokeWeight(5);
+	strokeWeight(8);
 	noFill();
 
 	for (let deg = 0; deg < 360; deg++) {
