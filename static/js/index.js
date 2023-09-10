@@ -96,7 +96,7 @@ function writeColorText() {
 	textAlign(RIGHT, TOP);
 	textSize(13);
 	fill(hsv.fgr_hue, hsv.fgr_sat, hsv.fgr_val);
-	text(txt, width - 10, 10)
+	text(txt, width - 10, height * 0.05);
 }
 
 
@@ -150,18 +150,21 @@ function drawColorCircle() {
 
 
 function drawColorWave() {
-	// const colorStart = color(hsv.bgr_val);
-	// const colorEnd = color(hsv.fgr_val);
-	const colorStart = color(hsv.fgr_hue, hsv.fgr_sat, hsv.fgr_val, 0.9);
-	const colorEnd = color(hsv.bgr_hue, hsv.bgr_sat, hsv.bgr_val, 0.9);
+	const scale = 0.02;
+	const colorStart = color(hsv.fgr_hue, hsv.fgr_sat, hsv.fgr_val, 0.8);
+	const colorEnd = color(hsv.bgr_hue, hsv.bgr_sat, hsv.bgr_val, 0.8);
 
 	for (let x = 0; x < width; x++) {
-		const noiseVal = noise((frameCount - x) * 0.02);
+		const noiseVal = noise((frameCount - x) * scale, mouseY * scale);
+		const yNoise = height * 0.05 * noiseVal;
+		const colorNoise = lerpColor(colorStart, colorEnd, noiseVal);
+		stroke(colorNoise);
+		line(x, 0, x, yNoise);
 
-		// const colorMid = lerpColor(colorStart, colorEnd, x / width);
-		const colorMid = lerpColor(colorStart, colorEnd, noiseVal);
-		stroke(colorMid);
-		line(x, height - noiseVal * 50, x, height);
+		const yCos = height * 0.025 - Math.cos((frameCount - x) * scale) * 10;
+		const colorCos = lerpColor(colorStart, colorEnd, x / width);
+		stroke(colorCos);
+		line(x, height, x, height - yCos);
 	}
 }
 
