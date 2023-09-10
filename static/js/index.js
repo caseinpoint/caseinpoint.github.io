@@ -149,13 +149,30 @@ function drawColorCircle() {
 }
 
 
+function drawColorWave() {
+	// const colorStart = color(hsv.bgr_val);
+	// const colorEnd = color(hsv.fgr_val);
+	const colorStart = color(hsv.fgr_hue, hsv.fgr_sat, hsv.fgr_val, 0.9);
+	const colorEnd = color(hsv.bgr_hue, hsv.bgr_sat, hsv.bgr_val, 0.9);
+
+	for (let x = 0; x < width; x++) {
+		const noiseVal = noise((frameCount - x) * 0.02);
+
+		// const colorMid = lerpColor(colorStart, colorEnd, x / width);
+		const colorMid = lerpColor(colorStart, colorEnd, noiseVal);
+		stroke(colorMid);
+		line(x, height - noiseVal * 50, x, height);
+	}
+}
+
+
 function setup() {
 	createCanvas(windowWidth, windowHeight);
 	setAxes();
 
 	colorMode(HSB);
 
-	noLoop();
+	// noLoop();
 }
 
 
@@ -165,6 +182,7 @@ function draw() {
 	writeColorText();
 
 	drawColorCircle();
+	drawColorWave();
 }
 
 
@@ -173,7 +191,7 @@ function windowResized() {
 	setAxes();
 
 	// if noLoop in setup, call redraw
-	redraw();
+	// redraw();
 }
 
 
@@ -181,5 +199,5 @@ function mouseMoved() {
 	setHSV();
 
 	// if noLoop in setup, call redraw
-	redraw();
+	// redraw();
 }
