@@ -151,8 +151,8 @@ function drawColorCircle() {
 
 function drawColorWave() {
 	const scale = 0.02;
-	const colorStart = color(hsv.fgr_hue, hsv.fgr_sat, hsv.fgr_val, 0.9);
-	const colorEnd = color(hsv.bgr_hue, hsv.bgr_sat, hsv.bgr_val, 0.8);
+	const colorStart = color(hsv.fgr_hue, hsv.fgr_sat, hsv.fgr_val, 0.95);
+	const colorEnd = color(hsv.bgr_hue, hsv.bgr_sat, hsv.bgr_val, 0.85);
 
 	for (let x = 0; x < width; x++) {
 		const noiseVal = noise((frameCount - x) * scale, (mouseY - x) * scale);
@@ -164,7 +164,7 @@ function drawColorWave() {
 		const yCos = height * 0.025 - Math.cos((frameCount - x) * scale) * 10;
 		const colorCos = lerpColor(colorStart, colorEnd, x / width);
 		stroke(colorCos);
-		line(x, height, x, height - yCos);
+		line(x, height - yCos, x, height);
 	}
 }
 
