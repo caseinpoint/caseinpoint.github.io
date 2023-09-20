@@ -106,7 +106,8 @@ function setHSV() {
 
 	const hypotenuse = getHypotenuse(x, y) | 0;
 
-	const sinFrames = Math.sin(degToRad(mouseFrames));
+	const modFrames = mod(mouseFrames, 360);
+	const sinFrames = Math.sin(degToRad(modFrames));
 	hsv.bgr_sat = Math.round(map(sinFrames, -1, 1, 40, 100));
 	hsv.fgr_sat = Math.round(map(sinFrames * -1, -1, 1, 40, 100));
 
@@ -201,7 +202,7 @@ function windowResized() {
 
 
 function mouseMoved() {
-	mouseFrames = mod(mouseFrames + 1, 360);
+	mouseFrames++;
 	setHSV();
 
 	// if noLoop in setup, call redraw
