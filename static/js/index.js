@@ -110,10 +110,12 @@ function setHSV() {
 	const sinFrames = Math.sin(degToRad(modFrames));
 	hsv.bgr_sat = Math.round(map(sinFrames, -1, 1, 40, 100));
 	hsv.fgr_sat = Math.round(map(sinFrames * -1, -1, 1, 40, 100));
+	// hsv.fgr_sat = 100 - hsv.bgr_sat;
 
 	const hypPercent = constrain(hypotenuse / axes.minAxis * 100, 0, 100);
-	hsv.bgr_val = Math.round(map(hypPercent, 0, 100, 40, 80));
-	hsv.fgr_val = Math.round(map(100 - hypPercent, 0, 100, 40, 80));
+	hsv.bgr_val = Math.round(map(hypPercent, 0, 100, 30, 90));
+	hsv.fgr_val = Math.round(map(100 - hypPercent, 0, 100, 30, 90));
+	// hsv.fgr_val = 100 - hsv.bgr_val;
 }
 
 
@@ -125,14 +127,13 @@ function drawColorCircle() {
 
 	fill(hsv.fgr_hue, hsv.fgr_sat, hsv.fgr_val);
 	noStroke();
-	circle(0, 0, 4);
 	// negative = match movement of mouse
 	const radHSV = degToRad(hsv.bgr_hue) * -1;
 	const vectHSV = p5.Vector.fromAngle(radHSV, vLen + 8);
 	circle(vectHSV.x, vectHSV.y, 8);
 
-	strokeWeight(8);
 	noFill();
+	strokeWeight(8);
 
 	for (let deg = 0; deg < 360; deg++) {
 		// negative = counter-clockwise to match colors
