@@ -35,7 +35,7 @@ To keep the markers from overlapping, I implemented
 ![Marker clustering](./screenshots/screen7.png)
 
 A modal opens when the user clicks on a marker. The image associated with that
-location is displayed, along with some of its metadata, and a buttons to zoom
+location is displayed, along with some of its metadata, and a button to zoom
 the map to that location and cycle through the photos that have been loaded.
 
 ![Modal displayed](./screenshots/screen5.png)
