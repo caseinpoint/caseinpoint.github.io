@@ -178,7 +178,6 @@ function resizeImgs() {
 	for (let img of document.getElementsByTagName('img')) {
 		const cDiam = axes.minAxis * 0.96 * 2;
 		const scale = Math.sqrt(cDiam ** 2 / (img.width ** 2 + img.height ** 2));
-		console.log(cDiam, scale);
 		img.width *= scale;
 		img.height *= scale;
 		img.style.height = 'auto';
@@ -187,8 +186,8 @@ function resizeImgs() {
 
 
 function setAxes() {
-	axes.centerX = Math.trunc(width / 2);
-	axes.centerY = Math.trunc(height / 2);
+	axes.centerX = width / 2 | 0;
+	axes.centerY = height / 2 | 0;
 	axes.minAxis = axes.centerX <= axes.centerY ? axes.centerX : axes.centerY;
 }
 
