@@ -118,17 +118,18 @@ function setHSV() {
 
 
 function drawColorCircle() {
-	const vLen = Math.round(axes.minAxis * 0.98);
+	const vLen = Math.round(axes.minAxis * 0.97);
 
 	push();
 	translate(axes.centerX, axes.centerY);
 
-	// negative = match movement of mouse
-	const radHSV = degToRad(hsv.bgr_hue) * -1;
-	const vectHSV = p5.Vector.fromAngle(radHSV, vLen + 10);
 	fill(hsv.fgr_hue, hsv.fgr_sat, hsv.fgr_val);
 	noStroke();
-	circle(vectHSV.x, vectHSV.y, 10);
+	circle(0, 0, 4);
+	// negative = match movement of mouse
+	const radHSV = degToRad(hsv.bgr_hue) * -1;
+	const vectHSV = p5.Vector.fromAngle(radHSV, vLen + 8);
+	circle(vectHSV.x, vectHSV.y, 8);
 
 	strokeWeight(8);
 	noFill();
