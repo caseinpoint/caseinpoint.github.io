@@ -1,5 +1,6 @@
 .txt_change {
-	background-color: rgba(255,255,255,0);
+	/* background-color: rgba(128,128,128,0.05); */
+	background-color: rgba(255,128,128,0);
 }
 
 #p5_main {

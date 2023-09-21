@@ -10,7 +10,6 @@ hsv.bgr_val = 69; // background brightness: 0-100
 hsv.fgr_val = 100 - hsv.bgr_val; // foreground brightness: 0-100
 
 let txtFont;
-const noiseScale = 0.02;
 let mouseFrames = 0;
 
 
@@ -143,7 +142,7 @@ function drawColorCircle() {
 		const vectStart = p5.Vector.fromAngle(radStart, vLen);
 		const vectEnd = p5.Vector.fromAngle(radEnd, vLen);
 
-		stroke(deg, 100, 80);
+		stroke(deg, 100, 90);
 
 		beginShape();
 		vertex(vectStart.x, vectStart.y);
@@ -156,6 +155,8 @@ function drawColorCircle() {
 
 
 function drawColorWave() {
+	const noiseScale = 0.02;
+
 	const colorStart = color(hsv.fgr_hue, hsv.fgr_sat, hsv.fgr_val);
 	const colorEnd = color(hsv.bgr_hue, hsv.bgr_sat, hsv.bgr_val);
 
