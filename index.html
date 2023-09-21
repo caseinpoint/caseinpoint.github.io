@@ -28,20 +28,56 @@
 
 	<div class="container-fluid">
 		<div class="row justify-content-center">
-			<div class="col-12 col-lg-11 col-xl-9 col-xxl-7 my-auto">
-				<h1 class="text-center txt_change">Drue Gilbert's portfolio</h1>
+			<div class="col-12 col-lg-11 col-xl-9 col-xxl-7 my-auto position-relative">
+				<h1 class="z-1 position-absolute top-0 start-50 translate-middle txt_change pb-5">Drue Gilbert's portfolio</h1>
 
-				<div class="carousel slide" data-bs-ride="carousel">
+				<div
+					id="portfolio_carousel"
+					class="carousel slide"
+					data-bs-ride="carousel"
+				>
 					<div class="carousel-inner">
+						<div class="carousel-item text-center active">
+							<img
+								src="/static/img/photomap.jpg"
+								alt="Screenshot of project: 'Photomap'"
+							>
+							<div class="carousel-caption txt_change">
+								<h5>Photomap</h5>
+								<p>[insert description and links here]</p>
+							</div>
+						</div>
 
+						<div class="carousel-item text-center">
+							<img
+								src="/static/img/labpairgen.png"
+								alt="Screenshot of project: 'Lab Pair Generator'"
+							>
+							<div class="carousel-caption txt_change">
+								<h5>Lab Pair Generator</h5>
+								<p>[insert description and links here]</p>
+							</div>
+						</div>
 					</div>
-					<button type="button" class="carousel-control-prev">
-						<span class="material-symbols-outlined">navigate_before</span>
-						<span class="visually-hidden">Previous</span>
 
+					<button
+						type="button"
+						class="carousel-control-prev txt_change"
+						data-bs-target="#portfolio_carousel"
+						data-bs-slide="prev"
+					>
+						<!-- <span class="material-symbols-outlined">navigate_before</span> -->
+						<span class="carousel-control-prev-icon"></span>
+						<span class="visually-hidden">Previous</span>
 					</button>
-					<button type="button" class="carousel-control-next">
-						<span class="material-symbols-outlined">navigate_next</span>
+					<button
+						type="button"
+						class="carousel-control-next txt_change"
+						data-bs-target="#portfolio_carousel"
+						data-bs-slide="next"
+					>
+						<!-- <span class="material-symbols-outlined">navigate_next</span> -->
+						<span class="carousel-control-next-icon"></span>
 						<span class="visually-hidden">Next</span>
 					</button>
 				</div>
