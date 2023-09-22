@@ -155,12 +155,13 @@ function drawColorCircle() {
 
 
 function drawColorWave() {
-	const noiseScale = 0.02;
+	const noiseScale = 0.015625;
 
 	const colorStart = color(hsv.fgr_hue, hsv.fgr_sat, hsv.fgr_val);
 	const colorEnd = color(hsv.bgr_hue, hsv.bgr_sat, hsv.bgr_val);
 
 	for (let x = 0; x < width; x++) {
+		// https://en.wikipedia.org/wiki/Perlin_noise
 		const noiseVal = noise((frameCount - x) * noiseScale, (mouseY - x) * noiseScale);
 		const yNoise = height * 0.05 * noiseVal;
 		const colorNoise = lerpColor(colorStart, colorEnd, noiseVal);
