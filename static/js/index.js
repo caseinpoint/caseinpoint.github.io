@@ -1,16 +1,14 @@
 const axes = {};
+let mouseFrames = 0;
 
 const hsv = {};
 // initial hsv values
 hsv.bgr_hue = 176; // background hue: 0-360
-hsv.fgr_hue = (hsv.bgr_hue + 180) % 360; // foreground hue: 0-360
+hsv.fgr_hue = mod(hsv.bgr_hue + 180, 360); // foreground hue: 0-360
 hsv.bgr_sat = 83; // background saturation: 0-100
 hsv.fgr_sat = 100 - hsv.bgr_sat; // foreground saturation: 0-100
 hsv.bgr_val = 69; // background brightness: 0-100
 hsv.fgr_val = 100 - hsv.bgr_val; // foreground brightness: 0-100
-
-let txtFont;
-let mouseFrames = 0;
 
 
 function mod(n, d) {
@@ -58,6 +56,8 @@ function getHypotenuse(x, y) {
 
 
 function valueToLightness(satStart, value) {
+	/* Convert HSV to HSL */
+
 	const lightness = value * (1 - satStart / 2);
 
 	let saturation = 0;
@@ -70,6 +70,8 @@ function valueToLightness(satStart, value) {
 }
 
 function setFontColor() {
+	/* Set the HSL color of text elements on the page */
+
 	const s = hsv.fgr_sat / 100;
 	const v = hsv.fgr_val / 100;
 	const { saturation, lightness } = valueToLightness(s, v);
@@ -83,8 +85,16 @@ function setFontColor() {
 
 
 function writeColorText() {
-	const bgrTxt = `Background color: HSV(${hsv.bgr_hue}°, ${hsv.bgr_sat}%, ${hsv.bgr_val}%)`;
-	const fgrTxt = `Foreground color: HSV(${hsv.fgr_hue}°, ${hsv.fgr_sat}%, ${hsv.fgr_val}%)`;
+	/* Write the current color information on the page */
+
+	const len = 'Background color: HSV(360°, 100%, 90%)'.length;
+
+	let bgrTxt = `Background color: HSV(${hsv.bgr_hue}°, ${hsv.bgr_sat}%, ${hsv.bgr_val}%)`;
+	while (bgrTxt.length < len) bgrTxt += ' ';
+
+	let fgrTxt = `Foreground color: HSV(${hsv.fgr_hue}°, ${hsv.fgr_sat}%, ${hsv.fgr_val}%)`;
+	while (fgrTxt.length < len) fgrTxt += ' ';
+
 	const txt = bgrTxt + '\n' + fgrTxt;
 
 	textFont('Noto Sans Mono');
@@ -96,6 +106,8 @@ function writeColorText() {
 
 
 function setHSV() {
+	/* Set HSV based on polar and temporal coordinates of the mouse */
+
 	const x = mouseX - axes.centerX;
 	const y = axes.centerY - mouseY;
 
@@ -119,6 +131,8 @@ function setHSV() {
 
 
 function drawColorCircle() {
+	/* Draw a colorful circle */
+
 	const vLen = Math.round(axes.minAxis * 0.97);
 
 	push();
@@ -126,7 +140,7 @@ function drawColorCircle() {
 
 	fill(hsv.fgr_hue, hsv.fgr_sat, hsv.fgr_val);
 	noStroke();
-	// negative = match movement of mouse
+	// negative angle = match movement of mouse
 	const radHSV = degToRad(hsv.bgr_hue) * -1;
 	const vectHSV = p5.Vector.fromAngle(radHSV, vLen + 8);
 	circle(vectHSV.x, vectHSV.y, 8);
@@ -135,7 +149,7 @@ function drawColorCircle() {
 	strokeWeight(8);
 
 	for (let deg = 0; deg < 360; deg++) {
-		// negative = counter-clockwise to match colors
+		// negative angle = counter-clockwise to match colors
 		const radStart = degToRad(deg) * -1;
 		const radEnd = degToRad(deg + 1) * -1;
 
@@ -155,29 +169,30 @@ function drawColorCircle() {
 
 
 function drawColorWave() {
+	/* Draw a pseudo-random wave using Perlin noise and linear interpolation of colors
+
+	Based on p5.js examples:
+	https://p5js.org/reference/#/p5/noise
+	https://p5js.org/reference/#/p5/lerpColor */
+
 	const noiseScale = 0.015625;
 
-	const colorStart = color(hsv.fgr_hue, hsv.fgr_sat, hsv.fgr_val);
-	const colorEnd = color(hsv.bgr_hue, hsv.bgr_sat, hsv.bgr_val);
+	const colorStart = color(hsv.bgr_hue, hsv.bgr_sat, hsv.bgr_val);
+	const colorEnd = color(hsv.fgr_hue, hsv.fgr_sat, hsv.fgr_val);
 
 	for (let x = 0; x < width; x++) {
-		// https://en.wikipedia.org/wiki/Perlin_noise
 		const noiseVal = noise((frameCount - x) * noiseScale, (mouseY - x) * noiseScale);
 		const yNoise = height * 0.05 * noiseVal;
 		const colorNoise = lerpColor(colorStart, colorEnd, noiseVal);
 		stroke(colorNoise);
 		line(x, height, x, height - yNoise);
-
-		/* too much going on, remove sine wave: */
-		// const yCos = height * 0.025 - Math.cos((frameCount - x) * noiseScale) * 10;
-		// const colorCos = lerpColor(colorStart, colorEnd, x / width);
-		// stroke(colorCos);
-		// line(x, 0, x, yCos);
 	}
 }
 
 
 function resizeImgs() {
+	/* Scale <img> elements to fit exactly within the color circle, preserve aspect ratios */
+
 	for (let img of document.getElementsByTagName('img')) {
 		const cDiam = axes.minAxis * 0.96 * 2;
 		const scale = Math.sqrt(cDiam ** 2 / (img.width ** 2 + img.height ** 2));
@@ -189,6 +204,7 @@ function resizeImgs() {
 
 
 function setAxes() {
+	/* Set window coordinates of x- and y-axis origin */
 	axes.centerX = width / 2 | 0;
 	axes.centerY = height / 2 | 0;
 	axes.minAxis = axes.centerX <= axes.centerY ? axes.centerX : axes.centerY;
