@@ -121,12 +121,10 @@ function setHSV() {
 	const sinFrames = Math.sin(degToRad(modFrames));
 	hsv.bgr_sat = Math.round(map(sinFrames, -1, 1, 40, 100));
 	hsv.fgr_sat = Math.round(map(sinFrames * -1, -1, 1, 40, 100));
-	// hsv.fgr_sat = 100 - hsv.bgr_sat;
 
 	const hypPercent = constrain(hypotenuse / axes.minAxis * 100, 0, 100);
 	hsv.bgr_val = Math.round(map(hypPercent, 0, 100, 30, 90));
 	hsv.fgr_val = Math.round(map(100 - hypPercent, 0, 100, 30, 90));
-	// hsv.fgr_val = 100 - hsv.bgr_val;
 }
 
 
