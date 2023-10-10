@@ -60,8 +60,7 @@ function highlightRow(count) {
 			row.classList.add('h4', 'text-primary');
 			row.scrollIntoView({
 				behavior: 'smooth',
-				block: 'center',
-				inline: 'center'
+				block: 'nearest',
 			});
 			row.setAttribute('aria-current', 'true');
 		}
