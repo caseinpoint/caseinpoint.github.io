@@ -227,7 +227,7 @@ function setup() {
 		bgOn = !bgOn;
 		bgBtn.elt.innerHTML = bgOn ? disable : enable;
 	});
-	bgBtn.elt.classList.add('btn', 'btn-outline-primary');
+	bgBtn.elt.classList.add('btn', 'btn-outline-primary', 'txt_change');
 }
 
 
