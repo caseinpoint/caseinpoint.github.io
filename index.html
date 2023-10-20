@@ -185,6 +185,41 @@
 		</div>
 
 
+		<!-- about me offcanvas button -->
+		<button
+			type="button"
+			class="btn btn-outline-info fixed-top mt-2 ms-2 txt_change"
+			data-bs-toggle="offcanvas"
+			data-bs-target="#about_offcanvas"
+			aria-controls="about_offcanvas"
+		>
+			<i class="bi bi-person-lines-fill"></i>
+			<span class="visually-hidden">About me</span>
+		</button>
+
+		<!-- about me offcanvas -->
+		<div
+			id="about_offcanvas"
+			class="offcanvas offcanvas-start"
+			tabindex="-1"
+			aria-labelledby="about_label"
+		>
+			<div class="offcanvas-header">
+				<h4 id="about_label" class="offcanvas-title">About Me</h4>
+				<button
+					type="button"
+					class="btn-close"
+					data-bs-dismiss="offcanvas"
+					aria-label="Close"
+				></button>
+			</div>
+
+			<div class="offcanvas-body">
+				<img src="/static/img/hello_there.gif" alt="Obi Wan Kenobi 'Hello There'" class="img-fluid rounded">
+			</div>
+		</div>
+
+
 		<!-- secret modal button -->
 		<button
 			type="button"
