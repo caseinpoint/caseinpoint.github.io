@@ -1,5 +1,7 @@
 const axes = {};
 let mouseFrames = 0;
+let bgOn = true;
+let bgBtn;
 
 const hsv = {};
 // initial hsv values
@@ -216,12 +218,23 @@ function setup() {
 
 	colorMode(HSB);
 
-	// noLoop();
+	bgBtn = createButton();
+	bgBtn.position(width - 240, 45);
+	const disable = '<i class="bi bi-display"></i> Disable background color';
+	const enable = '<i class="bi bi-display-fill"></i> Enable background color';
+	bgBtn.elt.innerHTML = disable;
+	bgBtn.mousePressed(() => {
+		bgOn = !bgOn;
+		bgBtn.elt.innerHTML = bgOn ? disable : enable;
+	});
+	bgBtn.elt.classList.add('btn', 'btn-outline-primary');
 }
 
 
 function draw() {
-	background(hsv.bgr_hue, hsv.bgr_sat, hsv.bgr_val);
+	if (bgOn) background(hsv.bgr_hue, hsv.bgr_sat, hsv.bgr_val);
+	else background(197, 3, 88);
+
 	drawColorWave();
 	drawColorCircle();
 
@@ -234,16 +247,10 @@ function windowResized() {
 	resizeCanvas(windowWidth, windowHeight);
 	setAxes();
 	resizeImgs();
-
-	// if noLoop in setup, call redraw
-	// redraw();
 }
 
 
 function mouseMoved() {
 	mouseFrames++;
 	setHSV();
-
-	// if noLoop in setup, call redraw
-	// redraw();
 }
