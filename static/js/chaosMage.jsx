@@ -32,12 +32,44 @@ function Root(props) {
 	/* Root React component */
 
 	// state
-	const [options, setOptions] = React.useState({});
 	const [categories, setCategories] = React.useState([]);
+	const [options, setOptions] = React.useState({});
+	// state from JSON
+	const [lvlProg, setLvlProg] = React.useState({});
+	const [warps, setWarps] = React.useState({});
+	const [weirdness, setWeirdness] = React.useState({});
+	const [atkSpells, setAtkSpells] = React.useState([]);
+	const [defSpells, setDefSpells] = React.useState([]);
+	const [icnSpells, setIcnSpells] = React.useState([]);
 
 	// on load
 	React.useEffect(() => {
 		setCategories(getCategoryArray());
+
+		fetch('/static/json/levelProgression.json')
+			.then((response) => response.json())
+			.then((lvlJSON) => setLvlProg(lvlJSON));
+
+		fetch('/static/json/warps.json')
+			.then((response) => response.json())
+			.then((wrpJSON) => setWarps(wrpJSON));
+
+		fetch('/static/json/weirdness.json')
+			.then((response) => response.json())
+			.then((wrdJSON) => setWeirdness(wrdJSON));
+
+		fetch('/static/json/attack.json')
+			.then((response) => response.json())
+			.then((atkJSON) => setAtkSpells(atkJSON));
+		
+		fetch('/static/json/defense.json')
+			.then((response) => response.json())
+			.then((defJSON) => setDefSpells(defJSON));
+
+		fetch('/static/json/icon.json')
+			.then((response) => response.json())
+			.then((icnJSON) => setIcnSpells(icnJSON));
+
 	}, []);
 
 	return (
@@ -47,27 +79,4 @@ function Root(props) {
 	);
 }
 
-(async function main() {
-	const lvlRes = await fetch('/static/json/levelProgression.json');
-	const lvlJSON = await lvlRes.json();
-
-	const wrpRes = await fetch('/static/json/warps.json');
-	const wrpJSON = await wrpRes.json();
-
-	const wrdRes = await fetch('/static/json/weirdness.json');
-	const wrdJSON = await wrdRes.json();
-
-	const atkRes = await fetch('/static/json/attack.json');
-	const atkJSON = await atkRes.json();
-		
-	const defRes = await fetch('/static/json/defense.json');
-	const defJSON = await defRes.json();
-
-	const icnRes = await fetch('/static/json/icon.json');
-	const icnJSON = await icnRes.json();
-
-	ReactDOM.render(
-		<Root levels={lvlJSON} warps={wrpJSON} weirdness={wrdJSON}
-			atkSpells={atkJSON} defSpells={defJSON} icnSpells={icnJSON} />,
-		document.getElementById('react_app'));
-})(); 
+ReactDOM.render(<Root />, document.getElementById('react_app'));
