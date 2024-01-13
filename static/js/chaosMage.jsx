@@ -68,7 +68,7 @@ function Root(props) {
 
 	return (
 		<div className="container-fluid">
-			<h1>Chaos Mage Spell App</h1>
+			<h2 className="text-center">Chaos Mage Spell App</h2>
 		</div>
 	);
 }
