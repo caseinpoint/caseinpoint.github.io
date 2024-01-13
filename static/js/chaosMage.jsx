@@ -46,28 +46,22 @@ function Root(props) {
 	React.useEffect(() => {
 		setCategories(getCategoryArray());
 
-		fetch('/static/json/levelProgression.json')
-			.then((response) => response.json())
+		fetch('/static/json/lvlProg.json').then((response) => response.json())
 			.then((lvlJSON) => setLvlProg(lvlJSON));
 
-		fetch('/static/json/warps.json')
-			.then((response) => response.json())
+		fetch('/static/json/warps.json').then((response) => response.json())
 			.then((wrpJSON) => setWarps(wrpJSON));
 
-		fetch('/static/json/weirdness.json')
-			.then((response) => response.json())
+		fetch('/static/json/weirdness.json').then((response) => response.json())
 			.then((wrdJSON) => setWeirdness(wrdJSON));
 
-		fetch('/static/json/attack.json')
-			.then((response) => response.json())
+		fetch('/static/json/attack.json').then((response) => response.json())
 			.then((atkJSON) => setAtkSpells(atkJSON));
 		
-		fetch('/static/json/defense.json')
-			.then((response) => response.json())
+		fetch('/static/json/defense.json').then((response) => response.json())
 			.then((defJSON) => setDefSpells(defJSON));
 
-		fetch('/static/json/icon.json')
-			.then((response) => response.json())
+		fetch('/static/json/icon.json').then((response) => response.json())
 			.then((icnJSON) => setIcnSpells(icnJSON));
 
 	}, []);
