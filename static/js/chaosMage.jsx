@@ -32,8 +32,12 @@ function Root(props) {
 	/* Root React component */
 
 	// state
-	// const [options, setOptions] = React.useState({});
 	const [categories, setCategories] = React.useState([]);
+	const [options, setOptions] = React.useState({});
+	// state from JSON
+	const [lvlProg, setLvlProg] = React.useState({});
+	const [warps, setWarps] = React.useState({});
+	const [weirdness, setWeirdness] = React.useState({});
 	const [atkSpells, setAtkSpells] = React.useState([]);
 	const [defSpells, setDefSpells] = React.useState([]);
 	const [icnSpells, setIcnSpells] = React.useState([]);
@@ -41,6 +45,18 @@ function Root(props) {
 	// on load
 	React.useEffect(() => {
 		setCategories(getCategoryArray());
+
+		fetch('/static/json/levelProgression.json')
+			.then((response) => response.json())
+			.then((lvlJSON) => setLvlProg(lvlJSON));
+
+		fetch('/static/json/warps.json')
+			.then((response) => response.json())
+			.then((wrpJSON) => setWarps(wrpJSON));
+
+		fetch('/static/json/weirdness.json')
+			.then((response) => response.json())
+			.then((wrdJSON) => setWeirdness(wrdJSON));
 
 		fetch('/static/json/attack.json')
 			.then((response) => response.json())
