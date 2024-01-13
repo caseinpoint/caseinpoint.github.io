@@ -1,3 +1,5 @@
+'use strict';
+
 function getCategoryArray() {
 	/* Get a new, shuffled array of spell categories */
 
@@ -29,9 +31,34 @@ function OptionsMenu(props) {
 function Root(props) {
 	/* Root React component */
 
+	// state
+	// const [options, setOptions] = React.useState({});
+	const [categories, setCategories] = React.useState([]);
+	const [atkSpells, setAtkSpells] = React.useState([]);
+	const [defSpells, setDefSpells] = React.useState([]);
+	const [icnSpells, setIcnSpells] = React.useState([]);
+
+	// on load
+	React.useEffect(() => {
+		setCategories(getCategoryArray());
+
+		fetch('/static/json/attack.json')
+			.then((response) => response.json())
+			.then((atkJSON) => setAtkSpells(atkJSON));
+		
+		fetch('/static/json/defense.json')
+			.then((response) => response.json())
+			.then((defJSON) => setDefSpells(defJSON));
+
+		fetch('/static/json/icon.json')
+			.then((response) => response.json())
+			.then((icnJSON) => setIcnSpells(icnJSON));
+
+	}, []);
+
 	return (
 		<div className="container-fluid">
-			<h1>Testing</h1>
+			<h1>Chaos Mage Spell App</h1>
 		</div>
 	);
 }
