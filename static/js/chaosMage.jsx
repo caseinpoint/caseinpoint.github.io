@@ -1,5 +1,17 @@
 'use strict';
 
+const ICONS = ['Archmage', 'Crusader', 'Diabolist', 'Dwarf King', 'Elf Queen',
+	'Great Gold Wyrm', 'High Druid', 'Lich King', 'Orc Lord', 'Priestess',
+	'Prince of Shadows', 'The Three'];
+function getIcon() {
+	/* Get a random Icon from the array */
+
+	const rIdx = Math.floor(Math.random() * ICONS.length);
+
+	return ICONS[rIdx];
+}
+
+
 function getCategoryArray() {
 	/* Get a new, shuffled array of spell categories */
 
@@ -15,6 +27,7 @@ function getCategoryArray() {
 	return categories;
 }
 
+
 function SpellsTracker(props) {
 	/* React compmponent: Track daily/per battle spells for character level */
 
@@ -27,6 +40,22 @@ function OptionsMenu(props) {
 
 	// useEffect to load previous selections form localStorage
 }
+
+
+function WandW(props) {
+	/* React component: Display Warps and High Weirdness */
+}
+
+
+function SpellDetail(props) {
+	/* React component: Display all the details for a spell */
+}
+
+
+function SpellsContainer(props) {
+	/* React component: Display all SpellDetails that are currently available */
+}
+
 
 function Root(props) {
 	/* Root React component */
@@ -42,7 +71,7 @@ function Root(props) {
 	const [defSpells, setDefSpells] = React.useState([]);
 	const [icnSpells, setIcnSpells] = React.useState([]);
 
-	// on load
+	// on load, set initial categories and get JSON data from /static
 	React.useEffect(() => {
 		setCategories(getCategoryArray());
 
@@ -72,5 +101,6 @@ function Root(props) {
 		</div>
 	);
 }
+
 
 ReactDOM.render(<Root />, document.getElementById('react_app'));
