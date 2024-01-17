@@ -32,12 +32,7 @@ function getCategoryArray() {
 function OptionsMenu(props) {
 	/* React component: Select character talents and feats */
 
-	// TODO: useEffect to load previous selections form localStorage
-
 	function handleLvlSelect(evt) {
-		// TODO: update Root options
-		// TODO: save to localStorage
-
 		const newOpts = {...props.options};
 		const lvl = Number(evt.target.value);
 		newOpts.charLvl = lvl;
@@ -233,6 +228,8 @@ function SpellsTracker(props) {
 
 function SpellDetail(props) {
 	/* React component: Display all the details for a spell */
+
+	// TODO: highlight any selected feats in props.options
 }
 
 
@@ -255,23 +252,33 @@ function Root(props) {
 	const [icnSpells, setIcnSpells] = React.useState([]);
 
 	function updateOptions(newOpts) {
+		/* Update state and save to localStorage */
+
 		setOptions(newOpts)
 
-		// TODO: save to localStorage
+		const optStr = JSON.stringify(newOpts);
+		localStorage.setItem('options', optStr);
 	}
 
 	function fetchOptions() {
-		// TODO: check if options are saved to localStorage, if not fetch them
-		// from /static
+		/* Get options from localStorage or fetch from /static */
+
+		const optStr = localStorage.getItem('options');
+
+		if (optStr !== null) {
+			const oldOpts = JSON.parse(optStr);
+			setOptions(oldOpts);
+		} else {
+			fetch('/static/json/options.json').then((response) => response.json())
+				.then((optJSON) => setOptions(optJSON));
+		}
 	}
 
 	// on load, set initial categories and get JSON data from /static
 	React.useEffect(() => {
 		setCategories(getCategoryArray());
 
-		fetch('/static/json/options.json').then((response) => response.json())
-			.then((optJSON) => setOptions(optJSON));
-		// call fetchOptions when that's done, instead
+		fetchOptions();
 
 		fetch('/static/json/talents.json').then((response) => response.json())
 			.then((tltJSON) => setTalents(tltJSON));
