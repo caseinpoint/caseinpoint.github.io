@@ -49,11 +49,38 @@
 	"casterTalents": {
 		"necromancer": {
 			"name": "Stench of Necromancy",
-			"desc": "You gain a random spell from the necromancer class. Whenever you take a full heal-up, randomly choose a necromancer spell of the highest level you can cast. For the rest of the day, you know this necromancer spell and can cast it according to its normal usage pattern—at-will, once per battle, recharge, or daily—when that option comes up during your chaos mage spellcasting sequence.\nIf the necromancer spell refers to Intelligence, you can replace that ability score with references to Charisma.",
+			"desc": "You gain a random spell from the necromancer class. Whenever you take a full heal-up, randomly choose a necromancer spell of the highest level you can cast. For the rest of the day, you know this necromancer spell and can cast it according to its normal usage pattern — at-will, once per battle, recharge, or daily — when that option comes up during your chaos mage spellcasting sequence.\nIf the necromancer spell refers to Intelligence, you can replace that ability score with references to Charisma.",
 			"feats": {
 				"adv": "One battle per day, you can gain the Cackling Soliloquist talent from the necromancer class; see page 82.",
 				"chmp": "While you have an earth or metal warp effect active, when an enemy in the battle drops to 0 hp, you gain temporary hit points equal to your Charisma modifier (double your Charisma modifier at 5th level; triple it at 8th level).",
 				"epic": "If you don't like the first random necromancer spell you select for the day, you can determine another random necromancer spell. You're stuck with the second one."
+			}
+		},
+		"wizard": {
+			"name": "Touch of Wizardry",
+			"desc": "You gain a random spell from the wizard class. Whenever you take a full heal-up, randomly choose a wizard spell of the highest level you can cast. For the rest of the day, you know this wizard spell and can cast it according to its normal usage pattern — at- will, cyclic, once per battle, recharge, or daily — when that option comes up during your chaos mage spellcasting sequence.\nIf the wizard spell refers to Intelligence, you can replace that ability score with references to Charisma.",
+			"feats": {
+				"adv": "You gain a random wizard talent at the start of each day. Roll a d3. 1: Abjuration; 2: Evocation; 3: High Arcana (counter magic). Replace references to “wizard” in these talents with “chaos mage” and Intelligence with Charisma.",
+				"chmp": "You gain a single daily use of the wizard's utility spell (13th Age core rulebook, page 150), cast at your level or lower.",
+				"epic": "If you don't like the first random wizard spell you select for the day, you can determine another random wizard spell. You're stuck with the second one."
+			}
+		},
+		"cleric": {
+			"name": "Trace of the Divine",
+			"desc": "You gain a random spell from the cleric class. Whenever you take a full heal-up, randomly choose a cleric spell of the highest level you can cast. For the rest of the day, you know this cleric spell and can cast it according to its normal usage pattern — at-will, once per battle, recharge, or daily — when that option comes up during your chaos mage spellcasting sequence.\nIf the cleric spell refers to Wisdom, you can replace that ability score with references to Charisma.",
+			"feats": {
+				"adv": "At the start of the day, choose a random invocation from the cleric invocations on pages 95-97 of the 13th Age core rulebook. (Leave the healing domain out as a choice since it only affects a cleric class feature.) You can use that invocation as if you were a cleric once this day as a quick action. (If we publish other invocations later? Sure, add them to the possibilities.)",
+				"chmp": "While you have an air or water warp effect active, when you heal using a recovery or cast a spell that lets an ally heal using a recovery, add an extra recovery die to the healing.",
+				"epic": "In addition to the random invocation you gain at the start of the day, you also get the talent/domain powers that go with it."
+			}
+		},
+		"sorcerer": {
+			"name": "Whiff of Sorcery",
+			"desc": "You gain a random spell from the sorcerer class. Whenever you take a full heal-up, randomly choose a sorcerer spell of the highest level you can cast. For the rest of the day, you know this sorcerer spell and can cast it according to its normal usage pattern — at-will, once per battle, recharge, or daily — when that option comes up during your chaos mage spellcasting sequence.",
+			"feats": {
+				"adv": "Twice per day, you can gather power as if you were a sorcerer in order to deal double damage with either a sorcerer spell or a chaos mage spell the next time you cast a spell. You also gain the chaotic benefit for gathering power. (Note that you should have already determined the type of spell you will be casting, since you select a spell type when you roll initiative and at the end of each turn, so you're generally better off waiting to gather power when you know you have an attack or iconic spell coming.)",
+				"chmp": "While you have an air or fire warp effect active, add fire damage equal to your Charisma modifier to your miss damage (double your Charisma modifier at 5th level; triple it at 8th level).",
+				"epic": "If you don't like the first random sorcerer spell you select for the day, you can determine another random sorcerer spell. You're stuck with the second one."
 			}
 		}
 	}
