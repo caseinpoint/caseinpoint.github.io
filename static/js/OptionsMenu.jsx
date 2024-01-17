@@ -12,12 +12,12 @@ function OptionsMenu(props) {
 		const check = evt.target;
 		const category = check.dataset.optCategory;
 		const subcategory = check.dataset.optSubcategory;
-		console.log(category, subcategory, check.value);
 
 		const newOpts = {...props.options};
-		console.log(newOpts);
 
-		if (check.value === 'hasTalent' || category === 'spellFeats') {
+		if (category === 'weirdnessFeats') {
+			newOpts[category][check.value] = check.checked;
+		} else if (check.value === 'hasTalent' || category === 'spellFeats') {
 			newOpts[category][subcategory][check.value] = check.checked;
 		} else if (['adv', 'chmp', 'epic'].includes(check.value)) {
 			newOpts[category][subcategory].feats[check.value] = check.checked;
@@ -33,6 +33,28 @@ function OptionsMenu(props) {
 
 	const featTiers = [['adv', 'Adventurer'], ['chmp', 'Champion'],
 					['epic', 'Epic']];
+
+	let weirdFeats;
+	if (props.options.weirdnessFeats) {
+		weirdFeats = featTiers.map((item) => {
+			const [ tier, tierName ] = item;
+
+			return (
+				<div key={`weirdFeat_${tier}`}
+					className="form-check form-check-inline form-switch">
+					<input id={`weirdFeat_${tier}`} className="form-check-input"
+						type="checkbox" value={tier} data-opt-category="weirdnessFeats"
+						data-opt-subcategory="null"
+						checked={props.options.weirdnessFeats[tier]}
+						onChange={handleCheck} />
+					<label for={`weirdFeat_${tier}`}
+						className="form-check-label">
+						{tierName}
+					</label>
+				</div>
+			);
+		});
+	}
 
 	let warpTalents;
 	if (props.talents.warpTalents) {
@@ -161,6 +183,9 @@ function OptionsMenu(props) {
 					onChange={handleLvlSelect}>
 					{levelOpts}
 				</select>
+
+				<h4 className="text-center mt-4 border-top">High Weirdness Feats</h4>
+				{weirdFeats}
 			</div>
 
 			<div className="col-12 col-md-6 col-xl-3 py-1 border border-2 rounded">

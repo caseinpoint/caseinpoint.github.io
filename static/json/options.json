@@ -86,5 +86,10 @@
       "chmp": false,
       "epic": false
     }
+  },
+  "weirdnessFeats": {
+    "adv": false,
+    "chmp": false,
+    "epic": false
   }
 }
