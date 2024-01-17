@@ -1,68 +1,66 @@
 {
   "charLvl": 1,
-  "talents": {
-    "warps": {
-      "atk": {
-        "hasTalent": false,
-        "feats": {
-          "adv": false,
-          "chmp": false,
-          "epic": false
-        }
-      },
-      "def": {
-        "hasTalent": false,
-        "feats": {
-          "adv": false,
-          "chmp": false,
-          "epic": false
-        }
-      },
-      "icn": {
-        "hasTalent": false,
-        "feats": {
-          "adv": false,
-          "chmp": false,
-          "epic": false
-        }
+  "warpTalents": {
+    "atk": {
+      "hasTalent": false,
+      "feats": {
+        "adv": false,
+        "chmp": false,
+        "epic": false
       }
     },
-    "casters": {
-      "necromancer": {
-        "hasTalent": false,
-        "feats": {
-          "adv": false,
-          "chmp": false,
-          "epic": false
-        }
-      },
-      "wizard": {
-        "hasTalent": false,
-        "feats": {
-          "adv": false,
-          "chmp": false,
-          "epic": false
-        }
-      },
-      "cleric": {
-        "hasTalent": false,
-        "feats": {
-          "adv": false,
-          "chmp": false,
-          "epic": false
-        }
-      },
-      "sorcerer": {
-        "hasTalent": false,
-        "feats": {
-          "adv": false,
-          "chmp": false,
-          "epic": false
-        }
+    "def": {
+      "hasTalent": false,
+      "feats": {
+        "adv": false,
+        "chmp": false,
+        "epic": false
+      }
+    },
+    "icn": {
+      "hasTalent": false,
+      "feats": {
+        "adv": false,
+        "chmp": false,
+        "epic": false
       }
     }
   },
-  "feats": {
+  "casterTalents": {
+    "necromancer": {
+      "hasTalent": false,
+      "feats": {
+        "adv": false,
+        "chmp": false,
+        "epic": false
+      }
+    },
+    "wizard": {
+      "hasTalent": false,
+      "feats": {
+        "adv": false,
+        "chmp": false,
+        "epic": false
+      }
+    },
+    "cleric": {
+      "hasTalent": false,
+      "feats": {
+        "adv": false,
+        "chmp": false,
+        "epic": false
+      }
+    },
+    "sorcerer": {
+      "hasTalent": false,
+      "feats": {
+        "adv": false,
+        "chmp": false,
+        "epic": false
+      }
+    }
+  },
+  "spellFeats": {
     "Force Tentacle": {
       "adv": false,
       "chmp": false,
