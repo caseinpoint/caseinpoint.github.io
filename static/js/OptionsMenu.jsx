@@ -173,10 +173,11 @@ function OptionsMenu(props) {
 
 	// render
 	return (
-		<div className="row py-1 border-top border-3">
+		<div className="row py-1 border-top border-3 border-primary">
 			<h3 className="text-center">Character Options</h3>
 
-			<div className="col-12 col-md-6 col-xl-3 py-1 border border-2 rounded">
+			<div className="col-12 col-md-6 col-xl-3 py-1 border border-2
+				border-info rounded">
 				<h4 className="text-center">Character Level</h4>
 				<select className="form-control" value={props.options.charLvl}
 					data-opt-category="charLvl" data-opt-subcategory={false}
@@ -184,21 +185,28 @@ function OptionsMenu(props) {
 					{levelOpts}
 				</select>
 
-				<h4 className="text-center mt-4 border-top">High Weirdness Feats</h4>
-				{weirdFeats}
+				<div className="mt-4 py-1 border-top border-2 border-info">
+					<h4 className="text-center">
+						High Weirdness Feats
+					</h4>
+					{weirdFeats}
+				</div>
 			</div>
 
-			<div className="col-12 col-md-6 col-xl-3 py-1 border border-2 rounded">
+			<div className="col-12 col-md-6 col-xl-3 py-1 border border-2
+				border-info rounded">
 				<h4 className="text-center">Warp Talents</h4>
 				{warpTalents}
 			</div>
 
-			<div className="col-12 col-md-6 col-xl-3 py-1 border border-2 rounded">
+			<div className="col-12 col-md-6 col-xl-3 py-1 border border-2
+				border-info rounded">
 				<h4 className="text-center">Spellcaster Class Talents</h4>
 				{casterTalents}
 			</div>
 
-			<div className="col-12 col-md-6 col-xl-3 py-1 border border-2 rounded">
+			<div className="col-12 col-md-6 col-xl-3 py-1 border border-2
+				border-info rounded">
 				<h4 className="text-center">Spell Feats</h4>
 				{spellFeats}
 			</div>
