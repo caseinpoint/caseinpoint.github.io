@@ -11,8 +11,8 @@
 				"effect": "The target takes 4 force damage",
 				"advancement": "3rd level spell ✧ 7 damage.\n5th level spell ✧ 10 damage.\n7th level spell ✧ 14 damage.\n9th level spell ✧ 27 damage.",
 				"feats": {
-					"adventurer": "This spell now targets 1d4 nearby or far away enemies.",
-					"champion": "This spell now targets 1d6 nearby or far away enemies.",
+					"adv": "This spell now targets 1d4 nearby or far away enemies.",
+					"chmp": "This spell now targets 1d6 nearby or far away enemies.",
 					"epic": "This spell now targets a number of nearby or far away enemies equal to the escalation die."
 				}
 			},
@@ -41,8 +41,8 @@
 				"miss": "Damage equal to your level.",
 				"advancement": "3rd level spell ✧ 3d6 damage.\n5th level spell ✧ 5d6 damage.\n7th level spell ✧ 5d8 damage.\n9th level spell ✧ 6d10 damage.",
 				"feats": {
-					"adventurer": "When you hit a demon with this spell, it's also hampered (save ends).",
-					"champion": "The damage dice for the spell increase by one size (for example, d6s to d8s).",
+					"adv": "When you hit a demon with this spell, it's also hampered (save ends).",
+					"chmp": "The damage dice for the spell increase by one size (for example, d6s to d8s).",
 					"epic": "The spell now deals half damage on a miss."
 				}
 			},
@@ -70,8 +70,8 @@
 				"miss": "Damage equal to your level.",
 				"advancement": "3rd level spell ✧ 6d6 damage ✧ You or ally loses 2d6 hit points.\n5th level spell ✧ 6d10 damage ✧ you or ally loses 4d6 hit points.\n7th level spell ✧ 10d10 damage ✧ you or ally loses 6d6 hit points.\n9th level spell ✧ 2d8 x 10 damage ✧ you or ally loses 8d6 hit points.",
 				"feats": {
-					"adventurer": "The spell now deals half damage on a miss.",
-					"champion": "You or an ally now lose one less die of hit points (for example, 3d6 instead of 4d6).",
+					"adv": "The spell now deals half damage on a miss.",
+					"chmp": "You or an ally now lose one less die of hit points (for example, 3d6 instead of 4d6).",
 					"epic": "The first time each battle you miss with this spell, if the escalation die is 3+, you can reroll the attack by having you or your ally lose the same amount of hit points again."
 				}
 			},
@@ -96,8 +96,8 @@
 				"target": "You or one ally in the battle, chosen randomly",
 				"effect": "Roll a d20.\n1-10: The target can heal using a recovery.\n11-20: The target can make a basic attack as a free action.",
 				"feats": {
-					"adventurer": "When this spell allows a target to attack, the attack deals half damage on a miss instead of normal miss damage.",
-					"champion": "The target can move as a free action before using a recovery or attacking.",
+					"adv": "When this spell allows a target to attack, the attack deals half damage on a miss instead of normal miss damage.",
+					"chmp": "The target can move as a free action before using a recovery or attacking.",
 					"epic": "When the target heals using a recovery, it adds hit points equal to 1d10 x the escalation die to that healing."
 				}
 			},
@@ -125,8 +125,8 @@
 				"miss": "Natural Even Miss: You can teleport to a nearby location you can see as a free action.",
 				"advancement": "3rd level spell ✧ Even hit: 3d6 damage ✧ Odd hit: 10 ongoing damage.\n5th level spell ✧ Even hit: 5d6 damage ✧ Odd hit: 18 ongoing damage.\n7th level spell ✧ Even hit: 5d8 damage ✧ Odd hit: 28 ongoing damage.\n9th level spell ✧ Even hit: 7d10 damage ✧ Odd hit: 40 ongoing damage.",
 				"feats": {
-					"adventurer": "A natural odd miss now deals damage equal to your level.",
-					"champion": "A natural odd miss now deals half the force damage an even hit would have dealt.",
+					"adv": "A natural odd miss now deals damage equal to your level.",
+					"chmp": "A natural odd miss now deals half the force damage an even hit would have dealt.",
 					"epic": "A natural even miss now allows you to teleport to a far away location you can see as a free action."
 				}
 			},
@@ -139,7 +139,7 @@
 				"attack": "Charisma + Level vs. MD",
 				"hit": "The target is confused until the end of its next turn.",
 				"feats": {
-					"champion": "Once per battle when a staggered enemy misses you with an attack while this spell's effect is active, you can make the attack against that enemy.",
+					"chmp": "Once per battle when a staggered enemy misses you with an attack while this spell's effect is active, you can make the attack against that enemy.",
 					"epic": "When you make a natural even roll with a coronation attack, you can have the target become confused (save ends) instead of taking damage."
 				}
 			}
@@ -159,8 +159,8 @@
 				"miss": "Damage equal to your level.",
 				"advancement": "3rd level spell ✧ 3d8 damage.\n5th level spell ✧ 5d8 damage.\n7th level spell ✧ 7d8 damage.\n9th level spell ✧ 9d8 damage.",
 				"feats": {
-					"adventurer": "This spell can now deal holy damage instead of fire damage.",
-					"champion": "The damage dice for this spell increase from d8s to d10s.",
+					"adv": "This spell can now deal holy damage instead of fire damage.",
+					"chmp": "The damage dice for this spell increase from d8s to d10s.",
 					"epic": "This spell now deals half damage on a miss."
 				}
 			},
@@ -175,7 +175,7 @@
 				"miss": "Damage equal to your level.",
 				"advancement": "7th level spell ✧ 9d10 damage.\n9th level spell ✧ 2d6 x 10 damage.",
 				"feats": {
-					"champion": "This spell now deals half damage on a miss.",
+					"chmp": "This spell now deals half damage on a miss.",
 					"epic": "This spell now targets 2d3 enemies in a group."
 				}
 			}
@@ -194,8 +194,8 @@
 				"hit": "1d4 + Charisma lightning damage, and a different random nearby enemy takes the same amount of thunder damage.",
 				"advancement": "3rd level spell ✧ 2d6 damage.\n5th level spell ✧ 3d6 damage.\n7th level spell ✧ 5d6 damage.\n9th level spell ✧ 5d8 damage.",
 				"feats": {
-					"adventurer": "This spell now deals damage equal to your level on a miss.",
-					"champion": "The damage dice for this spell increase by one size (for example, from 3d6 to 3d8).",
+					"adv": "This spell now deals damage equal to your level on a miss.",
+					"chmp": "The damage dice for this spell increase by one size (for example, from 3d6 to 3d8).",
 					"epic": "This spell now deals half damage on a miss."
 				}
 			},
@@ -223,8 +223,8 @@
 				"miss": "Damage equal to your level.",
 				"advancement": "3rd level spell ✧ 3d10 damage 8 temporary hit points.\n5th level spell ✧ 5d10 damage 10 temporary hit points.\n7th level spell ✧ 7d10 damage 15 temporary hit points.\n9th level spell ✧ 9d10 damage 25 temporary hit points.",
 				"feats": {
-					"adventurer": "This spell now deals half damage on a miss.",
-					"champion": "When the target drops to 0 hp, instead of gaining temporary hit points, you can choose to deal that amount of negative energy damage to one nearby enemy as a free action.",
+					"adv": "This spell now deals half damage on a miss.",
+					"chmp": "When the target drops to 0 hp, instead of gaining temporary hit points, you can choose to deal that amount of negative energy damage to one nearby enemy as a free action.",
 					"epic": "This spell can now target a nearby enemy."
 				}
 			},
@@ -239,7 +239,7 @@
 				"miss": "7d10 + Charisma psychic damage.",
 				"advancement": "9th level spell ✧ 8d10 + Charisma psychic damage on a miss.",
 				"feats": {
-					"champion": "This spell can now also target an entire mob of mooks. If the attack hits, replace them with a mob of undead mooks that is one level lower.",
+					"chmp": "This spell can now also target an entire mob of mooks. If the attack hits, replace them with a mob of undead mooks that is one level lower.",
 					"epic": "You don't expend the spell when you miss with it."
 				}
 			}
@@ -256,8 +256,8 @@
 				"effect": "The next natural odd attack roll you or one of your allies makes this battle that hits an enemy deals 13 extra damage.",
 				"advancement": "3rd level spell ✧ 23 extra damage.\n5th level spell ✧ 33 extra damage.\n7th level spell ✧ 53 extra damage.\n9th level spell ✧ 83 extra damage.",
 				"feats": {
-					"adventurer": "Add your Charisma modifier to the extra damage (double your Charisma modifier at 5 th level; triple it at 8 th level).",
-					"champion": "When you cast this spell, each nearby enemy that's staggered also takes 2d6 thunder damage (4d6 thunder damage at 8 th level).",
+					"adv": "Add your Charisma modifier to the extra damage (double your Charisma modifier at 5 th level; triple it at 8 th level).",
+					"chmp": "When you cast this spell, each nearby enemy that's staggered also takes 2d6 thunder damage (4d6 thunder damage at 8 th level).",
 					"epic": "When this spell's effect deals the extra damage, you can roll a hard save (16+). If you succeed, the war drums keep beating and the effect extends to the next natural odd hit this battle! (And so on if you keep succeeding.)"
 				}
 			},
@@ -270,8 +270,8 @@
 				"effect": "Each target takes 5d6 + Charisma damage.",
 				"advancement": "5th level spell ✧ 5d8 damage.\n7th level spell ✧ 7d10 damage.\n9th level spell ✧ 10d10 damage.",
 				"feats": {
-					"adventurer": "The spell no longer targets your allies.",
-					"champion": "The spell's damage dice increase by one size (for example, d10s to d12s).",
+					"adv": "The spell no longer targets your allies.",
+					"chmp": "The spell's damage dice increase by one size (for example, d10s to d12s).",
 					"epic": "When you drop one or more non-mook creatures to 0 hp with this spell, you can heal using a free recovery."
 				}
 			}
@@ -291,8 +291,8 @@
 				"miss": "Damage equal to your level.",
 				"advancement": "3rd level spell ✧ 3d8 damage ✧ 5 temporary hit points.\n5th level spell ✧ 5d8 damage ✧ 8 temporary hit points.\n7th level spell ✧ 7d8 damage ✧ 10 temporary hit points.\n9th level spell ✧ 9d8 damage ✧ 15 temporary hit points.",
 				"feats": {
-					"adventurer": "When you miss with the spell, one of your nearby allies now gains the temporary hit points.",
-					"champion": "This spell now deals half damage on a miss.",
+					"adv": "When you miss with the spell, one of your nearby allies now gains the temporary hit points.",
+					"chmp": "This spell now deals half damage on a miss.",
 					"epic": "You can now target a far away enemy with this spell. In addition, the spell's damage dice increase by one size from d8s to d10s."
 				}
 			},
@@ -305,8 +305,8 @@
 				"effect": "The target can heal using a recovery.",
 				"advancement": "3rd level spell ✧ Target with 20 hp or fewer.\n5th level spell ✧ Target with 40 hp or fewer.\n7th level spell ✧ Target with 60 hp or fewer.\n9th level spell ✧ Target with 100 hp or fewer.",
 				"feats": {
-					"adventurer": "One target that heals can also roll a save against a save ends effect.",
-					"champion": "The recovery is now free.",
+					"adv": "One target that heals can also roll a save against a save ends effect.",
+					"chmp": "The recovery is now free.",
 					"epic": "Add 50 hp to the hit point threshold for targets that can be affected."
 				}
 			}
@@ -324,8 +324,8 @@
 				"effect": "The targets teleport and swap places. Each teleported enemy takes 1d6 damage. You and your allies don't take damage from teleporting.",
 				"advancement": "3rd level spell ✧ 2d6 damage.\n5th level spell ✧ 2d10 damage.\n7th level spell ✧ 3d12 damage.\n9 th level spell ✧ 4d12 damage.",
 				"feats": {
-					"adventurer": "Once per day, one or more targets of the spell can be far away.",
-					"champion": "The damage increases by one die (for example, 2d10 becomes 3d10).",
+					"adv": "Once per day, one or more targets of the spell can be far away.",
+					"chmp": "The damage increases by one die (for example, 2d10 becomes 3d10).",
 					"epic": "The spell can now target up to three nearby creatures."
 				}
 			},
@@ -336,7 +336,7 @@
 				"frequency": "Once per battle",
 				"effect": "Remove yourself from the battle (you can't be targeted by attacks or effects while in the shadows). At the start of your next turn, return to the battle nearby your previous locationand roll a d6 to determine a random benefit you gain from coming out of the shadows.\n1-4: You can heal using a recovery.\n5+: You deal double damage to the first target you hit with a chaos mage spell this turn.",
 				"feats": {
-					"champion": "You can choose to add +1 to the d6 roll after seeing it.",
+					"chmp": "You can choose to add +1 to the d6 roll after seeing it.",
 					"epic": "If you roll 6+, you gain both effects."
 				}
 			}
@@ -356,8 +356,8 @@
 				"miss": "Natural Even Miss: 3 ongoing acid damage.",
 				"advancement": "3rd level spell ✧ 3d6 damage ✧ 6 ongoing damage.\n5th level spell ✧ 5d6 damage ✧ 9 ongoing damage.\n7th level spell ✧ 7d8 damage ✧ 12 ongoing damage.\n9th level spell ✧ 9d8 damage ✧ 18 ongoing damage.",
 				"feats": {
-					"adventurer": "This spell can now target far away enemies.",
-					"champion": "A natural odd miss now deals half natural even hit damage.",
+					"adv": "This spell can now target far away enemies.",
+					"chmp": "A natural odd miss now deals half natural even hit damage.",
 					"epic": "The first save against the ongoing damage from a natural even miss is a hard save (16+). The second and subsequent saves are normal."
 				}
 			},

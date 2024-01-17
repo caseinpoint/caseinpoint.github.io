@@ -1,36 +1,39 @@
 {
 	"warpTalents": {
-		"attack": {
+		"atk": {
+			"name": "Attacking Warp",
 			"options": [
 				"Air: You gain flight until the end of your next turn.",
 				"Earth: Until the end of your next turn, each enemy that misses you with a melee attack is stuck until the end of its next turn.",
 				"Fire: Until the end of your next turn, you can pop free from staggered enemies as a quick action.",
 				"Water: You gain a bonus to disengage checks until the end of your next turn equal to your Dexterity modifier.",
-				"Metal: Until the end of your next turn, when an enemy disengages from you, it takes damage equal to your Dexterity modifier (double your Dexterity modifier at 5 th level; triple it at 8 th level).",
+				"Metal: Until the end of your next turn, when an enemy disengages from you, it takes damage equal to your Dexterity modifier (double your Dexterity modifier at 5th level; triple it at 8th level).",
 				"Void: During your next turn, you can use a move action to teleport to a nearby location you can see."
 			],
 			"feats": {
-				"adventurer": "When you roll a successful disengage check, you gain temporary hit points equal to your Dexterity modifier (double your Dexterity modifier at 5 th level; triple it at 8 th level).",
-				"champion": "While you are flying due to any effect, you gain a bonus to disengage checks equal to your Dexterity modifier.",
+				"adv": "When you roll a successful disengage check, you gain temporary hit points equal to your Dexterity modifier (double your Dexterity modifier at 5th level; triple it at 8th level).",
+				"chmp": "While you are flying due to any effect, you gain a bonus to disengage checks equal to your Dexterity modifier.",
 				"epic": "When one of your spells or powers lets you teleport to a nearby location, you can instead teleport to a far away location you can see."
 			}
 		},
-		"defense": {
+		"def": {
+			"name": "Defensive Warp",
 			"options": [
 				"Air: Once before the end of your next turn, you can heal using a recovery as a quick action.",
-				"Earth: You gain temporary hit points equal to your Wisdom modifier (double your Wisdom modifier at 5 th level; triple it at 8 th level).",
-				"Fire: Until the end of your next turn, when an enemy moves to engage you, it takes fire damage equal to your Wisdom modifier (double your Wisdom modifier at 5 th level; triple it at 8 th level).",
-				"Water: Until the end of your next turn, when you heal using a recovery, add hit points equal to your Wisdom modifier to that healing (double your Wisdom modifier at 5 th level; triple it at 8 th level).",
+				"Earth: You gain temporary hit points equal to your Wisdom modifier (double your Wisdom modifier at 5th level; triple it at 8th level).",
+				"Fire: Until the end of your next turn, when an enemy moves to engage you, it takes fire damage equal to your Wisdom modifier (double your Wisdom modifier at 5th level; triple it at 8th level).",
+				"Water: Until the end of your next turn, when you heal using a recovery, add hit points equal to your Wisdom modifier to that healing (double your Wisdom modifier at 5th level; triple it at 8th level).",
 				"Metal: Until the end of your next turn, you gain a +2 bonus to AC.",
 				"Void: Until the end of your next turn, the first time an attack hits you, as a free action you can choose to lose hit points equal to your level to force the attacker to reroll the attack."
 			],
 			"feats": {
-				"adventurer": "When you heal using a recovery, add hit points equal to the escalation die to that healing.",
-				"champion": "While you are at maximum hit points, you gain a +1 bonus to all defenses.",
+				"adv": "When you heal using a recovery, add hit points equal to the escalation die to that healing.",
+				"chmp": "While you are at maximum hit points, you gain a +1 bonus to all defenses.",
 				"epic": "When an attacker rerolls an attack against you, it takes an attack penalty equal to your Wisdom modifier."
 			}
 		},
-		"icon": {
+		"icn": {
+			"name": "Iconic Warp",
 			"options": [
 				"Air: Randomly determine two icon associations for the spell you'll cast instead of one. Choose one of those associations to use for that spell.",
 				"Earth: Until the end of your next turn, you gain a bonus to PD and MD equal to your Intelligence modifier.",
@@ -40,8 +43,8 @@
 				"Void: Until the end of your next turn, when you cast a daily iconic spell, roll a hard save (16+). If you succeed, you don't expend that use of a daily spell slot, but you still can't cast that specific daily iconic spell again until you take a full heal-up."
 			],
 			"feats": {
-				"adventurer": "Once per battle when you roll for an iconic warp effect, roll the d6 twice and choose the result you want.",
-				"champion": "When you roll a natural 18-20 on a save, a nearby ally of your choice can roll a save against a save ends effect.",
+				"adv": "Once per battle when you roll for an iconic warp effect, roll the d6 twice and choose the result you want.",
+				"chmp": "When you roll a natural 18-20 on a save, a nearby ally of your choice can roll a save against a save ends effect.",
 				"epic": "When you roll a natural 20 with an attack, the critical hit range of your attacks expands by 2 until the end of the battle (cumulative)."
 			}
 		}
@@ -51,8 +54,8 @@
 			"name": "Stench of Necromancy",
 			"desc": "You gain a random spell from the necromancer class. Whenever you take a full heal-up, randomly choose a necromancer spell of the highest level you can cast. For the rest of the day, you know this necromancer spell and can cast it according to its normal usage pattern — at-will, once per battle, recharge, or daily — when that option comes up during your chaos mage spellcasting sequence.\nIf the necromancer spell refers to Intelligence, you can replace that ability score with references to Charisma.",
 			"feats": {
-				"adventurer": "One battle per day, you can gain the Cackling Soliloquist talent from the necromancer class; see page 82.",
-				"champion": "While you have an earth or metal warp effect active, when an enemy in the battle drops to 0 hp, you gain temporary hit points equal to your Charisma modifier (double your Charisma modifier at 5th level; triple it at 8th level).",
+				"adv": "One battle per day, you can gain the Cackling Soliloquist talent from the necromancer class; see page 82.",
+				"chmp": "While you have an earth or metal warp effect active, when an enemy in the battle drops to 0 hp, you gain temporary hit points equal to your Charisma modifier (double your Charisma modifier at 5th level; triple it at 8th level).",
 				"epic": "If you don't like the first random necromancer spell you select for the day, you can determine another random necromancer spell. You're stuck with the second one."
 			}
 		},
@@ -60,8 +63,8 @@
 			"name": "Touch of Wizardry",
 			"desc": "You gain a random spell from the wizard class. Whenever you take a full heal-up, randomly choose a wizard spell of the highest level you can cast. For the rest of the day, you know this wizard spell and can cast it according to its normal usage pattern — at- will, cyclic, once per battle, recharge, or daily — when that option comes up during your chaos mage spellcasting sequence.\nIf the wizard spell refers to Intelligence, you can replace that ability score with references to Charisma.",
 			"feats": {
-				"adventurer": "You gain a random wizard talent at the start of each day. Roll a d3. 1: Abjuration; 2: Evocation; 3: High Arcana (counter magic). Replace references to “wizard” in these talents with “chaos mage” and Intelligence with Charisma.",
-				"champion": "You gain a single daily use of the wizard's utility spell (13th Age core rulebook, page 150), cast at your level or lower.",
+				"adv": "You gain a random wizard talent at the start of each day. Roll a d3. 1: Abjuration; 2: Evocation; 3: High Arcana (counter magic). Replace references to “wizard” in these talents with “chaos mage” and Intelligence with Charisma.",
+				"chmp": "You gain a single daily use of the wizard's utility spell (13th Age core rulebook, page 150), cast at your level or lower.",
 				"epic": "If you don't like the first random wizard spell you select for the day, you can determine another random wizard spell. You're stuck with the second one."
 			}
 		},
@@ -69,8 +72,8 @@
 			"name": "Trace of the Divine",
 			"desc": "You gain a random spell from the cleric class. Whenever you take a full heal-up, randomly choose a cleric spell of the highest level you can cast. For the rest of the day, you know this cleric spell and can cast it according to its normal usage pattern — at-will, once per battle, recharge, or daily — when that option comes up during your chaos mage spellcasting sequence.\nIf the cleric spell refers to Wisdom, you can replace that ability score with references to Charisma.",
 			"feats": {
-				"adventurer": "At the start of the day, choose a random invocation from the cleric invocations on pages 95-97 of the 13th Age core rulebook. (Leave the healing domain out as a choice since it only affects a cleric class feature.) You can use that invocation as if you were a cleric once this day as a quick action. (If we publish other invocations later? Sure, add them to the possibilities.)",
-				"champion": "While you have an air or water warp effect active, when you heal using a recovery or cast a spell that lets an ally heal using a recovery, add an extra recovery die to the healing.",
+				"adv": "At the start of the day, choose a random invocation from the cleric invocations on pages 95-97 of the 13th Age core rulebook. (Leave the healing domain out as a choice since it only affects a cleric class feature.) You can use that invocation as if you were a cleric once this day as a quick action. (If we publish other invocations later? Sure, add them to the possibilities.)",
+				"chmp": "While you have an air or water warp effect active, when you heal using a recovery or cast a spell that lets an ally heal using a recovery, add an extra recovery die to the healing.",
 				"epic": "In addition to the random invocation you gain at the start of the day, you also get the talent/domain powers that go with it."
 			}
 		},
@@ -78,10 +81,14 @@
 			"name": "Whiff of Sorcery",
 			"desc": "You gain a random spell from the sorcerer class. Whenever you take a full heal-up, randomly choose a sorcerer spell of the highest level you can cast. For the rest of the day, you know this sorcerer spell and can cast it according to its normal usage pattern — at-will, once per battle, recharge, or daily — when that option comes up during your chaos mage spellcasting sequence.",
 			"feats": {
-				"adventurer": "Twice per day, you can gather power as if you were a sorcerer in order to deal double damage with either a sorcerer spell or a chaos mage spell the next time you cast a spell. You also gain the chaotic benefit for gathering power. (Note that you should have already determined the type of spell you will be casting, since you select a spell type when you roll initiative and at the end of each turn, so you're generally better off waiting to gather power when you know you have an attack or iconic spell coming.)",
-				"champion": "While you have an air or fire warp effect active, add fire damage equal to your Charisma modifier to your miss damage (double your Charisma modifier at 5th level; triple it at 8th level).",
+				"adv": "Twice per day, you can gather power as if you were a sorcerer in order to deal double damage with either a sorcerer spell or a chaos mage spell the next time you cast a spell. You also gain the chaotic benefit for gathering power. (Note that you should have already determined the type of spell you will be casting, since you select a spell type when you roll initiative and at the end of each turn, so you're generally better off waiting to gather power when you know you have an attack or iconic spell coming.)",
+				"chmp": "While you have an air or fire warp effect active, add fire damage equal to your Charisma modifier to your miss damage (double your Charisma modifier at 5th level; triple it at 8th level).",
 				"epic": "If you don't like the first random sorcerer spell you select for the day, you can determine another random sorcerer spell. You're stuck with the second one."
 			}
 		}
-	}
+	},
+	"spellFeats": [
+		"Force Tentacle", "Chaos Blessing", "Blood of Warriors",
+		"Light of the High Ones", "Twisted Path"
+	]
 }

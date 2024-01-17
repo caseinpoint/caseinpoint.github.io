@@ -36,33 +36,109 @@ function OptionsMenu(props) {
 
 	// TODO: useEffect to load previous selections form localStorage
 
+	function handleLvlSelect(evt) {
+		// TODO: update Root options
+		// TODO: save to localStorage
+		setCharLvl(Number(evt.target.value));
+	}
+
 	const levels = ['1 Multiclass', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 	const levelOpts = levels.map((lvl, idx) =>
 		<option key={`charLvl${idx}`} value={idx}>Level {lvl}</option>
 	);
 
-	function handleLvlSelect(evt) {
-		setCharLvl(Number(evt.target.value));
+	let warpTalents;
+	if (props.talents.warpTalents) {
+		warpTalents = Object.entries(props.talents.warpTalents)
+			.map((item, idx) => {
+				const [ key, talent ] = item;
+				return (
+					<div key={`warpTal${idx}`} className="form-check form-switch">
+						<input id={`warpTal${idx}`} className="form-check-input"
+							type="checkbox" value={key} />
+						<label for={`warpTal${idx}`} className="form-check-label">
+							{talent.name}
+						</label>
+					</div>
+				);
+		});
+	}
+
+	let casterTalents;
+	if (props.talents.casterTalents) {
+		casterTalents = Object.entries(props.talents.casterTalents)
+			.map((item, idx) => {
+				const [ key, talent ] = item;
+				return (
+					<div key={`casterTal${idx}`} className="form-check form-switch">
+						<input id={`casterTal${idx}`} className="form-check-input"
+							type="checkbox" value={key} />
+						<label for={`casterTal${idx}`} className="form-check-label">
+							{talent.name}
+						</label>
+					</div>
+				);
+		});
+	}
+
+	let spellFeats;
+	if (props.talents.spellFeats) {
+		spellFeats = props.talents.spellFeats.map((feat, idx) => {
+			return (
+				<div key={`spellFeat${idx}`}>
+					<p className="mt-1 mb-0">{feat}</p>
+					<div className="form-check form-check-inline form-switch">
+						<input id={`spellFeat${idx}_adv`} className="form-check-input"
+							type="checkbox" value={`${feat}_adv`} />
+						<label for={`spellFeat${idx}_adv`} className="form-check-label">
+							Adventurer
+						</label>
+					</div>
+					<div className="form-check form-check-inline form-switch">
+						<input id={`spellFeat${idx}_chmp`} className="form-check-input"
+							type="checkbox" value={`${feat}_chmp`} />
+						<label for={`spellFeat${idx}_chmp`} className="form-check-label">
+							Champion
+						</label>
+					</div>
+					<div className="form-check form-check-inline form-switch">
+						<input id={`spellFeat${idx}_epic`} className="form-check-input"
+							type="checkbox" value={`${feat}_epic`} />
+						<label for={`spellFeat${idx}_epic`} className="form-check-label">
+							Epic
+						</label>
+					</div>
+				</div>
+			);
+		});
 	}
 
 	// render
 	return (
-		<div className="row border-top border-bottom border-3">
+		<div className="row py-1 border-top border-3">
 			<h3 className="text-center">Character Options</h3>
 
-			<div className="col-12 col-lg-4 border border-bottom-0 rounded">
+			<div className="col-12 col-md-6 col-xl-3 py-1 border rounded">
 				<h4 className="text-center">Character Level</h4>
-				<select className="form-control my-1" value={charLvl} onChange={handleLvlSelect}>
+				<select className="form-control" value={charLvl}
+					onChange={handleLvlSelect}>
 					{levelOpts}
 				</select>
 			</div>
 
-			<div className="col-12 col-lg-4 border border-bottom-0 rounded">
+			<div className="col-12 col-md-6 col-xl-3 py-1 border rounded">
 				<h4 className="text-center">Warp Talents</h4>
+				{warpTalents}
 			</div>
 
-			<div className="col-12 col-lg-4 border border-bottom-0 rounded">
+			<div className="col-12 col-md-6 col-xl-3 py-1 border rounded">
 				<h4 className="text-center">Spellcaster Class Talents</h4>
+				{casterTalents}
+			</div>
+
+			<div className="col-12 col-md-6 col-xl-3 py-1 border rounded">
+				<h4 className="text-center">Spell Feats</h4>
+				{spellFeats}
 			</div>
 		</div>
 	);
@@ -110,10 +186,10 @@ function Root(props) {
 		setCategories(getCategoryArray());
 
 		fetch('/static/json/options.json').then((response) => response.json())
-			.then((optJSON) => setTalents(optJSON));
+			.then((optJSON) => setOptions(optJSON));
 
 		fetch('/static/json/talents.json').then((response) => response.json())
-			.then((tltJSON) => setOptions(tltJSON));
+			.then((tltJSON) => setTalents(tltJSON));
 
 		fetch('/static/json/weirdness.json').then((response) => response.json())
 			.then((wrdJSON) => setWeirdness(wrdJSON));
@@ -141,7 +217,7 @@ function Root(props) {
 		<div className="container-fluid">
 			<h2 className="text-center">Chaos Mage Spell App</h2>
 
-			<OptionsMenu warps={talents} weirdness={weirdness} />
+			<OptionsMenu talents={talents} weirdness={weirdness} />
 		</div>
 	);
 }
