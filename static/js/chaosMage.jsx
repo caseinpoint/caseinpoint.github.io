@@ -98,10 +98,9 @@ function Root(props) {
 	// state
 	const [categories, setCategories] = React.useState([]);
 	const [options, setOptions] = React.useState({});
-	// state from JSON
-	const [lvlProg, setLvlProg] = React.useState({});
 	const [talents, setTalents] = React.useState({});
 	const [weirdness, setWeirdness] = React.useState({});
+	const [lvlProg, setLvlProg] = React.useState({});
 	const [atkSpells, setAtkSpells] = React.useState([]);
 	const [defSpells, setDefSpells] = React.useState([]);
 	const [icnSpells, setIcnSpells] = React.useState([]);
@@ -110,14 +109,17 @@ function Root(props) {
 	React.useEffect(() => {
 		setCategories(getCategoryArray());
 
-		fetch('/static/json/lvlProg.json').then((response) => response.json())
-			.then((lvlJSON) => setLvlProg(lvlJSON));
+		fetch('/static/json/options.json').then((response) => response.json())
+			.then((optJSON) => setTalents(optJSON));
 
 		fetch('/static/json/talents.json').then((response) => response.json())
-			.then((tltJSON) => setTalents(tltJSON));
+			.then((tltJSON) => setOptions(tltJSON));
 
 		fetch('/static/json/weirdness.json').then((response) => response.json())
 			.then((wrdJSON) => setWeirdness(wrdJSON));
+
+		fetch('/static/json/lvlProg.json').then((response) => response.json())
+			.then((lvlJSON) => setLvlProg(lvlJSON));
 
 		fetch('/static/json/attack.json').then((response) => response.json())
 			.then((atkJSON) => setAtkSpells(atkJSON));
