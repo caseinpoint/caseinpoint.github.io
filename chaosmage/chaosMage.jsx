@@ -1,1 +1,1 @@
-../static/js/chaosMage.jsx
+../static/js/ChaosMage.jsx
