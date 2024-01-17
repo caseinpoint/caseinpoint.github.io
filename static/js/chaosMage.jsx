@@ -147,71 +147,95 @@ function Root(props) {
 
 ReactDOM.render(<Root />, document.getElementById('react_app'));
 
-// options = {
-// 	charLvl: 1,
-// 	talents: {
-// 		warps: {
-// 			atk: {
-// 				hasTalent: false,
-// 				feats: {
-// 					adv: false,
-// 					chmp: false,
-// 					epic: false
-// 				}
-// 			},
-// 			def: {
-// 				hasTalent: false,
-// 				feats: {
-// 					adv: false,
-// 					chmp: false,
-// 					epic: false
-// 				}
-// 			},
-// 			icn: {
-// 				hasTalent: false,
-// 				feats: {
-// 					adv: false,
-// 					chmp: false,
-// 					epic: false
-// 				}
-// 			},
-// 		},
-// 		casters: {
-// 			necromancer: {
-// 				hasTalent: false,
-// 				feats: {
-// 					adv: false,
-// 					chmp: false,
-// 					epic: false
-// 				}
-// 			},
-// 			wizard: {
-// 				hasTalent: false,
-// 				feats: {
-// 					adv: false,
-// 					chmp: false,
-// 					epic: false
-// 				}
-// 			},
-// 			cleric: {
-// 				hasTalent: false,
-// 				feats: {
-// 					adv: false,
-// 					chmp: false,
-// 					epic: false
-// 				}
-// 			},
-// 			sorcerer: {
-// 				hasTalent: false,
-// 				feats: {
-// 					adv: false,
-// 					chmp: false,
-// 					epic: false
-// 				}
-// 			}
-// 		}
-// 	},
-// 	feats: {
-
-// 	}
-// }
+options = {
+	charLvl: 1,
+	talents: {
+		warps: {
+			atk: {
+				hasTalent: false,
+				feats: {
+					adventurer: false,
+					champion: false,
+					epic: false
+				}
+			},
+			def: {
+				hasTalent: false,
+				feats: {
+					adventurer: false,
+					champion: false,
+					epic: false
+				}
+			},
+			icn: {
+				hasTalent: false,
+				feats: {
+					adventurer: false,
+					champion: false,
+					epic: false
+				}
+			},
+		},
+		casters: {
+			necromancer: {
+				hasTalent: false,
+				feats: {
+					adventurer: false,
+					champion: false,
+					epic: false
+				}
+			},
+			wizard: {
+				hasTalent: false,
+				feats: {
+					adventurer: false,
+					champion: false,
+					epic: false
+				}
+			},
+			cleric: {
+				hasTalent: false,
+				feats: {
+					adventurer: false,
+					champion: false,
+					epic: false
+				}
+			},
+			sorcerer: {
+				hasTalent: false,
+				feats: {
+					adventurer: false,
+					champion: false,
+					epic: false
+				}
+			}
+		}
+	},
+	feats: {
+		'Force Tentacle': {
+			adventurer: false,
+			champion: false,
+			epic: false
+		},
+		'Chaos Blessing': {
+			adventurer: false,
+			champion: false,
+			epic: false
+		},
+		'Blood of Warriors': {
+			adventurer: false,
+			champion: false,
+			epic: false
+		},
+		'Light of the High Ones': {
+			adventurer: false,
+			champion: false,
+			epic: false
+		},
+		'Twisted Path': {
+			adventurer: false,
+			champion: false,
+			epic: false
+		}
+	}
+}
