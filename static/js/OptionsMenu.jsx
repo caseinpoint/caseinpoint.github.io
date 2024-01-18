@@ -1,3 +1,5 @@
+'use strict';
+
 function OptionsMenu(props) {
 	/* React component: Select character talents and feats */
 

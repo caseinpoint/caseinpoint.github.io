@@ -29,21 +29,55 @@ function getCategoryArray() {
 }
 
 
-function WandW(props) {
-	/* React component: Display Warps and High Weirdness */
-}
-
-
 function SpellsTracker(props) {
 	/* React compmponent: Track daily/per battle spells for character level */
 
-	// TODO: useEffect to load most recent values from localStorage
 	// TODO: full heal-up button to reset
+
+	let counters;
+	if (props.lvlProgression.idx0) {
+		counters = [['perBattle', 'Per Battle'], ['daily', 'Daily']].map((frq) => {
+			const [ freq, freqName ] = frq;
+
+			return (
+				<div key={freq} className="col input-group">
+					<input id="daily" className="form-control" type="number" min="0"
+						max={props.lvlProgression[freq][props.charLvl]} />
+					<span className="input-group-text">
+						/ {props.lvlProgression[freq][props.charLvl]} {freqName}
+					</span>
+				</div>
+			);
+		});
+	}
+
+	// render
+	return (
+		<div className="row py-1 border-top border-3 border-primary">
+			<h3 className="text-center">Spell Tracker</h3>
+
+			<div className="col">
+				∞ / ∞ At-Will
+			</div>
+
+			{counters}
+
+		</div>
+	);
+}
+
+
+function WandW(props) {
+	/* React component: Display Warps and High Weirdness */
+
+	// inside of SpellsContainer
 }
 
 
 function SpellDetail(props) {
 	/* React component: Display all the details for a spell */
+
+	// inside of SpellsContainer
 
 	// TODO: highlight any selected feats in props.options
 }
@@ -58,43 +92,68 @@ function Root(props) {
 	/* Root React component */
 
 	// state
-	const [categories, setCategories] = React.useState([]);
 	const [options, setOptions] = React.useState({});
+	const [categories, setCategories] = React.useState([]);
+	const [currentCategory, setCurrentCategory] = React.useState(null);
+	const [currentIcon, setCurrentIcon] = React.useState(null);
 	const [talents, setTalents] = React.useState({});
 	const [weirdness, setWeirdness] = React.useState({});
-	const [lvlProg, setLvlProg] = React.useState({});
+	const [lvlProgression, setLvlProgression] = React.useState({});
 	const [atkSpells, setAtkSpells] = React.useState([]);
 	const [defSpells, setDefSpells] = React.useState([]);
 	const [icnSpells, setIcnSpells] = React.useState([]);
 
-	function updateOptions(newOpts) {
+	function updateOptions(newOptions) {
 		/* Update state and save to localStorage */
 
-		setOptions(newOpts)
+		setOptions(newOptions)
 
-		const optStr = JSON.stringify(newOpts);
+		const optStr = JSON.stringify(newOptions);
 		localStorage.setItem('options', optStr);
 	}
 
 	function fetchOptions() {
 		/* Get options from localStorage or fetch from /static */
 
-		const optStr = localStorage.getItem('options');
+		const optionsStr = localStorage.getItem('options');
 
-		if (optStr !== null) {
-			const oldOpts = JSON.parse(optStr);
-			setOptions(oldOpts);
+		if (optionsStr !== null) {
+			const oldOptions = JSON.parse(optionsStr);
+			setOptions(oldOptions);
 		} else {
 			fetch('/static/json/options.json').then((response) => response.json())
-				.then((optJSON) => setOptions(optJSON));
+				.then((optJSON) => updateOptions(optJSON));
+		}
+	}
+
+	function updateCategories(newCategories) {
+		/* Update state and save to localStorage */
+
+		setCategories(newCategories);
+
+		const categoriesStr = JSON.stringify(newCategories);
+		localStorage.setItem('categories', categoriesStr);
+	}
+
+	function fetchCategories() {
+		/* Get spell categories from localStorage or create new ones */
+
+		const categoriesStr = localStorage.getItem('categories');
+
+		if (categoriesStr !== null) {
+			const oldCategories = JSON.parse(categoriesStr);
+			setCategories(oldCategories);
+		} else {
+			const newCategories = getCategoryArray();
+			updateCategories(newCategories);
 		}
 	}
 
 	// on load, set initial categories and get JSON data from /static
 	React.useEffect(() => {
-		setCategories(getCategoryArray());
-
 		fetchOptions();
+
+		fetchCategories();
 
 		fetch('/static/json/talents.json').then((response) => response.json())
 			.then((tltJSON) => setTalents(tltJSON));
@@ -103,7 +162,7 @@ function Root(props) {
 			.then((wrdJSON) => setWeirdness(wrdJSON));
 
 		fetch('/static/json/lvlProg.json').then((response) => response.json())
-			.then((lvlJSON) => setLvlProg(lvlJSON));
+			.then((lvlJSON) => setLvlProgression(lvlJSON));
 
 		fetch('/static/json/attack.json').then((response) => response.json())
 			.then((atkJSON) => setAtkSpells(atkJSON));
@@ -127,6 +186,9 @@ function Root(props) {
 
 			<OptionsMenu options={options} updateOptions={updateOptions}
 				talents={talents} weirdness={weirdness} />
+
+			<SpellsTracker lvlProgression={lvlProgression}
+				charLvl={options.charLvl} />
 		</div>
 	);
 }
