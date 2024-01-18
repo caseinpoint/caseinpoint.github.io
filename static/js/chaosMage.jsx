@@ -32,14 +32,14 @@ function getCategoryArray() {
 function WandW(props) {
 	/* React component: Display Warps and High Weirdness */
 
-	// inside of SpellsContainer
+	// TODO: inside of SpellsContainer, bottom
 }
 
 
 function SpellDetail(props) {
 	/* React component: Display all the details for a spell */
 
-	// inside of SpellsContainer
+	// TODO: inside of SpellsContainer
 
 	// TODO: highlight any selected feats in props.options
 }
@@ -80,8 +80,7 @@ function Root(props) {
 		const optionsStr = localStorage.getItem('options');
 
 		if (optionsStr !== null) {
-			const oldOptions = JSON.parse(optionsStr);
-			setOptions(oldOptions);
+			setOptions(JSON.parse(optionsStr));
 		} else {
 			fetch('/static/json/options.json').then((response) => response.json())
 				.then((optJSON) => updateOptions(optJSON));
@@ -92,9 +91,7 @@ function Root(props) {
 		/* Update state and save to localStorage */
 
 		setCategories(newCategories);
-
-		const categoriesStr = JSON.stringify(newCategories);
-		localStorage.setItem('categories', categoriesStr);
+		localStorage.setItem('categories', JSON.stringify(newCategories));
 	}
 
 	function fetchCategories() {
@@ -103,8 +100,7 @@ function Root(props) {
 		const categoriesStr = localStorage.getItem('categories');
 
 		if (categoriesStr !== null) {
-			const oldCategories = JSON.parse(categoriesStr);
-			setCategories(oldCategories);
+			setCategories(JSON.parse(categoriesStr));
 		} else {
 			const newCategories = getCategoryArray();
 			updateCategories(newCategories);
