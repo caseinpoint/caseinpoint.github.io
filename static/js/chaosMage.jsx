@@ -40,12 +40,14 @@ function SpellsTracker(props) {
 			const [ freq, freqName ] = frq;
 
 			return (
-				<div key={freq} className="col input-group">
-					<input id="daily" className="form-control" type="number" min="0"
-						max={props.lvlProgression[freq][props.charLvl]} />
-					<span className="input-group-text">
-						/ {props.lvlProgression[freq][props.charLvl]} {freqName}
-					</span>
+				<div key={freq} className="col-7 col-md-4 col-lg-3 col-xxl-2 mb-1">
+					<div className="input-group">
+						<input id="daily" className="form-control" type="number" min="0"
+							max={props.lvlProgression[freq][props.charLvl]} />
+						<span className="input-group-text">
+							/ {props.lvlProgression[freq][props.charLvl]} {freqName}
+						</span>
+					</div>
 				</div>
 			);
 		});
@@ -53,14 +55,14 @@ function SpellsTracker(props) {
 
 	// render
 	return (
-		<div className="row py-1 border-top border-3 border-primary">
+		<div className="row justify-content-center py-1 border-top border-3 border-primary">
 			<h3 className="text-center">Spell Tracker</h3>
 
-			<div className="col">
-				∞ / ∞ At-Will
-			</div>
-
 			{counters}
+
+			<div className="col-7 col-md-4 col-lg-3 col-xxl-2 mb-1">
+				<button className="btn">Full Heal</button>
+			</div>
 
 		</div>
 	);
