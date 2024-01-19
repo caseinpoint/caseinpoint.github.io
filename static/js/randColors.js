@@ -1,6 +1,6 @@
 'use strict';
 
-let RAND = false;
+let RANDO = false;
 let intervalID;
 
 function randomHSLA() {
@@ -17,8 +17,8 @@ colorBtn.addEventListener('click', () => {
 	colorBtn.classList.toggle('btn-outline-primary');
 	colorBtn.classList.toggle('btn-primary');
 
-	if (RAND) {
-		RAND = false;
+	if (RANDO) {
+		RANDO = false;
 
 		colorBtn.textContent = 'Random Colors On';
 
@@ -28,13 +28,13 @@ colorBtn.addEventListener('click', () => {
 			div.style.backgroundColor = 'unset';
 		}
 	} else {
-		RAND = true;
+		RANDO = true;
 
 		colorBtn.textContent = 'Random Colors Off';
 
 		intervalID = setInterval(() => {
 			for (let div of document.querySelectorAll('div')) {
-				if (Math.random() >= 0.666) {
+				if (Math.random() >= 0.75) {
 					div.style.backgroundColor = randomHSLA();
 				} else {
 					div.style.backgroundColor = 'unset';
