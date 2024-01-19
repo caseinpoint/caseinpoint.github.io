@@ -51,6 +51,16 @@ function SpellDetail(props) {
 
 function SpellsContainer(props) {
 	/* React component: Display all SpellDetails that are currently available */
+
+	//render
+	return (
+		<div
+			key="SpellsContainer"
+			className="row py-1 border-top border-3 border-primary"
+		>
+			<h3 className="text-center">Current Spells</h3>
+		</div>
+	);
 }
 
 function Root(props) {
@@ -58,15 +68,17 @@ function Root(props) {
 
 	// state
 	const [options, setOptions] = React.useState({});
+	const [talents, setTalents] = React.useState({});
+	// TODO: move lvlProgression to SpellsTracker
+	const [lvlProgression, setLvlProgression] = React.useState({});
+	// TODO: move these states to SpellsContainer
 	const [categories, setCategories] = React.useState([]);
 	const [currentCategory, setCurrentCategory] = React.useState("");
 	const [currentIcon, setCurrentIcon] = React.useState("");
-	const [talents, setTalents] = React.useState({});
-	const [weirdness, setWeirdness] = React.useState({});
-	const [lvlProgression, setLvlProgression] = React.useState({});
 	const [atkSpells, setAtkSpells] = React.useState([]);
 	const [defSpells, setDefSpells] = React.useState([]);
 	const [icnSpells, setIcnSpells] = React.useState([]);
+	const [weirdness, setWeirdness] = React.useState({});
 
 	function updateOptions(newOptions) {
 		/* Update state and save to localStorage */
@@ -111,7 +123,7 @@ function Root(props) {
 		}
 	}
 
-	// on load, set initial categories and get JSON data from /static
+	// on load
 	React.useEffect(() => {
 		fetchOptions();
 
@@ -154,12 +166,17 @@ function Root(props) {
 				options={options}
 				updateOptions={updateOptions}
 				talents={talents}
-				weirdness={weirdness}
 			/>
 
 			<SpellsTracker
 				lvlProgression={lvlProgression}
 				charLvl={options.charLvl}
+			/>
+
+			<SpellsContainer
+				options={options}
+				categories={{categories, currentCategory, currentIcon}}
+				talents={talents}
 			/>
 		</div>
 	);
