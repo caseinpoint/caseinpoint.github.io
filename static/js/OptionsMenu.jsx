@@ -1,16 +1,16 @@
-'use strict';
+"use strict";
 
 function OptionsMenu(props) {
 	/* React component: Select character talents and feats */
 
-	const [ optsHidden, setOptsHidden ] = React.useState(true);
+	const [optsHidden, setOptsHidden] = React.useState(true);
 
 	function handleHide(evt) {
 		setOptsHidden((prevHidden) => !prevHidden);
 	}
 
 	function handleLvlSelect(evt) {
-		const newOpts = {...props.options};
+		const newOpts = { ...props.options };
 		const lvl = Number(evt.target.value);
 		newOpts.charLvl = lvl;
 		props.updateOptions(newOpts);
@@ -21,42 +21,53 @@ function OptionsMenu(props) {
 		const category = check.dataset.optCategory;
 		const subcategory = check.dataset.optSubcategory;
 
-		const newOpts = {...props.options};
+		const newOpts = { ...props.options };
 
-		if (category === 'weirdnessFeats') {
+		if (category === "weirdnessFeats") {
 			newOpts[category][check.value] = check.checked;
-		} else if (check.value === 'hasTalent' || category === 'spellFeats') {
+		} else if (check.value === "hasTalent" || category === "spellFeats") {
 			newOpts[category][subcategory][check.value] = check.checked;
-		} else if (['adv', 'chmp', 'epic'].includes(check.value)) {
+		} else if (["adv", "chmp", "epic"].includes(check.value)) {
 			newOpts[category][subcategory].feats[check.value] = check.checked;
 		}
 
 		props.updateOptions(newOpts);
 	}
 
-	const levels = ['1 Multiclass', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-	const levelOpts = levels.map((lvl, idx) =>
-		<option key={`charLvl${idx}`} value={idx}>Level {lvl}</option>
-	);
+	const levels = ["1 Multiclass", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+	const levelOpts = levels.map((lvl, idx) => (
+		<option key={`charLvl${idx}`} value={idx}>
+			Level {lvl}
+		</option>
+	));
 
-	const featTiers = [['adv', 'Adventurer'], ['chmp', 'Champion'],
-					['epic', 'Epic']];
+	const featTiers = [
+		["adv", "Adventurer"],
+		["chmp", "Champion"],
+		["epic", "Epic"],
+	];
 
 	let weirdFeats;
 	if (props.options.weirdnessFeats) {
 		weirdFeats = featTiers.map((item) => {
-			const [ tier, tierName ] = item;
+			const [tier, tierName] = item;
 
 			return (
-				<div key={`weirdFeat_${tier}`}
-					className="form-check form-check-inline form-switch">
-					<input id={`weirdFeat_${tier}`} className="form-check-input"
-						type="checkbox" value={tier} data-opt-category="weirdnessFeats"
+				<div
+					key={`weirdFeat_${tier}`}
+					className="form-check form-check-inline form-switch"
+				>
+					<input
+						id={`weirdFeat_${tier}`}
+						className="form-check-input"
+						type="checkbox"
+						value={tier}
+						data-opt-category="weirdnessFeats"
 						data-opt-subcategory="null"
 						checked={props.options.weirdnessFeats[tier]}
-						onChange={handleCheck} />
-					<label for={`weirdFeat_${tier}`}
-						className="form-check-label">
+						onChange={handleCheck}
+					/>
+					<label for={`weirdFeat_${tier}`} className="form-check-label">
 						{tierName}
 					</label>
 				</div>
@@ -66,22 +77,31 @@ function OptionsMenu(props) {
 
 	let warpTalents;
 	if (props.talents.warpTalents) {
-		warpTalents = Object.entries(props.talents.warpTalents)
-			.map((item, idx) => {
-				const [ key, talent ] = item;
+		warpTalents = Object.entries(props.talents.warpTalents).map(
+			(item, idx) => {
+				const [key, talent] = item;
 
 				const featChecks = featTiers.map((item) => {
-					const [ tier, tierName ] = item;
+					const [tier, tierName] = item;
 					return (
-						<div key={`warpTal${idx}_${tier}`}
-							className="form-check form-check-inline form-switch">
-							<input id={`warpTal${idx}_${tier}`} className="form-check-input"
-								type="checkbox" value={tier} data-opt-category="warpTalents"
+						<div
+							key={`warpTal${idx}_${tier}`}
+							className="form-check form-check-inline form-switch"
+						>
+							<input
+								id={`warpTal${idx}_${tier}`}
+								className="form-check-input"
+								type="checkbox"
+								value={tier}
+								data-opt-category="warpTalents"
 								data-opt-subcategory={key}
 								checked={props.options.warpTalents[key].feats[tier]}
-								onChange={handleCheck} />
-							<label for={`warpTal${idx}_${tier}`}
-								className="form-check-label">
+								onChange={handleCheck}
+							/>
+							<label
+								for={`warpTal${idx}_${tier}`}
+								className="form-check-label"
+							>
 								{tierName}
 							</label>
 						</div>
@@ -91,11 +111,16 @@ function OptionsMenu(props) {
 				return (
 					<div key={`warpTal${idx}`} className="py-1 border-top">
 						<div className="form-check form-switch">
-							<input id={`warpTal${idx}`} className="form-check-input"
-								type="checkbox" value="hasTalent" data-opt-category="warpTalents"
+							<input
+								id={`warpTal${idx}`}
+								className="form-check-input"
+								type="checkbox"
+								value="hasTalent"
+								data-opt-category="warpTalents"
 								data-opt-subcategory={key}
 								checked={props.options.warpTalents[key].hasTalent}
-								onChange={handleCheck} />
+								onChange={handleCheck}
+							/>
 							<label for={`warpTal${idx}`} className="form-check-label">
 								{talent.name}
 							</label>
@@ -103,28 +128,37 @@ function OptionsMenu(props) {
 						{featChecks}
 					</div>
 				);
-		});
+			}
+		);
 	}
 
 	let casterTalents;
 	if (props.talents.casterTalents) {
-		casterTalents = Object.entries(props.talents.casterTalents)
-			.map((item, idx) => {
-				const [ key, talent ] = item;
+		casterTalents = Object.entries(props.talents.casterTalents).map(
+			(item, idx) => {
+				const [key, talent] = item;
 
 				const featChecks = featTiers.map((item) => {
-					const [ tier, tierName ] = item;
+					const [tier, tierName] = item;
 					return (
-						<div key={`casterTal${idx}_${tier}`}
-							className="form-check form-check-inline form-switch">
-							<input id={`casterTal${idx}_${tier}`}
+						<div
+							key={`casterTal${idx}_${tier}`}
+							className="form-check form-check-inline form-switch"
+						>
+							<input
+								id={`casterTal${idx}_${tier}`}
 								className="form-check-input"
-								type="checkbox" value={tier} data-opt-category="casterTalents"
+								type="checkbox"
+								value={tier}
+								data-opt-category="casterTalents"
 								data-opt-subcategory={key}
 								checked={props.options.casterTalents[key].feats[tier]}
-								onChange={handleCheck} />
-							<label for={`casterTal${idx}_${tier}`}
-								className="form-check-label">
+								onChange={handleCheck}
+							/>
+							<label
+								for={`casterTal${idx}_${tier}`}
+								className="form-check-label"
+							>
 								{tierName}
 							</label>
 						</div>
@@ -134,11 +168,16 @@ function OptionsMenu(props) {
 				return (
 					<div key={`casterTal${idx}`} className="py-1 border-top">
 						<div className="form-check form-switch">
-							<input id={`casterTal${idx}`} className="form-check-input"
-								type="checkbox" value="hasTalent" data-opt-category="casterTalents"
+							<input
+								id={`casterTal${idx}`}
+								className="form-check-input"
+								type="checkbox"
+								value="hasTalent"
+								data-opt-category="casterTalents"
 								data-opt-subcategory={key}
 								checked={props.options.casterTalents[key].hasTalent}
-								onChange={handleCheck} />
+								onChange={handleCheck}
+							/>
 							<label for={`casterTal${idx}`} className="form-check-label">
 								{talent.name}
 							</label>
@@ -146,24 +185,35 @@ function OptionsMenu(props) {
 						{featChecks}
 					</div>
 				);
-		});
+			}
+		);
 	}
 
 	let spellFeats;
 	if (props.talents.spellFeats) {
 		spellFeats = props.talents.spellFeats.map((feat, idx) => {
 			const featChecks = featTiers.map((item) => {
-				const [ tier, tierName ] = item;
+				const [tier, tierName] = item;
 
 				return (
-					<div key={`spellFeat${idx}_${tier}`}
-						className="form-check form-check-inline form-switch">
-						<input id={`spellFeat${idx}_${tier}`} className="form-check-input"
-							type="checkbox" value={tier} data-opt-category="spellFeats"
+					<div
+						key={`spellFeat${idx}_${tier}`}
+						className="form-check form-check-inline form-switch"
+					>
+						<input
+							id={`spellFeat${idx}_${tier}`}
+							className="form-check-input"
+							type="checkbox"
+							value={tier}
+							data-opt-category="spellFeats"
 							data-opt-subcategory={feat}
 							checked={props.options.spellFeats[feat][tier]}
-							onChange={handleCheck} />
-						<label for={`spellFeat${idx}_${tier}`} className="form-check-label">
+							onChange={handleCheck}
+						/>
+						<label
+							for={`spellFeat${idx}_${tier}`}
+							className="form-check-label"
+						>
 							{tierName}
 						</label>
 					</div>
@@ -179,8 +229,8 @@ function OptionsMenu(props) {
 		});
 	}
 
-	const hide = optsHidden ? ' d-none' : '';
-	const upDown = optsHidden ? '▽' : '△';
+	const hide = optsHidden ? " d-none" : "";
+	const upDown = optsHidden ? "▽" : "△";
 
 	// render
 	return (
@@ -189,37 +239,47 @@ function OptionsMenu(props) {
 				<h3 className="text-center">Character Options {upDown}</h3>
 			</button>
 
-			<div className={`col-12 col-md-6 col-xl-3 py-1 border border-2
-				border-info rounded${hide}`}>
+			<div
+				className={`col-12 col-md-6 col-xl-3 py-1 border border-2
+				border-info rounded${hide}`}
+			>
 				<h4 className="text-center">Character Level</h4>
-				<select className="form-control" value={props.options.charLvl}
-					data-opt-category="charLvl" data-opt-subcategory={false}
-					onChange={handleLvlSelect}>
+				<select
+					className="form-control"
+					value={props.options.charLvl}
+					data-opt-category="charLvl"
+					data-opt-subcategory={false}
+					onChange={handleLvlSelect}
+				>
 					{levelOpts}
 				</select>
 
 				<div className="mt-4 py-1 border-top border-2 border-info">
-					<h4 className="text-center">
-						High Weirdness Feats
-					</h4>
+					<h4 className="text-center">High Weirdness Feats</h4>
 					{weirdFeats}
 				</div>
 			</div>
 
-			<div className={`col-12 col-md-6 col-xl-3 py-1 border border-2
-				border-info rounded${hide}`}>
+			<div
+				className={`col-12 col-md-6 col-xl-3 py-1 border border-2
+				border-info rounded${hide}`}
+			>
 				<h4 className="text-center">Warp Talents</h4>
 				{warpTalents}
 			</div>
 
-			<div className={`col-12 col-md-6 col-xl-3 py-1 border border-2
-				border-info rounded${hide}`}>
+			<div
+				className={`col-12 col-md-6 col-xl-3 py-1 border border-2
+				border-info rounded${hide}`}
+			>
 				<h4 className="text-center">Spellcaster Class Talents</h4>
 				{casterTalents}
 			</div>
 
-			<div className={`col-12 col-md-6 col-xl-3 py-1 border border-2
-				border-info rounded${hide}`}>
+			<div
+				className={`col-12 col-md-6 col-xl-3 py-1 border border-2
+				border-info rounded${hide}`}
+			>
 				<h4 className="text-center">Spell Feats</h4>
 				{spellFeats}
 			</div>
