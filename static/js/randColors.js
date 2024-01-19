@@ -1,13 +1,13 @@
 "use strict";
 
 let RANDO = false;
-let intervalID;
+let INTERVAL_ID;
 
 // function randomHSLA() {
 // 	const h = Math.floor(Math.random() * 360);
 // 	const s = Math.floor(Math.random() * 51 + 50);
 // 	const l = Math.floor(Math.random() * 101);
-// 	const a = Math.random() * 0.222 + 0.111;
+// 	let a = Math.random() * 0.222 + 0.111;
 // 	a = a.toFixed(2);
 
 // 	return `hsla(${h},${s}%,${l}%,${a})`;
@@ -33,7 +33,7 @@ colorBtn.addEventListener("click", () => {
 
 		colorBtn.textContent = "Random Colors On";
 
-		clearInterval(intervalID);
+		clearInterval(INTERVAL_ID);
 
 		for (let div of document.querySelectorAll("div")) {
 			div.style.backgroundColor = "unset";
@@ -44,10 +44,10 @@ colorBtn.addEventListener("click", () => {
 		colorBtn.textContent = "Random Colors Off";
 
 		(function loop() {
-			// random delay between 2 and 10 seconds
-			const delay = 2000 + Math.floor(Math.random() * 8001);
+			// random delay between 3 and 15 seconds
+			const delay = 3000 + Math.floor(Math.random() * 12001);
 
-			intervalID = setTimeout(() => {
+			INTERVAL_ID = setTimeout(() => {
 				for (let div of document.querySelectorAll("div")) {
 					if (Math.random() >= 0.75) {
 						// div.style.backgroundColor = randomHSLA();
