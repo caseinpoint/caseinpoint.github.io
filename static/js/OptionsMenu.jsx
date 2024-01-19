@@ -3,6 +3,12 @@
 function OptionsMenu(props) {
 	/* React component: Select character talents and feats */
 
+	const [ optsHidden, setOptsHidden ] = React.useState(true);
+
+	function handleHide(evt) {
+		setOptsHidden((prevHidden) => !prevHidden);
+	}
+
 	function handleLvlSelect(evt) {
 		const newOpts = {...props.options};
 		const lvl = Number(evt.target.value);
@@ -173,13 +179,18 @@ function OptionsMenu(props) {
 		});
 	}
 
+	const hide = optsHidden ? ' d-none' : '';
+	const upDown = optsHidden ? '▽' : '△';
+
 	// render
 	return (
 		<div className="row py-1 border-top border-3 border-primary">
-			<h3 className="text-center">Character Options</h3>
+			<button className="btn btn-outline-light mb-1" onClick={handleHide}>
+				<h3 className="text-center">Character Options {upDown}</h3>
+			</button>
 
-			<div className="col-12 col-md-6 col-xl-3 py-1 border border-2
-				border-info rounded">
+			<div className={`col-12 col-md-6 col-xl-3 py-1 border border-2
+				border-info rounded${hide}`}>
 				<h4 className="text-center">Character Level</h4>
 				<select className="form-control" value={props.options.charLvl}
 					data-opt-category="charLvl" data-opt-subcategory={false}
@@ -195,20 +206,20 @@ function OptionsMenu(props) {
 				</div>
 			</div>
 
-			<div className="col-12 col-md-6 col-xl-3 py-1 border border-2
-				border-info rounded">
+			<div className={`col-12 col-md-6 col-xl-3 py-1 border border-2
+				border-info rounded${hide}`}>
 				<h4 className="text-center">Warp Talents</h4>
 				{warpTalents}
 			</div>
 
-			<div className="col-12 col-md-6 col-xl-3 py-1 border border-2
-				border-info rounded">
+			<div className={`col-12 col-md-6 col-xl-3 py-1 border border-2
+				border-info rounded${hide}`}>
 				<h4 className="text-center">Spellcaster Class Talents</h4>
 				{casterTalents}
 			</div>
 
-			<div className="col-12 col-md-6 col-xl-3 py-1 border border-2
-				border-info rounded">
+			<div className={`col-12 col-md-6 col-xl-3 py-1 border border-2
+				border-info rounded${hide}`}>
 				<h4 className="text-center">Spell Feats</h4>
 				{spellFeats}
 			</div>
