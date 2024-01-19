@@ -17,7 +17,7 @@ function randomRGBA() {
 	const r = Math.floor(Math.random() * 256);
 	const g = Math.floor(Math.random() * 256);
 	const b = Math.floor(Math.random() * 256);
-	let a = Math.random() * 0.22 + 0.11;
+	let a = 0.15 + Math.random() * 0.15;
 	a = a.toFixed(2);
 
 	return `rgba(${r},${g},${b},${a})`;
