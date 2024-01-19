@@ -234,7 +234,10 @@ function OptionsMenu(props) {
 
 	// render
 	return (
-		<div className="row py-1 border-top border-3 border-primary">
+		<div
+			key="OptionsMenu"
+			className="row py-1 border-top border-3 border-primary"
+		>
 			<button className="btn" onClick={handleHide}>
 				<h3 className="text-center">Character Options {upDown}</h3>
 			</button>

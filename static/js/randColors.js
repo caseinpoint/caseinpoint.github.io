@@ -43,15 +43,22 @@ colorBtn.addEventListener("click", () => {
 
 		colorBtn.textContent = "Random Colors Off";
 
-		intervalID = setInterval(() => {
-			for (let div of document.querySelectorAll("div")) {
-				if (Math.random() >= 0.75) {
-					// div.style.backgroundColor = randomHSLA();
-					div.style.backgroundColor = randomRGBA();
-				} else {
-					div.style.backgroundColor = "unset";
+		(function loop() {
+			// random delay between 2 and 10 seconds
+			const delay = 2000 + Math.floor(Math.random() * 8001);
+
+			intervalID = setTimeout(() => {
+				for (let div of document.querySelectorAll("div")) {
+					if (Math.random() >= 0.75) {
+						// div.style.backgroundColor = randomHSLA();
+						div.style.backgroundColor = randomRGBA();
+					} else {
+						div.style.backgroundColor = "unset";
+					}
 				}
-			}
-		}, Math.PI * 2000);
+
+				loop();
+			}, delay);
+		})();
 	}
 });

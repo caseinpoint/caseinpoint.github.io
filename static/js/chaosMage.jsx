@@ -147,7 +147,7 @@ function Root(props) {
 
 	// render
 	return (
-		<div className="container-fluid">
+		<div key="Root" className="container-fluid">
 			<h2 className="text-center">Chaos Mage Spell App</h2>
 
 			<OptionsMenu
