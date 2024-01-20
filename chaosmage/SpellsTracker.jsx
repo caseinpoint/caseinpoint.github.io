@@ -1,1 +1,0 @@
-../static/js/SpellsTracker.jsx
