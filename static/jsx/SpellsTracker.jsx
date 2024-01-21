@@ -72,7 +72,7 @@ function SpellsTracker(props) {
 			key="SpellsTracker"
 			className="row justify-content-center py-1 border-top border-3 border-primary"
 		>
-			<h3 className="text-center">Spell Tracker</h3>
+			<h3 className="text-center">Spells Tracker</h3>
 
 			{counters}
 
