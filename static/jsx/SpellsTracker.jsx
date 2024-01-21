@@ -40,8 +40,8 @@ function SpellsTracker(props) {
 		counters = [
 			["perBattle", "Per Battle"],
 			["daily", "Daily"],
-		].map((itm) => {
-			const [freq, freqName] = itm;
+		].map((item) => {
+			const [freq, freqName] = item;
 
 			return (
 				<div key={freq} className="col-7 col-md-4 col-lg-3 col-xxl-2 mb-1">

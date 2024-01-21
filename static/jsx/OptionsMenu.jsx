@@ -1,5 +1,12 @@
 "use strict";
 
+const LEVELS = ["1 Multiclass", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const FEAT_TIERS = [
+		["adv", "Adventurer"],
+		["chmp", "Champion"],
+		["epic", "Epic"],
+	];
+
 function OptionsMenu(props) {
 	/* React component: Select character talents and feats */
 
@@ -34,22 +41,15 @@ function OptionsMenu(props) {
 		props.updateOptions(newOpts);
 	}
 
-	const levels = ["1 Multiclass", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-	const levelOpts = levels.map((lvl, idx) => (
+	const levelOpts = LEVELS.map((lvl, idx) => (
 		<option key={`charLvl${idx}`} value={idx}>
 			Level {lvl}
 		</option>
 	));
 
-	const featTiers = [
-		["adv", "Adventurer"],
-		["chmp", "Champion"],
-		["epic", "Epic"],
-	];
-
 	let weirdFeats;
 	if (props.options.weirdnessFeats) {
-		weirdFeats = featTiers.map((item) => {
+		weirdFeats = FEAT_TIERS.map((item) => {
 			const [tier, tierName] = item;
 
 			return (
@@ -81,7 +81,7 @@ function OptionsMenu(props) {
 			(item, idx) => {
 				const [key, talent] = item;
 
-				const featChecks = featTiers.map((item) => {
+				const featChecks = FEAT_TIERS.map((item) => {
 					const [tier, tierName] = item;
 					return (
 						<div
@@ -138,7 +138,7 @@ function OptionsMenu(props) {
 			(item, idx) => {
 				const [key, talent] = item;
 
-				const featChecks = featTiers.map((item) => {
+				const featChecks = FEAT_TIERS.map((item) => {
 					const [tier, tierName] = item;
 					return (
 						<div
@@ -192,7 +192,7 @@ function OptionsMenu(props) {
 	let spellFeats;
 	if (props.talents.spellFeats) {
 		spellFeats = props.talents.spellFeats.map((feat, idx) => {
-			const featChecks = featTiers.map((item) => {
+			const featChecks = FEAT_TIERS.map((item) => {
 				const [tier, tierName] = item;
 
 				return (

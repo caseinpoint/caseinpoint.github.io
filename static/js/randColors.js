@@ -1,6 +1,7 @@
 "use strict";
 
 let RANDO = false;
+let FIRST_CLICK = true;
 let INTERVAL_ID;
 
 // function randomHSLA() {
@@ -30,6 +31,7 @@ colorBtn.addEventListener("click", () => {
 
 	if (RANDO) {
 		RANDO = false;
+		FIRST_CLICK = true;
 
 		colorBtn.textContent = "Random Colors On";
 
@@ -44,12 +46,20 @@ colorBtn.addEventListener("click", () => {
 		colorBtn.textContent = "Random Colors Off";
 
 		(function loop() {
-			// random delay between 3 and 15 seconds
-			const delay = 3000 + Math.floor(Math.random() * 12001);
+			let delay;
+			if (FIRST_CLICK) {
+				// always start with delay of 1 second
+				FIRST_CLICK = false;
+				delay = 1000;
+			} else {
+				// random delay between 2 and 20 seconds
+				delay = 2000 + Math.floor(Math.random() * 18001);
+			}
 
 			INTERVAL_ID = setTimeout(() => {
 				for (let div of document.querySelectorAll("div")) {
-					if (Math.random() >= 0.75) {
+					// ~1 in 6 chance of changing color for each div
+					if (Math.random() <= 0.16667) {
 						// div.style.backgroundColor = randomHSLA();
 						div.style.backgroundColor = randomRGBA();
 					} else {
