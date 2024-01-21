@@ -8,7 +8,6 @@ function SpellsTracker(props) {
 		perBattle: 0,
 		daily: 0,
 	});
-	const [lvlProgression, setLvlProgression] = React.useState({});
 
 	// onload
 	React.useEffect(() => {
@@ -17,11 +16,6 @@ function SpellsTracker(props) {
 		if (spellCountsStr !== null) {
 			setSpellCounts(JSON.parse(spellCountsStr));
 		}
-
-		// get level progression JSON from /static
-		fetch("/static/json/lvlProg.json")
-			.then((response) => response.json())
-			.then((lvlJSON) => setLvlProgression(lvlJSON));
 	}, []);
 
 	function handleCounter(evt) {
@@ -42,7 +36,7 @@ function SpellsTracker(props) {
 	}
 
 	let counters;
-	if (lvlProgression.idx0) {
+	if (props.lvlProgression.idx0) {
 		counters = [
 			["perBattle", "Per Battle"],
 			["daily", "Daily"],
@@ -57,14 +51,14 @@ function SpellsTracker(props) {
 							className="form-control"
 							type="number"
 							min="0"
-							max={lvlProgression[freq][props.charLvl]}
+							max={props.lvlProgression[freq][props.charLvl]}
 							step="1"
 							value={spellCounts[freq]}
 							data-freq={freq}
 							onChange={handleCounter}
 						/>
 						<span className="input-group-text">
-							/ {lvlProgression[freq][props.charLvl]} {freqName}
+							/ {props.lvlProgression[freq][props.charLvl]} {freqName}
 						</span>
 					</div>
 				</div>

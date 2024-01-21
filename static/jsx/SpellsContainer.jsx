@@ -1,5 +1,7 @@
 "use strict";
 
+const CATEGORIES = ["atk", "atk", "def", "def", "icn", "icn"];
+
 const ICONS = [
 	"Archmage",
 	"Crusader",
@@ -15,18 +17,10 @@ const ICONS = [
 	"The Three",
 ];
 
-function getIcon() {
-	/* Get a random Icon string from the array */
-
-	const rIdx = Math.floor(Math.random() * ICONS.length);
-
-	return ICONS[rIdx];
-}
-
 function getCategoryArray() {
 	/* Get a new, shuffled array of spell categories */
 
-	const categories = ["atk", "atk", "def", "def", "icn", "icn"];
+	const categories = [...CATEGORIES];
 
 	for (let n = 0; n < 3; n++) {
 		for (let i in categories) {
@@ -36,6 +30,14 @@ function getCategoryArray() {
 	}
 
 	return categories;
+}
+
+function getIcon() {
+	/* Get a random Icon string from the array */
+
+	const rIdx = Math.floor(Math.random() * ICONS.length);
+
+	return ICONS[rIdx];
 }
 
 function WandW(props) {
@@ -59,6 +61,10 @@ function SpellsContainer(props) {
 	const [atkSpells, setAtkSpells] = React.useState([]);
 	const [defSpells, setDefSpells] = React.useState([]);
 	const [icnSpells, setIcnSpells] = React.useState([]);
+	// const [ncrSpells, setNcrSpells] = React.useState([]);
+	// const [wizSpells, setWizSpells] = React.useState([]);
+	// const [clrSpells, setClrSpells] = React.useState([]);
+	// const [srcSpells, setSrcSpells] = React.useState([]);
 	const [weirdness, setWeirdness] = React.useState({});
 
 	function updateCategories(newCategories) {
@@ -104,10 +110,6 @@ function SpellsContainer(props) {
 	React.useEffect(() => {
 		fetchAllCategories();
 
-		fetch("/static/json/weirdness.json")
-			.then((response) => response.json())
-			.then((wrdJSON) => setWeirdness(wrdJSON));
-
 		fetch("/static/json/attack.json")
 			.then((response) => response.json())
 			.then((atkJSON) => setAtkSpells(atkJSON));
@@ -120,9 +122,13 @@ function SpellsContainer(props) {
 			.then((response) => response.json())
 			.then((icnJSON) => setIcnSpells(icnJSON));
 
+		fetch("/static/json/weirdness.json")
+			.then((response) => response.json())
+			.then((wrdJSON) => setWeirdness(wrdJSON));
+
 		// TODO: add cleric, necromancer, sorcerer, and wizard spells JSON for
 		// those talents
-	}, [])
+	}, []);
 
 	// render
 	return (
@@ -130,7 +136,7 @@ function SpellsContainer(props) {
 			key="SpellsContainer"
 			className="row py-1 border-top border-3 border-primary"
 		>
-			<h3 className="text-center">Current Spells</h3>
+			<h2 className="text-center">Current Spells</h2>
 		</div>
 	);
 }

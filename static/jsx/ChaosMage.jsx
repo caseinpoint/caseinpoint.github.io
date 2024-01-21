@@ -6,6 +6,7 @@ function Root(props) {
 	// state
 	const [options, setOptions] = React.useState({});
 	const [talents, setTalents] = React.useState({});
+	const [lvlProgression, setLvlProgression] = React.useState({});
 
 	function updateOptions(newOptions) {
 		/* Update state and save to localStorage */
@@ -17,7 +18,7 @@ function Root(props) {
 	}
 
 	function fetchOptions() {
-		/* Get options from localStorage or fetch from /static */
+		/* Get options from localStorage or fetch default from /static */
 
 		const optionsStr = localStorage.getItem("options");
 
@@ -34,6 +35,10 @@ function Root(props) {
 	React.useEffect(() => {
 		fetchOptions();
 
+		fetch("/static/json/lvlProg.json")
+			.then((response) => response.json())
+			.then((lvlJSON) => setLvlProgression(lvlJSON));
+
 		fetch("/static/json/talents.json")
 			.then((response) => response.json())
 			.then((tltJSON) => setTalents(tltJSON));
@@ -42,7 +47,7 @@ function Root(props) {
 	// render
 	return (
 		<div key="Root" className="container-fluid">
-			<h2 className="text-center">Chaos Mage Spell App</h2>
+			<h1 className="text-center">Chaos Mage Spell App</h1>
 
 			<OptionsMenu
 				options={options}
@@ -50,9 +55,16 @@ function Root(props) {
 				talents={talents}
 			/>
 
-			<SpellsTracker charLvl={options.charLvl} />
+			<SpellsTracker
+				charLvl={options.charLvl}
+				lvlProgression={lvlProgression}
+			/>
 
-			<SpellsContainer options={options} talents={talents} />
+			<SpellsContainer
+				options={options}
+				lvlProgression={lvlProgression}
+				talents={talents}
+			/>
 		</div>
 	);
 }
