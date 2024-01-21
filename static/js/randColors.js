@@ -45,7 +45,7 @@ colorBtn.addEventListener("click", () => {
 
 		colorBtn.textContent = "Random Colors Off";
 
-		(function loop() {
+		(function recursiveDelay() {
 			let delay;
 			if (FIRST_CLICK) {
 				// always start with delay of 1 second
@@ -67,7 +67,7 @@ colorBtn.addEventListener("click", () => {
 					}
 				}
 
-				loop();
+				recursiveDelay();
 			}, delay);
 		})();
 	}
