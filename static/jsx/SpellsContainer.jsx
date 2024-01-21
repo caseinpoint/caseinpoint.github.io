@@ -132,11 +132,11 @@ function SpellsContainer(props) {
 
 	// render
 	return (
-		<div
+		<section
 			key="SpellsContainer"
 			className="row py-1 border-top border-3 border-primary"
 		>
 			<h2 className="text-center">Current Spells</h2>
-		</div>
+		</section>
 	);
 }

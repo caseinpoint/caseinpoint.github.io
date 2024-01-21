@@ -1,6 +1,6 @@
 "use strict";
 
-function Root(props) {
+function ChaosMage(props) {
 	/* Root React component */
 
 	// state
@@ -46,7 +46,7 @@ function Root(props) {
 
 	// render
 	return (
-		<div key="Root" className="container-fluid">
+		<div key="ChaosMage" className="container-fluid">
 			<h1 className="text-center">Chaos Mage Spell App</h1>
 
 			<OptionsMenu
@@ -69,4 +69,4 @@ function Root(props) {
 	);
 }
 
-ReactDOM.render(<Root />, document.getElementById("react_app"));
+ReactDOM.render(<ChaosMage />, document.getElementById("react_app"));

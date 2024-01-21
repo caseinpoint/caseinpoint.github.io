@@ -68,7 +68,7 @@ function SpellsTracker(props) {
 
 	// render
 	return (
-		<div
+		<section
 			key="SpellsTracker"
 			className="row justify-content-center py-1 border-top border-3 border-primary"
 		>
@@ -81,6 +81,6 @@ function SpellsTracker(props) {
 					Full Heal-Up
 				</button>
 			</div>
-		</div>
+		</section>
 	);
 }

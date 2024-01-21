@@ -234,7 +234,7 @@ function OptionsMenu(props) {
 
 	// render
 	return (
-		<div
+		<section
 			key="OptionsMenu"
 			className="row py-1 border-top border-3 border-primary"
 		>
@@ -286,6 +286,6 @@ function OptionsMenu(props) {
 				<h4 className="text-center">Spell Feats</h4>
 				{spellFeats}
 			</div>
-		</div>
+		</section>
 	);
 }
