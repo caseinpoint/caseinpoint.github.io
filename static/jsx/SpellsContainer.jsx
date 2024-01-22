@@ -1,6 +1,7 @@
 "use strict";
 
 const CATEGORIES = ["atk", "atk", "def", "def", "icn", "icn"];
+const CAT_NAMES = { atk: "Attack", def: "Defense", icn: "Icon", null: "none" };
 
 const ICONS = [
 	"Archmage",
@@ -56,8 +57,10 @@ function SpellsContainer(props) {
 
 	// state
 	const [categories, setCategories] = React.useState([]);
-	const [currentCategory, setCurrentCategory] = React.useState("");
-	const [currentIcon, setCurrentIcon] = React.useState("");
+	const [currentCategory, setCurrentCategory] = React.useState(null);
+	const [currentIcon, setCurrentIcon] = React.useState(null);
+	const [randBtn, setRandBtn] = React.useState(randomRGBA(0.25, 0.5));
+	const [randULine, setRandULine] = React.useState(randomRGBA(0, 0));
 	const [atkSpells, setAtkSpells] = React.useState([]);
 	const [defSpells, setDefSpells] = React.useState([]);
 	const [icnSpells, setIcnSpells] = React.useState([]);
@@ -68,24 +71,24 @@ function SpellsContainer(props) {
 	const [weirdness, setWeirdness] = React.useState({});
 
 	function updateCategories(newCategories) {
-		/* Update state and save to localStorage */
+		/* Update categories state and save to localStorage */
 
 		setCategories(newCategories);
 		localStorage.setItem("categories", JSON.stringify(newCategories));
 	}
 
 	function updateCurrentCategory(newCategory) {
-		/* Update state and save to localStorage */
+		/* Update currentCategory state and save to localStorage */
 
 		setCurrentCategory(newCategory);
-		localStorage.setItem("currentCategory", newCategory);
+		localStorage.setItem("currentCategory", JSON.stringify(newCategory));
 	}
 
 	function updateCurrentIcon(newIcon) {
-		/* Update state and save to localStorage */
+		/* Update currentIcon state and save to localStorage */
 
 		setCurrentIcon(newIcon);
-		localStorage.setItem("currentIcon", "newIcon");
+		localStorage.setItem("currentIcon", JSON.stringify(newIcon));
 	}
 
 	function fetchAllCategories() {
@@ -97,12 +100,11 @@ function SpellsContainer(props) {
 
 		if (categoriesStr !== null) {
 			setCategories(JSON.parse(categoriesStr));
-			setCurrentCategory(currentCatStr);
-			setCurrentIcon(currentIcnStr);
+			setCurrentCategory(JSON.parse(currentCatStr));
+			setCurrentIcon(JSON.parse(currentIcnStr));
 		} else {
-			const newCategories = getCategoryArray();
-			updateCategories(newCategories);
-			// currentCategory and currentIcon are already set to ""
+			updateCategories(getCategoryArray());
+			// NOTE: currentCategory and currentIcon are already initialized to null
 		}
 	}
 
@@ -130,13 +132,100 @@ function SpellsContainer(props) {
 		// those talents
 	}, []);
 
+	// animate Next Spell Category button
+	React.useEffect(() => {
+		let timeoutID;
+
+		(function recursiveDelay() {
+			// random delay between 1 and 4 seconds
+			const delay = 1000 + Math.floor(Math.random() * 3001);
+
+			timeoutID = setTimeout(() => {
+				setRandBtn(randomRGBA(0.3, 0.7));
+				recursiveDelay();
+			}, delay);
+		})();
+
+		return () => clearTimeout(timeoutID);
+	}, []);
+
+	function handleNextCategory() {
+		const newCategories =
+			categories.length > 1 ? [...categories] : getCategoryArray();
+		const newCategory = newCategories.pop();
+		const newIcon = newCategory === "icn" ? getIcon() : null;
+
+		updateCategories(newCategories);
+		updateCurrentCategory(newCategory);
+		updateCurrentIcon(newIcon);
+		setRandULine(randomRGBA(0.95, 1.0));
+	}
+
+	function handleResetCategories() {
+		updateCategories(getCategoryArray());
+		updateCurrentCategory(null);
+		updateCurrentIcon(null);
+		setRandULine(randomRGBA(0, 0));
+	}
+
+	let iconP = null;
+	if (currentIcon !== null) {
+		iconP = (
+			<p className="text-center h5">
+				Current Icon:&ensp;
+				<span
+					style={{
+						textDecorationLine: "underline",
+						textDecorationColor: randULine,
+					}}
+				>
+					{currentIcon}
+				</span>
+			</p>
+		);
+	}
+
 	// render
 	return (
 		<section
 			key="SpellsContainer"
-			className="row py-1 border-top border-3 border-primary"
+			className="row justify-content-center py-1 border-top border-3 border-primary"
 		>
 			<h2 className="text-center">Current Spells</h2>
+
+			<div className="col-7 col-md-3 col-lg-4 text-center mb-1">
+				<button
+					className="btn btn-outline-light"
+					style={{ backgroundColor: randBtn }}
+					onClick={handleNextCategory}
+				>
+					Next Category
+				</button>
+			</div>
+
+			<div className="col-9 col-md-6 col-lg-4 mb-1">
+				<p className="text-center h5">
+					Current Category:&ensp;
+					<span
+						style={{
+							textDecorationLine: "underline",
+							textDecorationColor: randULine,
+						}}
+					>
+						{CAT_NAMES[currentCategory]}
+					</span>
+				</p>
+				{iconP}
+			</div>
+
+			<div className="col-7 col-md-3 col-lg-4 text-center mb-1">
+				<button
+					className="btn btn-outline-light"
+					onClick={handleResetCategories}
+				>
+					Reset Categories
+				</button>
+			</div>
 		</section>
 	);
 }

@@ -47,7 +47,7 @@ function OptionsMenu(props) {
 		</option>
 	));
 
-	let weirdFeats;
+	let weirdFeats = null;
 	if (props.options.weirdnessFeats) {
 		weirdFeats = FEAT_TIERS.map((item) => {
 			const [tier, tierName] = item;
@@ -75,7 +75,7 @@ function OptionsMenu(props) {
 		});
 	}
 
-	let warpTalents;
+	let warpTalents = null;
 	if (props.talents.warpTalents) {
 		warpTalents = Object.entries(props.talents.warpTalents).map(
 			(item, idx) => {
@@ -132,7 +132,7 @@ function OptionsMenu(props) {
 		);
 	}
 
-	let casterTalents;
+	let casterTalents = null;
 	if (props.talents.casterTalents) {
 		casterTalents = Object.entries(props.talents.casterTalents).map(
 			(item, idx) => {
@@ -189,7 +189,7 @@ function OptionsMenu(props) {
 		);
 	}
 
-	let spellFeats;
+	let spellFeats = null;
 	if (props.talents.spellFeats) {
 		spellFeats = props.talents.spellFeats.map((feat, idx) => {
 			const featChecks = FEAT_TIERS.map((item) => {

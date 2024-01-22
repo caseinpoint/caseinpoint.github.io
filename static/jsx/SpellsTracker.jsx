@@ -30,12 +30,12 @@ function SpellsTracker(props) {
 	}
 
 	function handleFullHeal(evt) {
-		// TODO: reset spell counts
+		// TODO: reset spell counts and categories
 		// TODO: pick spellcaster talent spells if applicable
 		// NOTE: this may need to be implemented in Root and passed in props
 	}
 
-	let counters;
+	let counters = null;
 	if (props.lvlProgression.idx0) {
 		counters = [
 			["perBattle", "Per Battle"],

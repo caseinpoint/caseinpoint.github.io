@@ -2,7 +2,7 @@
 
 let RANDO = false;
 let FIRST_CLICK = true;
-let INTERVAL_ID;
+let TIMEOUT_ID;
 
 // function randomHSLA() {
 // 	const h = Math.floor(Math.random() * 360);
@@ -14,11 +14,11 @@ let INTERVAL_ID;
 // 	return `hsla(${h},${s}%,${l}%,${a})`;
 // }
 
-function randomRGBA() {
+function randomRGBA(aMin=0.15, aMax=0.3) {
 	const r = Math.floor(Math.random() * 256);
 	const g = Math.floor(Math.random() * 256);
 	const b = Math.floor(Math.random() * 256);
-	let a = 0.15 + Math.random() * 0.15;
+	let a = Math.random() * (aMax - aMin) + aMin;
 	a = a.toFixed(2);
 
 	return `rgba(${r},${g},${b},${a})`;
@@ -35,7 +35,7 @@ colorBtn.addEventListener("click", () => {
 
 		colorBtn.textContent = "Random Colors On";
 
-		clearInterval(INTERVAL_ID);
+		clearTimeout(TIMEOUT_ID);
 
 		for (let div of document.querySelectorAll("div")) {
 			div.style.backgroundColor = "unset";
@@ -56,7 +56,7 @@ colorBtn.addEventListener("click", () => {
 				delay = 2000 + Math.floor(Math.random() * 18001);
 			}
 
-			INTERVAL_ID = setTimeout(() => {
+			TIMEOUT_ID = setTimeout(() => {
 				for (let div of document.querySelectorAll("div")) {
 					// ~1 in 6 chance of changing color for each div
 					if (Math.random() <= 0.16667) {
