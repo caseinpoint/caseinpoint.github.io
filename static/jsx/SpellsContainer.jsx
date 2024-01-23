@@ -48,12 +48,89 @@ function WandW(props) {
 
 function SpellDetail(props) {
 	/* React component: Display all the details for a spell */
-	// TODO: inside of SpellsContainer
 	// TODO: highlight any selected feats in props.options
+
+	let target = null;
+	if (props.spell.target) {
+		target = (
+			<p className="my-1">
+				<span className="fw-bold">Target:</span> {props.spell.target}
+			</p>
+		);
+	}
+
+	let special = null;
+	if (props.spell.special) {
+		special = (
+			<p className="my-1">
+				<span className="fw-bold">Special:</span> {props.spell.special}
+			</p>
+		);
+	}
+
+	let attack = null;
+	if (props.spell.attack) {
+		attack = (
+			<p className="my-1">
+				<span className="fw-bold">Attack:</span> {props.spell.attack}
+			</p>
+		);
+	}
+
+	let hit = null;
+	if (props.spell.hit) {
+		hit = (
+			<p className="my-1">
+				<span className="fw-bold">Hit:</span> {props.spell.hit}
+			</p>
+		);
+	}
+
+	let miss = null;
+	if (props.spell.miss) {
+		miss = (
+			<p className="my-1">
+				<span className="fw-bold">Miss:</span> {props.spell.miss}
+			</p>
+		);
+	}
+
+	let effect = null;
+	if (props.spell.effect) {
+		effect = (
+			<p className="my-1">
+				<span className="fw-bold">Effect:</span> {props.spell.effect}
+			</p>
+		);
+	}
+
+	let advancement = null;
+	if (props.spell.advancement) {
+		advancement = (
+			<p className="my-1">
+				<span className="fw-bold">Advancement:</span> {props.spell.advancement}
+			</p>
+		);
+	}
 
 	// render
 	return (
-		<div className="rounded border"></div>
+		<div className="col-6 rounded border" style={{ whiteSpace: "pre-wrap" }}>
+			<h4>
+				{props.spell.title} {props.spell.level}
+			</h4>
+			<p className="my-1">
+				{props.spell.type}{" "}
+				<span className="fw-bold">◆ {props.spell.frequency}</span>
+			</p>
+			{target}
+			{special}
+			{attack}
+			{hit}
+			{miss}
+			{effect}
+			{advancement}
+		</div>
 	);
 }
 
@@ -177,7 +254,7 @@ function SpellsContainer(props) {
 	if (currentIcon !== null) {
 		iconP = (
 			<p className="text-center h5">
-				Current Icon:&ensp;
+				Current Icon:{" "}
 				<span
 					style={{
 						textDecorationLine: "underline",
@@ -218,7 +295,7 @@ function SpellsContainer(props) {
 				/>
 			);
 		});
-	} else if (currentCategory === "icn") {
+	} else if (currentCategory === "icn" && icnSpells[currentIcon]) {
 		spells = icnSpells[currentIcon].spells.map((spell, idx) => {
 			return (
 				<SpellDetail

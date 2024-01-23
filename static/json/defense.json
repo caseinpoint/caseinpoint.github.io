@@ -19,6 +19,6 @@
 		"frequency": "Once per battle",
 		"target": "Two nearby allies, or you and one nearby ally",
 		"effect": "Randomly choose one of the targets. That target can heal using a recovery. The other target gains 10 temporary hit points and grows a strange eye, limb, or other physical feature that lasts as long as the temporary hit points do.",
-		"advancement": "3rd level spell ✧ 20 temporary hit points.\n 5th level spell ✧ 30 temporary hit points.\n7th level spell ✧ 45 temporary hit points.\n9th level spell ✧ 70 temporary hit points."
+		"advancement": "3rd level spell ✧ 20 temporary hit points.\n5th level spell ✧ 30 temporary hit points.\n7th level spell ✧ 45 temporary hit points.\n9th level spell ✧ 70 temporary hit points."
 	}
 ]
