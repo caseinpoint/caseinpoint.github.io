@@ -68,6 +68,15 @@ function SpellDetail(props) {
 		);
 	}
 
+	let effect = null;
+	if (props.spell.effect) {
+		effect = (
+			<p className="my-1">
+				<span className="fw-bold">Effect:</span> {props.spell.effect}
+			</p>
+		);
+	}
+
 	let attack = null;
 	if (props.spell.attack) {
 		attack = (
@@ -95,29 +104,39 @@ function SpellDetail(props) {
 		);
 	}
 
-	let effect = null;
-	if (props.spell.effect) {
-		effect = (
+	let advancement = null;
+	if (props.spell.advancement) {
+		let levels = [];
+		for (let lvl of [3,5,7,9]) {
+			if (props.spell.advancement[lvl]) {
+				levels.push(
+					<li key={`advLvl${lvl}`}>
+						<span className="fw-semibold">Level {lvl}:</span>{" "}
+						{props.spell.advancement[lvl]}
+					</li>
+				);
+			}
+		}
+
+		advancement = (
 			<p className="my-1">
-				<span className="fw-bold">Effect:</span> {props.spell.effect}
+				<span className="fw-bold">Advancement:</span>
+				<ul>{levels}</ul>
 			</p>
 		);
 	}
 
-	let advancement = null;
-	if (props.spell.advancement) {
-		advancement = (
-			<p className="my-1">
-				<span className="fw-bold">Advancement:</span> {props.spell.advancement}
-			</p>
-		);
+	// TODO: add feats
+	let feats = null;
+	if (props.spell.feats) {
+		
 	}
 
 	// render
 	return (
-		<div className="col-6 rounded border" style={{ whiteSpace: "pre-wrap" }}>
+		<div className="col-6 py-1 rounded border" style={{ whiteSpace: "pre-wrap" }}>
 			<h4>
-				{props.spell.title} {props.spell.level}
+				{props.spell.title} (Level {props.spell.level}+)
 			</h4>
 			<p className="my-1">
 				{props.spell.type}{" "}
@@ -125,11 +144,12 @@ function SpellDetail(props) {
 			</p>
 			{target}
 			{special}
+			{effect}
 			{attack}
 			{hit}
 			{miss}
-			{effect}
 			{advancement}
+			{feats}
 		</div>
 	);
 }
