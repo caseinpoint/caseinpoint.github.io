@@ -70,7 +70,7 @@ function SpellsTracker(props) {
 	return (
 		<section
 			key="SpellsTracker"
-			className="row justify-content-center py-1 border-top border-3 border-primary"
+			className="row justify-content-center py-1 border-top border-4 border-primary"
 		>
 			<h3 className="text-center">Spells Tracker</h3>
 

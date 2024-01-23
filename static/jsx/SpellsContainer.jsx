@@ -185,17 +185,19 @@ function SpellsContainer(props) {
 		);
 	}
 
+	const spells = [];
+
 	// render
 	return (
 		<section
 			key="SpellsContainer"
-			className="row justify-content-center py-1 border-top border-3 border-primary"
+			className="row justify-content-center py-1 border-top border-4 border-primary"
 		>
 			<h2 className="text-center">Current Spells</h2>
 
 			<div className="col-7 col-md-3 col-lg-4 text-center mb-1">
 				<button
-					className="btn btn-outline-light"
+					className="btn btn-outline-light my-auto"
 					style={{ backgroundColor: randBtn }}
 					onClick={handleNextCategory}
 				>
@@ -220,11 +222,15 @@ function SpellsContainer(props) {
 
 			<div className="col-7 col-md-3 col-lg-4 text-center mb-1">
 				<button
-					className="btn btn-outline-light"
+					className="btn btn-outline-light my-auto"
 					onClick={handleResetCategories}
 				>
 					Reset Categories
 				</button>
+			</div>
+
+			<div className="row mt-1 py-1 border-top border-info border-2">
+				{spells}
 			</div>
 		</section>
 	);

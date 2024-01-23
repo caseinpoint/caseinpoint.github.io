@@ -236,7 +236,7 @@ function OptionsMenu(props) {
 	return (
 		<section
 			key="OptionsMenu"
-			className="row py-1 border-top border-3 border-primary"
+			className="row py-1 border-top border-4 border-primary"
 		>
 			<button className="btn" onClick={handleHide}>
 				<h3 className="text-center">Character Options {upDown}</h3>
