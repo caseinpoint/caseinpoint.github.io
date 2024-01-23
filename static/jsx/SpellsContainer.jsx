@@ -50,6 +50,11 @@ function SpellDetail(props) {
 	/* React component: Display all the details for a spell */
 	// TODO: inside of SpellsContainer
 	// TODO: highlight any selected feats in props.options
+
+	// render
+	return (
+		<div className="rounded border"></div>
+	);
 }
 
 function SpellsContainer(props) {
@@ -176,6 +181,7 @@ function SpellsContainer(props) {
 				<span
 					style={{
 						textDecorationLine: "underline",
+						textDecorationThickness: "0.2em",
 						textDecorationColor: randULine,
 					}}
 				>
@@ -185,7 +191,47 @@ function SpellsContainer(props) {
 		);
 	}
 
-	const spells = [];
+	let spells = null;
+	if (currentCategory === "atk") {
+		spells = atkSpells.map((spell, idx) => {
+			return (
+				<SpellDetail
+					key={`spell${idx}`}
+					options={props.options}
+					lvlProgression={props.lvlProgression}
+					spellType={currentCategory}
+					spell={spell}
+					feat={null}
+				/>
+			);
+		});
+	} else if (currentCategory === "def") {
+		spells = defSpells.map((spell, idx) => {
+			return (
+				<SpellDetail
+					key={`spell${idx}`}
+					options={props.options}
+					lvlProgression={props.lvlProgression}
+					spellType={currentCategory}
+					spell={spell}
+					feat={null}
+				/>
+			);
+		});
+	} else if (currentCategory === "icn") {
+		spells = icnSpells[currentIcon].spells.map((spell, idx) => {
+			return (
+				<SpellDetail
+					key={`spell${idx}`}
+					options={props.options}
+					lvlProgression={props.lvlProgression}
+					spellType={currentCategory}
+					spell={spell}
+					feat={icnSpells[currentIcon].feat}
+				/>
+			);
+		});
+	}
 
 	// render
 	return (
@@ -211,6 +257,7 @@ function SpellsContainer(props) {
 					<span
 						style={{
 							textDecorationLine: "underline",
+							textDecorationThickness: "0.2em",
 							textDecorationColor: randULine,
 						}}
 					>

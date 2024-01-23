@@ -1,6 +1,7 @@
 [
 	{
 		"title": "Force Tentacle",
+		"level": "(1st Level+)",
 		"type": "Ranged spell",
 		"frequency": "At-Will",
 		"target": "One random nearby enemy",
@@ -16,6 +17,7 @@
 	},
 	{
 		"title": "Chaos Ray",
+		"level": "(1st Level+)",
 		"type": "Ranged spell",
 		"frequency": "Once per battle",
 		"target": "One nearby or far away enemy",
@@ -26,6 +28,7 @@
 	},
 	{
 		"title": "Blarrrrgh!",
+		"level": "(1st Level+)",
 		"type": "Ranged spell",
 		"frequency": "Daily",
 		"target": "1d6 nearby enemies",

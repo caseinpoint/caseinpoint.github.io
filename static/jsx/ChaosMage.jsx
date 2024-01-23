@@ -69,4 +69,9 @@ function ChaosMage(props) {
 	);
 }
 
-ReactDOM.render(<ChaosMage />, document.getElementById("react_app"));
+ReactDOM.render(
+	<React.StrictMode>
+		<ChaosMage />
+	</React.StrictMode>,
+	document.getElementById("react_app")
+);

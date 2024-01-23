@@ -1,6 +1,7 @@
 [
 	{
 		"title": "Chaos Blessing",
+		"level": "(1st Level+)",
 		"type": "Close-quarters spell",
 		"frequency": "At-Will",
 		"effect": "Roll a d20 to determine which effect the blessing grants. Higher-level versions of the spell improve the first three blessings, but you still get only the blessing you roll.\n1-4: Gift—You or one of your nearby allies gains 7 temporary hit points.\n5-8: Resilience—You gain 7 temporary hit points.\n9-12: Aura/tentacles—The next enemy that moves to engage you this battle takes 2d6 damage.\n13-16: Defense bonus—You gain a +2 bonus to the defense of your choice (AC, PD, or MD) until an attack against that defense misses you or until the end of the battle.\n17-20: Healing—You or your nearby ally with the fewest hit points can heal using a recovery. (If you're the one with the fewest hit points among you and your nearby allies, it's you.)",
@@ -13,6 +14,7 @@
 	},
 	{
 		"title": "Warped Healing",
+		"level": "(1st Level+)",
 		"type": "Close-quarters spell",
 		"frequency": "Once per battle",
 		"target": "Two nearby allies, or you and one nearby ally",
