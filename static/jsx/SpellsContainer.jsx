@@ -18,6 +18,12 @@ const ICONS = [
 	"The Three",
 ];
 
+const TIERS = [
+	["adv", "Adventurer"],
+	["chmp", "Champion"],
+	["epic", "Epic"],
+];
+
 function getCategoryArray() {
 	/* Get a new, shuffled array of spell categories */
 
@@ -106,8 +112,8 @@ function SpellDetail(props) {
 
 	let advancement = null;
 	if (props.spell.advancement) {
-		let levels = [];
-		for (let lvl of [3,5,7,9]) {
+		const levels = [];
+		for (let lvl of [3, 5, 7, 9]) {
 			if (props.spell.advancement[lvl]) {
 				levels.push(
 					<li key={`advLvl${lvl}`}>
@@ -126,15 +132,34 @@ function SpellDetail(props) {
 		);
 	}
 
-	// TODO: add feats
 	let feats = null;
 	if (props.spell.feats) {
-		
+		const tiers = [];
+		for (let [tier, tierName] of TIERS) {
+			if (props.spell.feats[tier]) {
+				tiers.push(
+					<li key={`featTier_${tier}`}>
+						<span className="fw-semibold">{tierName}:</span>{" "}
+						{props.spell.feats[tier]}
+					</li>
+				);
+			}
+		}
+
+		feats = (
+			<p className="my-1">
+				<span className="fw-bold">Feats:</span>
+				<ul>{tiers}</ul>
+			</p>
+		);
 	}
 
 	// render
 	return (
-		<div className="col-6 py-1 rounded border" style={{ whiteSpace: "pre-wrap" }}>
+		<div
+			className="col-6 py-1 rounded border"
+			style={{ whiteSpace: "pre-wrap" }}
+		>
 			<h4>
 				{props.spell.title} (Level {props.spell.level}+)
 			</h4>

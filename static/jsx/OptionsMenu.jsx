@@ -2,10 +2,10 @@
 
 const LEVELS = ["1 Multiclass", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const FEAT_TIERS = [
-		["adv", "Adventurer"],
-		["chmp", "Champion"],
-		["epic", "Epic"],
-	];
+	["adv", "Adventurer"],
+	["chmp", "Champion"],
+	["epic", "Epic"],
+];
 
 function OptionsMenu(props) {
 	/* React component: Select character talents and feats */

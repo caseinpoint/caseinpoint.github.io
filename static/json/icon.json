@@ -314,7 +314,7 @@
 					"9": "83 extra damage."
 				},
 				"feats": {
-					"adv": "Add your Charisma modifier to the extra damage (double your Charisma modifier at 5 th level; triple it at 8 th level).",
+					"adv": "Add your Charisma modifier to the extra damage (double your Charisma modifier at 5th level; triple it at 8th level).",
 					"chmp": "When you cast this spell, each nearby enemy that's staggered also takes 2d6 thunder damage (4d6 thunder damage at 8 th level).",
 					"epic": "When this spell's effect deals the extra damage, you can roll a hard save (16+). If you succeed, the war drums keep beating and the effect extends to the next natural odd hit this battle! (And so on if you keep succeeding.)"
 				}
