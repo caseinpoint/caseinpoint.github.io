@@ -10,6 +10,18 @@ function SpellDetail(props) {
 	/* React component: Display all the details for a spell */
 	// TODO: highlight any selected feats in props.options
 
+	let canCast = "";
+	if (
+		props.lvlProgression.spellLvl &&
+		props.options.charLvl &&
+		props.spell.level
+	) {
+		const maxLvl = props.lvlProgression.spellLvl[props.options.charLvl];
+		if (props.spell.level > maxLvl) {
+			canCast = " text-secondary";
+		}
+	}
+
 	let target = null;
 	if (props.spell.target) {
 		target = (
@@ -111,7 +123,7 @@ function SpellDetail(props) {
 	// render
 	return (
 		<div
-			className="col-6 py-1 rounded border"
+			className={`col-6 py-1 rounded border${canCast}`}
 			style={{ whiteSpace: "pre-wrap" }}
 		>
 			<h4>
