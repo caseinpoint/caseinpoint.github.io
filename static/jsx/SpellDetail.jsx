@@ -8,7 +8,6 @@ const TIERS = [
 
 function SpellDetail(props) {
 	/* React component: Display all the details for a spell */
-	// TODO: highlight any selected feats in props.options
 	const HIGHLIGHT = "bg-primary bg-gradient";
 
 	let castLvl = 1;
@@ -20,6 +19,16 @@ function SpellDetail(props) {
 		if (props.spell.level > castLvl) {
 			cantCast = " text-secondary";
 		}
+	}
+
+	// TODO: add action
+	let action = null;
+	if (props.spell.action) {
+		action = (
+			<p className="my-1">
+				<span className="fw-bold">Action:</span> {props.spell.action}
+			</p>
+		);
 	}
 
 	let target = null;
@@ -113,7 +122,10 @@ function SpellDetail(props) {
 				props.options.spellFeats[props.spell.title][tier]
 			) {
 				hLight = HIGHLIGHT;
-			} else if (props.feat !== null && props.options.spellFeats[props.feat][tier]) {
+			} else if (
+				props.feat !== null &&
+				props.options.spellFeats[props.feat][tier]
+			) {
 				hLight = HIGHLIGHT;
 			}
 
@@ -138,7 +150,7 @@ function SpellDetail(props) {
 	// render
 	return (
 		<div
-			className={`col-6 py-1 rounded border${cantCast}`}
+			className={`col-12 col-lg-6 py-1 rounded border${cantCast}`}
 			style={{ whiteSpace: "pre-wrap" }}
 		>
 			<h4>
@@ -148,6 +160,7 @@ function SpellDetail(props) {
 				{props.spell.type}{" "}
 				<span className="fw-bold">◆ {props.spell.frequency}</span>
 			</p>
+			{action}
 			{target}
 			{special}
 			{effect}

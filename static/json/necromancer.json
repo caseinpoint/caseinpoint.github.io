@@ -1,0 +1,272 @@
+{
+	"1": [
+		{
+			"category": "atk",
+			"title": "Channel Life",
+			"level": 1,
+			"type": "Ranged spell",
+			"frequency": "Once per battle",
+			"target": "Attack Target: One random nearby creature other than the healing target\nHealing Target: One nearby ally",
+			"attack": "Charisma + Level vs. MD (make one attack only against the attack target)",
+			"hit": "Hit vs. an enemy: 2d6 + Charisma negative energy damage, and the healing target can heal using a recovery.\nHit vs. an ally: 5 negative energy damage, and the healing target can heal using a recovery.",
+			"miss": "The spell is not expended."
+		},
+		{
+			"category": "atk",
+			"title": "Chant of Endings",
+			"level": 1,
+			"type": "Ranged spell",
+			"frequency": "At-Will",
+			"target": "The nearby enemy with the fewest hit points (you choose if there's a tie; you also don't have to be able to see that enemy)",
+			"attack": "Charisma + Level vs. MD",
+			"hit": "1d10 + Charisma negative energy damage."
+		},
+		{
+			"category": "atk",
+			"title": "Command Undead",
+			"level": 1,
+			"type": "Ranged spell",
+			"frequency": "Once per battle",
+			"target": "One nearby undead creature with 64 hp or fewer",
+			"attack": "Charisma + Level vs. MD",
+			"hit": "The target is confused (hard save ends, 16+)."
+		},
+		{
+			"category": "atk",
+			"title": "Death's Gauntlet",
+			"level": 1,
+			"type": "Ranged spell",
+			"frequency": "At-Will",
+			"target": "One nearby creature",
+			"attack": "Charisma + Level vs. PD",
+			"hit": "1d4 + Charisma modifier ongoing negative energy damage.\nSpecial: Instead of taking the ongoing damage at the end of its turn, the target can use its standard action to strike out at the skeletal limbs or spectral arms that are flailing at it. When it does, the ongoing damage ends and you can't use death's gauntlet again until the end of your next turn.",
+			"miss": "Damage equal to your level."
+		},
+		{
+			"category": "atk",
+			"title": "Summon Undead",
+			"level": 1,
+			"type": "Ranged spell",
+			"frequency": "Daily",
+			"effect": "You summon a mob of 1d3 + 1 crumbling skeleton mooks, as per the summoning rules on page 11. These skeletons fight for you until the end of the battle or until they drop to 0 hp, whichever comes first."
+		},
+		{
+			"category": "atk",
+			"title": "Terror",
+			"level": 1,
+			"type": "Ranged spell",
+			"frequency": "Daily",
+			"target": "One nearby creature with 50 hp or fewer",
+			"attack": "Charisma + Level vs. MD",
+			"hit": "The target uses all its actions during its turn to move away from the battle, disengaging from enemies to do so (hard save ends, 16+). If it fails to disengage with all of its actions, it won't take opportunity attacks by moving. The effect also ends when you or one of your allies attacks the target.",
+			"miss": "1d10 + Charisma psychic damage."
+		},
+		{
+			"category": "atk",
+			"title": "Unholy Blast",
+			"level": 1,
+			"type": "Ranged spell",
+			"frequency": "Daily",
+			"attack": "Charisma + Level vs. PD",
+			"hit": "4d6 + Charisma negative energy damage.",
+			"miss": "First Miss: Half damage, and make the attack again against an enemy you haven't already targeted with unholy blast this turn.\nSecond Miss: Half damage, or full damage if the escalation die is 1+ and you choose to decrease it by 1."
+		},
+		{
+			"category": "def",
+			"title": "Zombie Form",
+			"level": 1,
+			"type": "Ranged spell",
+			"frequency": "Daily",
+			"special": "You can only cast this spell outside of battle; it requires 2d4 rounds to cast.",
+			"target": "You or one willing nearby ally",
+			"effect": "The target gains 30 temporary hit points that last until the end of the next battle. Until the end of the next battle, the target takes a -5 penalty to Charisma and Dexterity skill checks (no penalty to attacks), to disengage checks, and to initiative rolls."
+		}
+	],
+	"3": [
+		{
+			"category": "atk",
+			"title": "The Bones Beneath",
+			"level": 3,
+			"type": "Ranged spell",
+			"frequency": "Daily",
+			"target": "One nearby mook (and hence, its mob)",
+			"attack": "Charisma + Level vs. PD",
+			"hit": "4d12 + Charisma negative energy damage, and each mook in the mob that drops becomes a skeleton mook under your control until the end of the battle.",
+			"miss": "Half damage, and each mook in the mob that drops becomes a skeleton mook under your control until the end of the battle."
+		},
+		{
+			"category": "atk",
+			"title": "Circle of Death",
+			"level": 3,
+			"type": "Ranged spell",
+			"frequency": "Daily",
+			"target": "Each nearby creature (allies and enemies)",
+			"special": "You can't cast this spell unless the escalation die is 3+",
+			"attack": "Charisma + Level vs. PD",
+			"hit": "Hit vs. an enemy: 5d12 + Charisma negative energy damage.\nHit vs. an ally: 1d6 negative energy damage.",
+			"miss": "Miss vs. an enemy: Half damage.\nMiss vs. an ally: You take half the damage the ally would have taken on a hit."
+		},
+		{
+			"category": "def",
+			"title": "Ghoul Form",
+			"level": 3,
+			"type": "Ranged spell",
+			"frequency": "Daily",
+			"target": "You or one willing nearby ally",
+			"effect": "Until the end of the battle, the target gains a +4 melee attack bonus. In addition, enemies engaged with the target are vulnerable to its melee attacks.\nThe target also only gains half the normal amount from healing effects, no matter the source."
+		},
+		{
+			"category": "def",
+			"title": "Negative Energy Shield",
+			"level": 3,
+			"type": "Close-quarters spell",
+			"frequency": "Daily",
+			"target": "You",
+			"effect": "Until the end of the battle, when an enemy engaged with you attacks you with a natural odd attack roll, it takes 6d6 + Charisma negative energy damage."
+		},
+		{
+			"category": "atk",
+			"title": "Ray of Enfeeblement",
+			"level": 3,
+			"type": "Ranged spell",
+			"frequency": "Daily",
+			"target": "One nearby enemy with 96 hp or fewer",
+			"attack": "Charisma + Level vs. PD",
+			"hit": "4d12 + Charisma negative energy damage, and the target is weakened (save ends)",
+			"miss": "Half damage."
+		},
+		{
+			"category": "def",
+			"title": "Speak with Dead",
+			"level": 3,
+			"type": "Ranged spell",
+			"frequency": "Variable",
+			"special": "You can use this spell 1d3 times each day (roll during a full heal-up when you take it). Each time you use the spell, you must wait 1d6 hours before casting it again.",
+			"target": "One corpse you are touching that has been dead less than a day. Note that creatures that were undead for a longer period before they were killed are not legal targets.",
+			"effect": "You can ask the corpse a number of yes/no questions that the leftover fragments of personality/spirit within the corpse will attempt to answer truthfully using the information it had when it died.* The magic uses the caster's knowledge of language so no translation is needed. The first question is free. The second question requires a DC 15 necromancy skill check using Charisma if the corpse is “friendly,” and Charisma if the corpse is not. Increase the DC by +5 for each subsequent question after the second. If you're using this spell during battle, each question and answer requires a round.\nNote: Just as with the séance ability of the Death Priest talent, covered on page 83 above, there's always a 10% chance that the spirit summoned is going to lie to you for reasons best known to it and to the GM. The GM rolls a d20 secretly before the corpse provides any answers; a 3+ means the spirit will speak truly, but a 1 or a 2 means it will lie while appearing to be aiming for the truth."
+		},
+		{
+			"category": "atk",
+			"title": "Summon Horror",
+			"level": 3,
+			"type": "Ranged spell",
+			"frequency": "Daily",
+			"effect": "You summon a ghoul, as per the summoning rules on page 11. The summoned ghoul fights for you until the end of the battle or until it drops to 0 hp, whichever comes first."
+		},
+		{
+			"category": "atk",
+			"title": "Wave of Decay",
+			"level": 3,
+			"type": "Ranged spell",
+			"frequency": "Daily",
+			"effect": "Choose a nearby enemy. It takes 2d6 negative energy damage for each point on the escalation die. (For example, if the escalation die is 2 when you cast the spell, you'll deal 4d6 negative energy damage to the target.)\nUntil the end of the battle, as a free action at the start of each of your turns, repeat the effect above, choosing a target and dealing damage based on the escalation die value.\nThe effect ends at the end of the battle, when you drop to 0 hp, or when your wave of decay damage drops an enemy to 0 hit points!"
+		}
+	],
+	"5": [
+		{
+			"category": "def",
+			"title": "Death's Call",
+			"level": 5,
+			"type": "Ranged spell",
+			"frequency": "Once per battle",
+			"action": "Quick action to cast",
+			"effect": "Choose a creature you can see in the battle. If that creature is the next creature to drop to 0 hp, you heal using a recovery."
+		},
+		{
+			"category": "atk",
+			"title": "Rotting Curse",
+			"level": 5,
+			"type": "Ranged spell",
+			"frequency": "Daily",
+			"target": "One nearby enemy",
+			"attack": "Charisma + Level vs. PD",
+			"hit": "30 ongoing negative energy damage (hard save ends, 16+), and each time the target fails the save, the ongoing negative energy damage increases by 15",
+			"miss": "15 ongoing negative energy damage (hard save ends, 16+)."
+		},
+		{
+			"category": "atk",
+			"title": "Summon Wraith",
+			"level": 5,
+			"type": "Ranged spell",
+			"frequency": "Daily",
+			"effect": "You summon a wraith, as per the summoning rules on page 11. This wraith fights for you until the end of the battle or until it drops to 0 hp, whichever comes first."
+		},
+		{
+			"category": "atk",
+			"title": "You Know What to Do",
+			"level": 5,
+			"type": "Ranged spell",
+			"frequency": "Daily",
+			"target": "One or more nearby enemies with 90 hp or fewer, up to a maximum number of targets equal to the escalation die",
+			"attack": "Charisma + Level vs. MD",
+			"hit": "The target is confused (save ends). Instead of attacking an ally, the target attacks itself.",
+			"miss": "Negative energy damage equal to your level."
+		}
+	],
+	"7": [
+		{
+			"category": "atk",
+			"title": "Cone of Corruption",
+			"level": 7,
+			"type": "Ranged spell",
+			"frequency": "Daily",
+			"target": "1d3 nearby enemies in a group, and any of your allies engaged with those enemies",
+			"attack": "Charisma + Level vs. PD",
+			"hit": "10d10 + Charisma negative energy damage.\nNatural even hit: As a hit, plus the target is hampered (save ends).",
+			"miss": "Half damage."
+		},
+		{
+			"category": "def",
+			"title": "Feigned Defeat",
+			"level": 7,
+			"type": "Close-quarters spell",
+			"frequency": "Daily",
+			"action": "Quick action to cast",
+			"effect": "You lose 10d8 hit points that can't be prevented in any way. At the start of your next turn, you heal using 3 free recoveries. If you are at 0 hp or below, or even dead, you return to life at 0 hp before healing."
+		},
+		{
+			"category": "def",
+			"title": "Ghost Form",
+			"level": 7,
+			"type": "Ranged spell",
+			"frequency": "Daily",
+			"target": "You",
+			"effect": "Until the end of the battle, the target gains flight and resist damage 16+ against all damage except force damage.\nThe target also only gains half the normal amount from healing effects, no matter the source."
+		}
+	],
+	"9": [
+		{
+			"category": "atk",
+			"title": "Finger of Death",
+			"level": 9,
+			"type": "Ranged spell",
+			"frequency": "Daily",
+			"target": "One nearby enemy with 240 hp or fewer",
+			"attack": "Charisma + Level vs. MD",
+			"hit": "The target drops to 0 hp and dies.",
+			"miss": "You take 4d10 damage and regain finger of death after the battle."
+		},
+		{
+			"category": "atk",
+			"title": "The Last of the Wine",
+			"level": 9,
+			"type": "Ranged spell",
+			"frequency": "Daily",
+			"target": "One or more nearby enemies, up to a maximum number of targets equal to the escalation die",
+			"special": "After you cast this spell, you drop to 0 hit points and can't use the escalation die any longer this battle. Nothing can prevent this change in hit points. You're going down. And if you get back up, you burned the escalation die's momentum up for your own spells and powers.",
+			"attack": "Charisma + Level vs. MD",
+			"hit": "3d6 x 10 negative energy damage.",
+			"miss": "Half damage."
+		}, 
+		{
+			"category": "def",
+			"title": "Vampiric Form",
+			"level": 9,
+			"type": "Ranged spell",
+			"frequency": "Daily",
+			"effect": "Until the end of the battle, or until you drop to -40 hit points, you heal 6d10 + triple your Charisma modifier hit points at the start of each of your turns. In addition, as long as this spell is in effect, you can make the following attack as a free action against each nearby enemy that misses you with an attack with a natural roll of 1-5.",
+			"attack": "Charisma + Level vs. MD",
+			"hit": "Natural Even Hit: The target is confused until the end of its next turn.\nNatural Odd Hit: The target is weakened until the end of its next turn."
+		}
+	]
+}
