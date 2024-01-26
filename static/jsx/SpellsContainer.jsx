@@ -181,32 +181,23 @@ function SpellsContainer(props) {
 	}
 
 	let spells = null;
+	const atkDefMap = (spell, idx) => {
+		return (
+			<SpellDetail
+				key={`spell${idx}`}
+				options={props.options}
+				lvlProgression={props.lvlProgression}
+				spellType={currentCategory}
+				spell={spell}
+				feat={null}
+			/>
+		);
+	};
+
 	if (currentCategory === "atk") {
-		spells = atkSpells.map((spell, idx) => {
-			return (
-				<SpellDetail
-					key={`spell${idx}`}
-					options={props.options}
-					lvlProgression={props.lvlProgression}
-					spellType={currentCategory}
-					spell={spell}
-					feat={null}
-				/>
-			);
-		});
+		spells = atkSpells.map(atkDefMap);
 	} else if (currentCategory === "def") {
-		spells = defSpells.map((spell, idx) => {
-			return (
-				<SpellDetail
-					key={`spell${idx}`}
-					options={props.options}
-					lvlProgression={props.lvlProgression}
-					spellType={currentCategory}
-					spell={spell}
-					feat={null}
-				/>
-			);
-		});
+		spells = defSpells.map(atkDefMap);
 	} else if (currentCategory === "icn" && icnSpells[currentIcon]) {
 		spells = icnSpells[currentIcon].spells.map((spell, idx) => {
 			return (

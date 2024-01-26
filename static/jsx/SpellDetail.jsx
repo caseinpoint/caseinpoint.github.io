@@ -9,6 +9,7 @@ const TIERS = [
 function SpellDetail(props) {
 	/* React component: Display all the details for a spell */
 	// TODO: highlight any selected feats in props.options
+	const HIGHLIGHT = "bg-success bg-gradient";
 
 	let castLvl = 1;
 	if (props.options.charLvl && props.lvlProgression.spellLvl) {
@@ -59,8 +60,7 @@ function SpellDetail(props) {
 
 	let hit = null;
 	if (props.spell.hit) {
-		const hLight =
-			props.spell.level === castLvl ? "bg-success bg-gradient" : "";
+		const hLight = props.spell.level === castLvl ? HIGHLIGHT : "";
 		hit = (
 			<p className="my-1">
 				<span className="fw-bold">Hit:</span>{" "}
@@ -83,7 +83,7 @@ function SpellDetail(props) {
 		const levels = [];
 		for (let lvl of [3, 5, 7, 9]) {
 			if (props.spell.advancement[lvl]) {
-				const hLight = lvl === castLvl ? "bg-success bg-gradient" : "";
+				const hLight = lvl === castLvl ? HIGHLIGHT : "";
 				levels.push(
 					<li key={`advLvl${lvl}`}>
 						<span className="fw-semibold">Level {lvl}:</span>{" "}
@@ -105,11 +105,21 @@ function SpellDetail(props) {
 	if (props.spell.feats) {
 		const tiers = [];
 		for (let [tier, tierName] of TIERS) {
+			let hLight = "";
+			if (
+				props.spell.title in props.options.spellFeats &&
+				props.options.spellFeats[props.spell.title][tier]
+			) {
+				hLight = HIGHLIGHT;
+			} else if (props.feat !== null && props.options.spellFeats[props.feat][tier]) {
+				hLight = HIGHLIGHT;
+			}
+
 			if (props.spell.feats[tier]) {
 				tiers.push(
 					<li key={`featTier_${tier}`}>
 						<span className="fw-semibold">{tierName}:</span>{" "}
-						{props.spell.feats[tier]}
+						<span className={hLight}>{props.spell.feats[tier]}</span>
 					</li>
 				);
 			}
