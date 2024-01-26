@@ -9,7 +9,7 @@ const TIERS = [
 function SpellDetail(props) {
 	/* React component: Display all the details for a spell */
 	// TODO: highlight any selected feats in props.options
-	const HIGHLIGHT = "bg-success bg-gradient";
+	const HIGHLIGHT = "bg-primary bg-gradient";
 
 	let castLvl = 1;
 	if (props.options.charLvl && props.lvlProgression.spellLvl) {
@@ -42,9 +42,11 @@ function SpellDetail(props) {
 
 	let effect = null;
 	if (props.spell.effect) {
+		const hLight = props.spell.level === castLvl ? HIGHLIGHT : "";
 		effect = (
 			<p className="my-1">
-				<span className="fw-bold">Effect:</span> {props.spell.effect}
+				<span className="fw-bold">Effect:</span>{" "}
+				<span className={hLight}>{props.spell.effect}</span>
 			</p>
 		);
 	}
