@@ -10,15 +10,14 @@ function SpellDetail(props) {
 	/* React component: Display all the details for a spell */
 	// TODO: highlight any selected feats in props.options
 
-	let canCast = "";
-	if (
-		props.lvlProgression.spellLvl &&
-		props.options.charLvl &&
-		props.spell.level
-	) {
-		const maxLvl = props.lvlProgression.spellLvl[props.options.charLvl];
-		if (props.spell.level > maxLvl) {
-			canCast = " text-secondary";
+	let castLvl = 1;
+	if (props.options.charLvl && props.lvlProgression.spellLvl) {
+		castLvl = props.lvlProgression.spellLvl[props.options.charLvl];
+	}
+	let cantCast = "";
+	if (props.spell.level) {
+		if (props.spell.level > castLvl) {
+			cantCast = " text-secondary";
 		}
 	}
 
@@ -60,9 +59,12 @@ function SpellDetail(props) {
 
 	let hit = null;
 	if (props.spell.hit) {
+		const hLight =
+			props.spell.level === castLvl ? "bg-success bg-gradient" : "";
 		hit = (
 			<p className="my-1">
-				<span className="fw-bold">Hit:</span> {props.spell.hit}
+				<span className="fw-bold">Hit:</span>{" "}
+				<span className={hLight}>{props.spell.hit}</span>
 			</p>
 		);
 	}
@@ -81,10 +83,11 @@ function SpellDetail(props) {
 		const levels = [];
 		for (let lvl of [3, 5, 7, 9]) {
 			if (props.spell.advancement[lvl]) {
+				const hLight = lvl === castLvl ? "bg-success bg-gradient" : "";
 				levels.push(
 					<li key={`advLvl${lvl}`}>
 						<span className="fw-semibold">Level {lvl}:</span>{" "}
-						{props.spell.advancement[lvl]}
+						<span className={hLight}>{props.spell.advancement[lvl]}</span>
 					</li>
 				);
 			}
@@ -123,7 +126,7 @@ function SpellDetail(props) {
 	// render
 	return (
 		<div
-			className={`col-6 py-1 rounded border${canCast}`}
+			className={`col-6 py-1 rounded border${cantCast}`}
 			style={{ whiteSpace: "pre-wrap" }}
 		>
 			<h4>

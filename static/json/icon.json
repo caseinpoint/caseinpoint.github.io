@@ -268,10 +268,10 @@
 				"hit": "1d10 + Charisma negative energy damage.\nNatural Even Hit: As a hit, plus you gain 5 temporary hit points if the target drops to 0 hp during the battle.",
 				"miss": "Damage equal to your level.",
 				"advancement": {
-					"3": "3d10 damage 8 temporary hit points.",
-					"5": "5d10 damage 10 temporary hit points.",
-					"7": "7d10 damage 15 temporary hit points.",
-					"9": "9d10 damage 25 temporary hit points."
+					"3": "3d10 damage ✧ 8 temporary hit points.",
+					"5": "5d10 damage ✧ 10 temporary hit points.",
+					"7": "7d10 damage ✧ 15 temporary hit points.",
+					"9": "9d10 damage ✧ 25 temporary hit points."
 				},
 				"feats": {
 					"adv": "This spell now deals half damage on a miss.",
