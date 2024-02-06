@@ -163,8 +163,8 @@ function SpellDetail(props) {
 			{action}
 			{target}
 			{special}
-			{effect}
 			{attack}
+			{effect}
 			{hit}
 			{miss}
 			{advancement}

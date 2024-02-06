@@ -1,4 +1,20 @@
 {
+	"template": [
+		{
+			"category": "",
+			"title": "",
+			"level": 0,
+			"type": "",
+			"frequency": "",
+			"action": null,
+			"target": null,
+			"special": null,
+			"attack": null,
+			"effect": null,
+			"hit": null,
+			"miss": null
+		}
+	],
 	"1": [
 		{
 			"category": "def",
@@ -7,7 +23,12 @@
 			"type": "Ranged spell",
 			"frequency": "Daily",
 			"action": "Quick action to cast",
-			"effect": "You can cast this spell for power or for broad effect.\nCast for power: One nearby ally gains a +2 attack bonus until the end of the battle.\nCast for broad effect: Choose up to three nearby creatures (including you); each target gains a +1 attack bonus until the end of the battle."
+			"target": null,
+			"special": null,
+			"attack": null,
+			"effect": "You can cast this spell for power or for broad effect.\nCast for power: One nearby ally gains a +2 attack bonus until the end of the battle.\nCast for broad effect: Choose up to three nearby creatures (including you); each target gains a +1 attack bonus until the end of the battle.",
+			"hit": null,
+			"miss": null
 		},
 		{
 			"category": "def",
@@ -16,7 +37,12 @@
 			"type": "Ranged spell",
 			"frequency": "Daily",
 			"action": "Quick action to cast",
-			"effect": "You or a nearby ally can heal using a free recovery."
+			"target": null,
+			"special": null,
+			"attack": null,
+			"effect": "You or a nearby ally can heal using a free recovery.",
+			"hit": null,
+			"miss": null
 		},
 		{
 			"category": "def",
@@ -24,7 +50,13 @@
 			"level": 1,
 			"type": "Close-quarters spell",
 			"frequency": "Daily",
-			"effect": "Until the end of the battle, your basic melee attacks use d12s as their base weapon damage dice."
+			"action": null,
+			"target": null,
+			"special": null,
+			"attack": null,
+			"effect": "Until the end of the battle, your basic melee attacks use d12s as their base weapon damage dice.",
+			"hit": null,
+			"miss": null
 		},
 		{
 			"category": "atk",
@@ -32,8 +64,11 @@
 			"level": 1,
 			"type": "Ranged spell",
 			"frequency": "At-Will",
+			"action": null,
 			"target": "One nearby enemy",
+			"special": null,
 			"attack": "Charisma + Level vs. PD",
+			"effect": null,
 			"hit": "1d6 + Charisma holy damage.",
 			"miss": "Damage equal to your level."
 		},
@@ -44,7 +79,12 @@
 			"type": "Ranged spell",
 			"frequency": "Daily",
 			"action": "Quick action to cast",
-			"effect": "You can cast this spell for power or for broad effect.\nCast for power: One nearby ally gains a +2 bonus to AC this battle.\nCast for broad effect: Choose up to three nearby creatures (including you); each target gains a +1 bonus to AC this battle."
+			"target": null,
+			"special": null,
+			"attack": null,
+			"effect": "You can cast this spell for power or for broad effect.\nCast for power: One nearby ally gains a +2 bonus to AC this battle.\nCast for broad effect: Choose up to three nearby creatures (including you); each target gains a +1 bonus to AC this battle.",
+			"hit": null,
+			"miss": null
 		},
 		{
 			"category": "atk",
@@ -52,8 +92,11 @@
 			"level": 1,
 			"type": "Ranged spell",
 			"frequency": "Once per battle",
+			"action": null,
 			"target": "One nearby enemy",
+			"special": null,
 			"attack": "Charisma + Level vs. MD",
+			"effect": null,
 			"hit": "4d6 + Charisma holy damage, and your nearby ally with the fewest hit points gains a +4 bonus to AC until the end of your next turn.",
 			"miss": "Your nearby ally with the fewest hit points gains a +2 bonus to AC until the end of your next turn."
 		},
@@ -63,9 +106,13 @@
 			"level": 1,
 			"type": "Close-quarters spell",
 			"frequency": "Daily",
+			"action": null,
 			"target": "1d4 nearby undead creatures, each with 55 hp or fewer.",
+			"special": null,
 			"attack": "Charisma + Charisma + Level vs. MD",
-			"hit": "The target is dazed until end of your next turn.\nHit by 4+: 1d10 x your level holy damage, and the target is dazed until end of your next turn.\nHit by 8+: Holy damage equal to half the target's maximum hit points, and the target is dazed (save ends).\nHit by 12+ or Natural 20: The target is destroyed."
+			"effect": null,
+			"hit": "The target is dazed until end of your next turn.\nHit by 4+: 1d10 x your level holy damage, and the target is dazed until end of your next turn.\nHit by 8+: Holy damage equal to half the target's maximum hit points, and the target is dazed (save ends).\nHit by 12+ or Natural 20: The target is destroyed.",
+			"miss": null
 		}
 	],
 	"3": [
@@ -75,8 +122,11 @@
 			"level": 3,
 			"type": "Ranged spell",
 			"frequency": "Daily",
+			"action": null,
 			"target": "One nearby enemy with 75 hp or fewer",
+			"special": null,
 			"attack": "Charisma + Level vs. MD",
+			"effect": null,
 			"hit": "The target is weakened until the end of its next turn. On its next turn, if it's unengaged, it does not attack and moves away from you. If it's engaged, the target attempts to disengage as its first action, and moves away if it succeeds. If it fails, it moves away as its second action (drawing opportunity attacks). In either case, it will not attack unless it has no options for escape.",
 			"miss": "The target hates you for having tried to scare it, and it wants to hurt you most of all, but it won't be any stupider than usual in pursuing that goal."
 		},
@@ -86,7 +136,13 @@
 			"level": 3,
 			"type": "Close-quarters spell",
 			"frequency": "At-Will",
-			"effect": "Make a basic melee attack. If the attack hits, you or one conscious nearby ally can roll a save against a save ends effect."
+			"action": null,
+			"target": null,
+			"special": null,
+			"attack": null,
+			"effect": "Make a basic melee attack. If the attack hits, you or one conscious nearby ally can roll a save against a save ends effect.",
+			"hit": null,
+			"miss": null
 		},
 		{
 			"category": "def",
@@ -95,7 +151,12 @@
 			"type": "Ranged spell",
 			"frequency": "Daily",
 			"action": "Quick action to cast",
-			"effect": "You can cast this spell for power or for broad effect.\nCast for power: One nearby ally gains 40 temporary hit points.\nCast for broad effect: Choose up to three nearby creatures (including you); each target gains 20 temporary hit points."
+			"target": null,
+			"special": null,
+			"attack": null,
+			"effect": "You can cast this spell for power or for broad effect.\nCast for power: One nearby ally gains 40 temporary hit points.\nCast for broad effect: Choose up to three nearby creatures (including you); each target gains 20 temporary hit points.",
+			"hit": null,
+			"miss": null
 		},
 		{
 			"category": "atk",
@@ -103,8 +164,11 @@
 			"level": 3,
 			"type": "Ranged spell",
 			"frequency": "Daily",
+			"action": null,
 			"target": "All nearby staggered enemies",
+			"special": null,
 			"attack": "Charisma + Level vs. MD",
+			"effect": null,
 			"hit": "5d10 + Charisma holy damage.",
 			"miss": "Holy damage equal to your level."
 		},
@@ -114,7 +178,13 @@
 			"level": 3,
 			"type": "Ranged spell",
 			"frequency": "Daily",
-			"effect": "You can cast this spell for power or for broad effect.\nCast for power: One nearby ally can heal using a single recovery and regain double the usual number of hit points.\nCast for broad effect: Choose up to three nearby creatures (including you); each target can heal using a recovery."
+			"action": null,
+			"target": null,
+			"special": null,
+			"attack": null,
+			"effect": "You can cast this spell for power or for broad effect.\nCast for power: One nearby ally can heal using a single recovery and regain double the usual number of hit points.\nCast for broad effect: Choose up to three nearby creatures (including you); each target can heal using a recovery.",
+			"hit": null,
+			"miss": null
 		},
 		{
 			"category": "def",
@@ -123,7 +193,12 @@
 			"type": "Ranged spell",
 			"frequency": "Daily",
 			"action": "Quick action to cast",
-			"effect": "You can cast this spell for power or for broad effect.\nCast for power: One nearby ally deals +2d8 damage with melee attacks this battle.\nCast for broad effect: Choose up to three nearby creatures (including you); each target deals +1d8 damage with melee attacks this battle."
+			"target": null,
+			"special": null,
+			"attack": null,
+			"effect": "You can cast this spell for power or for broad effect.\nCast for power: One nearby ally deals +2d8 damage with melee attacks this battle.\nCast for broad effect: Choose up to three nearby creatures (including you); each target deals +1d8 damage with melee attacks this battle.",
+			"hit": null,
+			"miss": null
 		}
 	],
 	"5": [
@@ -134,7 +209,12 @@
 			"type": "Close-quarters spell",
 			"frequency": "Daily",
 			"action": "Quick action to cast",
-			"effect": "For the rest of this battle, all enemies near you with 100 hp or fewer take a penalty to their Mental Defense equal to your Charisma modifier. Whenever one of those enemies misses with an attack roll, it takes holy damage equal to double your level."
+			"target": null,
+			"special": null,
+			"attack": null,
+			"effect": "For the rest of this battle, all enemies near you with 100 hp or fewer take a penalty to their Mental Defense equal to your Charisma modifier. Whenever one of those enemies misses with an attack roll, it takes holy damage equal to double your level.",
+			"hit": null,
+			"miss": null
 		},
 		{
 			"category": "def",
@@ -142,7 +222,13 @@
 			"level": 5,
 			"type": "Close-quarters spell",
 			"frequency": "Daily",
-			"effect": "Choose yourself or a nearby ally. Enemies with 100 hp or fewer cannot attack the chosen target until that creature attacks or the escalation die reaches 6+"
+			"action": null,
+			"target": null,
+			"special": null,
+			"attack": null,
+			"effect": "Choose yourself or a nearby ally. Enemies with 100 hp or fewer cannot attack the chosen target until that creature attacks or the escalation die reaches 6+",
+			"hit": null,
+			"miss": null
 		},
 		{
 			"category": "atk",
@@ -150,9 +236,11 @@
 			"level": 5,
 			"type": "Close-quarters spell",
 			"frequency": "Daily",
-			"effect": "You or one nearby ally can heal using a free recovery. Then make the following attack.",
+			"action": null,
 			"target": "Up to two nearby enemies",
+			"special": null,
 			"attack": "Charisma + Level vs. MD",
+			"effect": "You or one nearby ally can heal using a free recovery. Then make the following attack.",
 			"hit": "7d8 + Charisma holy damage.",
 			"miss": "Half damage."
 		}
@@ -165,7 +253,12 @@
 			"type": "Close-quarters spell",
 			"frequency": "Daily",
 			"action": "Quick action to cast",
-			"effect": "Choose a defense: AC, PD, or MD. For the rest of the battle while you are conscious, you and each ally near you gains a +1 bonus to that defense. Each enemy that misses you or one of your nearby allies with an attack against the defense you chose is hampered until the end of its next turn."
+			"target": null,
+			"special": null,
+			"attack": null,
+			"effect": "Choose a defense: AC, PD, or MD. For the rest of the battle while you are conscious, you and each ally near you gains a +1 bonus to that defense. Each enemy that misses you or one of your nearby allies with an attack against the defense you chose is hampered until the end of its next turn.",
+			"hit": null,
+			"miss": null
 		},
 		{
 			"category": "def",
@@ -173,7 +266,13 @@
 			"level": 7,
 			"type": "Ranged spell",
 			"frequency": "(see effect)",
-			"effect": "Special: You can cast this spell only once per level. You'll have to keep track of how many times you cast the spell in your life. You must have most of the corpse available to cast the spell. There's no time limit on resurrecting a dead PC, so long as you have the corpse (unless that becomes a silly exercise in resurrecting adventurer-tier characters into an epic-tier game!). NPCs should probably be a lot easier to resurrect if they haven't been dead long.\nYou can bring a creature back to life in more or less normal condition. By more or less normal, we mean that you could cast your first resurrection in the middle of combat or during an adventure and we would advise something like the following drawbacks: expending half the resurrected character's recoveries, start them dazed (save ends), and flip a coin for each of their daily abilities—tails it's expended.\nLimited Casting: The first time in your life that you use the spell you can cast it quickly, with a single standard action. Using the spell removes one of your spell slots until you gain a level (you get one less spell per full heal-up).\nThe second time in your life you cast the spell, it takes longer, at least three or four rounds, and costs you something like half your hit points and daily powers/spells. The person you are resurrecting comes back at something like one-quarter strength.\nThe third time you cast the spell it has to be as a ritual. The spell chews you up and leaves you with only a few hit points, then gnaws at the person you have resurrected, who takes days to recover well enough to qualify as an adventurer or combatant.\nThe fourth time you cast the spell it nearly kills you. The resurrection succeeds but the person you've resurrected is going to be a mess for a month or more, regardless of any other magic tricks ya'll got going.\nThe fifth time you resurrect someone (thanks to a boon from an icon, a powerful magic item, or some other method allowed by the GM that lets you use resurrection beyond your normal limit), that's the end of your story and you die. There's only a 50% chance that the resurrection spell works on the target. You've used up your quota of resurrection magic. You're not coming back via this spell, either.\nSurprise, that was the good news. The bad news is that if the target of your resurrection spell has been resurrected more times than you have cast the spell, there is a nasty 50% chance that the experience will play out using their higher number of resurrections instead of the number of times you have cast the spell."
+			"action": null,
+			"target": null,
+			"special": null,
+			"attack": null,
+			"effect": "Special: You can cast this spell only once per level. You'll have to keep track of how many times you cast the spell in your life. You must have most of the corpse available to cast the spell. There's no time limit on resurrecting a dead PC, so long as you have the corpse (unless that becomes a silly exercise in resurrecting adventurer-tier characters into an epic-tier game!). NPCs should probably be a lot easier to resurrect if they haven't been dead long.\nYou can bring a creature back to life in more or less normal condition. By more or less normal, we mean that you could cast your first resurrection in the middle of combat or during an adventure and we would advise something like the following drawbacks: expending half the resurrected character's recoveries, start them dazed (save ends), and flip a coin for each of their daily abilities—tails it's expended.\nLimited Casting: The first time in your life that you use the spell you can cast it quickly, with a single standard action. Using the spell removes one of your spell slots until you gain a level (you get one less spell per full heal-up).\nThe second time in your life you cast the spell, it takes longer, at least three or four rounds, and costs you something like half your hit points and daily powers/spells. The person you are resurrecting comes back at something like one-quarter strength.\nThe third time you cast the spell it has to be as a ritual. The spell chews you up and leaves you with only a few hit points, then gnaws at the person you have resurrected, who takes days to recover well enough to qualify as an adventurer or combatant.\nThe fourth time you cast the spell it nearly kills you. The resurrection succeeds but the person you've resurrected is going to be a mess for a month or more, regardless of any other magic tricks ya'll got going.\nThe fifth time you resurrect someone (thanks to a boon from an icon, a powerful magic item, or some other method allowed by the GM that lets you use resurrection beyond your normal limit), that's the end of your story and you die. There's only a 50% chance that the resurrection spell works on the target. You've used up your quota of resurrection magic. You're not coming back via this spell, either.\nSurprise, that was the good news. The bad news is that if the target of your resurrection spell has been resurrected more times than you have cast the spell, there is a nasty 50% chance that the experience will play out using their higher number of resurrections instead of the number of times you have cast the spell.",
+			"hit": null,
+			"miss": null
 		}
 	],
 	"9": [
@@ -183,7 +282,13 @@
 			"level": 9,
 			"type": "Close-quarters spell",
 			"frequency": "Daily",
-			"effect": "Special: You must cast this spell outdoors. It enables you and a group of nearby allies to travel up to and through the overworld to most any location in the world that you can name. The method of travel may depend upon your god, your icon, or your will. Some overworld travel spells summon a flying land, while others harness an elder sky being or simply turn all the travelers into swiftly moving wind.\nThe trip through the overworld is magically warded by the spell. Travel takes between an hour and a day, depending on distance and the amount of effort the spell must exert to maintain the warding. Party members who go off-plot and skip off into the overworld for a side adventure are on their own.\nThe destination can be in the overworld or in the land. It can't be in the underworld—this is the wrong spell for destinations there.\nIn a pinch, the versions of this spell cast by icons have been known to move invading armies and refugees from doomed cities. It's possible that the player characters could manage something similar but it's not guaranteed."
+			"action": null,
+			"target": null,
+			"special": null,
+			"attack": null,
+			"effect": "Special: You must cast this spell outdoors. It enables you and a group of nearby allies to travel up to and through the overworld to most any location in the world that you can name. The method of travel may depend upon your god, your icon, or your will. Some overworld travel spells summon a flying land, while others harness an elder sky being or simply turn all the travelers into swiftly moving wind.\nThe trip through the overworld is magically warded by the spell. Travel takes between an hour and a day, depending on distance and the amount of effort the spell must exert to maintain the warding. Party members who go off-plot and skip off into the overworld for a side adventure are on their own.\nThe destination can be in the overworld or in the land. It can't be in the underworld—this is the wrong spell for destinations there.\nIn a pinch, the versions of this spell cast by icons have been known to move invading armies and refugees from doomed cities. It's possible that the player characters could manage something similar but it's not guaranteed.",
+			"hit": null,
+			"miss": null
 		},
 		{
 			"category": "def",
@@ -191,8 +296,13 @@
 			"level": 9,
 			"type": "Close-quarters spell",
 			"frequency": "Daily",
+			"action": null,
 			"target": "Up to 5 allies",
-			"effect": "You utter a powerful prayer upon your comrades, giving each a special blessing. At any point later this battle, each blessed ally can acknowledge the blessing by saying “thank you” to your god, gods, or pantheon as a free action to reroll a d20 roll. That ally must take the reroll result.\nNote that you are giving the blessing and don't receive it yourself."
+			"special": null,
+			"attack": null,
+			"effect": "You utter a powerful prayer upon your comrades, giving each a special blessing. At any point later this battle, each blessed ally can acknowledge the blessing by saying “thank you” to your god, gods, or pantheon as a free action to reroll a d20 roll. That ally must take the reroll result.\nNote that you are giving the blessing and don't receive it yourself.",
+			"hit": null,
+			"miss": null
 		}
 	]
 }
