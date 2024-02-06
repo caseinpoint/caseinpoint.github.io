@@ -51,7 +51,7 @@
 			"type": "Ranged spell",
 			"frequency": "At-Will",
 			"action": null,
-			"target": "One nearby enemy OR one far away enemy with a –2 attack penalty",
+			"target": "One nearby enemy OR one far away enemy with a -2 attack penalty",
 			"special": "The first time you use chaos bolt each battle, determine a random energy type. The spell deals that type of damage each time you use it that battle.",
 			"attack": "Charisma + Level vs. PD",
 			"effect": null,
@@ -132,15 +132,15 @@
 		},
 		{
 			"category": "def",
-			"title": "Dragon’s Leap",
+			"title": "Dragon's Leap",
 			"level": 3,
 			"type": "Ranged spell",
 			"frequency": "Daily",
 			"action": "Quick action to cast",
 			"target": "You; breath weapon",
-			"special": "Breath Weapon: For the rest of the battle, roll a d20 at the start of each of your turns; on a 16+, you can use dragon’s leap this turn if you wish. (Yeah, we know it’s not actually a breath weapon, but it works as part of the draconic sorcerer package.)",
+			"special": "Breath Weapon: For the rest of the battle, roll a d20 at the start of each of your turns; on a 16+, you can use dragon's leap this turn if you wish. (Yeah, we know it's not actually a breath weapon, but it works as part of the draconic sorcerer package.)",
 			"attack": null,
-			"effect": "You can fly at the rate you normally move until the end of your turn. (So if you don’t land or find someplace to hang from, you’ll fall.)",
+			"effect": "You can fly at the rate you normally move until the end of your turn. (So if you don't land or find someplace to hang from, you'll fall.)",
 			"hit": null,
 			"miss": null
 		},
@@ -176,7 +176,7 @@
 		},
 		{
 			"category": "atk",
-			"title": "The Queen’s Shadows",
+			"title": "The Queen's Shadows",
 			"level": 5,
 			"type": "Ranged spell",
 			"frequency": "Daily",
@@ -199,7 +199,7 @@
 			"special": "Chain Spell: Each time you make a natural even attack roll, you can attack a different target with the spell.",
 			"attack": "Charisma + Level vs. PD",
 			"effect": null,
-			"hit": "2d4 x 10 random energy damage, and you take damage of the same type equal to the unmodified dice roll (2d4, 2d8, or 2d12). (Note that there’s no Charisma bonus to damage.)",
+			"hit": "2d4 x 10 random energy damage, and you take damage of the same type equal to the unmodified dice roll (2d4, 2d8, or 2d12). (Note that there's no Charisma bonus to damage.)",
 			"miss": "Half damage, and you still take random energy damage equal to the unmodified dice roll."
 		},
 		{
@@ -229,8 +229,8 @@
 			"special": "Breath Spell: For the rest of the battle, roll a d20 at the start of each of your turns; on a 16+, you can use breath of the blue this turn if you wish.",
 			"attack": "Charisma + Level vs. PD",
 			"effect": null,
-			"hit": "10d12 + Charisma lightning damage, and at the start of the target’s next turn, 1d6 of its nearby allies take 20 lightning damage.",
-			"miss": "Half damage, and no damage to target’s allies."
+			"hit": "10d12 + Charisma lightning damage, and at the start of the target's next turn, 1d6 of its nearby allies take 20 lightning damage.",
+			"miss": "Half damage, and no damage to target's allies."
 		},
 		{
 			"category": "def",
@@ -242,7 +242,7 @@
 			"target": "1d4 + 1 nearby allies",
 			"special": null,
 			"attack": null,
-			"effect": "You steal the once-per-battle racial powers of your allies this battle, but you don’t get the advantage of your allies’ feats or items that improve those powers.\nWe say you “steal” the power because you aren’t asking permission. Each ally you steal a racial power from can roll an easy save (6+). Success means they get to use their power also this battle. Failure means they can’t; you took it fully.",
+			"effect": "You steal the once-per-battle racial powers of your allies this battle, but you don't get the advantage of your allies' feats or items that improve those powers.\nWe say you “steal” the power because you aren't asking permission. Each ally you steal a racial power from can roll an easy save (6+). Success means they get to use their power also this battle. Failure means they can't; you took it fully.",
 			"hit": null,
 			"miss": null
 		},
@@ -254,9 +254,9 @@
 			"frequency": "Daily",
 			"action": "Quick action to cast",
 			"target": "You",
-			"special": "Using this spell when you’re actually fighting demons could be unwise. If you are fighting one or more demons, roll an easy save (6+) at the start of each of your turns. Failure means that you are confused that turn.",
+			"special": "Using this spell when you're actually fighting demons could be unwise. If you are fighting one or more demons, roll an easy save (6+) at the start of each of your turns. Failure means that you are confused that turn.",
 			"attack": null,
-			"effect": "You gain a random demon-style power for the rest of the battle, similar to the abilities demons possess but not identical.\nRoll a d8 to see which power you gain:\n1: Resist energy 16+ — When an attack that deals energy damage targets you, the attacker must roll a natural 16+ on the attack roll or it only deals half damage.\n2: Infernal battery — Until the end of the battle, you can use a quick action once each round to make recharge rolls for your expended recharge spells. Each time you do so, you take damage equal to half the natural result of your recharge roll.\n3: Backlash — The first time you are staggered this battle, the enemy who staggered you becomes confused (save ends).\n4: Spell frenzy — You enter a spell frenzy (see Infernal Heritage talent). If you were already in a spell frenzy, you now roll 3d20 for each attack and take damage equal to triple the target’s level for each roll that misses.\n5: Fear aura — Enemies engaged with you that have fewer hit points than double your current hit points are dazed. In the unlikely event that they could normally use the escalation die, well, they can’t.\n6: Teleport 1d3 + 1 times this battle — As a move action, you can teleport anywhere you can see nearby.\n7: Demonic speed — You can take an extra standard action each turn that the escalation die is even. You lose 2d10 hit points each time you use the extra action.\n8: Eye of the Diabolist — Choose any two features you want! Yeah! Enjoy. For the rest of this day, all your icon relationships disappear and are replaced by an identical number of conflicted points with the Diabolist. Consider this a love letter to the GM.",
+			"effect": "You gain a random demon-style power for the rest of the battle, similar to the abilities demons possess but not identical.\nRoll a d8 to see which power you gain:\n1: Resist energy 16+ — When an attack that deals energy damage targets you, the attacker must roll a natural 16+ on the attack roll or it only deals half damage.\n2: Infernal battery — Until the end of the battle, you can use a quick action once each round to make recharge rolls for your expended recharge spells. Each time you do so, you take damage equal to half the natural result of your recharge roll.\n3: Backlash — The first time you are staggered this battle, the enemy who staggered you becomes confused (save ends).\n4: Spell frenzy — You enter a spell frenzy (see Infernal Heritage talent). If you were already in a spell frenzy, you now roll 3d20 for each attack and take damage equal to triple the target's level for each roll that misses.\n5: Fear aura — Enemies engaged with you that have fewer hit points than double your current hit points are dazed. In the unlikely event that they could normally use the escalation die, well, they can't.\n6: Teleport 1d3 + 1 times this battle — As a move action, you can teleport anywhere you can see nearby.\n7: Demonic speed — You can take an extra standard action each turn that the escalation die is even. You lose 2d10 hit points each time you use the extra action.\n8: Eye of the Diabolist — Choose any two features you want! Yeah! Enjoy. For the rest of this day, all your icon relationships disappear and are replaced by an identical number of conflicted points with the Diabolist. Consider this a love letter to the GM.",
 			"hit": null,
 			"miss": null
 		}
@@ -286,7 +286,7 @@
 			"target": null,
 			"special": null,
 			"attack": null,
-			"effect": "Roll a d6 to randomly select one of the six sorcerous-heritage icons:\n1: Archmage\n2: The Three\n3: Diabolist\n4: Elf Queen\n5: Great Gold Wyrm\n6: Lich King\nYou gain some surprising or bizarre magical effect associated with the power of that icon to assist you. The effect is entirely up to the GM, though the immediate impact of the spell should always be favorable for you. The long-term consequences of randomly invoking the power of an icon that may be an enemy might not be favorable for you, and should be played for narrative interest by the GM, particularly if the impact of the spell was huge for you. Since this is a daily spell, sizeable impact is fine, but don’t award any extra effect for empowered casting, especially since the spell can be cast effectively out of combat.",
+			"effect": "Roll a d6 to randomly select one of the six sorcerous-heritage icons:\n1: Archmage\n2: The Three\n3: Diabolist\n4: Elf Queen\n5: Great Gold Wyrm\n6: Lich King\nYou gain some surprising or bizarre magical effect associated with the power of that icon to assist you. The effect is entirely up to the GM, though the immediate impact of the spell should always be favorable for you. The long-term consequences of randomly invoking the power of an icon that may be an enemy might not be favorable for you, and should be played for narrative interest by the GM, particularly if the impact of the spell was huge for you. Since this is a daily spell, sizeable impact is fine, but don't award any extra effect for empowered casting, especially since the spell can be cast effectively out of combat.",
 			"hit": null,
 			"miss": null
 		},
@@ -300,7 +300,7 @@
 			"target": null,
 			"special": null,
 			"attack": null,
-			"effect": "Roll your relationship dice with the Archmage; if you have none, avoid this spell.\nFor each 6 you roll, you gain one 7th level or lower spell from any spellcasting class that you can cast this battle. For each 5 you roll, you gain one 5th level or lower spell from any spellcasting class that you can cast this battle.\nIf the escalation die is 5+, you can swap the escalation die for one or your rolls. If you get no successes, you regain the spell after this battle.\nYou can acquire one of the new spells the same round you cast this spell. Then select and acquire any other gained spells at the start of your next turn, so if you haven’t already figured out what you will take, get to work. If you haven’t figured it out by your next turn, the GM should move play on without your decision and consider letting you trickle in the spells as you figure it out.\nYou can use your Charisma as the ability score that provides the acquired spells’ attack bonuses and damage bonuses (if any). Other ability score references remain unchanged.\nAs you might expect, each 5 you roll also invokes an Archmage-related complication or obligation in the tradition of rolling 5s on relationship checks. The GM should have as much fun with you as possible.",
+			"effect": "Roll your relationship dice with the Archmage; if you have none, avoid this spell.\nFor each 6 you roll, you gain one 7th level or lower spell from any spellcasting class that you can cast this battle. For each 5 you roll, you gain one 5th level or lower spell from any spellcasting class that you can cast this battle.\nIf the escalation die is 5+, you can swap the escalation die for one or your rolls. If you get no successes, you regain the spell after this battle.\nYou can acquire one of the new spells the same round you cast this spell. Then select and acquire any other gained spells at the start of your next turn, so if you haven't already figured out what you will take, get to work. If you haven't figured it out by your next turn, the GM should move play on without your decision and consider letting you trickle in the spells as you figure it out.\nYou can use your Charisma as the ability score that provides the acquired spells' attack bonuses and damage bonuses (if any). Other ability score references remain unchanged.\nAs you might expect, each 5 you roll also invokes an Archmage-related complication or obligation in the tradition of rolling 5s on relationship checks. The GM should have as much fun with you as possible.",
 			"hit": null,
 			"miss": null
 		}
