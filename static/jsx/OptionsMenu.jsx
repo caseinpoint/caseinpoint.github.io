@@ -12,13 +12,13 @@ function OptionsMenu(props) {
 
 	const [optsHidden, setOptsHidden] = React.useState(true);
 
-	function handleHide(evt) {
+	function handleHide() {
 		setOptsHidden((prevHidden) => !prevHidden);
 	}
 
 	function handleLvlSelect(evt) {
-		const newOpts = { ...props.options };
 		const lvl = Number(evt.target.value);
+		const newOpts = { ...props.options };
 		newOpts.charLvl = lvl;
 		props.updateOptions(newOpts);
 	}

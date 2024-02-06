@@ -7,6 +7,7 @@ function ChaosMage(props) {
 	const [options, setOptions] = React.useState({});
 	const [talents, setTalents] = React.useState({});
 	const [lvlProgression, setLvlProgression] = React.useState({});
+	const [fullHeal, setFullHeal] = React.useState(false);
 
 	function updateOptions(newOptions) {
 		/* Update state and save to localStorage */
@@ -29,6 +30,15 @@ function ChaosMage(props) {
 				.then((response) => response.json())
 				.then((optJSON) => updateOptions(optJSON));
 		}
+	}
+
+	function updateFullHeal() {
+		/* Temporarily set fullHeal to true */
+
+		setFullHeal(() => {
+			setTimeout(() => setFullHeal(false), 1000);
+			return true;
+		})
 	}
 
 	// on load
@@ -58,12 +68,14 @@ function ChaosMage(props) {
 			<SpellsTracker
 				charLvl={options.charLvl}
 				lvlProgression={lvlProgression}
+				updateFullHeal={updateFullHeal}
 			/>
 
 			<SpellsContainer
 				options={options}
 				lvlProgression={lvlProgression}
 				talents={talents}
+				fullHeal={fullHeal}
 			/>
 		</div>
 	);

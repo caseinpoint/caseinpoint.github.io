@@ -33,12 +33,12 @@ function getCategoryArray() {
 	return categories;
 }
 
-function getIcon() {
-	/* Get a random Icon string from the array */
+function getRandElement(arr) {
+	/* Get a random element from array */
 
-	const rIdx = Math.floor(Math.random() * ICONS.length);
+	const rIdx = Math.floor(Math.random() * arr.length);
 
-	return ICONS[rIdx];
+	return arr[rIdx];
 }
 
 function WandW(props) {
@@ -58,10 +58,11 @@ function SpellsContainer(props) {
 	const [atkSpells, setAtkSpells] = React.useState([]);
 	const [defSpells, setDefSpells] = React.useState([]);
 	const [icnSpells, setIcnSpells] = React.useState([]);
-	// const [ncrSpells, setNcrSpells] = React.useState([]);
-	// const [wizSpells, setWizSpells] = React.useState([]);
-	// const [clrSpells, setClrSpells] = React.useState([]);
-	// const [srcSpells, setSrcSpells] = React.useState([]);
+	const [ncrSpells, setNcrSpells] = React.useState({});
+	const [wizSpells, setWizSpells] = React.useState({});
+	const [clrSpells, setClrSpells] = React.useState({});
+	const [srcSpells, setSrcSpells] = React.useState({});
+	const [addSpells, setAddSpells] = React.useState([]);
 	const [weirdness, setWeirdness] = React.useState({});
 
 	function updateCategories(newCategories) {
@@ -102,6 +103,42 @@ function SpellsContainer(props) {
 		}
 	}
 
+	function resetAddSpells() {
+		/* Reset additional spells from spellcaster class talents */
+
+		const castLvl = props.lvlProgression.spellLvl[props.options.charLvl];
+
+		const newAddSpells = []
+
+		if (props.options.casterTalents.necromancer.hasTalent) {
+			newAddSpells.push(getRandElement(ncrSpells[castLvl]))
+		}
+
+		if (props.options.casterTalents.wizard.hasTalent) {
+			newAddSpells.push(getRandElement(wizSpells[castLvl]))
+		}
+
+		if (props.options.casterTalents.cleric.hasTalent) {
+			newAddSpells.push(getRandElement(clrSpells[castLvl]))
+		}
+
+		if (props.options.casterTalents.sorcerer.hasTalent) {
+			newAddSpells.push(getRandElement(srcSpells[castLvl]))
+		}
+
+		setAddSpells(newAddSpells);
+		localStorage.setItem("addSpells", JSON.stringify(newAddSpells));
+	}
+
+	function fetchAddSpells() {
+		/* Get additional spells for spellcaster class talents from localStorage */
+
+		const addSpellsStr = localStorage.getItem("addSpells");
+		if (addSpellsStr !== null) {
+			setAddSpells(JSON.parse(addSpellsStr));
+		}
+	}
+
 	// on load
 	React.useEffect(() => {
 		fetchAllCategories();
@@ -122,8 +159,23 @@ function SpellsContainer(props) {
 			.then((response) => response.json())
 			.then((wrdJSON) => setWeirdness(wrdJSON));
 
-		// TODO: add cleric, necromancer, sorcerer, and wizard spells JSON for
-		// those talents
+		fetch("/static/json/cleric.json")
+			.then((response) => response.json())
+			.then((clrJSON) => setClrSpells(clrJSON));
+
+		fetch("/static/json/necromancer.json")
+			.then((response) => response.json())
+			.then((ncrJSON) => setNcrSpells(ncrJSON));
+
+		fetch("/static/json/sorcerer.json")
+			.then((response) => response.json())
+			.then((srcJSON) => setSrcSpells(srcJSON));
+
+		fetch("/static/json/wizard.json")
+			.then((response) => response.json())
+			.then((wizJSON) => setWizSpells(wizJSON));
+
+		fetchAddSpells();
 	}, []);
 
 	// animate Next Spell Category button
@@ -131,8 +183,8 @@ function SpellsContainer(props) {
 		let timeoutID;
 
 		(function recursiveDelay() {
-			// random delay between 1 and 4 seconds
-			const delay = 1000 + Math.floor(Math.random() * 3001);
+			// random delay between 1 and 6 seconds
+			const delay = 1000 + Math.floor(Math.random() * 5001);
 
 			timeoutID = setTimeout(() => {
 				setRandBtn(randomRGBA(0.3, 0.7));
@@ -147,7 +199,7 @@ function SpellsContainer(props) {
 		const newCategories =
 			categories.length > 1 ? [...categories] : getCategoryArray();
 		const newCategory = newCategories.pop();
-		const newIcon = newCategory === "icn" ? getIcon() : null;
+		const newIcon = newCategory === "icn" ? getRandElement(ICONS) : null;
 
 		updateCategories(newCategories);
 		updateCurrentCategory(newCategory);
@@ -161,6 +213,14 @@ function SpellsContainer(props) {
 		updateCurrentIcon(null);
 		setRandULine(randomRGBA(0, 0));
 	}
+
+	// handle Full Heal-Up
+	React.useEffect(() => {
+		if (props.fullHeal === true) {
+			handleResetCategories();
+			resetAddSpells();
+		}
+	}, [props.fullHeal])
 
 	let iconP = null;
 	if (currentIcon !== null && icnSpells[currentIcon]) {
@@ -180,7 +240,7 @@ function SpellsContainer(props) {
 		);
 	}
 
-	let spells = null;
+	let spells = [];
 	const atkDefMap = (spell, idx) => {
 		return (
 			<SpellDetail
@@ -213,6 +273,13 @@ function SpellsContainer(props) {
 		});
 	}
 
+	// push additional spells
+	for (let spell of addSpells) {
+		if (spell.category === currentCategory) {
+			spells.push(atkDefMap(spell, spell.title));
+		}
+	}
+
 	// render
 	return (
 		<section
@@ -223,7 +290,7 @@ function SpellsContainer(props) {
 
 			<div className="col-7 col-md-3 col-lg-4 text-center mb-1">
 				<button
-					className="btn btn-outline-light my-auto"
+					className="btn btn-lg btn-outline-light my-auto"
 					style={{ backgroundColor: randBtn }}
 					onClick={handleNextCategory}
 				>
