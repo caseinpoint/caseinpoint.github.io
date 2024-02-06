@@ -41,6 +41,18 @@ function SpellsTracker(props) {
 		props.updateFullHeal();
 	}
 
+	// handle endCombat
+	React.useEffect(() => {
+		if (props.endCombat === true) {
+			handleCounter({
+				target: {
+					dataset: { freq: 'perBattle'},
+					value: props.lvlProgression.perBattle[props.charLvl]
+				}
+			});
+		}
+	}, [props.endCombat])
+
 	let counters = null;
 	if (props.lvlProgression.idx0) {
 		counters = [

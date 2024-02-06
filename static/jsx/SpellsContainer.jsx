@@ -212,6 +212,7 @@ function SpellsContainer(props) {
 		updateCurrentCategory(null);
 		updateCurrentIcon(null);
 		setRandULine(randomRGBA(0, 0));
+		props.updateEndCombat();
 	}
 
 	// handle Full Heal-Up
@@ -319,7 +320,7 @@ function SpellsContainer(props) {
 					className="btn btn-outline-light my-auto"
 					onClick={handleResetCategories}
 				>
-					Reset Categories
+					End Combat
 				</button>
 			</div>
 

@@ -8,6 +8,7 @@ function ChaosMage(props) {
 	const [talents, setTalents] = React.useState({});
 	const [lvlProgression, setLvlProgression] = React.useState({});
 	const [fullHeal, setFullHeal] = React.useState(false);
+	const [endCombat, setEndCombat] = React.useState(false);
 
 	function updateOptions(newOptions) {
 		/* Update state and save to localStorage */
@@ -41,6 +42,15 @@ function ChaosMage(props) {
 		})
 	}
 
+	function updateEndCombat() {
+		/* Temporarily set endCombat to true */
+
+		setEndCombat(() => {
+			setTimeout(() => setEndCombat(false), 1000);
+			return true;
+		})
+	}
+
 	// on load
 	React.useEffect(() => {
 		fetchOptions();
@@ -69,6 +79,7 @@ function ChaosMage(props) {
 				charLvl={options.charLvl}
 				lvlProgression={lvlProgression}
 				updateFullHeal={updateFullHeal}
+				endCombat={endCombat}
 			/>
 
 			<SpellsContainer
@@ -76,6 +87,7 @@ function ChaosMage(props) {
 				lvlProgression={lvlProgression}
 				talents={talents}
 				fullHeal={fullHeal}
+				updateEndCombat={updateEndCombat}
 			/>
 		</div>
 	);
