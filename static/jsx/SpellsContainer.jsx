@@ -277,7 +277,7 @@ function SpellsContainer(props) {
 
 			<div className="col-7 col-md-3 col-lg-4 text-center mb-1">
 				<button
-					className="btn btn-outline-light my-auto"
+					className="btn btn-outline-secondary my-auto"
 					onClick={handleResetCategories}
 				>
 					End Combat

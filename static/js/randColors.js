@@ -1,5 +1,7 @@
 "use strict";
 
+/* Handle random colors */
+
 let RANDO = false;
 let FIRST_CLICK = true;
 let TIMEOUT_ID;
@@ -70,5 +72,24 @@ colorBtn.addEventListener("click", () => {
 				recursiveDelay();
 			}, delay);
 		})();
+	}
+});
+
+
+/* Handle dark/light mode */
+
+const darkModeBtn = document.getElementById("dark_mode");
+
+darkModeBtn.addEventListener("click", () => {
+	darkModeBtn.classList.toggle('btn-outline-light');
+	darkModeBtn.classList.toggle('btn-outline-dark');
+
+	const body = document.querySelector("body");
+	if (body.dataset.bsTheme === "dark") {
+		body.dataset.bsTheme = "light";
+		darkModeBtn.textContent = "Dark Mode On";
+	} else {
+		body.dataset.bsTheme = "dark";
+		darkModeBtn.textContent = "Dark Mode Off";
 	}
 });
