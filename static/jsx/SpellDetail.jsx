@@ -1,11 +1,5 @@
 "use strict";
 
-const TIERS = [
-	["adv", "Adventurer"],
-	["chmp", "Champion"],
-	["epic", "Epic"],
-];
-
 function SpellDetail(props) {
 	/* React component: Display all the details for a spell */
 	const HIGHLIGHT = "bg-primary bg-gradient";
@@ -21,7 +15,6 @@ function SpellDetail(props) {
 		}
 	}
 
-	// TODO: add action
 	let action = null;
 	if (props.spell.action) {
 		action = (
@@ -115,7 +108,7 @@ function SpellDetail(props) {
 	let feats = null;
 	if (props.spell.feats) {
 		const tiers = [];
-		for (let [tier, tierName] of TIERS) {
+		for (let [tier, tierName] of FEAT_TIERS) {
 			let hLight = "";
 			if (
 				props.spell.title in props.options.spellFeats &&

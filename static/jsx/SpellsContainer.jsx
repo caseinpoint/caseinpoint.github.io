@@ -1,46 +1,5 @@
 "use strict";
 
-const CATEGORIES = ["atk", "atk", "def", "def", "icn", "icn"];
-const CAT_NAMES = { atk: "Attack", def: "Defense", icn: "Icon", null: "none" };
-
-const ICONS = [
-	"Archmage",
-	"Crusader",
-	"Diabolist",
-	"Dwarf King",
-	"Elf Queen",
-	"Great Gold Wyrm",
-	"High Druid",
-	"Lich King",
-	"Orc Lord",
-	"Priestess",
-	"Prince of Shadows",
-	"The Three",
-];
-
-function getCategoryArray() {
-	/* Get a new, shuffled array of spell categories */
-
-	const categories = [...CATEGORIES];
-
-	for (let n = 0; n < 3; n++) {
-		for (let i in categories) {
-			const r = Math.floor(Math.random() * categories.length);
-			[categories[i], categories[r]] = [categories[r], categories[i]];
-		}
-	}
-
-	return categories;
-}
-
-function getRandElement(arr) {
-	/* Get a random element from array */
-
-	const rIdx = Math.floor(Math.random() * arr.length);
-
-	return arr[rIdx];
-}
-
 function SpellsContainer(props) {
 	/* React component: Display all SpellDetails that are currently available */
 
@@ -319,8 +278,10 @@ function SpellsContainer(props) {
 			</div>
 
 			<WarpWeird
-				warpTalents={props.options.warpTalents}
-				weirdnessFeats={props.options.weirdnessFeats}
+				currentCategory={currentCategory}
+				warpTalents={props.talents.warpTalents}
+				warpOptions={props.options.warpTalents}
+				weirdnessOptions={props.options.weirdnessFeats}
 			/>
 		</section>
 	);
