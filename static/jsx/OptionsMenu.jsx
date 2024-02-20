@@ -97,6 +97,7 @@ function OptionsMenu(props) {
 								data-opt-subcategory={key}
 								checked={props.options.warpTalents[key].feats[tier]}
 								onChange={handleCheck}
+								
 							/>
 							<label
 								for={`warpTal${idx}_${tier}`}
@@ -154,6 +155,8 @@ function OptionsMenu(props) {
 								data-opt-subcategory={key}
 								checked={props.options.casterTalents[key].feats[tier]}
 								onChange={handleCheck}
+								// disabled until feature implemented
+								disabled={true}
 							/>
 							<label
 								for={`casterTal${idx}_${tier}`}

@@ -41,11 +41,6 @@ function getRandElement(arr) {
 	return arr[rIdx];
 }
 
-function WandW(props) {
-	/* React component: Display Warps and High Weirdness */
-	// TODO: inside of SpellsContainer, bottom
-}
-
 function SpellsContainer(props) {
 	/* React component: Display all SpellDetails that are currently available */
 
@@ -63,7 +58,6 @@ function SpellsContainer(props) {
 	const [clrSpells, setClrSpells] = React.useState({});
 	const [srcSpells, setSrcSpells] = React.useState({});
 	const [addSpells, setAddSpells] = React.useState([]);
-	const [weirdness, setWeirdness] = React.useState({});
 
 	function updateCategories(newCategories) {
 		/* Update categories state and save to localStorage */
@@ -108,22 +102,22 @@ function SpellsContainer(props) {
 
 		const castLvl = props.lvlProgression.spellLvl[props.options.charLvl];
 
-		const newAddSpells = []
+		const newAddSpells = [];
 
 		if (props.options.casterTalents.necromancer.hasTalent) {
-			newAddSpells.push(getRandElement(ncrSpells[castLvl]))
+			newAddSpells.push(getRandElement(ncrSpells[castLvl]));
 		}
 
 		if (props.options.casterTalents.wizard.hasTalent) {
-			newAddSpells.push(getRandElement(wizSpells[castLvl]))
+			newAddSpells.push(getRandElement(wizSpells[castLvl]));
 		}
 
 		if (props.options.casterTalents.cleric.hasTalent) {
-			newAddSpells.push(getRandElement(clrSpells[castLvl]))
+			newAddSpells.push(getRandElement(clrSpells[castLvl]));
 		}
 
 		if (props.options.casterTalents.sorcerer.hasTalent) {
-			newAddSpells.push(getRandElement(srcSpells[castLvl]))
+			newAddSpells.push(getRandElement(srcSpells[castLvl]));
 		}
 
 		setAddSpells(newAddSpells);
@@ -154,10 +148,6 @@ function SpellsContainer(props) {
 		fetch("/static/json/icon.json")
 			.then((response) => response.json())
 			.then((icnJSON) => setIcnSpells(icnJSON));
-
-		fetch("/static/json/weirdness.json")
-			.then((response) => response.json())
-			.then((wrdJSON) => setWeirdness(wrdJSON));
 
 		fetch("/static/json/cleric.json")
 			.then((response) => response.json())
@@ -221,7 +211,7 @@ function SpellsContainer(props) {
 			handleResetCategories();
 			resetAddSpells();
 		}
-	}, [props.fullHeal])
+	}, [props.fullHeal]);
 
 	let iconP = null;
 	if (currentIcon !== null && icnSpells[currentIcon]) {
@@ -324,9 +314,14 @@ function SpellsContainer(props) {
 				</button>
 			</div>
 
-			<div className="row mt-1 py-1 border-top border-info border-2">
+			<div className="row mt-1 py-2 border-top border-info border-2">
 				{spells}
 			</div>
+
+			<WarpWeird
+				warpTalents={props.options.warpTalents}
+				weirdnessFeats={props.options.weirdnessFeats}
+			/>
 		</section>
 	);
 }
