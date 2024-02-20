@@ -118,15 +118,15 @@ function WarpWeird(props) {
 						className="btn btn-outline-info"
 						onClick={handleRollWeirdness}
 					>
-						Roll High Weirdness
+						Roll High Weirdness!
 					</button>
 
 					<button
 						type="button"
-						className="btn btn-outline-warning"
+						className="btn btn-outline-danger"
 						onClick={handleRollTwice}
 					>
-						Roll Twice
+						Roll Twice‼
 					</button>
 
 					<button

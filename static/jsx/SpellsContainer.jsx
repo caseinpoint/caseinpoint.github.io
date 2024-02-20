@@ -9,6 +9,7 @@ function SpellsContainer(props) {
 	const [currentIcon, setCurrentIcon] = React.useState(null);
 	const [randBtn, setRandBtn] = React.useState(randomRGBA(0.25, 0.5));
 	const [randULine, setRandULine] = React.useState(randomRGBA(0, 0));
+	const [randColors, setRandColors] = React.useState([]);
 	const [atkSpells, setAtkSpells] = React.useState([]);
 	const [defSpells, setDefSpells] = React.useState([]);
 	const [icnSpells, setIcnSpells] = React.useState([]);
@@ -144,6 +145,18 @@ function SpellsContainer(props) {
 		return () => clearTimeout(timeoutID);
 	}, []);
 
+	function randomSpanColors() {
+		const newRandColors = [];
+		for (let i = 0; i < "Current Spells".length; i++) {
+			newRandColors.push(getRandElement(TEXT_COLOR_CLASSES));
+		}
+		setRandColors(newRandColors);
+	}
+
+	function resetSpanColors() {
+		setRandColors([]);
+	}
+
 	function handleNextCategory() {
 		const newCategories =
 			categories.length > 1 ? [...categories] : getCategoryArray();
@@ -154,6 +167,7 @@ function SpellsContainer(props) {
 		updateCurrentCategory(newCategory);
 		updateCurrentIcon(newIcon);
 		setRandULine(randomRGBA(0.95, 1.0));
+		randomSpanColors();
 	}
 
 	function handleResetCategories() {
@@ -162,6 +176,7 @@ function SpellsContainer(props) {
 		updateCurrentIcon(null);
 		setRandULine(randomRGBA(0, 0));
 		props.updateEndCombat();
+		resetSpanColors();
 	}
 
 	// handle Full Heal-Up
@@ -241,13 +256,29 @@ function SpellsContainer(props) {
 		}
 	}
 
+	const currentSpellsStr = "Current Spells";
+	const letterSpans = [];
+	const colorClasses = [...randColors];
+	for (let i in currentSpellsStr) {
+		let colorClass = colorClasses.pop();
+		if (colorClass === undefined) {
+			colorClass = "";
+		}
+
+		letterSpans.push(
+			<span key={`ltr_${i}`} className={colorClass}>
+				{currentSpellsStr[i]}
+			</span>
+		);
+	}
+
 	// render
 	return (
 		<section
 			key="SpellsContainer"
 			className="row justify-content-center py-1 border-top border-4 border-primary"
 		>
-			<h2 className="text-center">Current Spells</h2>
+			<h2 className="text-center">{letterSpans}</h2>
 
 			<div className="col-7 col-md-3 col-lg-4 text-center mb-1">
 				<button

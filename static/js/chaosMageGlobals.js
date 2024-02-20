@@ -25,6 +25,20 @@ const ICONS = [
 	"The Three",
 ];
 const LEVELS = ["1 Multiclass", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const TEXT_COLOR_CLASSES = [
+	"text-primary",
+	"text-primary-emphasis",
+	"text-secondary",
+	"text-secondary-emphasis",
+	"text-success",
+	"text-success-emphasis",
+	"text-danger",
+	"text-danger-emphasis",
+	"text-warning",
+	"text-warning-emphasis",
+	"text-info",
+	"text-info-emphasis"
+];
 
 
 /* Global functions */
