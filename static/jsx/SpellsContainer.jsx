@@ -210,7 +210,7 @@ function SpellsContainer(props) {
 			spellMap(
 				{
 					title: 'No current spells, click "Next Category" to begin combat',
-					level: 11,
+					level: 0,
 				},
 				0
 			)
@@ -261,7 +261,7 @@ function SpellsContainer(props) {
 
 			<div className="col-9 col-md-6 col-lg-4 mb-1">
 				<p className="text-center h5">
-					Current Category:&ensp;
+					Current Category:{" "}
 					<span
 						style={{
 							textDecorationLine: "underline",
@@ -284,7 +284,7 @@ function SpellsContainer(props) {
 				</button>
 			</div>
 
-			<div className="row mt-1 pt-2 border-top border-info border-2">
+			<div className="row mt-1 pt-2 border-top border-info-subtle border-2">
 				{spells}
 			</div>
 
@@ -292,7 +292,7 @@ function SpellsContainer(props) {
 				currentCategory={currentCategory}
 				warpTalents={props.talents.warpTalents}
 				warpOptions={props.options.warpTalents}
-				weirdnessOptions={props.options.weirdnessFeats}
+				weirdOptions={props.options.weirdnessFeats}
 			/>
 		</section>
 	);

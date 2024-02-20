@@ -1,5 +1,7 @@
 "use strict";
 
+/* Global variables */
+
 const CATEGORIES = ["atk", "atk", "def", "def", "icn", "icn"];
 const CAT_NAMES = { atk: "Attack", def: "Defense", icn: "Icon", null: "none" };
 const FEAT_TIERS = [
@@ -7,6 +9,7 @@ const FEAT_TIERS = [
 	["chmp", "Champion"],
 	["epic", "Epic"],
 ];
+const HIGHLIGHT_CLASS = "bg-primary bg-gradient";
 const ICONS = [
 	"Archmage",
 	"Crusader",
@@ -23,6 +26,8 @@ const ICONS = [
 ];
 const LEVELS = ["1 Multiclass", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
+
+/* Global functions */
 
 function getCategoryArray() {
 	/* Get a new, shuffled array of spell categories */

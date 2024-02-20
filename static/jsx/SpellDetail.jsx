@@ -7,8 +7,9 @@ function SpellDetail(props) {
 	if (props.options.charLvl && props.lvlProgression.spellLvl) {
 		castLvl = props.lvlProgression.spellLvl[props.options.charLvl];
 	}
-	const HIGHLIGHTCLASS = "bg-primary bg-gradient";
-	const hLight = props.spell.level === castLvl ? HIGHLIGHTCLASS : "";
+
+	// HIGHLIGHTCLASS from chaosMageGlobals.js
+	const hLight = props.spell.level === castLvl ? HIGHLIGHT_CLASS : "";
 	let cantCast = "";
 	if (props.spell.level) {
 		if (props.spell.level > castLvl) {
@@ -17,7 +18,7 @@ function SpellDetail(props) {
 	}
 
 	let level = null;
-	if (props.spell.level && props.spell.level < 10) {
+	if (props.spell.level) {
 		level = `(Level ${props.spell.level}+)`
 	}
 
@@ -101,7 +102,7 @@ function SpellDetail(props) {
 		const levels = [];
 		for (let lvl of [3, 5, 7, 9]) {
 			if (props.spell.advancement[lvl]) {
-				const advHLight = lvl === castLvl ? HIGHLIGHTCLASS : "";
+				const advHLight = lvl === castLvl ? HIGHLIGHT_CLASS : "";
 				levels.push(
 					<li key={`advLvl${lvl}`}>
 						<span className="fw-semibold">Level {lvl}:</span>{" "}
@@ -129,13 +130,13 @@ function SpellDetail(props) {
 				props.options.spellFeats[props.spell.title][tier] &&
 				cantCast === ""
 			) {
-				featHLight = HIGHLIGHTCLASS;
+				featHLight = HIGHLIGHT_CLASS;
 			} else if (
 				props.feat !== null &&
 				props.options.spellFeats[props.feat][tier] &&
 				cantCast === ""
 			) {
-				featHLight = HIGHLIGHTCLASS;
+				featHLight = HIGHLIGHT_CLASS;
 			}
 
 			if (props.spell.feats[tier]) {
