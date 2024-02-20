@@ -2,17 +2,33 @@
 
 function SpellDetail(props) {
 	/* React component: Display all the details for a spell */
-	const HIGHLIGHT = "bg-primary bg-gradient";
 
 	let castLvl = 1;
 	if (props.options.charLvl && props.lvlProgression.spellLvl) {
 		castLvl = props.lvlProgression.spellLvl[props.options.charLvl];
 	}
+	const HIGHLIGHTCLASS = "bg-primary bg-gradient";
+	const hLight = props.spell.level === castLvl ? HIGHLIGHTCLASS : "";
 	let cantCast = "";
 	if (props.spell.level) {
 		if (props.spell.level > castLvl) {
 			cantCast = " text-secondary";
 		}
+	}
+
+	let level = null;
+	if (props.spell.level && props.spell.level < 10) {
+		level = `(Level ${props.spell.level}+)`
+	}
+
+	let typeFreq = null;
+	if (props.spell.type) {
+		typeFreq = (
+			<p className="my-1">
+				{props.spell.type}{" "}
+				<span className="fw-bold">◆ {props.spell.frequency}</span>
+			</p>
+		);
 	}
 
 	let action = null;
@@ -44,7 +60,6 @@ function SpellDetail(props) {
 
 	let effect = null;
 	if (props.spell.effect) {
-		const hLight = props.spell.level === castLvl ? HIGHLIGHT : "";
 		effect = (
 			<p className="my-1">
 				<span className="fw-bold">Effect:</span>{" "}
@@ -64,7 +79,6 @@ function SpellDetail(props) {
 
 	let hit = null;
 	if (props.spell.hit) {
-		const hLight = props.spell.level === castLvl ? HIGHLIGHT : "";
 		hit = (
 			<p className="my-1">
 				<span className="fw-bold">Hit:</span>{" "}
@@ -87,11 +101,11 @@ function SpellDetail(props) {
 		const levels = [];
 		for (let lvl of [3, 5, 7, 9]) {
 			if (props.spell.advancement[lvl]) {
-				const hLight = lvl === castLvl ? HIGHLIGHT : "";
+				const advHLight = lvl === castLvl ? HIGHLIGHTCLASS : "";
 				levels.push(
 					<li key={`advLvl${lvl}`}>
 						<span className="fw-semibold">Level {lvl}:</span>{" "}
-						<span className={hLight}>{props.spell.advancement[lvl]}</span>
+						<span className={advHLight}>{props.spell.advancement[lvl]}</span>
 					</li>
 				);
 			}
@@ -109,24 +123,26 @@ function SpellDetail(props) {
 	if (props.spell.feats) {
 		const tiers = [];
 		for (let [tier, tierName] of FEAT_TIERS) {
-			let hLight = "";
+			let featHLight = "";
 			if (
 				props.spell.title in props.options.spellFeats &&
-				props.options.spellFeats[props.spell.title][tier]
+				props.options.spellFeats[props.spell.title][tier] &&
+				cantCast === ""
 			) {
-				hLight = HIGHLIGHT;
+				featHLight = HIGHLIGHTCLASS;
 			} else if (
 				props.feat !== null &&
-				props.options.spellFeats[props.feat][tier]
+				props.options.spellFeats[props.feat][tier] &&
+				cantCast === ""
 			) {
-				hLight = HIGHLIGHT;
+				featHLight = HIGHLIGHTCLASS;
 			}
 
 			if (props.spell.feats[tier]) {
 				tiers.push(
 					<li key={`featTier_${tier}`}>
 						<span className="fw-semibold">{tierName}:</span>{" "}
-						<span className={hLight}>{props.spell.feats[tier]}</span>
+						<span className={featHLight}>{props.spell.feats[tier]}</span>
 					</li>
 				);
 			}
@@ -147,12 +163,9 @@ function SpellDetail(props) {
 			style={{ whiteSpace: "pre-wrap" }}
 		>
 			<h4>
-				{props.spell.title} (Level {props.spell.level}+)
+				{props.spell.title} {level}
 			</h4>
-			<p className="my-1">
-				{props.spell.type}{" "}
-				<span className="fw-bold">◆ {props.spell.frequency}</span>
-			</p>
+			{typeFreq}
 			{action}
 			{target}
 			{special}

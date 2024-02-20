@@ -191,7 +191,8 @@ function SpellsContainer(props) {
 	}
 
 	let spells = [];
-	const atkDefMap = (spell, idx) => {
+
+	const spellMap = (spell, idx) => {
 		return (
 			<SpellDetail
 				key={`spell${idx}`}
@@ -204,10 +205,20 @@ function SpellsContainer(props) {
 		);
 	};
 
-	if (currentCategory === "atk") {
-		spells = atkSpells.map(atkDefMap);
+	if (currentCategory === null) {
+		spells.push(
+			spellMap(
+				{
+					title: 'No current spells, click "Next Category" to begin combat',
+					level: 11,
+				},
+				0
+			)
+		);
+	} else if (currentCategory === "atk") {
+		spells = atkSpells.map(spellMap);
 	} else if (currentCategory === "def") {
-		spells = defSpells.map(atkDefMap);
+		spells = defSpells.map(spellMap);
 	} else if (currentCategory === "icn" && icnSpells[currentIcon]) {
 		spells = icnSpells[currentIcon].spells.map((spell, idx) => {
 			return (
@@ -226,7 +237,7 @@ function SpellsContainer(props) {
 	// push additional spells
 	for (let spell of addSpells) {
 		if (spell.category === currentCategory) {
-			spells.push(atkDefMap(spell, spell.title));
+			spells.push(spellMap(spell, spell.title));
 		}
 	}
 
@@ -273,7 +284,7 @@ function SpellsContainer(props) {
 				</button>
 			</div>
 
-			<div className="row mt-1 py-2 border-top border-info border-2">
+			<div className="row mt-1 pt-2 border-top border-info border-2">
 				{spells}
 			</div>
 

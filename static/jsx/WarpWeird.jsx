@@ -16,6 +16,6 @@ function WarpWeird(props) {
 	}, []);
 
 	return (
-		<div className="row mt-1 py-2 border-top border-info border-2"></div>
+		<div className="row mt-2 py-2 border-top border-info border-2"></div>
 	);
 }
