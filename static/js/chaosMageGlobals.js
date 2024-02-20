@@ -9,7 +9,7 @@ const FEAT_TIERS = [
 	["chmp", "Champion"],
 	["epic", "Epic"],
 ];
-const HIGHLIGHT_CLASS = "bg-primary bg-gradient";
+const HIGHLIGHT_CLASS = "bg-success bg-gradient";
 const ICONS = [
 	"Archmage",
 	"Crusader",
