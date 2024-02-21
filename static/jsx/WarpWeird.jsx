@@ -76,6 +76,7 @@ function WarpWeird(props) {
 		if (
 			props.warpOptions &&
 			props.warpTalents &&
+			props.weirdOptions &&
 			props.warpOptions[props.currentCategory] &&
 			props.warpOptions[props.currentCategory].hasTalent
 		) {
