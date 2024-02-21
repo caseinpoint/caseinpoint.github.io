@@ -33,6 +33,7 @@ function SpellsContainer(props) {
 			setCurrentCategory(newCategory);
 		} else {
 			setCurrentCategory(() => {
+				// initially set to null, then set to newCategory after 125ms delay
 				setTimeout(() => setCurrentCategory(newCategory), 125);
 				return null;
 			});
@@ -48,6 +49,7 @@ function SpellsContainer(props) {
 			setCurrentIcon(newIcon);
 		} else {
 			setCurrentIcon(() => {
+				// initially set to null, then set to newIcon after 125ms delay
 				setTimeout(() => setCurrentIcon(newIcon), 125);
 				return null;
 			});
