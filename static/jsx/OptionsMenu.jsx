@@ -69,7 +69,7 @@ function OptionsMenu(props) {
 	}
 
 	let warpTalents = null;
-	if (props.talents.warpTalents) {
+	if (props.options.warpTalents && props.talents.warpTalents) {
 		warpTalents = Object.entries(props.talents.warpTalents).map(
 			(item, idx) => {
 				const [key, talent] = item;
