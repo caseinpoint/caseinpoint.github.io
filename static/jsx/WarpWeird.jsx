@@ -137,7 +137,7 @@ function WarpWeird(props) {
 	const currentWeirdStr = currentWeird === null ? "none" : currentWeird;
 
 	let weirdFeats = null;
-	if (weirdness.feats) {
+	if (weirdness.feats && props.weirdOptions) {
 		const tiers = [];
 		for (let [tier, tierName] of FEAT_TIERS) {
 			const featHLight = props.weirdOptions[tier] ? HIGHLIGHT_CLASS : "";
