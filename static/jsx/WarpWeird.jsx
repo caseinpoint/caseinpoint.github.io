@@ -13,7 +13,7 @@ function WarpWeird(props) {
 
 		setCurrentWeird(newWeird);
 
-		const weirdStr = newWeird === null ? "null" : newWeird
+		const weirdStr = newWeird === null ? "null" : newWeird;
 		localStorage.setItem("currentWeird", weirdStr);
 	}
 
@@ -22,7 +22,7 @@ function WarpWeird(props) {
 
 		setCurrentWarp(newWarp);
 
-		const warpStr = newWarp === null ? "null" : newWarp
+		const warpStr = newWarp === null ? "null" : newWarp;
 		localStorage.setItem("currentWarp", warpStr);
 	}
 
@@ -63,7 +63,7 @@ function WarpWeird(props) {
 			newWeird2 = getRandElement(weirdness.table);
 		}
 
-		const newWeird = `${newWeird1}\n\n${newWeird2}`;
+		const newWeird = `1) ${newWeird1}\n\n2) ${newWeird2}`;
 		updateCurrentWeird(newWeird);
 	}
 
@@ -71,7 +71,69 @@ function WarpWeird(props) {
 		updateCurrentWeird(null);
 	}
 
+	// on spell category change
+	React.useEffect(() => {
+		if (
+			props.warpOptions &&
+			props.warpTalents &&
+			props.warpOptions[props.currentCategory] &&
+			props.warpOptions[props.currentCategory].hasTalent
+		) {
+			const randOption = getRandElement(
+				props.warpTalents[props.currentCategory].options
+			);
+			const warpName = props.warpTalents[props.currentCategory].name;
+
+			updateCurrentWarp(`${warpName}\n${randOption}`);
+
+			// check if High Weirdness should roll too
+			if (props.weirdOptions.adv) {
+				handleRollWeirdness();
+			}
+		} else if (
+			props.warpOptions &&
+			!props.warpOptions.atk.hasTalent &&
+			!props.warpOptions.def.hasTalent &&
+			!props.warpOptions.icn.hasTalent &&
+			props.weirdOptions.adv &&
+			props.currentCategory === "icn"
+		) {
+			// High Weirdness adventurer feat and no warp talents
+			handleRollWeirdness();
+		} else {
+			updateCurrentWarp(null);
+		}
+	}, [props.currentCategory]);
+
 	const currentWarpStr = currentWarp === null ? "none" : currentWarp;
+
+	let warpFeats = null;
+	if (
+		props.warpOptions &&
+		props.warpTalents &&
+		props.warpOptions[props.currentCategory] &&
+		props.warpOptions[props.currentCategory].hasTalent
+	) {
+		const tiers = [];
+		for (let [tier, tierName] of FEAT_TIERS) {
+			const featHLight = props.warpOptions[props.currentCategory].feats[tier] ? HIGHLIGHT_CLASS : "";
+
+			tiers.push(
+				<li key={`weirdFeats_${tier}`}>
+					<span className="fw-semibold">{tierName}:</span>{" "}
+					<span className={featHLight}>{props.warpTalents[props.currentCategory].feats[tier]}</span>
+				</li>
+			);
+		}
+
+		warpFeats = (
+			<p className="my-1">
+				<span className="fw-bold">Feats:</span>
+				<ul>{tiers}</ul>
+			</p>
+		);
+	}
+
 	const currentWeirdStr = currentWeird === null ? "none" : currentWeird;
 
 	let weirdFeats = null;
@@ -107,6 +169,8 @@ function WarpWeird(props) {
 				<p>
 					<b>Current Warp:</b> {currentWarpStr}
 				</p>
+
+				{warpFeats}
 			</div>
 
 			<div className="col-12 col-lg-6 py-1 rounded border">

@@ -29,14 +29,30 @@ function SpellsContainer(props) {
 	function updateCurrentCategory(newCategory) {
 		/* Update currentCategory state and save to localStorage */
 
-		setCurrentCategory(newCategory);
+		if (newCategory === null) {
+			setCurrentCategory(newCategory);
+		} else {
+			setCurrentCategory(() => {
+				setTimeout(() => setCurrentCategory(newCategory), 125);
+				return null;
+			});
+		}
+
 		localStorage.setItem("currentCategory", JSON.stringify(newCategory));
 	}
 
 	function updateCurrentIcon(newIcon) {
 		/* Update currentIcon state and save to localStorage */
 
-		setCurrentIcon(newIcon);
+		if (newIcon === null) {
+			setCurrentIcon(newIcon);
+		} else {
+			setCurrentIcon(() => {
+				setTimeout(() => setCurrentIcon(newIcon), 125);
+				return null;
+			});
+		}
+
 		localStorage.setItem("currentIcon", JSON.stringify(newIcon));
 	}
 
@@ -146,6 +162,8 @@ function SpellsContainer(props) {
 	}, []);
 
 	function randomSpanColors() {
+		/* Generate random BS colors for each letter of "Current Spells" H2 */
+
 		const newRandColors = [];
 		for (let i = 0; i < "Current Spells".length; i++) {
 			newRandColors.push(getRandElement(TEXT_COLOR_CLASSES));

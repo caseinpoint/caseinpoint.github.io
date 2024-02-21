@@ -54,13 +54,13 @@ colorBtn.addEventListener("click", () => {
 				FIRST_CLICK = false;
 				delay = 1000;
 			} else {
-				// random delay between 2 and 20 seconds
-				delay = 2000 + Math.floor(Math.random() * 18001);
+				// random delay between 2 and 12 seconds (2d6)
+				delay = 2000 + Math.floor(Math.random() * 10001);
 			}
 
 			TIMEOUT_ID = setTimeout(() => {
 				for (let div of document.querySelectorAll("div")) {
-					// ~1 in 6 chance of changing color for each div
+					// ~1 in 6 (1d6) chance of changing color for each div
 					if (Math.random() <= 0.16667) {
 						// div.style.backgroundColor = randomHSLA();
 						div.style.backgroundColor = randomRGBA();
