@@ -17,7 +17,7 @@ Chaos Mage combat randomness.
 I chose React legacy and Babel standalone for lightweight deployment on GitHub
 Pages, which you can view here:
 
-**🚀 [Deployed app](https://caseinpoint.github.io/chaosmage/)**
+### 🚀 [Deployed app](https://caseinpoint.github.io/chaosmage/)
 
 ## Description and Usage
 
