@@ -5,7 +5,8 @@ locations in their EXIF metadata.
 
 ![Landing page](./screenshots/screen1.png)
 
-Techonologies used:
+## Techonologies used:
+
 - HTML, CSS, JavaScript
 - [Bootstrap](https://getbootstrap.com/), [Bootstrap Icons](https://icons.getbootstrap.com/)
 - [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/overview)
