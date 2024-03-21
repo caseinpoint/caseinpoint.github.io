@@ -29,16 +29,16 @@ rendering subcomponents.
 
 ![Character options subcomponent](./screenshots/chaosmage1.png)
 
-Here you can see the collapsible **[Character Options](../static/jsx/OptionsMenu.jsx)**
-menu component. I initially have this loading from a default options JSON
-static file I created, but the component saves and loads all changes to
-`localStorage` to persist user choices across sessions. *(🚧 The feats*
-*associated with the Spellcaster Class Talents are not yet implemented 🏗️)*
+Here you can see the collapsible **Character Options** menu component
+([source code](../static/jsx/OptionsMenu.jsx)). I initially have this loading
+from a default options JSON static file I created, but the component saves and
+loads all changes to `localStorage` to persist user choices across sessions.
+*(🚧 The feats associated with the Spellcaster Class Talents are not yet implemented 🏗️)*
 
-The **[Spells Tracker](../static/jsx/SpellsTracker.jsx)** component loads the
-appropriate number of Per Battle and Daily spells for the saved character
-level, and sets the label text as well as maximum values for the inputs. The
-component persists all changes in `localStorage`.
+The **Spells Tracker** component ([source code](../static/jsx/SpellsTracker.jsx))
+loads the appropriate number of Per Battle and Daily spells for the saved
+character level, and sets the label text as well as maximum values for the
+inputs. The component persists all changes in `localStorage`.
 
 The **Full Heal-Up** button resets both spell counts, as well as triggering
 changes in other components via a state variable and function in the main
@@ -52,36 +52,35 @@ Mage talents, are reset and randomly selected again
 
 ![Current available spells](./screenshots/chaosmage2.png)
 
-In the **[Current Spells](../static/jsx/SpellsContainer.jsx)** component, the
-**Next Category** button selects Attack, Defense or Icon spells based on the
-random algorithm described in the rules. If Icon is selected, a random Icon is
-also selected. The current selection, as well as the possible next selections,
-is saved to `localStorage` to persist in case combat runs longer than one game
-session. A fun feature to build was the random RGBa background color of the
-button, that changes randomly every 1 to 6 (1d6) seconds.
+In the **Current Spells** component ([source code](../static/jsx/SpellsContainer.jsx)),
+the **Next Category** button selects Attack, Defense or Icon spells based on
+the random algorithm described in the rules. If Icon is selected, a random Icon
+is also selected. The current selection, as well as the possible next
+selections, is saved to `localStorage` to persist in case combat runs longer
+than one game session. A fun feature to build was the random RGBa background
+color of the button, that changes randomly every 1 to 6 (1d6) seconds.
 
 Once the category has been chosen, the Current Spells component renders a
-number of available **[Spell Details](../static/jsx/SpellDetail.jsx)**
-components. These components load the appropriate details from static JSON
-files I created from the source books. They also highlight the appropriate
-level advancement and feats, based off of the saved selections in the Character
-Options component.
+number of available **Spell Details** components ([source code](../static/jsx/SpellDetail.jsx)).
+These components load the appropriate details from static JSON files I created
+from the source books. They also highlight the appropriate level advancement
+and feats, based off of the saved selections in the Character Options component.
 
 ![Warp Talents and High Weirdness](./screenshots/chaosmage3.png)
 
 If the Warp Talent corresponding to the current spell category is saved in the
 Character Options, a random warp is chosen and displayed in the
-**[Warp and Weirdness](../static/jsx/WarpWeird.jsx)** component at the bottom
-of the page. Likewise, if the character has the Adventurer tier feat for High
-Weirdness, that table is rolled and the result displayed.
+**Warp and Weirdness** component ([source code](../static/jsx/WarpWeird.jsx))
+at the bottom of the page. Likewise, if the character has the Adventurer tier
+feat for High Weirdness, that table is rolled and the result displayed.
 
 ![Random background colors](./screenshots/chaosmage5.png)
 
 :rainbow: Another fun feature I implemented is the
-**[Random Colors On](../static/js/randColors.js)** button. Every 2 to 12 (2d6)
-seconds, every `<div>` on the page has a 1 in 6 (1d6) chance of being assigned
-a random RGBa background color. The variable delay is achieved by recursively
-calling the delay function from within the `setTimeout` callback.
+**Random Colors On** button ([source code](../static/js/randColors.js)). Every
+2 to 12 (2d6) seconds, every `<div>` on the page has a 1 in 6 (1d6) chance of
+being assigned a random RGBa background color. The variable delay is achieved
+by recursively calling the delay function from within the `setTimeout` callback.
 
 ![Responsive design](./screenshots/chaosmage6.png)
 
