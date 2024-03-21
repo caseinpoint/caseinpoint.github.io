@@ -50,6 +50,10 @@ component:
 Mage talents, are reset and randomly selected again
 - and all of the above are saved to `localStorage`
 
+The **End Combat** button resets the Per Battle spells, and clears out the
+current spell category and warp/weirdness. As per the rules, it does not reset
+the Daily spells.
+
 ![Current available spells](./screenshots/chaosmage2.png)
 
 In the **Current Spells** component ([source code](../static/jsx/SpellsContainer.jsx)),
@@ -80,7 +84,10 @@ feat for High Weirdness, that table is rolled and the result displayed.
 **Random Colors On** button ([source code](../static/js/randColors.js)). Every
 2 to 12 (2d6) seconds, every `<div>` on the page has a 1 in 6 (1d6) chance of
 being assigned a random RGBa background color. The variable delay is achieved
-by recursively calling the delay function from within the `setTimeout` callback.
+by recursively calling the delay function from within the `setTimeout`
+callback.
+
+You can also toggle dark mode on and off.
 
 ![Responsive design](./screenshots/chaosmage6.png)
 
