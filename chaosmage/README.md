@@ -59,7 +59,7 @@ the Daily spells.
 In the **Current Spells** component ([source code](../static/jsx/SpellsContainer.jsx)),
 the **Next Category** button selects Attack, Defense or Icon spells based on
 the random algorithm described in the rules. If Icon is selected, a random Icon
-is also selected. The current selection, as well as the possible next
+is also chosen. The current selection, as well as the possible next
 selections, is saved to `localStorage` to persist in case combat runs longer
 than one game session. A fun feature to build was the random RGBa background
 color of the button, that changes randomly every 1 to 6 (1d6) seconds.
