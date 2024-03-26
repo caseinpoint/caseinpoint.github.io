@@ -245,7 +245,7 @@
 			<!-- about me offcanvas button -->
 			<button
 				type="button"
-				class="btn btn-outline-info fixed-top mt-2 ms-2 txt_change"
+				class="btn btn-info fixed-top mt-2 ms-2"
 				data-bs-toggle="offcanvas"
 				data-bs-target="#about_offcanvas"
 				aria-controls="about_offcanvas"
@@ -257,12 +257,12 @@
 			<!-- about me offcanvas -->
 			<div
 				id="about_offcanvas"
-				class="offcanvas offcanvas-start"
+				class="offcanvas offcanvas-start bg-info bg-gradient"
 				tabindex="-1"
 				aria-labelledby="about_label"
 			>
 				<div class="offcanvas-header">
-					<h4 id="about_label" class="offcanvas-title">About Me</h4>
+					<h2 id="about_label" class="offcanvas-title">About Me</h2>
 					<button
 						type="button"
 						class="btn-close"
@@ -271,22 +271,31 @@
 					></button>
 				</div>
 
-				<div class="offcanvas-body bg-light">
+				<div class="offcanvas-body">
 					<img
 						src="/static/img/hello_there.gif"
 						alt="Obi Wan Kenobi saying 'Hello There'"
 						class="img-fluid rounded"
 					/>
-					<h2>Hello there</h2>
-					<p class="mt-3">
-						I'm Drue Gilbert, a maker and web developer. Welcome to my
-						portfolio.
+					<h3 class="mt-2">Hello there</h3>
+					<p>
+						I'm Drue Gilbert: a maker, web developer, and proud queer nerd.
+						Welcome to my portfolio. This is where I'll showcase some of my
+						work, and where I have the opportunity to mess around with some
+						creative codeing.
 					</p>
+					<p>
+						The colors on this page are generated with the <a href="https://p5js.org/" target="_blank" rel="noopener noreferrer">p5.js</a>
+						library, and some fun math applied to the position and movement of
+						the mouse. I readily admit they can sometimes be a bit too much,
+						so I've added a button to disable the changing background colors in
+						the upper right corner of the page.
+					</p>
+					<h4>My links:</h4>
 					<ul>
-						My links:
 						<li>
 							<i class="bi bi-github"></i>
-							<a href="https://github.com/caseinpoint" target="_blank" rel="noopener noreferrer">My GitHub profile</a>
+							<a href="https://github.com/caseinpoint" target="_blank" rel="noopener noreferrer">GitHub profile</a>
 						</li>
 						<li>
 							<i class="bi bi-linkedin"></i>
@@ -294,7 +303,7 @@
 								href="https://www.linkedin.com/in/drue-gilbert/"
 								target="_blank"
 								rel="noopener noreferrer"
-								>My LinkedIn profile</a
+								>LinkedIn profile</a
 							>
 						</li>
 					</ul>
