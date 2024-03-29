@@ -117,13 +117,13 @@ function setHSV() {
 	hsv.bgr_hue = Math.round(angle);
 	hsv.fgr_hue = mod(hsv.bgr_hue + 180, 360);
 
-	const hypotenuse = getHypotenuse(x, y) | 0;
 
 	const modFrames = mod(mouseFrames, 360);
 	const sinFrames = Math.sin(degToRad(modFrames));
 	hsv.bgr_sat = Math.round(map(sinFrames, -1, 1, 40, 100));
 	hsv.fgr_sat = Math.round(map(sinFrames * -1, -1, 1, 40, 100));
-
+	
+	const hypotenuse = getHypotenuse(x, y) | 0;
 	const hypPercent = constrain(hypotenuse / axes.minAxis * 100, 0, 100);
 	hsv.bgr_val = Math.round(map(hypPercent, 0, 100, 30, 90));
 	hsv.fgr_val = Math.round(map(100 - hypPercent, 0, 100, 30, 90));
