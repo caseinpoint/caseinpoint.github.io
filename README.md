@@ -25,10 +25,11 @@ the world. I came across the creative coding JavaScript library,
 [p5.js](https://p5js.org/), and decided to add it to this project. You can find
 the source code that I wrote [here](./static/js/index.js).
 
-To begin with, I wanted to do something with color. I'm red/green colorblind,
-so color perception is somthing that's interesting to me. In investigating how
-colors are displayed on a monitor, I learned about the cylindrical-coordinate
-color model [HSV](https://en.wikipedia.org/wiki/HSL_and_HSV) (Hue, Saturation,
+To begin with, I wanted to do something with color. I'm red-green
+[colorblind](https://en.wikipedia.org/wiki/Color_blindness), so color
+perception is somthing that's interesting to me. In investigating how colors
+are displayed on a monitor, I learned about the cylindrical-coordinate color
+model [HSV](https://en.wikipedia.org/wiki/HSL_and_HSV) (Hue, Saturation,
 Value), and decided to play around with that.
 
 Since Hue is an angle between 0° and 360°, I started by caclulating the angle
