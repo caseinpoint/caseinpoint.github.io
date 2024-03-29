@@ -69,11 +69,11 @@ technically the exact opposite on the HSV model, but it's close to it while
 staying within the ranges of values that I wanted.
 
 The moving wave of colors along the bottom was another fun feature where I
-learned some new things. I used p5's
+learned some new things. I used p5's0.
 [Perlin noise](https://p5js.org/reference/#/p5/noise) function with inputs of
 the animation frame count and the current mouse position to generate the height
 of the wave, and p5's
-[linear interpolation color](https://p5js.org/reference/#/p5/lerpColor)
+[color linear interpolation](https://p5js.org/reference/#/p5/lerpColor)
 function from the background color to the foreground color based on the wave
 height.
 
