@@ -3,7 +3,7 @@
 Welcome to my portfolio. You can view it deployed on GitHub Pages
 [here](https://caseinpoint.github.io/).
 
-My name is Drue, and my pronouns are they/them.  I'm a human being, maker,
+My name is Drue, and my pronouns are they/them. I'm a human being, maker,
 nerd, teacher, and full-stack web developer. I built this page to showcase some
 of my personal coding projects, things I find interesting and/or problems I've
 needed to solve.
@@ -27,7 +27,7 @@ the source code that I wrote [here](./static/js/index.js).
 
 To begin with, I wanted to do something with color. I'm red-green
 [colorblind](https://en.wikipedia.org/wiki/Color_blindness), so color
-perception is somthing that's interesting to me. In investigating how colors
+perception is something that's interesting to me. In investigating how colors
 are displayed on a monitor, I learned about the cylindrical-coordinate color
 model [HSV](https://en.wikipedia.org/wiki/HSL_and_HSV) (Hue, Saturation,
 Value), and decided to play around with that.
