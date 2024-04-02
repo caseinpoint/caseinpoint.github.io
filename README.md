@@ -32,9 +32,9 @@ are displayed on a monitor, I learned about the cylindrical-coordinate color
 model [HSV](https://en.wikipedia.org/wiki/HSL_and_HSV) (Hue, Saturation,
 Value), and decided to play around with that.
 
-Since Hue is an angle between 0° and 360°, I started by caclulating the angle
-between the line from the position of the mouse to the center of the page and
-the x-axis, and setting that as the H value for the background color.
+Since Hue is an angle between 0° and 360°, I started by calculating the angle
+between the x-axis and the line from the center of the page to the position of
+the mouse, and setting that as the H value for the background color.
 
 Saturation and Value are both percentages, but I wanted different approaches
 for generating those numbers.
