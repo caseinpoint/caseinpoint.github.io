@@ -60,7 +60,7 @@ mouse above 100% in some directions
 4. I used p5's map function to map the result to a range of 30% to 90%, not too
 dark and not to bright, for the V value of the background color
 
-Then, for the forground color, I wanted to calculate the "opposite" color to
+Then, for the foreground color, I wanted to calculate the "opposite" color to
 the background. For H, I just went 180° from the calculated background H. For
 S, I multiplied the result of the sine by -1 and then mapped that to the 40% to
 100% range. And for V, I subtracted the constrained distance percent from 100%
@@ -69,7 +69,7 @@ technically the exact opposite on the HSV model, but it's close to it while
 staying within the ranges of values that I wanted.
 
 The moving wave of colors along the bottom was another fun feature where I
-learned some new things. I used p5's0.
+learned some new things. I used p5's
 [Perlin noise](https://p5js.org/reference/#/p5/noise) function with inputs of
 the animation frame count and the current mouse position to generate the height
 of the wave, and p5's
