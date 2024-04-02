@@ -78,5 +78,5 @@ function from the background color to the foreground color based on the wave
 height.
 
 One last note about the colors: CSS doesn't support HSV, so I also wrote a
-function to convert HSV to HSL in order to apply the forground color to text on
-the page.
+function to convert HSV to HSL in order to apply the foreground color to text
+on the page.
