@@ -186,7 +186,7 @@ function OptionsMenu(props) {
 	}
 
 	let spellFeats = null;
-	if (props.talents.spellFeats) {
+	if (props.talents.spellFeats && props.options.spellFeats) {
 		spellFeats = props.talents.spellFeats.map((feat, idx) => {
 			const featChecks = FEAT_TIERS.map((item) => {
 				const [tier, tierName] = item;
