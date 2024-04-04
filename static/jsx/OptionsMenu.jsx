@@ -127,7 +127,7 @@ function OptionsMenu(props) {
 	}
 
 	let casterTalents = null;
-	if (props.talents.casterTalents) {
+	if (props.talents.casterTalents && props.options.casterTalents) {
 		casterTalents = Object.entries(props.talents.casterTalents).map(
 			(item, idx) => {
 				const [key, talent] = item;
