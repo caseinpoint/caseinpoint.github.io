@@ -11,19 +11,19 @@ needed to solve.
 ## Projects
 
 - [13th Age Chaos Mage Spell App](./chaosmage/)
+- [Student Lab Partner Generator App](https://github.com/caseinpoint/lab_partners)
 - [Photomap](./photomap/)
 - [Knitting Row Counter App](./knitcounter/)
-- [Student Lab Partner Generator App](https://github.com/caseinpoint/lab_partners)
 
 ## The colors, Duke, the colors!
-
-![Screenshot of my deployed portfolio](./static/img/portfolio.png)
 
 As self-promotion is not one of my strengths or desires, I needed something fun
 to code in order to motivate myself to get this portfolio thing out there in
 the world. I came across the creative coding JavaScript library,
 [p5.js](https://p5js.org/), and decided to add it to this project. You can find
 the source code that I wrote [here](./static/js/index.js).
+
+![Screenshot of my deployed portfolio](./static/img/portfolio.png)
 
 To begin with, I wanted to do something with color. I'm red-green
 [colorblind](https://en.wikipedia.org/wiki/Color_blindness), so color
