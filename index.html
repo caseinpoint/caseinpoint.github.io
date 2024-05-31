@@ -243,16 +243,18 @@
 			</div>
 
 			<!-- about me offcanvas button -->
-			<button
-				type="button"
-				class="btn btn-info fixed-top mt-2 ms-2"
-				data-bs-toggle="offcanvas"
-				data-bs-target="#about_offcanvas"
-				aria-controls="about_offcanvas"
-			>
-				<i class="bi bi-person-lines-fill h5"></i>
-				<span class="visually-hidden">About me</span>
-			</button>
+			<div class="fixed-top mt-2 ms-2">
+				<button
+					type="button"
+					class="btn btn-info"
+					data-bs-toggle="offcanvas"
+					data-bs-target="#about_offcanvas"
+					aria-controls="about_offcanvas"
+				>
+					<i class="bi bi-person-lines-fill h5"></i>
+					<span class="visually-hidden">About me</span>
+				</button>
+			</div>
 
 			<!-- about me offcanvas -->
 			<div
@@ -368,14 +370,16 @@
 			</div>
 
 			<!-- secret modal button -->
-			<button
-				type="button"
-				class="btn btn-danger fixed-bottom mx-auto txt_change"
-				data-bs-toggle="modal"
-				data-bs-target="#secret_modal"
-			>
-				<i class="bi bi-envelope-paper-heart h4"></i>
-			</button>
+			<div class="fixed-bottom mx-auto">
+				<button
+					type="button"
+					class="btn btn-danger txt_change"
+					data-bs-toggle="modal"
+					data-bs-target="#secret_modal"
+				>
+					<i class="bi bi-envelope-paper-heart h4"></i>
+				</button>
+			</div>
 
 			<!-- secret modal content -->
 			<div class="modal fade bg-dark" id="secret_modal" tabindex="-1">
