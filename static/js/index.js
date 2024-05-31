@@ -245,6 +245,7 @@ function draw() {
 
 function windowResized() {
 	resizeCanvas(windowWidth, windowHeight);
+	bgBtn.position(width - 240, 45);
 	setAxes();
 	resizeImgs();
 }
