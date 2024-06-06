@@ -17,7 +17,7 @@ function SpellsContainer(props) {
 	const [wizSpells, setWizSpells] = React.useState({});
 	const [clrSpells, setClrSpells] = React.useState({});
 	const [srcSpells, setSrcSpells] = React.useState({});
-	const [addSpells, setAddSpells] = React.useState([]);
+	// const [addSpells, setAddSpells] = React.useState([]);
 
 	function updateCategories(newCategories) {
 		/* Update categories state and save to localStorage */
@@ -98,7 +98,7 @@ function SpellsContainer(props) {
 			newAddSpells.push(getRandElement(srcSpells[castLvl]));
 		}
 
-		setAddSpells(newAddSpells);
+		props.setAddSpells(newAddSpells);
 		localStorage.setItem("addSpells", JSON.stringify(newAddSpells));
 	}
 
@@ -107,7 +107,7 @@ function SpellsContainer(props) {
 
 		const addSpellsStr = localStorage.getItem("addSpells");
 		if (addSpellsStr !== null) {
-			setAddSpells(JSON.parse(addSpellsStr));
+			props.setAddSpells(JSON.parse(addSpellsStr));
 		}
 	}
 
@@ -270,9 +270,11 @@ function SpellsContainer(props) {
 	}
 
 	// push additional spells
-	for (let spell of addSpells) {
-		if (spell.category === currentCategory) {
-			spells.push(spellMap(spell, spell.title));
+	if (props.addSpells) {
+		for (let spell of props.addSpells) {
+			if (spell.category === currentCategory) {
+				spells.push(spellMap(spell, spell.title));
+			}
 		}
 	}
 

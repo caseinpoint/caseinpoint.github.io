@@ -3,6 +3,7 @@
 function OptionsMenu(props) {
 	/* React component: Select character talents and feats */
 
+	// state
 	const [optsHidden, setOptsHidden] = React.useState(true);
 
 	function handleHide() {
@@ -32,6 +33,16 @@ function OptionsMenu(props) {
 		}
 
 		props.updateOptions(newOpts);
+	}
+
+	function handleModalShow() {
+		const dialog = document.getElementById('spells_modal');
+		dialog.showModal();
+	}
+
+	function handleModalHide() {
+		const dialog = document.getElementById('spells_modal');
+		dialog.close();
 	}
 
 	const levelOpts = LEVELS.map((lvl, idx) => (
@@ -228,6 +239,21 @@ function OptionsMenu(props) {
 	const hide = optsHidden ? " d-none" : "";
 	const upDown = optsHidden ? "▽" : "△";
 
+	let modalSpells = <p>None</p>;
+	if (props.addSpells && props.addSpells.length > 0) {
+		modalSpells = [];
+		for (let spell of props.addSpells) {
+			modalSpells.push(
+				<SpellDetail
+					key={`modalspell_${spell.title}`}
+					spell={spell}
+					options={props.options}
+					lvlProgression={props.lvlProgression}
+				/>
+			);
+		}
+	}
+
 	// render
 	return (
 		<section
@@ -273,6 +299,17 @@ function OptionsMenu(props) {
 			>
 				<h4 className="text-center">Spellcaster Class Talents</h4>
 				{casterTalents}
+
+				{/* button for extra spells modal */}
+				<div className="py-1 border-top">
+					<button
+						type="button"
+						className="btn btn-outline-primary"
+						onClick={handleModalShow}
+					>
+						View Current Extra Spells
+					</button>
+				</div>
 			</div>
 
 			<div
@@ -282,6 +319,26 @@ function OptionsMenu(props) {
 				<h4 className="text-center">Spell Feats</h4>
 				{spellFeats}
 			</div>
+
+			{/* extra spells modal */}
+			<dialog id="spells_modal" className="col-12 col-md-9 col-xl-6 mt-5 rounded">
+				<div className="modal-dialog">
+					<div className="modal-content">
+						<div className="modal-header">
+							<h4 className="modal-title">Current Spells from Spellcaster Class Talents</h4>
+							<button
+								type="button"
+								className="btn-close"
+								onClick={handleModalHide}
+							></button>
+						</div>
+
+						<div className="modal-body">
+							{modalSpells}
+						</div>
+					</div>
+				</div>
+			</dialog>
 		</section>
 	);
 }

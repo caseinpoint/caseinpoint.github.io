@@ -9,6 +9,7 @@ function ChaosMage(props) {
 	const [lvlProgression, setLvlProgression] = React.useState({});
 	const [fullHeal, setFullHeal] = React.useState(false);
 	const [endCombat, setEndCombat] = React.useState(false);
+	const [addSpells, setAddSpells] = React.useState([]);
 
 	function updateOptions(newOptions) {
 		/* Update state and save to localStorage */
@@ -72,7 +73,9 @@ function ChaosMage(props) {
 			<OptionsMenu
 				options={options}
 				updateOptions={updateOptions}
+				lvlProgression={lvlProgression}
 				talents={talents}
+				addSpells={addSpells}
 			/>
 
 			<SpellsTracker
@@ -88,6 +91,8 @@ function ChaosMage(props) {
 				talents={talents}
 				fullHeal={fullHeal}
 				updateEndCombat={updateEndCombat}
+				addSpells={addSpells}
+				setAddSpells={setAddSpells}
 			/>
 		</div>
 	);
