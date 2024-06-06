@@ -336,6 +336,14 @@ function OptionsMenu(props) {
 						<div className="modal-body">
 							{modalSpells}
 						</div>
+
+						<div className="modal-footer">
+							<button
+								type="button"
+								className="btn btn-outline-secondary"
+								onClick={handleModalHide}
+							>Close</button>
+						</div>
 					</div>
 				</div>
 			</dialog>
