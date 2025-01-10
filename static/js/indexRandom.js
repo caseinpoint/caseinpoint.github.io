@@ -4,7 +4,7 @@ const CTX = CANVAS.getContext('2d');
 let MIN_HEIGHT;
 let MAX_HEIGHT;
 let LINES;
-const LINE_WIDTH = 6;
+const LINE_WIDTH = 5;
 
 
 function resizeCanvas() {
@@ -96,17 +96,22 @@ generateLines();
 let frame = 0;
 
 function animate(timestamp) {
+	// animate moving and changing lines
+
 	window.requestAnimationFrame(animate);
 
+	// slow down animation by only changing on certain frames
 	if (frame % 7 === 0) {
+		// prevent trailing lines
 		CTX.clearRect(0, MAX_HEIGHT, CANVAS.width, CANVAS.height)
 	
 		for (let idx = 0; idx < LINES.length; idx++) {
 			const l = LINES[idx]
-			
+
 			const prevIdx = idx - 1 >= 0 ? idx - 1 : LINES.length - 1;
 			prevL = LINES[prevIdx];
-			
+
+			// draw line connected to previous line at an angle
 			CTX.fillStyle = l.color;
 			CTX.beginPath();
 			CTX.moveTo(l.x, window.innerHeight);
@@ -114,7 +119,8 @@ function animate(timestamp) {
 			CTX.lineTo(l.x + LINE_WIDTH, l.y);
 			CTX.lineTo(l.x + LINE_WIDTH, window.innerHeight);
 			CTX.fill()
-	
+
+			// change heights of random lines by random amounts
 			let newHeight = l.height;
 			if (frame % randInt(14, 29) == 0) {
 				let randHeight = newHeight + randInt(-1 * LINE_WIDTH, LINE_WIDTH+1);
@@ -122,7 +128,7 @@ function animate(timestamp) {
 					newHeight = randHeight;
 				}
 			}
-	
+
 			l.moveRight(newHeight);
 		}
 	}
