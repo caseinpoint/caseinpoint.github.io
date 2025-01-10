@@ -49,7 +49,6 @@ function getRandColor() {
 	const a = randInt(70, 81);
 
 	return `hsl(${h}deg ${s}% ${l}% / ${a}%)`;
-	// return `hsl(${h}deg ${s}% ${l}%)`;
 }
 
 
