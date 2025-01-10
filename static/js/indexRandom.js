@@ -59,7 +59,7 @@ class Line {
 		this.height = height;
 		this.color = color;
 		this.x = x;
-		this.y = window.innerHeight - height;
+		this.y = CANVAS.height - height;
 	}
 
 	moveRight(newHeight) {
