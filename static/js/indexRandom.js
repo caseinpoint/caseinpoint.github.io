@@ -94,6 +94,7 @@ generateLines();
 
 // count animation frames to slow down scrolling
 let frame = 0;
+const frameMod = 7;
 
 function animate(timestamp) {
 	// animate moving and changing lines
@@ -101,7 +102,7 @@ function animate(timestamp) {
 	window.requestAnimationFrame(animate);
 
 	// slow down animation by only changing on certain frames
-	if (frame % 7 === 0) {
+	if (frame % frameMod === 0) {
 		// prevent trailing lines
 		CTX.clearRect(0, MAX_HEIGHT, CANVAS.width, CANVAS.height)
 	
@@ -122,10 +123,10 @@ function animate(timestamp) {
 
 			// change heights of random lines by random amounts
 			let newHeight = l.height;
-			if (frame % randInt(14, 29) == 0) {
-				let randHeight = newHeight + randInt(-1 * LINE_WIDTH, LINE_WIDTH+1);
-				if (randHeight >= MIN_HEIGHT && randHeight <= MAX_HEIGHT) {
-					newHeight = randHeight;
+			if (frame % randInt(frameMod * 2, frameMod * 3 + 1) == 0) {
+				const rHeight = newHeight + randInt(-1 * LINE_WIDTH, LINE_WIDTH + 1);
+				if (rHeight >= MIN_HEIGHT && rHeight <= MAX_HEIGHT) {
+					newHeight = rHeight;
 				}
 			}
 
