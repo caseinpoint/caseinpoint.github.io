@@ -104,7 +104,11 @@ function animate(timestamp) {
 	// slow down animation by only changing on certain frames
 	if (frame % frameMod === 0) {
 		// prevent trailing lines
-		CTX.clearRect(0, MAX_HEIGHT, CANVAS.width, CANVAS.height)
+		// CTX.clearRect(0, MAX_HEIGHT, CANVAS.width, CANVAS.height)
+
+		// set background color
+		CTX.fillStyle = '#D0E3DE';
+		CTX.fillRect(0, 0, CANVAS.width, CANVAS.height);
 	
 		for (let idx = 0; idx < LINES.length; idx++) {
 			const l = LINES[idx]
