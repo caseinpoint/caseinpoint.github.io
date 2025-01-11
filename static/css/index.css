@@ -17,17 +17,36 @@ main {
     top: 0;
     left: 0;
     z-index: 1;
-    padding: 2rem 1rem;
+    padding: 1vh 1vw;
+    overflow: hidden;
 }
 
 h1 {
+    margin: 0.375rem 0;
+    font-family: "Montserrat Subrayada", serif;
+    font-size: 5vw;
     color: #343443;
 }
 
 h2 {
+    margin: 0.25rem 0;
+    font-family: "Montserrat Subrayada", serif;
+    font-size: 4vw;
     color: #446DB0;
 }
 
 p {
+    margin: 0;
+    font-family: "Syne Mono", serif;
+    font-size: 1.65vw;
     color: #A86B34;
+}
+
+img {
+    max-width: 100%;
+}
+
+.hide_right {
+    /* set margin-left to window width via JS */
+    margin-left: 1280px;
 }
