@@ -1,74 +1,74 @@
 [
-    {
-        "h1": "Drue Gilbert",
-        "h2": "Web Developer",
-        "img": "/static/img/hello_there.gif",
-        "text": "I'm Drue Gilbert (they/them): maker, full-stack web developer, educator, and proud queer nerd.\nWelcome to my portfolio, a place to showcase some of my personal projects and do a little creative coding.",
-        "tech": "JavaScript, JSON, HTML5, CSS",
-        "link": "https://www.linkedin.com/in/drue-gilbert/",
-        "github": "https://github.com/caseinpoint/caseinpoint.github.io"
-    },
-    {
-        "h1": "Project",
-        "h2": "13th Age Chaos Mage App",
-        "img": "/static/img/chaosmage2.png",
-        "text": "Web app that aids in running a 13th Age tabletop roleplaying game\nChaos Mage character in combat, with automation of randomized class features.",
-        "tech": "React, Babel, JavaScript, JSX, JSON, HTML, CSS, Bootstrap",
-        "link": "https://caseinpoint.github.io/chaosmage/",
-        "github": "https://github.com/caseinpoint/caseinpoint.github.io/tree/main/chaosmage"
-    },
-    {
-        "h1": "Project",
-        "h2": "Photomap",
-        "img": "/static/img/photomap.png",
-        "text": "Dynamically generates map pins and modals by parsing\nEXIF metadata in uploaded images.",
-        "tech": "JavaScript, Google OAuth & Maps & Drive APIs, HTML, CSS",
-        "link": "https://caseinpoint.github.io/photomap/",
-        "github": "https://github.com/caseinpoint/caseinpoint.github.io/tree/main/photomap"
-    },
-    {
-        "h1": "Project",
-        "h2": "Lab Pair Generator",
-        "img": "/static/img/labpairgen.png",
-        "text": "CLI tool and web app that generates pseudo-random pairs of students,\nwhile tracking and reducing repeat pairings.",
-        "tech": "Python, Flask, JavaScript, HTML, CSS",
-        "link": "https://caseinpoint.pythonanywhere.com/",
-        "github": "https://github.com/caseinpoint/lab_partners/tree/webapp"
-    },
-    {
-        "h1": "Project",
-        "h2": "KnitCounter",
-        "img": "/static/img/knitcounter.png",
-        "text": "Simple web app for keeping track of knitting rows in repeating patterns.\nUtilizes localStorage to persist data across sessions.",
-        "tech": "JavaScript, HTML, CSS",
-        "link": "https://caseinpoint.github.io/knitcounter/",
-        "github": "https://github.com/caseinpoint/caseinpoint.github.io/tree/main/knitcounter"
-    },
-    {
-        "h1": "Experience",
-        "h2": "Full Stack Web Development Instructor",
-        "img": null,
-        "text": "Hackbright Academy, Remote | 2021 - 2024\n- Led cohorts of aspiring developers, delivering comprehensive training in full-stack development.\n- Created and maintained curriculum content, focusing on real-world applications and industry best practices.\n- Mentored students, fostering their growth from novices to job-ready software engineers.",
-        "tech": "Python, Flask, PostgreSQL, SQLAlchemy, JavaScript, React, AWS, HTML, CSS, Bootstrap",
-        "github": null,
-        "link": "https://hackbrightacademy.com/"
-    },
-    {
-        "h1": "Experience",
-        "h2": "Freelance Developer",
-        "img": null,
-        "text": "Remote | 2020 - 2021\n- Developed and maintained internal tools, web portals, and data visualizations.\n- Collaborated with clients to design and implement custom solutions for rapid deployment.",
-        "tech": "Python, SQL, JavaScript, D3/Plot, HTML, CSS, Shell Script",
-        "github": null,
-        "link": null
-    },
-    {
-        "h1": "Experience",
-        "h2": "Teaching Assistant",
-        "img": null,
-        "text": "Coding Dojo, Oakland CA | 2019\n- Provided personalized guidance to students, helping them overcome coding challenges.\n- Assisted in the development and delivery of coding bootcamp materials, enhancing student engagement and learning outcomes.",
-        "tech": "Python, Flask, Django, Java, Spring Boot, JavaScript, Express, Angular, MySQL, MongoDB, Mongoose, AWS, HTML, CSS, Bootstrap",
-        "github": null,
-        "link": "https://www.codingdojo.com/"
-    }
+	{
+		"h1": "Drue Gilbert",
+		"h2": "Web Developer",
+		"img": "/static/img/hello_there.gif",
+		"text": "I'm Drue Gilbert (they/them): maker, full-stack web developer, educator, and proud queer nerd.\nWelcome to my portfolio, a place to showcase some of my personal projects and do a little creative coding.",
+		"tech": "JavaScript, JSON, HTML5, CSS",
+		"link": "https://www.linkedin.com/in/drue-gilbert/",
+		"github": "https://github.com/caseinpoint/caseinpoint.github.io"
+	},
+	{
+		"h1": "Project",
+		"h2": "13th Age Chaos Mage App",
+		"img": "/static/img/chaosmage2.png",
+		"text": "Web app that aids in running a 13th Age tabletop roleplaying game\nChaos Mage character in combat, with automation of randomized class features.",
+		"tech": "React, Babel, JavaScript, JSX, JSON, HTML, CSS, Bootstrap",
+		"link": "https://caseinpoint.github.io/chaosmage/",
+		"github": "https://github.com/caseinpoint/caseinpoint.github.io/tree/main/chaosmage"
+	},
+	{
+		"h1": "Project",
+		"h2": "Photomap",
+		"img": "/static/img/photomap.png",
+		"text": "Dynamically generates map pins and modals by parsing\nEXIF metadata in uploaded images.",
+		"tech": "JavaScript, Google OAuth & Maps & Drive APIs, HTML, CSS",
+		"link": "https://caseinpoint.github.io/photomap/",
+		"github": "https://github.com/caseinpoint/caseinpoint.github.io/tree/main/photomap"
+	},
+	{
+		"h1": "Project",
+		"h2": "Lab Pair Generator",
+		"img": "/static/img/labpairgen.png",
+		"text": "CLI tool and web app that generates pseudo-random pairs of students,\nwhile tracking and reducing repeat pairings.",
+		"tech": "Python, Flask, JavaScript, HTML, CSS",
+		"link": "https://caseinpoint.pythonanywhere.com/",
+		"github": "https://github.com/caseinpoint/lab_partners/tree/webapp"
+	},
+	{
+		"h1": "Project",
+		"h2": "KnitCounter",
+		"img": "/static/img/knitcounter.png",
+		"text": "Simple web app for keeping track of knitting rows in repeating patterns.\nUtilizes localStorage to persist data across sessions.",
+		"tech": "JavaScript, HTML, CSS",
+		"link": "https://caseinpoint.github.io/knitcounter/",
+		"github": "https://github.com/caseinpoint/caseinpoint.github.io/tree/main/knitcounter"
+	},
+	{
+		"h1": "Experience",
+		"h2": "Full Stack Web Development Instructor",
+		"img": null,
+		"text": "Hackbright Academy, Remote | 2021 - 2024\n- Led cohorts of aspiring developers, delivering comprehensive training in full-stack development.\n- Created and maintained curriculum content, focusing on real-world applications and industry best practices.\n- Mentored students, fostering their growth from novices to job-ready software engineers.",
+		"tech": "Python, Flask, PostgreSQL, SQLAlchemy, JavaScript, React, AWS, HTML, CSS, Bootstrap",
+		"github": null,
+		"link": "https://hackbrightacademy.com/"
+	},
+	{
+		"h1": "Experience",
+		"h2": "Freelance Developer",
+		"img": null,
+		"text": "Remote | 2020 - 2021\n- Developed and maintained internal tools, web portals, and data visualizations.\n- Collaborated with clients to design and implement custom solutions for rapid deployment.",
+		"tech": "Python, SQL, JavaScript, D3/Plot, HTML, CSS, Shell Script",
+		"github": null,
+		"link": null
+	},
+	{
+		"h1": "Experience",
+		"h2": "Teaching Assistant",
+		"img": null,
+		"text": "Coding Dojo, Oakland CA | 2019\n- Provided personalized guidance to students, helping them overcome coding challenges.\n- Assisted in the development and delivery of coding bootcamp materials, enhancing student engagement and learning outcomes.",
+		"tech": "Python, Flask, Django, Java, Spring Boot, JavaScript, Express, Angular, MySQL, MongoDB, Mongoose, AWS, HTML, CSS, Bootstrap",
+		"github": null,
+		"link": "https://www.codingdojo.com/"
+	}
 ]

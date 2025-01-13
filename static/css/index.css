@@ -50,5 +50,5 @@ img {
 
 .hide_right {
     /* set margin-left to window width via JS */
-    margin-left: 1280px;
+    margin-left: 100vw;
 }
