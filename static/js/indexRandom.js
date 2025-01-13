@@ -21,12 +21,6 @@ function resizeCanvas() {
 	MAX_HEIGHT = CANVAS.height * 0.075;
 }
 
-// resize canvas if window changes and regenerate lines
-window.addEventListener('resize', () => {
-	resizeCanvas();
-	generateLines();
-});
-
 
 function randInt(min, max) {
 	// return random integer r, where min <= r < max
@@ -142,6 +136,12 @@ function animate(timestamp) {
 
 	// initialize LINES array
 	generateLines();
+
+	// resize canvas if window changes and regenerate lines
+	window.addEventListener('resize', () => {
+		resizeCanvas();
+		generateLines();
+	});
 
 	// start animation
 	animate();

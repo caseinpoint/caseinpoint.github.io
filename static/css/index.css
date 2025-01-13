@@ -1,26 +1,26 @@
 html, body {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     margin: 0;
     padding: 0;
 }
 
-canvas {
+#main_canvas {
     position: fixed;
     top: 0;
     left: 0;
     z-index: 0;
 }
 
-main {
+#main_content {
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1;
-    width: 100%;
-    height: 100%;
+    width: 98vw;
+    height: 98vh;
     padding: 1vh 1vw;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 h1 {
@@ -48,7 +48,14 @@ img {
     max-width: 98vw;
 }
 
+.d_none {
+    display: none;
+}
+
+.data_div {
+    overflow: hidden;
+}
+
 .hide_right {
-    /* set margin-left to window width via JS */
     margin-left: 100vw;
 }
