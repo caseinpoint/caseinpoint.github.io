@@ -21,9 +21,6 @@ function resizeCanvas() {
 	MAX_HEIGHT = CANVAS.height * 0.075;
 }
 
-// initialize canvas size
-resizeCanvas();
-
 // resize canvas if window changes and regenerate lines
 window.addEventListener('resize', () => {
 	resizeCanvas();
@@ -89,9 +86,6 @@ function generateLines() {
 	}
 }
 
-// initialize LINES array
-generateLines();
-
 // count animation frames to slow down scrolling
 let frame = 0;
 const frameMod = 7;
@@ -141,5 +135,14 @@ function animate(timestamp) {
 	frame++;
 }
 
-// start animation
-animate()
+
+(function main() {
+	// initialize canvas size
+	resizeCanvas();
+
+	// initialize LINES array
+	generateLines();
+
+	// start animation
+	animate();
+})();
