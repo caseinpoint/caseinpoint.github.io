@@ -50,8 +50,8 @@
 		"img": null,
 		"text": "Hackbright Academy, Remote | 2021 - 2024\n- Led cohorts of aspiring developers, delivering comprehensive training in full-stack development.\n- Created and maintained curriculum content, focusing on real-world applications and industry best practices.\n- Mentored students, fostering their growth from novices to job-ready software engineers.",
 		"tech": "Python, Flask, PostgreSQL, SQLAlchemy, JavaScript, React, AWS, HTML, CSS, Bootstrap",
-		"github": null,
-		"link": "https://hackbrightacademy.com/"
+		"link": "https://hackbrightacademy.com/",
+		"github": null
 	},
 	{
 		"h1": "Experience",
@@ -59,8 +59,8 @@
 		"img": null,
 		"text": "Remote | 2020 - 2021\n- Developed and maintained internal tools, web portals, and data visualizations.\n- Collaborated with clients to design and implement custom solutions for rapid deployment.",
 		"tech": "Python, SQL, JavaScript, D3/Plot, HTML, CSS, Shell Script",
-		"github": null,
-		"link": null
+		"link": null,
+		"github": null
 	},
 	{
 		"h1": "Experience",
@@ -68,7 +68,7 @@
 		"img": null,
 		"text": "Coding Dojo, Oakland CA | 2019\n- Provided personalized guidance to students, helping them overcome coding challenges.\n- Assisted in the development and delivery of coding bootcamp materials, enhancing student engagement and learning outcomes.",
 		"tech": "Python, Flask, Django, Java, Spring Boot, JavaScript, Express, Angular, MySQL, MongoDB, Mongoose, AWS, HTML, CSS, Bootstrap",
-		"github": null,
-		"link": "https://www.codingdojo.com/"
+		"link": "https://www.codingdojo.com/",
+		"github": null
 	}
 ]

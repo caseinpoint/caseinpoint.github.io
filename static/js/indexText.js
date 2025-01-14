@@ -20,18 +20,40 @@ function initText(data) {
 		};
 		ELEMENTS.divs.push(divObj);
 
+		// create elements
 		const div = document.createElement('div');
 		div.classList.add('data_div');
-		// if (i > 0) { div.classList.add('d_none'); }
 		MAIN_ELEMENT.appendChild(div);
 		divObj.div = div;
+
+		const h1 = document.createElement('h1');
+		h1.innerText = d.h1;
+		div.appendChild(h1);
+		divObj.els.push(h1);
+
+		const h2 = document.createElement('h2');
+		h2.innerText = d.h2;
+		div.appendChild(h2);
+		divObj.els.push(h2);
+
+		// set first div to display, others hidden
+		if (i === 0) {
+			// set up scrolling of next object
+			divObj.elIdx = divObj.els.length;
+			divObj.scroll = 100;
+		} else {
+			div.classList.add('d_none');
+			for (let e of divObj.els) {
+				e.classList.add('hide_right');
+			}
+		}
 	}
 }
 
 
 function onScroll(evt) {
 	evt.preventDefault();
-	console.log(evt);
+	console.log(evt.deltaY);
 }
 
 
