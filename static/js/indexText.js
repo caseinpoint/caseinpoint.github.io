@@ -36,6 +36,60 @@ function initText(data) {
 		div.appendChild(h2);
 		divObj.els.push(h2);
 
+		if (d.img != null) {
+			const img = document.createElement('img');
+			img.src = d.img;
+			div.appendChild(img);
+			divObj.els.push(img);
+		}
+
+		for (let line of d.text.split('\n')) {
+			const p = document.createElement('p');
+			p.innerText = line;
+			div.appendChild(p);
+			divObj.els.push(p);
+		}
+
+		const tech = document.createElement('p');
+		const tIcon = document.createElement('i');
+		tIcon.classList.add('bi', 'bi-stack');
+		tech.insertAdjacentElement('afterbegin', tIcon);
+		tech.insertAdjacentText('beforeend', ` Tech Stack: ${d.tech}`);
+		div.appendChild(tech);
+		divObj.els.push(tech);
+
+		if (d.link != null) {
+			const deployedP = document.createElement('p');
+			const deployedA = document.createElement('a');
+			deployedA.href = d.link;
+			const dIcon = document.createElement('i');
+			dIcon.classList.add('bi');
+			deployedA.insertAdjacentElement('afterbegin', dIcon);
+			if (d.link.includes('linkedin')) {
+				dIcon.classList.add('bi-linkedin');
+				deployedA.insertAdjacentText('beforeend', ` LinkedIn: ${d.link}`);
+			} else {
+				dIcon.classList.add('bi-box-arrow-up-right');
+				deployedA.insertAdjacentText('beforeend', ` Link: ${d.link}`);
+			}
+			deployedP.appendChild(deployedA);
+			div.appendChild(deployedP);
+			divObj.els.push(deployedP);
+		}
+
+		if (d.github != null) {
+			const githubP = document.createElement('p');
+			const githubA = document.createElement('a');
+			githubA.href = d.github;
+			const gIcon = document.createElement('i');
+			gIcon.classList.add('bi', 'bi-github');
+			githubA.insertAdjacentElement('afterbegin', gIcon);
+			githubA.insertAdjacentText('beforeend', ` GitHub: ${d.github}`);
+			githubP.appendChild(githubA);
+			div.appendChild(githubP);
+			divObj.els.push(githubP);
+		}
+
 		// set first div to display, others hidden
 		if (i === 0) {
 			// set up scrolling of next object

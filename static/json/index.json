@@ -3,8 +3,8 @@
 		"h1": "Drue Gilbert",
 		"h2": "Web Developer",
 		"img": "/static/img/hello_there.gif",
-		"text": "I'm Drue Gilbert (they/them): maker, full-stack web developer, educator, and proud queer nerd.\nWelcome to my portfolio, a place to showcase some of my personal projects and do a little creative coding.",
-		"tech": "JavaScript, JSON, HTML5, CSS",
+		"text": "I'm Drue Gilbert (they/them): maker, full-stack web developer, educator, and proud queer nerd.\nWelcome to my portfolio, a place to showcase some of my personal projects and do a little creative coding.\n⇩\nScroll to view.\n⇧",
+		"tech": "JavaScript, JSON, HTML5, CSS, Bootstrap Icons",
 		"link": "https://www.linkedin.com/in/drue-gilbert/",
 		"github": "https://github.com/caseinpoint/caseinpoint.github.io"
 	},
@@ -20,7 +20,7 @@
 	{
 		"h1": "Project",
 		"h2": "Photomap",
-		"img": "/static/img/photomap.png",
+		"img": "/static/img/photomap.jpg",
 		"text": "Dynamically generates map pins and modals by parsing\nEXIF metadata in uploaded images.",
 		"tech": "JavaScript, Google OAuth & Maps & Drive APIs, HTML, CSS",
 		"link": "https://caseinpoint.github.io/photomap/",
