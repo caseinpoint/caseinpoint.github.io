@@ -6,7 +6,7 @@ const ELEMENTS = {
 
 
 function initText(data) {
-	// initialize text elements from static JSON data array
+	// initialize text elements from static JSON object array
 
 	for (i = 0; i < data.length; i++) {
 		const d = data[i];
@@ -14,9 +14,10 @@ function initText(data) {
 		// create object to track elements and scroll position
 		const divObj = {
 			div: null,
+			divScroll: 100,
 			elIdx: 0,
 			els: [],
-			scroll: 0
+			elScroll: 0
 		};
 		ELEMENTS.divs.push(divObj);
 
@@ -94,7 +95,7 @@ function initText(data) {
 		if (i === 0) {
 			// set up scrolling of next object
 			divObj.elIdx = divObj.els.length;
-			divObj.scroll = 100;
+			divObj.elScroll = 100;
 		} else {
 			div.classList.add('d_none');
 			for (let e of divObj.els) {
@@ -106,8 +107,11 @@ function initText(data) {
 
 
 function onScroll(evt) {
+	// scroll elements out of and view
+
 	evt.preventDefault();
-	console.log(evt.deltaY);
+
+	const incr = evt.deltaY > 0 ? -1 : 1;
 }
 
 

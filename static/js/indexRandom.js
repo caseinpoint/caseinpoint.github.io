@@ -17,8 +17,8 @@ function resizeCanvas() {
 	CANVAS.style.height = `${window.innerHeight}px`;
 
 	// set values for generating lines
-	MIN_HEIGHT = CANVAS.height * 0.0125;
-	MAX_HEIGHT = CANVAS.height * 0.075;
+	MIN_HEIGHT = Math.floor(CANVAS.height * 0.0125);
+	MAX_HEIGHT = Math.ceil(CANVAS.height * 0.075);
 }
 
 
