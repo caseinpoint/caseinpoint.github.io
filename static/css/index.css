@@ -18,10 +18,9 @@ html, body {
     top: 0;
     left: 0;
     z-index: 1;
-    width: 98vw;
-    height: 98vh;
+    width: 96vw;
+    height: 96vh;
     padding: 2vh 2vw;
-    overflow: hidden;
 }
 
 h1 {
@@ -47,16 +46,23 @@ a, p {
 
 img {
     max-width: 100%;
+    height: 30vh;
+    border-radius: 1vh;
+}
+
+.data_div {
+    width: 94vw;
+    height: 94vh;
+    overflow: hidden;
+    padding: 1vh 1vw;
+    margin-bottom: 2vh;
+    border: 1px solid #343443;
+    border-radius: 1vh;
+    /* white-space: nowrap; */
 }
 
 .d_none {
     display: none;
-}
-
-.data_div {
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
 }
 
 .hide_right {
