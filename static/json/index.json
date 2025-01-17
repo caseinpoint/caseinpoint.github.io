@@ -3,7 +3,7 @@
 		"h1": "Drue Gilbert",
 		"h2": "Web Developer",
 		"img": "/static/img/hello_there.gif",
-		"text": "I'm Drue Gilbert (they/them): maker, full-stack web developer, educator, and proud queer nerd.\nWelcome to my portfolio, a place to showcase some of my personal projects and do a little creative coding.\n↓\nScroll to view.\n↑",
+		"text": "I'm Drue Gilbert (they/them): maker, full-stack web developer, educator, and proud queer nerd.\nWelcome to my portfolio, a place to showcase some of my personal projects and do a little creative coding.\nAs Gandalf wisely said, \"All we have to decide is what to do with the time that is given us\"—and I've decided to spend mine building, learning, and creating.\n↓\nPunch it, Chewie! (Scroll to view portfolio.)\n↑",
 		"tech": "JavaScript, JSON, HTML5, CSS, Bootstrap Icons",
 		"link": "https://www.linkedin.com/in/drue-gilbert/",
 		"github": "https://github.com/caseinpoint/caseinpoint.github.io"
@@ -22,7 +22,7 @@
 		"h2": "Photomap",
 		"img": "/static/img/photomap.jpg",
 		"text": "Dynamically generates map pins and modals by parsing EXIF metadata in uploaded images.",
-		"tech": "JavaScript, Google OAuth & Maps & Drive APIs, HTML, CSS",
+		"tech": "JavaScript, Google OAuth + Maps + Drive APIs, HTML, CSS",
 		"link": "https://caseinpoint.github.io/photomap/",
 		"github": "https://github.com/caseinpoint/caseinpoint.github.io/tree/main/photomap"
 	},
@@ -40,7 +40,7 @@
 		"h2": "KnitCounter",
 		"img": "/static/img/knitcounter.png",
 		"text": "Simple web app for keeping track of knitting rows in repeating patterns.\nUtilizes localStorage to persist data across sessions.",
-		"tech": "JavaScript, HTML, CSS",
+		"tech": "JavaScript, HTML, CSS, Bootstrap",
 		"link": "https://caseinpoint.github.io/knitcounter/",
 		"github": "https://github.com/caseinpoint/caseinpoint.github.io/tree/main/knitcounter"
 	},
@@ -70,5 +70,14 @@
 		"tech": "Python, Flask, Django, Java, Spring Boot, JavaScript, Express, Angular, MySQL, MongoDB, Mongoose, AWS, HTML, CSS, Bootstrap",
 		"link": "https://www.codingdojo.com/",
 		"github": null
+	},
+	{
+		"h1": "Thank you for visiting",
+		"h2": "Peace and long life",
+		"img": "/static/img/livelongandprosper.gif",
+		"text": "Thank you for taking the time to explore my portfolio! I had fun building it.\nIf you'd like to collaborate, have any questions, or just want to chat about coding,\nfeel free to reach out: +1-415-579-2787 | drue.gilbert@gmail.com\nLet's boldly go and build something amazing together!",
+		"tech": "Curiosity, Creativity, ADHD Hyperfocus, Nerdery",
+		"link": "https://www.linkedin.com/in/drue-gilbert/",
+		"github": "https://github.com/caseinpoint/"
 	}
 ]

@@ -14,7 +14,7 @@ function initText(data) {
 	for (i = 0; i < data.length; i++) {
 		const d = data[i];
 
-		// create object to track elements and scroll position
+		// create object to track div and sub-elements
 		const divObj = {
 			div: null,
 			els: [],
@@ -112,7 +112,7 @@ function onScroll(evt) {
 
 	// evt.deltaY > 0 means wheel down
 	// 100 % incr === 0
-	const incr = evt.deltaY > 0 ? -5 : 5;
+	const incr = evt.deltaY > 0 ? -10 : 10;
 
 	const divObj = ELEMENTS.divs[ELEMENTS.divIdx];
 
@@ -128,10 +128,10 @@ function onScroll(evt) {
 				return;
 			}
 
+			// scroll down
 			const newY = ELEMENTS.yScroll + incr;
 
-
-			if (newY >= Math.abs(incr)) {
+			if (newY >= 0) {
 				ELEMENTS.yScroll = newY;
 				divObj.div.style.height = `${newY}%`
 			} else {
@@ -148,7 +148,9 @@ function onScroll(evt) {
 		}
 		// else not all sub-elements are scrolled in
 		else {
+			// scroll across
 			const newX = ELEMENTS.xScroll + incr;
+
 			if (newX >= 0) {
 				ELEMENTS.xScroll = newX;
 				const el = divObj.els[ELEMENTS.elIdx];
