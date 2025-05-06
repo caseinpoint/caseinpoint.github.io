@@ -1,0 +1,21 @@
+.txt_change {
+	/* background-color: rgba(128,128,128,0.05); */
+	background-color: rgba(255,128,128,0);
+}
+
+#p5_main {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: -1;
+}
+
+.carousel_img {
+	opacity: 0.5;
+}
+
+.row {
+	height: 100vh;
+}
