@@ -18,8 +18,8 @@ html, body {
     top: 0;
     left: 0;
     z-index: 1;
-    width: 96vw;
-    height: 96vh;
+    width: 94vw;
+    height: 94vh;
     padding: 2vh 2vw;
 }
 
@@ -57,8 +57,8 @@ img {
 }
 
 .data_div {
-    width: 94vw;
-    height: 94vh;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
     padding: 1vh 1vw;
     margin-bottom: 2vh;
