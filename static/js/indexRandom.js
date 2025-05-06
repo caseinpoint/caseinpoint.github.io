@@ -115,8 +115,8 @@ function animate(timestamp) {
 
 			// change heights of random lines by random amounts
 			let newHeight = l.height;
-			if (frame % randInt(frameMod * 2, frameMod * 3 + 1) == 0) {
-				const rHeight = newHeight + randInt(-1 * LINE_WIDTH, LINE_WIDTH + 1);
+			if (frame % randInt(frameMod * 1.5, frameMod * 3 + 1) == 0) {
+				const rHeight = newHeight + randInt(-1.5 * LINE_WIDTH, LINE_WIDTH * 1.5 + 1);
 				if (rHeight >= MIN_HEIGHT && rHeight <= MAX_HEIGHT) {
 					newHeight = rHeight;
 				}
