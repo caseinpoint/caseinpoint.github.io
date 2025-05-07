@@ -28,7 +28,7 @@ function ChaosMage(props) {
 		if (optionsStr !== null) {
 			setOptions(JSON.parse(optionsStr));
 		} else {
-			fetch("/static/json/options.json")
+			fetch("/chaosmage/static/json/options.json")
 				.then((response) => response.json())
 				.then((optJSON) => updateOptions(optJSON));
 		}
@@ -56,11 +56,11 @@ function ChaosMage(props) {
 	React.useEffect(() => {
 		fetchOptions();
 
-		fetch("/static/json/lvlProg.json")
+		fetch("/chaosmage/static/json/lvlProg.json")
 			.then((response) => response.json())
 			.then((lvlJSON) => setLvlProgression(lvlJSON));
 
-		fetch("/static/json/talents.json")
+		fetch("/chaosmage/static/json/talents.json")
 			.then((response) => response.json())
 			.then((tltJSON) => setTalents(tltJSON));
 	}, []);

@@ -115,31 +115,31 @@ function SpellsContainer(props) {
 	React.useEffect(() => {
 		fetchAllCategories();
 
-		fetch("/static/json/attack.json")
+		fetch("/chaosmage/static/json/attack.json")
 			.then((response) => response.json())
 			.then((atkJSON) => setAtkSpells(atkJSON));
 
-		fetch("/static/json/defense.json")
+		fetch("/chaosmage/static/json/defense.json")
 			.then((response) => response.json())
 			.then((defJSON) => setDefSpells(defJSON));
 
-		fetch("/static/json/icon.json")
+		fetch("/chaosmage/static/json/icon.json")
 			.then((response) => response.json())
 			.then((icnJSON) => setIcnSpells(icnJSON));
 
-		fetch("/static/json/cleric.json")
+		fetch("/chaosmage/static/json/cleric.json")
 			.then((response) => response.json())
 			.then((clrJSON) => setClrSpells(clrJSON));
 
-		fetch("/static/json/necromancer.json")
+		fetch("/chaosmage/static/json/necromancer.json")
 			.then((response) => response.json())
 			.then((ncrJSON) => setNcrSpells(ncrJSON));
 
-		fetch("/static/json/sorcerer.json")
+		fetch("/chaosmage/static/json/sorcerer.json")
 			.then((response) => response.json())
 			.then((srcJSON) => setSrcSpells(srcJSON));
 
-		fetch("/static/json/wizard.json")
+		fetch("/chaosmage/static/json/wizard.json")
 			.then((response) => response.json())
 			.then((wizJSON) => setWizSpells(wizJSON));
 

@@ -42,7 +42,7 @@ function WarpWeird(props) {
 
 	// on load
 	React.useEffect(() => {
-		fetch("/static/json/weirdness.json")
+		fetch("/chaosmage/static/json/weirdness.json")
 			.then((response) => response.json())
 			.then((weirdJSON) => setWeirdness(weirdJSON));
 		// Warp talents come in as props
