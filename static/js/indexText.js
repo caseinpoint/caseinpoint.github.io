@@ -113,7 +113,7 @@ function onScroll(evt) {
 
 	// evt.deltaY > 0 means wheel down
 	// 100 % incr === 0
-	const incr = evt.deltaY > 0 ? -12.5 : 12.5;
+	const incr = evt.deltaY > 0 ? -5 : 5;
 
 	const divObj = ELEMENTS.divs[ELEMENTS.divIdx];
 
