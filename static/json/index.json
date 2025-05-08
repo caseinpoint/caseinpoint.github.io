@@ -45,6 +45,15 @@
 		"github": "https://github.com/caseinpoint/caseinpoint.github.io/tree/main/knitcounter"
 	},
 	{
+		"h1": "Project",
+		"h2": "Portfolio v1.0",
+		"img": "/static/img/portfolio.png",
+		"text": "Version 1.0 of my portfolio.\nThis is the original version of my portfolio, built with HTML, CSS, and JavaScript.\nIt was a fun project to experiment with creative coding and color.",
+		"tech": "HTML, CSS, JavaScript, p5.js, Bootstrap Icons",
+		"link": "https://caseinpoint.github.io/index-v1/",
+		"github": "https://github.com/caseinpoint/caseinpoint.github.io/tree/main/index-v1"
+	},
+	{
 		"h1": "Experience",
 		"h2": "Full-Stack Web Development Instructor",
 		"img": null,
