@@ -200,18 +200,8 @@ function onScroll(evt) {
 	}
 }
 
-// // scroll back
-// const newX = ELEMENTS.xScroll + incr;
 
-// if (newX <= 100) {
-// 	ELEMENTS.xScroll = newX;
-// 	const el = divObj.els[ELEMENTS.elIdx];
-// 	el.style.marginLeft = `${newX}vw`;
-// } else {
-// 	ELEMENTS.xScroll = 0;
-// 	ELEMENTS.elIdx--;
-// }
-
+// touchY is used to track the Y position of the touch event
 let touchY = 0;
 
 function onTouchMove(evt) {
