@@ -9,7 +9,7 @@ html, body {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 0;
+    z-index: -1;
     /* size set in JS */
 }
 
@@ -17,7 +17,7 @@ html, body {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1;
+    z-index: 0;
     width: 94vw;
     height: 94vh;
     padding: 2vh 2vw;
@@ -39,7 +39,7 @@ h2 {
     color: #446DB0;
 }
 
-a, p {
+a, p, label {
     margin: 0;
     font-family: "Syne Mono", monospace, sans-serif;
     font-size: 1.65vw;
@@ -48,6 +48,10 @@ a, p {
 
 p {
     width: 100%;
+}
+
+label {
+    font-size: 1.325vw;
 }
 
 img {
@@ -73,4 +77,27 @@ img {
 
 .hide_right {
     margin-left: 100vw;
+}
+
+.fixed_div {
+    position: fixed;
+    right: 2.5vw;
+    max-width: 25vw;
+    padding: 0.5vh 0.5vw;
+    border: 1px solid #343443;
+    border-radius: 0.75vh;
+    background-color: rgba(68, 109, 176, 0.2);
+}
+
+#top_right {
+    top: 2.5vh;
+}
+
+#bottom_right {
+    bottom: 2.5vh;
+}
+
+input[type="range"] {
+    display: block;
+    width: 100%;
 }

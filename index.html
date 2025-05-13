@@ -21,7 +21,17 @@
 <body>
   <canvas id="main_canvas"></canvas>
 
-  <main id="main_content"></main>
+  <main id="main_content">
+    <div id="top_right" class="fixed_div">
+      <input type="range" id="scroll_speed" list="speed_values">
+      <label for="scroll_speed">Scroll speed</label>
+      <datalist id="speed_values">
+        <!-- populated by JS -->
+      </datalist>
+    </div>
+
+    <!-- <div id="bottom_right" class="fixed_div"></div> -->
+  </main>
 
   <!-- JS -->
   <script src="/static/js/indexRandom.js"></script>

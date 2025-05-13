@@ -108,12 +108,41 @@ function initText(data) {
 }
 
 
+const SCROLL_SPEEDS = [5, 6.25, 10, 12.5, 20, 25];
+let scrollSpeed = SCROLL_SPEEDS[Math.floor(SCROLL_SPEEDS.length / 2)];
+
+function roundToNearest(num, arr) {
+	// round num to nearest value in arr
+	let closest = arr[0];
+	let closestDiff = Math.abs(num - closest);
+
+	for (let i = 1; i < arr.length; i++) {
+		const diff = Math.abs(num - arr[i]);
+		if (diff < closestDiff) {
+			closestDiff = diff;
+			closest = arr[i];
+		}
+	}
+
+	return closest;
+}
+
+
+function onScrollSpeedChange(evt) {
+	// change scroll speed based on range input
+	const val = evt.target.value;
+
+	scrollSpeed = roundToNearest(val, SCROLL_SPEEDS);
+	evt.target.value = scrollSpeed;
+}
+
+
 function onScroll(evt) {
 	// scroll elements out of and into view
 
 	// evt.deltaY > 0 means wheel down
 	// 100 % incr === 0
-	const incr = evt.deltaY > 0 ? -5 : 5;
+	const incr = evt.deltaY > 0 ? -1 * scrollSpeed : scrollSpeed;
 
 	const divObj = ELEMENTS.divs[ELEMENTS.divIdx];
 
@@ -233,4 +262,17 @@ function onTouchMove(evt) {
 		.then((response) => response.json())
 		.then((data) => { initText(data); })
 		.catch((error) => { console.error('Error:', error) });
+
+	const scrollSpeedInput = document.getElementById('scroll_speed');
+	scrollSpeedInput.addEventListener('input', onScrollSpeedChange);
+	scrollSpeedInput.min = SCROLL_SPEEDS[0];
+	scrollSpeedInput.value = scrollSpeed;
+	scrollSpeedInput.max = SCROLL_SPEEDS[SCROLL_SPEEDS.length - 1];
+
+	const speedValues = document.getElementById('speed_values');
+	for (let i = 0; i < SCROLL_SPEEDS.length; i++) {
+		const option = document.createElement('option');
+		option.value = SCROLL_SPEEDS[i];
+		speedValues.appendChild(option);
+	}
 })();
