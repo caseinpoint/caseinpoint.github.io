@@ -1,4 +1,4 @@
-const MAIN_ELEMENT = document.getElementById('main_content');
+// access to created elements
 const ELEMENTS = {
 	divs: [],
 	divIdx: 0,
@@ -10,6 +10,7 @@ const ELEMENTS = {
 
 function initText(data) {
 	// initialize text elements from static JSON object array
+	const mainElement = document.getElementById('main_content');
 
 	for (i = 0; i < data.length; i++) {
 		const d = data[i];
@@ -25,7 +26,7 @@ function initText(data) {
 		const div = document.createElement('div');
 		div.id = `div_${i}`;
 		div.classList.add('data_div');
-		MAIN_ELEMENT.appendChild(div);
+		mainElement.appendChild(div);
 		divObj.div = div;
 
 		const h1 = document.createElement('h1');
@@ -254,8 +255,8 @@ function onTouchMove(evt) {
 
 
 (function main() {
-	MAIN_ELEMENT.addEventListener('wheel', onScroll, { passive: true });
-	MAIN_ELEMENT.addEventListener('touchmove', onTouchMove);
+	window.addEventListener('wheel', onScroll, { passive: true });
+	window.addEventListener('touchmove', onTouchMove);
 
 	// get text JSON from /static
 	fetch('/static/json/index.json')
